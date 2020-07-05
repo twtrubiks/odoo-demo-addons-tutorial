@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="demo_odoo_template" name="Demo odoo List">
+  <div id="wrap" class="container">
+    <h1>Demo Odoo</h1>
+      <t t-foreach="objs" t-as="obj">
+        <div class="row">
+          <span t-field="obj.name" />,
+          <span t-field="obj.is_done_track_onchange" />,
+          <span t-field="obj.name_track_always" />
+        </div>
+      </t>
+  </div>
+</template>
+
+</odoo>

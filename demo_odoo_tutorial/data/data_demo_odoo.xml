@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+  <record id="demo_odoo_1" model="demo.odoo.tutorial">
+      <field name="name">demo_odoo_1</field>
+      <field name="name_track_always">demo_name_track_always_1</field>
+      <field name="is_done_track_onchange">True</field>
+  </record>
+
+  <record id="demo_odoo_2" model="demo.odoo.tutorial">
+      <field name="name">demo_odoo_2</field>
+      <field name="name_track_always">demo_name_track_always_2</field>
+      <field name="is_done_track_onchange">True</field>
+  </record>
+
+</odoo>

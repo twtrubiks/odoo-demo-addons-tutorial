@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <record id="view_form_demo_odoo_tutorial" model="ir.ui.view">
+    <field name="name">Demo Odoo Tutorial Form</field>
+    <field name="model">demo.odoo.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Odoo Tutorial">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="name_track_always"/>
+            <field name="is_done_track_onchange"/>
+            <field name="start_datetime"/>
+            <field name="stop_datetime"/>
+            <field name="field_onchange_demo"/>
+            <field name="field_onchange_demo_set" force_save="1"/>
+            <field name="input_number"/>
+            <field name="field_compute_demo"/>
+          </group>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="activity_ids" widget="mail_activity"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_odoo_tutorial" model="ir.ui.view">
+    <field name="name">Demo Odoo Tutorial List</field>
+    <field name="model">demo.odoo.tutorial</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="name_track_always"/>
+        <field name="is_done_track_onchange"/>
+        <field name="start_datetime"/>
+        <field name="stop_datetime"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

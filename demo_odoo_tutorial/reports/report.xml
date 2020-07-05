@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_demo_odoo_tutorial">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Odoo Report</h2>
+                        <div>
+                            <strong>Name:</strong>
+                            <p t-field="o.name"/>
+                        </div>
+                        <div>
+                            <strong>Name_track_always:</strong>
+                            <p t-field="o.name_track_always"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_report_demo"
+        string="Demo Report"
+        model="demo.odoo.tutorial"
+        report_type="qweb-pdf"
+        name="demo_odoo_tutorial.report_demo_odoo_tutorial"
+        file="demo_odoo_tutorial.report_demo_odoo_tutorial"
+        print_report_name="'Demo Report - %s' % ((object.name).replace('/', ''))"
+    />
+
+</odoo>
