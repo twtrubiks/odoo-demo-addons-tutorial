@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_expense_tutorial App Menu -->
+    <menuitem id="demo_expense_tutorial_menu"
+              name="Demo Expense Tutorial" />
+
+    <!-- Action to open the demo_expense_tutorial -->
+    <act_window id="action_expense_tutorial"
+                name="Demo Expense Tutorial Action"
+                res_model="demo.expense.tutorial"
+                view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_expense_tutorial -->
+    <menuitem id="menu_expense_tutorial"
+              name="Demo Expense Tutorial"
+	          action="action_expense_tutorial"
+              parent="demo_expense_tutorial_menu" />
+
+    <!-- Action to open the demo_expense_sheet_tutorial -->
+    <act_window id="action_expense_sheet_tutorial"
+                name="Demo Expense Sheet Tutorial Action"
+                res_model="demo.expense.sheet.tutorial"
+                view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_expense_sheet_tutorial -->
+    <menuitem id="menu_expense_sheet_tutorial"
+              name="Demo Expense Sheet Tutorial"
+	          action="action_expense_sheet_tutorial"
+              parent="demo_expense_tutorial_menu" />
+</odoo>
+
+
