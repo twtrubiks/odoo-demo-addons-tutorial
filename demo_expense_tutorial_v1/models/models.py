@@ -68,3 +68,20 @@ class DemoExpenseSheetTutorial(models.Model):
             'domain': [('sheet_id', '=', self.id)],
         }
 
+    @api.multi
+    def name_get(self):
+        names = []
+        for record in self:
+            name = '%s-%s' % (record.create_date.date(), record.name)
+            names.append((record.id, name))
+        return names
+
+    # odoo12/odoo/odoo/addons/base/models/ir_model.py
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
+        domain = args + ['|', ('id', operator, name), ('name', operator, name)]
+        # domain = args + [ ('name', operator, name)]
+        # domain = args + [ ('id', operator, name)]
+        return super(DemoExpenseSheetTutorial, self).search(domain, limit=limit).name_get()

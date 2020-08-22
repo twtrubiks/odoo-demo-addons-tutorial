@@ -2,7 +2,21 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - (等待新增)odoo 手把手建立第一個 addons - Many2one, Many2many, One2many]()
+* [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk)
+
+* [Youtube Tutorial - odoo 手把手教學 - Many2many - part2](https://youtu.be/QeZfJqTGP-w)
+
+* [Youtube Tutorial - odoo 手把手教學 - One2many - part3](https://youtu.be/WiLdXP781N0)
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - One2many Editable Bottom and Top - part3-1]()
+
+* [Youtube Tutorial - odoo 手把手教學 - Search Filters - part4](https://youtu.be/zcWMs16p9Xw)
+
+* [Youtube Tutorial - odoo 手把手教學 - 說明 noupdate 以及 domain_force - part5](https://youtu.be/twn6zz3OeRs)
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6]()
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 說明 name_get 和 _name_search - part7]()
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -13,6 +27,8 @@
 以下將介紹這個 addons 的結構
 
 ## 說明
+
+* [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk)
 
 先來看 [models/models.py](models/models.py)
 
@@ -49,6 +65,8 @@ class DemoExpenseTutorial(models.Model):
 因為 One2many 比較特別, 所以我們先介紹 Many2many:laughing:
 
 `Many2many`
+
+* [Youtube Tutorial - odoo 手把手教學 - Many2many - part2](https://youtu.be/QeZfJqTGP-w)
 
 要建立 Many2many 之前, 一定要先定義一個 model,
 
@@ -151,6 +169,8 @@ DemoExpenseTutorial 中的 `gender` 自然會是 Male,
 
 `One2many`
 
+* [Youtube Tutorial - odoo 手把手教學 - One2many - part3](https://youtu.be/WiLdXP781N0)
+
 ![alt tag](https://i.imgur.com/lV2J3Tu.png)
 
 [models/models.py](models/models.py)
@@ -173,6 +193,7 @@ class DemoExpenseSheetTutorial(models.Model):
         'demo.expense.tutorial', # related model
         'sheet_id', # field for "this" on related model
         string='Expense Lines')
+......
 ```
 
 說明 expense_line_ids 裡面的參數意義,
@@ -261,9 +282,58 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/jiFHHST.png)
 
+這邊補充一下 One2many 中的 Editable Bottom 和 Top
+
+* [Youtube Tutorial - odoo 手把手教學 - One2many Editable Bottom and Top - part3-1]()
+
 [views/view.xml](views/view.xml)
 
-來看這個 filter 的功能
+```xml
+  <record id="view_form_demo_expense_sheet_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Sheet Tutorial Form</field>
+    <field name="model">demo.expense.sheet.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Sheet Tutorial">
+        <sheet>
+          ......
+          <notebook>
+              <page string="Expense">
+                <field name="expense_line_ids" >
+                  <tree>
+                  <!-- <tree editable="top"> -->   <!-- <<<<<<<<<<<< -->
+                  <!-- <tree editable="bottom"> --> <!-- <<<<<<<<<<<< -->
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                  </tree>
+                </field>
+              </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+```
+
+如果你加上 `editable` 這個參數, 當你新增 record 的時候, 就不會整個跳出視窗, 可以直接在裡面輸入
+
+(或許比較好看:smile:)
+
+![alt tag](https://i.imgur.com/tdues3g.png)
+
+至於 `editable="bottom"` 和 `editable="top"` 的差別如下
+
+`editable="top"` 一個新增的 record 會顯示在最上面
+
+![alt tag](https://i.imgur.com/qWaIH59.png)
+
+`editable="bottom"`一個新增的 record 會顯示在最下面
+
+![alt tag](https://i.imgur.com/d3pfgRX.png)
+
+接著來看 filter 的功能
+
+* [Youtube Tutorial - odoo 手把手教學 - Search Filters - part4](https://youtu.be/zcWMs16p9Xw)
 
 ```xml
 ......
@@ -302,6 +372,8 @@ class DemoExpenseTutorial(models.Model):
 再來看看
 
 [security/ir_rule.xml](security/ir_rule.xml)
+
+* [Youtube Tutorial - odoo 手把手教學 - 說明 noupdate 以及 domain_force - part5](https://youtu.be/twn6zz3OeRs)
 
 ```xml
 ......
@@ -360,6 +432,8 @@ class DemoExpenseTutorial(models.Model):
 
 接下來介紹前面跳過的部份, 也就是透過 button 的方式呼叫 view, form,
 
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6]()
+
 [models/models.py](models/models.py)
 
 ```python
@@ -409,7 +483,7 @@ class DemoExpenseTutorial(models.Model):
 </record>
 ```
 
-既然找了 sheet_id, 也來做一個反查回來的, 也就是透過 sheet_id 找到 `demo.expense`,
+既然找了 sheet_id, 也來做一個反查回來的, 也就是透過 sheet_id 找到 `demo.expense.tutorial`,
 
 [models/models.py](models/models.py)
 
@@ -431,6 +505,8 @@ class DemoExpenseSheetTutorial(models.Model):
             'type': 'ir.actions.act_window',
             'domain': [('sheet_id', '=', self.id)],
         }
+
+    ......
 ```
 
 `res_model` 為目標的 model `demo.expense.tutorial`.
@@ -468,3 +544,67 @@ class DemoExpenseSheetTutorial(models.Model):
   </field>
 </record>
 ```
+
+最後來看 [models/models.py](models/models.py) 中比較特殊的部份,
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 說明 name_get 和 _name_search - part7]()
+
+分別是 `name_get` 和 `_name_search`,
+
+```python
+class DemoExpenseSheetTutorial(models.Model):
+    _name = 'demo.expense.sheet.tutorial'
+    _description = 'Demo Expense Sheet Tutorial'
+
+    ......
+
+    @api.multi
+    def name_get(self):
+        names = []
+        for record in self:
+            name = '%s-%s' % (record.create_date.date(), record.name)
+            names.append((record.id, name))
+        return names
+
+    # odoo12/odoo/odoo/addons/base/models/ir_model.py
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
+        domain = args + ['|', ('id', operator, name), ('name', operator, name)]
+        # domain = args + [ ('name', operator, name)]
+        # domain = args + [ ('id', operator, name)]
+        return super(DemoExpenseSheetTutorial, self).search(domain, limit=limit).name_get()
+
+```
+
+首先是 `name_get`
+
+這個的功能主要是去修改 name 的名稱, 在這邊我們加上當下的時間
+
+(可以依照自己的需求下去修改)
+
+![alt tag](https://i.imgur.com/JudV8pW.png)
+
+Many2one 時也會看到自己定義的 `name_get`
+
+注意:exclamation: 這些增加的值是不會儲存進 db 中的, db 中還是儲存的是 name 的內容而已
+(概念和 compute field 一樣:smile:)
+
+![alt tag](https://i.imgur.com/sC9hNA8.png)
+
+再來要來說明 `_name_search`,
+
+如果沒有它, 假設我知道某個資料的 id 是 4, 在搜尋的地方打上 id,
+
+你會發現找不到資料:joy:
+
+![alt tag](https://i.imgur.com/YokDfBf.png)
+
+但今天如果有了 `_name_search` 並實作它,
+
+你會發現這次你打 id 會才成功找到需要的資料:satisfied:
+
+我在 code 中有放幾個範例註解, 大家可以自行玩玩看:smile:
+
+![alt tag](https://i.imgur.com/ztUL9Xd.png)

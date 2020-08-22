@@ -20,9 +20,11 @@
 
 1. [demo_odoo_tutorial](demo_odoo_tutorial) - odoo 手把手建立第一個 addons
 
+2. [demo_expense_tutorial_v1](demo_expense_tutorial_v1) - odoo 入門篇
+
 ## 其他
 
-* [Youtube Tutorial - (等待新增)使用 CLI 安裝,更新 addons]()
+* [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
 
 建立 addons 模組
 
@@ -94,7 +96,7 @@ python3 odoo-bin -u addons_1 -d odoo --dev=all
 
 ### shell
 
-* [Youtube Tutorial - (等待新增)odoo shell 基本教學]()
+* [Youtube Tutorial - odoo shell 基本教學 - CRUD](https://youtu.be/kmbiT54hUkw)
 
 ```cmd
 python odoo-bin shell -w odoo -r odoo -d odoo --db_port=5432 --db_host=localhost --addons-path='/home/twtrubiks/odoo/addons'
@@ -115,6 +117,13 @@ res.partner(14, 26, 33, 27, 10, 35, 18, 19, 11, 20, 22, 31, 23, 15, 34, 12, 21, 
 res.partner(24,)
 >>> self.env['res.partner'].browse([11, 20])
 res.partner(11, 20)
+```
+
+`search_count`
+
+```python
+>>> self.env['res.partner'].search_count([])
+73
 ```
 
 `recordset.ids` 回傳 recordset 全部的 id
@@ -202,7 +211,7 @@ True
 
 ### odoo shell 注意事項
 
-* [Youtube Tutorial - (等待新增)odoo shell 教學 - 注意事項]()
+* [Youtube Tutorial - odoo shell 教學 - 注意事項](https://youtu.be/YS6mGE3-y1k)
 
 odoo-shell 下 command 無法 save 問題,
 
@@ -232,7 +241,7 @@ remaining_time = 剩餘時間
 
 ## odoo 使用 gmail 發信
 
-* [Youtube Tutorial - (等待新增)odoo 教學 - 使用 gmail 發信]()
+* [Youtube Tutorial - odoo 教學 - 使用 gmail 發信](https://youtu.be/CkFHCQuzEoo)
 
 gmail 需要一些前製作業, 建議先閱讀 [使用 Gmail 寄信 - 前置作業](https://github.com/twtrubiks/Flask-Mail-example#%E4%BD%BF%E7%94%A8-gmail-%E5%AF%84%E4%BF%A1---%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD) 這篇的 gmail 設定
 

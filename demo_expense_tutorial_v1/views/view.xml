@@ -57,8 +57,10 @@
           </group>
           <notebook>
               <page string="Expense">
-                <field name="expense_line_ids">
+                <field name="expense_line_ids" >
                   <tree>
+                  <!-- <tree editable="top"> -->   <!-- <<<<<<<<<<<< -->
+                  <!-- <tree editable="bottom"> --> <!-- <<<<<<<<<<<< -->
                     <field name="name"/>
                     <field name="employee_id"/>
                     <field name="tag_ids" widget="many2many_tags"/>
