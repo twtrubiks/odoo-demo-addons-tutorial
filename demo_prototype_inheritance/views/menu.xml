@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_prototype_tutorial App Menu -->
+    <menuitem id="demo_prototype_tutorial_menu"
+              name="Demo Prototype Tutorial" />
+
+    <!-- Action to open the demo_prototype_tutorial -->
+    <act_window id="action_demo_prototype_tutorial"
+                name="Demo Prototype Tutorial Action"
+                res_model="demo.prototype"
+                view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_prototype_tutorial -->
+    <menuitem id="menu_demo_prototype_tutorial"
+              name="Demo Prototype Tutorial"
+	          action="action_demo_prototype_tutorial"
+              parent="demo_prototype_tutorial_menu" />
+</odoo>
+
+
