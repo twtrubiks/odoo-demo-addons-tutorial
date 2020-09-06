@@ -46,6 +46,11 @@
     <field name="model">demo.expense.sheet.tutorial</field>
     <field name="arch" type="xml">
       <form string="Demo Expense Sheet Tutorial">
+        <header>
+          <button name="add_demo_expense_record" string="add demo expense record" type="object"/>
+          <button name="link_demo_expense_record" string="link demo expense record" type="object"/>
+          <button name="replace_demo_expense_record" string="replace expense record" type="object"/>
+        </header>
         <sheet>
           <div class="oe_button_box" name="button_box">
             <button class="oe_stat_button" name="button_line_ids"

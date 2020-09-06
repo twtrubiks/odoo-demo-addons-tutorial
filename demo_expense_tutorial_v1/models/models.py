@@ -57,6 +57,46 @@ class DemoExpenseSheetTutorial(models.Model):
         string='Expense Lines')
 
     @api.multi
+    def add_demo_expense_record(self):
+        # (0, _ , {'field': value}) creates a new record and links it to this one.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+        tag_data_1 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_1')
+        tag_data_2 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_2')
+
+        for record in self:
+            # creates a new record
+            val = {
+                'name': 'test_data',
+                'employee_id': data_1.employee_id,
+                'tag_ids': [(6, 0, [tag_data_1.id, tag_data_2.id])]
+            }
+
+            self.expense_line_ids = [(0, 0, val)]
+
+    @api.multi
+    def link_demo_expense_record(self):
+        # (4, id, _) links an already existing record.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+        for record in self:
+            # link already existing record
+            self.expense_line_ids = [(4, data_1.id, 0)]
+
+    @api.multi
+    def replace_demo_expense_record(self):
+        # (6, _, [ids]) replaces the list of linked records with the provided list.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+        data_2 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_2')
+
+        for record in self:
+            # replace multi record
+            self.expense_line_ids = [(6, 0, [data_1.id, data_2.id])]
+
+    @api.multi
     def button_line_ids(self):
         return {
             'name': 'Demo Expense Line IDs',

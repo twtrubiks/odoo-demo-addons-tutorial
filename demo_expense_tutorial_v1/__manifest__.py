@@ -25,6 +25,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
+        'data/demo_expense_tutorial_data.xml',
         'views/menu.xml',
         'views/view.xml'
     ],

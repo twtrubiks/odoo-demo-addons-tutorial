@@ -22,6 +22,12 @@
 
 2. [demo_expense_tutorial_v1](demo_expense_tutorial_v1) - odoo 入門篇
 
+3. [demo_class_inheritance](demo_class_inheritance) - odoo 繼承 - class inheritance
+
+4. [demo_prototype_inheritance](demo_prototype_inheritance) - odoo 繼承 - prototype inheritance
+
+5. [demo_delegation_inheritance](demo_delegation_inheritance) - odoo 繼承 - delegation inheritance
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)

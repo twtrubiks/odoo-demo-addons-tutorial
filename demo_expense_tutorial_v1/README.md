@@ -2,21 +2,23 @@
 
 建議觀看影片, 會更清楚:smile:
 
-* [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk)
+* [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---many2one---part1)
 
-* [Youtube Tutorial - odoo 手把手教學 - Many2many - part2](https://youtu.be/QeZfJqTGP-w)
+* [Youtube Tutorial - odoo 手把手教學 - Many2many - part2](https://youtu.be/QeZfJqTGP-w) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---many2many---part2)
 
-* [Youtube Tutorial - odoo 手把手教學 - One2many - part3](https://youtu.be/WiLdXP781N0)
+* [Youtube Tutorial - odoo 手把手教學 - One2many - part3](https://youtu.be/WiLdXP781N0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many---part3)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - One2many Editable Bottom and Top - part3-1]()
+* [Youtube Tutorial - odoo 手把手教學 - One2many Editable Bottom and Top - part3-1](https://youtu.be/HJcBAFXQYVc) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many-editable-bottom-and-top---part3-1)
 
-* [Youtube Tutorial - odoo 手把手教學 - Search Filters - part4](https://youtu.be/zcWMs16p9Xw)
+* [Youtube Tutorial - odoo 手把手教學 - Search Filters - part4](https://youtu.be/zcWMs16p9Xw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---search-filters---part4)
 
-* [Youtube Tutorial - odoo 手把手教學 - 說明 noupdate 以及 domain_force - part5](https://youtu.be/twn6zz3OeRs)
+* [Youtube Tutorial - odoo 手把手教學 - 說明 noupdate 以及 domain_force - part5](https://youtu.be/twn6zz3OeRs) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E8%AA%AA%E6%98%8E-noupdate-%E4%BB%A5%E5%8F%8A-domain_force---part5)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6]()
+* [Youtube Tutorial - odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6](https://youtu.be/URxuH2HG44Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-button-%E5%91%BC%E5%8F%AB-view-form---part6)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 說明 name_get 和 _name_search - part7]()
+* [Youtube Tutorial - odoo 手把手教學 - 說明 name_get 和 _name_search - part7](https://youtu.be/g-dclCkwY5c) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E8%AA%AA%E6%98%8E-name_get-%E5%92%8C-_name_search---part7)
+
+* [Youtube Tutorial - odoo 手把手教學 - 使用 python 增加取代 One2many M2X record - part8](https://youtu.be/GBCGS2znnT8) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E4%BD%BF%E7%94%A8-python-%E5%A2%9E%E5%8A%A0%E5%8F%96%E4%BB%A3-one2many-m2x-record---part8)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -27,6 +29,8 @@
 以下將介紹這個 addons 的結構
 
 ## 說明
+
+### odoo 手把手教學 - Many2one - part1
 
 * [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk)
 
@@ -63,6 +67,8 @@ class DemoExpenseTutorial(models.Model):
 ![alt tag](https://i.imgur.com/QiDj6iM.png)
 
 因為 One2many 比較特別, 所以我們先介紹 Many2many:laughing:
+
+### odoo 手把手教學 - Many2many - part2
 
 `Many2many`
 
@@ -101,7 +107,7 @@ class DemoExpenseTutorial(models.Model):
     # By default, the relationship table name is the two table names
     # joined with an underscore and _rel appended at the end.
     # In the case of our books or authors relationship, it should be named demo_expense_tutorial_demo_tag_rel.
-
+### odoo 手把手教學 - Many2many - part2
     tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id', string='Tges')
 ......
 ```
@@ -166,6 +172,8 @@ DemoExpenseTutorial 中的 `gender` 自然會是 Male,
 ![alt tag](https://i.imgur.com/mJrzLjk.png)
 
 接著來看最後一個
+
+### odoo 手把手教學 - One2many - part3
 
 `One2many`
 
@@ -282,9 +290,11 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/jiFHHST.png)
 
+### odoo 手把手教學 - One2many Editable Bottom and Top - part3-1
+
 這邊補充一下 One2many 中的 Editable Bottom 和 Top
 
-* [Youtube Tutorial - odoo 手把手教學 - One2many Editable Bottom and Top - part3-1]()
+* [Youtube Tutorial - odoo 手把手教學 - One2many Editable Bottom and Top - part3-1](https://youtu.be/HJcBAFXQYVc)
 
 [views/view.xml](views/view.xml)
 
@@ -331,6 +341,8 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/d3pfgRX.png)
 
+### odoo 手把手教學 - Search Filters - part4
+
 接著來看 filter 的功能
 
 * [Youtube Tutorial - odoo 手把手教學 - Search Filters - part4](https://youtu.be/zcWMs16p9Xw)
@@ -368,6 +380,8 @@ class DemoExpenseTutorial(models.Model):
 點選後的狀態
 
 ![alt tag](https://i.imgur.com/acyqVIA.png)
+
+### odoo 手把手教學 - 說明 noupdate 以及 domain_force - part5
 
 再來看看
 
@@ -430,9 +444,11 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/CFMsgie.png)
 
+### odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6
+
 接下來介紹前面跳過的部份, 也就是透過 button 的方式呼叫 view, form,
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6]()
+* [Youtube Tutorial - odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6](https://youtu.be/URxuH2HG44Q)
 
 [models/models.py](models/models.py)
 
@@ -545,9 +561,11 @@ class DemoExpenseSheetTutorial(models.Model):
 </record>
 ```
 
+### odoo 手把手教學 - 說明 name_get 和 _name_search - part7
+
 最後來看 [models/models.py](models/models.py) 中比較特殊的部份,
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - 說明 name_get 和 _name_search - part7]()
+* [Youtube Tutorial - odoo 手把手教學 - 說明 name_get 和 _name_search - part7](https://youtu.be/g-dclCkwY5c)
 
 分別是 `name_get` 和 `_name_search`,
 
@@ -608,3 +626,154 @@ Many2one 時也會看到自己定義的 `name_get`
 我在 code 中有放幾個範例註解, 大家可以自行玩玩看:smile:
 
 ![alt tag](https://i.imgur.com/ztUL9Xd.png)
+
+### odoo 手把手教學 - 使用 python 增加取代 One2many M2X record - part8
+
+* [Youtube Tutorial - odoo 手把手教學 - 使用 python 增加取代 One2many M2X record - part8](https://youtu.be/GBCGS2znnT8)
+
+參考 [models/models.py](models/models.py)
+
+這邊只需要注意3個 function,
+
+`add_demo_expense_record` `link_demo_expense_record` `replace_demo_expense_record`
+
+分別對應的 button 為下圖
+
+參考 [views/view.xml](views/view.xml)
+
+![alt tag](https://i.imgur.com/8gmMe3j.png)
+
+```python
+class DemoExpenseSheetTutorial(models.Model):
+    _name = 'demo.expense.sheet.tutorial'
+    _description = 'Demo Expense Sheet Tutorial'
+
+    name = fields.Char('Expense Demo Report Summary', required=True)
+
+    # One2many is a virtual relationship, there must be a Many2one field in the other_model,
+    # and its name must be related_field
+    expense_line_ids = fields.One2many(
+        'demo.expense.tutorial', # related model
+        'sheet_id', # field for "this" on related model
+        string='Expense Lines')
+
+    @api.multi
+    def add_demo_expense_record(self):
+        # (0, _ , {'field': value}) creates a new record and links it to this one.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+        tag_data_1 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_1')
+        tag_data_2 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_2')
+
+        for record in self:
+            # creates a new record
+            val = {
+                'name': 'test_data',
+                'employee_id': data_1.employee_id,
+                'tag_ids': [(6, 0, [tag_data_1.id, tag_data_2.id])]
+            }
+
+            self.expense_line_ids = [(0, 0, val)]
+
+    @api.multi
+    def link_demo_expense_record(self):
+        # (4, id, _) links an already existing record.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+        for record in self:
+            # link already existing record
+            self.expense_line_ids = [(4, data_1.id, 0)]
+
+    @api.multi
+    def replace_demo_expense_record(self):
+        # (6, _, [ids]) replaces the list of linked records with the provided list.
+
+        data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+        data_2 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_2')
+
+        for record in self:
+            # replace multi record
+            self.expense_line_ids = [(6, 0, [data_1.id, data_2.id])]
+
+```
+
+說明 `add_demo_expense_record`
+
+```python
+......
+@api.multi
+def add_demo_expense_record(self):
+    # (0, _ , {'field': value}) creates a new record and links it to this one.
+
+    data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+    tag_data_1 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_1')
+    tag_data_2 = self.env.ref('demo_expense_tutorial_v1.demo_tag_data_2')
+
+    for record in self:
+        # creates a new record
+        val = {
+            'name': 'test_data',
+            'employee_id': data_1.employee_id,
+            'tag_ids': [(6, 0, [tag_data_1.id, tag_data_2.id])]
+        }
+
+        self.expense_line_ids = [(0, 0, val)]
+......
+```
+
+`(0, _ , {'field': value})` 新建一筆 record 並且連接它.
+
+`self.env.ref(......)` 這個的用法是去取得既有的資料, 路徑在 [data/demo_expense_tutorial_data.xml](data/demo_expense_tutorial_data.xml).
+
+當你點選按鈕, 下面就會一直新增資料
+
+![alt tag](https://i.imgur.com/bUI3vZE.png)
+
+說明 `link_demo_expense_record`
+
+```python
+......
+@api.multi
+def link_demo_expense_record(self):
+    # (4, id, _) links an already existing record.
+
+    data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+
+    for record in self:
+        # link already existing record
+        self.expense_line_ids = [(4, data_1.id, 0)]
+......
+
+```
+
+`(4, id, _)` 連接已經存在的 record.
+
+當你點選按鈕, 下面會直接連接一比資料, 如果已經連接就不會有動作,
+
+![alt tag](https://i.imgur.com/Qw1VDyU.png)
+
+說明 `replace_demo_expense_record`
+
+```python
+......
+@api.multi
+def replace_demo_expense_record(self):
+    # (6, _, [ids]) replaces the list of linked records with the provided list.
+
+    data_1 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_1')
+    data_2 = self.env.ref('demo_expense_tutorial_v1.demo_expense_tutorial_data_2')
+
+    for record in self:
+        # replace multi record
+        self.expense_line_ids = [(6, 0, [data_1.id, data_2.id])]
+......
+```
+
+`(6, _, [ids])` 使用 list 取代既有的 records.
+
+當你點選按鈕, 會使用你定義的 list 取代全部的 records.
+
+![alt tag](https://i.imgur.com/b30QdSQ.png)
