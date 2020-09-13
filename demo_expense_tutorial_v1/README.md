@@ -20,6 +20,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - 使用 python 增加取代 One2many M2X record - part8](https://youtu.be/GBCGS2znnT8) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E4%BD%BF%E7%94%A8-python-%E5%A2%9E%E5%8A%A0%E5%8F%96%E4%BB%A3-one2many-m2x-record---part8)
 
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - tree create delete edit False - part9]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [demo_odoo_tutorial](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial) -  odoo 手把手建立第一個 addons
@@ -777,3 +779,61 @@ def replace_demo_expense_record(self):
 當你點選按鈕, 會使用你定義的 list 取代全部的 records.
 
 ![alt tag](https://i.imgur.com/b30QdSQ.png)
+
+### odoo 手把手教學 - tree create delete edit False - part9
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - tree create delete edit False - part9]()
+
+通常管理一個使用者可不可以建立 records, 是根據 security 資料夾裡面的檔案,
+
+也就是 `security.xml` `ir_rule.xml` `ir.model.access.csv` 主要是這個.
+
+記住:exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
+
+當然, 如果是從安全性的角度來看 從 model 層(db層) 或權限下手 是比較高全的:smile:
+
+今天就是要來介紹 從 view 那層下手,
+
+增加一個 tree [views/view.xml](views/view.xml)
+
+```xml
+......
+<record id="view_tree_demo_expense_tutorial_no_create" model="ir.ui.view">
+  <field name="name">Demo Expense Tutorial List No Create</field>
+  <field name="model">demo.expense.tutorial</field>
+  <field name="arch" type="xml">
+    <tree string="no_create_tree" create="0" delete="false" edit="1" editable="top">
+      <field name="name"/>
+      <field name="employee_id"/>
+    </tree>
+  </field>
+</record>
+......
+```
+
+重點在 `<tree string="no_create_tree" create="0" delete="false" edit="1" editable="top">`
+
+這段, 裡面增加了一下 tag, 允許就是 `1` 或 `True`, 不允許就是 `0` 或 `False`.
+
+儘管你有權限建立 records, 如果你設定了 `create="0"`, 你還是沒辦法建立 records.
+
+也記得在 [views/menu.xml](views/menu.xml) 增加 action,
+
+並且要指定 `view_id` (也就是剛剛建立出來的那個)
+
+```xml
+......
+<!-- Action to open the demo_expense_tutorial_no_craete -->
+<record id="action_expense_tutorial_no_craete" model="ir.actions.act_window">
+    <field name="name">Demo Expense Tutorial Action No Craete</field>
+    <field name="res_model">demo.expense.tutorial</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_tree_demo_expense_tutorial_no_create"/>
+</record>
+......
+```
+
+你會發現 create delete 的按鈕都消失了
+
+![alt tag](https://i.imgur.com/siLhdQ4.png)

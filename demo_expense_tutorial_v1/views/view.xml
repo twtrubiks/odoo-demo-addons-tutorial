@@ -103,4 +103,15 @@
     </field>
   </record>
 
+  <record id="view_tree_demo_expense_tutorial_no_create" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List No Create</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <tree string="no_create_tree" create="0" delete="false" edit="1" editable="top">
+        <field name="name"/>
+        <field name="employee_id"/>
+      </tree>
+    </field>
+  </record>
+
 </odoo>
