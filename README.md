@@ -125,6 +125,20 @@ res.partner(24,)
 res.partner(11, 20)
 ```
 
+* [Youtube Tutorial -(等待新增) odoo shell orm 基本教學 - search_read]()
+
+`search_read`
+
+通常比較常使用在 js 呼叫 odoo 或是第三方呼叫 odoo api,
+
+```python
+>>> self.env['hr.expense'].search_read([], ['id', 'employee_id'])
+[{'id': 4, 'employee_id': (7, 'Marc Demo')}, {'id': 3, 'employee_id': (7, 'Marc Demo')}, {'id': 2, 'employee_id': (1, 'Mitchell Admin')}, {'id': 1, 'employee_id': (1, 'Mitchell Admin')}]
+
+>>> self.env['hr.expense'].search_read([('employee_id', '=', 1)], ['id', 'name', 'employee_id'])
+[{'id': 2, 'name': 'Hotel Expenses', 'employee_id': (1, 'Mitchell Admin')}, {'id': 1, 'name': 'Travel by Air', 'employee_id': (1, 'Mitchell Admin')}]
+```
+
 `search_count`
 
 ```python
@@ -213,6 +227,107 @@ True
 2020-06-21 06:45:51,996 19735 INFO odoo odoo.models.unlink: User #1 deleted res.users records with IDs: [3]
 True
 >>> self.env.cr.commit() # 需要特別執行這行才會寫進資料庫中
+```
+
+`sudo`
+
+* [Youtube Tutorial -(等待新增) odoo 基本教學 - sudo]()
+
+可參考 odoo 原始碼的 `odoo/models.py`
+
+```python
+def sudo(self, user=SUPERUSER_ID):
+    """ sudo([user=SUPERUSER])
+
+    Returns a new version of this recordset attached to the provided
+    user.
+
+    By default this returns a ``SUPERUSER`` recordset, where access
+    control and record rules are bypassed.
+
+    .. note::
+
+        Using ``sudo`` could cause data access to cross the
+        boundaries of record rules, possibly mixing records that
+        are meant to be isolated (e.g. records from different
+        companies in multi-company environments).
+
+        It may lead to un-intuitive results in methods which select one
+        record among many - for example getting the default company, or
+        selecting a Bill of Materials.
+
+    .. note::
+
+        Because the record rules and access control will have to be
+        re-evaluated, the new recordset will not benefit from the current
+        environment's data cache, so later data access may incur extra
+        delays while re-fetching from the database.
+        The returned recordset has the same prefetch object as ``self``.
+
+    """
+    return self.with_env(self.env(user=user))
+```
+
+`sudo([user=SUPERUSER])` 如果裡面沒有填入 user id, 預設就是使用 SUPERUSER, 如果
+
+有帶入 user id, 就是使用指定的 user 的權限.
+
+來看下面這個例子,
+
+因為沒有指定 user id, 所以是使用 SUPERUSER, 自然可以看到全部的 records,
+
+```python
+>>> self.env['hr.expense'].sudo().search([])
+hr.expense(4, 3, 2, 1)
+```
+
+再來看這個例子, user_id = 6 只能看到自己的 records, 因為他是一般的 user,
+
+```python
+>>> self.env['hr.expense'].sudo(user=6).search([])
+hr.expense(4, 3)
+```
+
+也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整):smile:
+
+`with_context`
+
+可參考 odoo 原始碼的 `odoo/models.py`
+
+```python
+def with_context(self, *args, **kwargs):
+    """ with_context([context][, **overrides]) -> records
+
+    Returns a new version of this recordset attached to an extended
+    context.
+
+    The extended context is either the provided ``context`` in which
+    ``overrides`` are merged or the *current* context in which
+    ``overrides`` are merged e.g.::
+
+        # current context is {'key1': True}
+        r2 = records.with_context({}, key2=True)
+        # -> r2._context is {'key2': True}
+        r2 = records.with_context(key2=True)
+        # -> r2._context is {'key1': True, 'key2': True}
+
+    .. note:
+
+        The returned recordset has the same prefetch object as ``self``.
+    """
+    context = dict(args[0] if args else self._context, **kwargs)
+    return self.with_env(self.env(context=context))
+```
+
+`with_context` 可以用在很多地方, 這邊用一個翻譯的舉例, 如果我同時有 `en_US` 和 `zh_TW`
+
+這兩個語言, 可以使用 `with_context`帶入不同的語言, 會自動依照語言進行翻譯,
+
+```python
+>>> self.env['product.product'].with_context(lang='zh_TW').browse(41).name
+'飛機票'
+>>> self.env['product.product'].with_context(lang='en_US').browse(41).name
+'Air Flight'
 ```
 
 ### odoo shell 注意事項
