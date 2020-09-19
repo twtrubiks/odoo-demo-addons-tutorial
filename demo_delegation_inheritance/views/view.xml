@@ -9,12 +9,12 @@
         <sheet>
           <group>
             <!-- res.partner -->
-            <field name="partner_id" invisible="1" attrs="{'required': [('id', '!=', False)]}"/>
             <field name="name"/>
             <field name="company_id"/>
             <!-- res.partner -->
 
             <!-- demo.delegation -->
+            <field name="partner_id" invisible="1" attrs="{'required': [('id', '!=', False)]}"/>
             <field name="first_name"/>
             <!-- demo.delegation -->
           </group>

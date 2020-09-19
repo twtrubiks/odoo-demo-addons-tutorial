@@ -20,7 +20,7 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - 使用 python 增加取代 One2many M2X record - part8](https://youtu.be/GBCGS2znnT8) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E4%BD%BF%E7%94%A8-python-%E5%A2%9E%E5%8A%A0%E5%8F%96%E4%BB%A3-one2many-m2x-record---part8)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - tree create delete edit False - part9]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
+* [Youtube Tutorial - odoo 手把手教學 - tree create delete edit False - part9](https://youtu.be/0fpA89QcYZM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -782,7 +782,7 @@ def replace_demo_expense_record(self):
 
 ### odoo 手把手教學 - tree create delete edit False - part9
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - tree create delete edit False - part9]()
+* [Youtube Tutorial - odoo 手把手教學 - tree create delete edit False - part9](https://youtu.be/0fpA89QcYZM)
 
 通常管理一個使用者可不可以建立 records, 是根據 security 資料夾裡面的檔案,
 

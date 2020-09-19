@@ -5,7 +5,7 @@
     'description': '''
         demo_delegation_inheritance
     ''',
-    'depends': ['base',],
+    'depends': ['base', 'contacts'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

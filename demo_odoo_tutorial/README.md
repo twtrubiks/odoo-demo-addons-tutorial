@@ -1,18 +1,20 @@
 # demo_odoo_tutorial
 
-* [Youtube Tutorial - odoo 手把手建立第一個 addons - part1](https://youtu.be/GMrPakLNh8g) - 介紹 model
+* [Youtube Tutorial - odoo 手把手建立第一個 addons - part1](https://youtu.be/GMrPakLNh8g) - 介紹 model - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-model)
 
-* [Youtube Tutorial - odoo 手把手建立第一個 addons - part2](https://youtu.be/EnD-VxuILWM) - 介紹 security, menu, tree, form
+* [Youtube Tutorial - odoo 手把手建立第一個 addons - part2](https://youtu.be/EnD-VxuILWM) - 介紹 security, menu, tree, form - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-security-menu-tree-form)
 
-* [Youtube Tutorial - odoo 手把手建立第一個 addons - part3](https://youtu.be/25MSbidCf1U) - 介紹 report, controller
+* [Youtube Tutorial - odoo 手把手建立第一個 addons - part3](https://youtu.be/25MSbidCf1U) - 介紹 report, controller - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-report-controller)
 
-* [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q)
+* [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
 建議觀看影片, 會更清楚:smile:
 
 以下將介紹這個 addons 的結構
 
 ## 說明
+
+### 介紹 model
 
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part1](https://youtu.be/GMrPakLNh8g) - 介紹 model
 
@@ -249,6 +251,8 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
 而 `@api.onchange` 只能使用在同一個 model 上.
 
+### 介紹 security, menu, tree, form
+
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part2](https://youtu.be/EnD-VxuILWM) - 介紹 security, menu, tree, form
 
 接下來來看 [security](security) 這個很重要的資料夾, 既然有了 model,
@@ -465,6 +469,8 @@ form 如下
 
 ![alt tag](https://i.imgur.com/LbcOiJL.png)
 
+### 介紹 report, controller
+
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part3](https://youtu.be/25MSbidCf1U) - 介紹 report, controller
 
 再來是報表的部份 [reports/report.xml](reports/report.xml),
@@ -575,6 +581,8 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 就會看到下圖,
 
 ![alt tag](https://i.imgur.com/kHYQhGR.png)
+
+### 說明 odoo manifest 中的 auto_install
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q)
 

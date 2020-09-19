@@ -6,7 +6,9 @@
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
-[demo_odoo_tutorial](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial) -  odoo 手把手建立第一個 addons
+* [demo_class_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance)
+
+* [demo_prototype_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance)
 
 本篇文章主要介紹 demo_delegation_inheritance 這部份
 
@@ -68,12 +70,12 @@ class DelegationInheritance(models.Model):
     <sheet>
         <group>
             <!-- res.partner -->
-            <field name="partner_id" invisible="1" attrs="{'required': [('id', '!=', False)]}"/>
             <field name="name"/>
             <field name="company_id"/>
             <!-- res.partner -->
 
             <!-- demo.delegation -->
+            <field name="partner_id" invisible="1" attrs="{'required': [('id', '!=', False)]}"/>
             <field name="first_name"/>
             <!-- demo.delegation -->
         </group>

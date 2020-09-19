@@ -153,3 +153,9 @@ form 的部份
 ```
 
 ![alt tag](https://i.imgur.com/DXJ4xK2.png)
+
+## 延伸閱讀
+
+* [demo_prototype_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance)
+
+* [demo_delegation_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_delegation_inheritance)
