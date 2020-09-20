@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_demo_sequence_user,Demo Sequence User Access,model_demo_sequence,demo_sequence_group_user,1,0,0,0
+access_demo_sequence_manager,Demo Sequence Manager Access,model_demo_sequence,demo_sequence_group_manager,1,1,1,1
