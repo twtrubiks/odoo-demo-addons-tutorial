@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_actions_singleton App Menu -->
+    <menuitem id="demo_actions_singleton_menu"
+              name="Demo Actions Singleton" />
+
+    <!-- Action to open the demo_actions_singleton -->
+    <act_window id="action_singleton"
+                name="Demo Actions Singleton Action"
+                res_model="demo.actions.singleton"
+                view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_actions_singleton -->
+    <menuitem id="menu_action_singleton"
+              name="Demo Actions Singleton"
+	          action="action_singleton"
+              parent="demo_actions_singleton_menu" />
+
+</odoo>
+
+
