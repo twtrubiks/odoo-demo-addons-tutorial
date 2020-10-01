@@ -36,6 +36,8 @@
 
 9. [demo_activity](demo_activity) - odoo 觀念 - activity
 
+10. [demo_odoo_tutorial_wizard](demo_odoo_tutorial_wizard) - odoo 觀念 - TransientModel - Wizard
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
