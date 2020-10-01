@@ -28,6 +28,14 @@
 
 5. [demo_delegation_inheritance](demo_delegation_inheritance) - odoo 繼承 - delegation inheritance
 
+6. [demo_actions_singleton](demo_actions_singleton) - odoo 觀念 - actions 和 singleton
+
+7. [demo_scheduler](demo_scheduler) - odoo 觀念 - scheduler
+
+8. [demo_sequence](demo_sequence) - odoo 觀念 - sequence
+
+9. [demo_activity](demo_activity) - odoo 觀念 - activity
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
@@ -231,7 +239,7 @@ True
 
 `sudo`
 
-* [Youtube Tutorial -(等待新增) odoo 基本教學 - sudo]()
+* [Youtube Tutorial - odoo 基本教學 - sudo](https://youtu.be/nAmNmPCSbGg)
 
 可參考 odoo 原始碼的 `odoo/models.py`
 

@@ -92,7 +92,7 @@ class DemoActionsSingleton(models.Model):
 
 另外, 空的 recordset 行為也像是 singleton, 當你 accessing fields 時,
 
-它不會回傳 error ( 而是是回傳 `False`),
+它不會回傳 error ( 而是會回傳 `False`),
 
 也因為這個特性, 所以我們才可以使用 `.` 歷遍 (traverse) records 而不用擔心錯誤:smile:
 

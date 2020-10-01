@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="demo_activity_menu"
+      name="Demo Activity"/>
+
+    <act_window id="action_demo_activity"
+      name="Activity Demo"
+      res_model="demo.activity"
+      view_mode="tree,form"/>
+
+    <menuitem id="menu_demo_activity"
+      name="Activity Demo"
+      action="action_demo_activity"
+      parent="demo_activity_menu" />
+</odoo>
+
+
