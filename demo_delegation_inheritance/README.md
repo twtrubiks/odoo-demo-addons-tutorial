@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[(等待新增)Youtube Tutorial - odoo demo_delegation_inheritance]()
+[Youtube Tutorial - odoo demo_delegation_inheritance](https://youtu.be/J1-Hg9vrXBs)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

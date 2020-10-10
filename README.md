@@ -38,6 +38,8 @@
 
 10. [demo_odoo_tutorial_wizard](demo_odoo_tutorial_wizard) - odoo 觀念 - TransientModel - Wizard
 
+11. [demo_abstractmodel_tutorial](demo_abstractmodel_tutorial) - odoo 觀念 - AbstractModel
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)

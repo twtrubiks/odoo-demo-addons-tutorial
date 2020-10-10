@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[(等待新增)Youtube Tutorial - odoo demo_prototype_inheritance]()
+[Youtube Tutorial - odoo demo_prototype_inheritance](https://youtu.be/sJrik0jjuas)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -29,6 +29,8 @@ prototype inheritance 會自己額外定義新的 `_name`,
 (注意:exclamation: 如果 `_name` 和被繼承/父類別的名稱一樣, 就等同是 **class inheritance** 哦)
 
 使用的時機通常是繼承 `mail.thread` 這類的 `models.AbstractModel`,
+
+可參考 [odoo 手把手教學 - AbstractModel](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_abstractmodel_tutorial).
 
 [models/model.py](models/model.py)
 

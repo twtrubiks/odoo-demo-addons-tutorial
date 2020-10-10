@@ -80,7 +80,7 @@ class DemoActivity(models.Model):
 
 注意 `_inherit = ['mail.thread', 'mail.activity.mixin']`
 
-這繼承是必須的哦, 不然你的 activity 式會失效的:smile:
+這繼承是必須的哦, 不然你的 activity 是會失效的:smile:
 
 這是所謂的 prototype inheritance,
 
@@ -102,7 +102,7 @@ self.activity_schedule(
     summary = 'my summary')
 ```
 
-`demo_activity.mail_act_approval` 代表 model.
+`demo_activity.mail_act_approval` 代表 activity id.
 
 `user_id` 代表 user.
 

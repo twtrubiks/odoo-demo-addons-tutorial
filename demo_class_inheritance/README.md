@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - (等待新增)odoo class inheritance]()
+[Youtube Tutorial - odoo class inheritance](https://youtu.be/zgb_0MJ3q9w)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
