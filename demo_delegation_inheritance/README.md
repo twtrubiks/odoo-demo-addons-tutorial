@@ -1,16 +1,16 @@
-# demo_delegation_inheritance
+# odoo 繼承 - delegation inheritance
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo demo_delegation_inheritance](https://youtu.be/J1-Hg9vrXBs)
+[Youtube Tutorial - odoo 繼承 - delegation inheritance](https://youtu.be/J1-Hg9vrXBs)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
-* [demo_class_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance)
+* [odoo 繼承 - class inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance)
 
-* [demo_prototype_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance)
+* [odoo 繼承 - prototype inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance)
 
-本篇文章主要介紹 demo_delegation_inheritance 這部份
+本篇文章主要介紹 delegation inheritance 這部份
 
 ## 說明
 

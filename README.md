@@ -18,27 +18,27 @@
 
 非常建議按照順序看, 因為會一步一步帶大家:smile:
 
-1. [demo_odoo_tutorial](demo_odoo_tutorial) - odoo 手把手建立第一個 addons
+1. [odoo 手把手建立第一個 addons](demo_odoo_tutorial)
 
-2. [demo_expense_tutorial_v1](demo_expense_tutorial_v1) - odoo 入門篇
+2. [odoo 入門篇](demo_expense_tutorial_v1)
 
-3. [demo_class_inheritance](demo_class_inheritance) - odoo 繼承 - class inheritance
+3. [odoo 繼承 - class inheritance](demo_class_inheritance)
 
-4. [demo_prototype_inheritance](demo_prototype_inheritance) - odoo 繼承 - prototype inheritance
+4. [odoo 繼承 - prototype inheritance](demo_prototype_inheritance)
 
-5. [demo_delegation_inheritance](demo_delegation_inheritance) - odoo 繼承 - delegation inheritance
+5. [odoo 繼承 - delegation inheritance](demo_delegation_inheritance)
 
-6. [demo_actions_singleton](demo_actions_singleton) - odoo 觀念 - actions 和 singleton
+6. [odoo 觀念 - actions 和 singleton](demo_actions_singleton)
 
-7. [demo_scheduler](demo_scheduler) - odoo 觀念 - scheduler
+7. [odoo 觀念 - scheduler](demo_scheduler)
 
-8. [demo_sequence](demo_sequence) - odoo 觀念 - sequence
+8. [odoo 觀念 - sequence](demo_sequence)
 
-9. [demo_activity](demo_activity) - odoo 觀念 - activity
+9. [odoo 觀念 - activity](demo_activity)
 
-10. [demo_odoo_tutorial_wizard](demo_odoo_tutorial_wizard) - odoo 觀念 - TransientModel - Wizard
+10. [odoo 觀念 - TransientModel-Wizard](demo_odoo_tutorial_wizard)
 
-11. [demo_abstractmodel_tutorial](demo_abstractmodel_tutorial) - odoo 觀念 - AbstractModel
+11. [odoo 觀念 - AbstractModel](demo_abstractmodel_tutorial)
 
 ## 其他
 

@@ -1,12 +1,12 @@
-# demo_prototype_inheritance
+# odoo 繼承 - prototype inheritance
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo demo_prototype_inheritance](https://youtu.be/sJrik0jjuas)
+[Youtube Tutorial - odoo 繼承 - prototype inheritance](https://youtu.be/sJrik0jjuas)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
-[demo_class_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance) - demo_class_inheritance
+[odoo 繼承 - class inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance)
 
 本篇文章主要介紹 prototype inheritance 這部份
 

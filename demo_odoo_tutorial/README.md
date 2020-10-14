@@ -1,4 +1,4 @@
-# demo_odoo_tutorial
+# odoo 手把手建立第一個 addons
 
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part1](https://youtu.be/GMrPakLNh8g) - 介紹 model - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-model)
 

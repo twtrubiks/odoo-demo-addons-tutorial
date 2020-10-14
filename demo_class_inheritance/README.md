@@ -1,12 +1,12 @@
-# demo_class_inheritance
+# odoo 繼承 - class inheritance
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo class inheritance](https://youtu.be/zgb_0MJ3q9w)
+[Youtube Tutorial - odoo 繼承 - class inheritance](https://youtu.be/zgb_0MJ3q9w)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
-[demo_odoo_tutorial](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial) -  odoo 手把手建立第一個 addons
+[odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
 
 本篇文章主要介紹 class inheritance 這部份
 

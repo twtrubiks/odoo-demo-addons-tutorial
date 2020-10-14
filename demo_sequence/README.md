@@ -1,4 +1,4 @@
-# demo_sequence
+# odoo 觀念 - sequence
 
 建議觀看影片, 會更清楚:smile:
 
@@ -6,7 +6,7 @@
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
-[demo_odoo_tutorial](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial) -  odoo 手把手建立第一個 addons
+[odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
 
 本篇文章主要介紹 odoo 中的 sequence 這部份
 
