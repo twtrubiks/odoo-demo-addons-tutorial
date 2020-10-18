@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_order_form_scan_barcode" model="ir.ui.view">
+        <field name="name">sale.order.form.scan.barcode</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id"  position="after">
+                <!-- invisible="1" -->
+                <field name="_barcode_scanned" widget="barcode_handler"/>
+            </field>
+        </field>
+    </record>
+</odoo>
