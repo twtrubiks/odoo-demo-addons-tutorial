@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - (等待新增)odoo 手把手教學 - sequence]()
+[Youtube Tutorial - odoo 手把手教學 - sequence](https://youtu.be/u8v0hzEXwpc)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

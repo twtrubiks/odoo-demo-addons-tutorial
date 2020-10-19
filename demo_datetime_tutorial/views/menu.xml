@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Demo Datetime Menu -->
+    <menuitem id="demo_datetime"
+              name="Demo Datetime" />
+
+    <!-- Action to open the Demo Datetime list -->
+    <act_window id="action_demo_datetime"
+      name="Demo Datetime"
+      res_model="demo.datetime"
+      view_mode="tree,form"/>
+
+    <!-- Menu item to open the Demo Datetime list -->
+    <menuitem id="menu_demo_datetime"
+              name="Demo Datetime"
+	            action="action_demo_datetime"
+              parent="demo_datetime" />
+
+</odoo>
+
+
