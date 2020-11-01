@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_hierarchy" model="ir.ui.view">
+    <field name="name">Demo Hierarchy Form</field>
+    <field name="model">demo.hierarchy</field>
+    <field name="arch" type="xml">
+      <form string="Demo Hierarchy">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="active"/>
+            <field name="parent_id"/>
+            <field name="parent_name"/>
+          </group>
+          <notebook>
+            <page string="Hierarchy">
+              <field name="child_ids" mode="kanban">
+                <form string="Contact / Address">
+                  <sheet>
+                    <field name="parent_id" invisible="1"/>
+                    <hr/>
+                    <group>
+                      <field name="name" string="Contact Name"/>
+                    </group>
+                  </sheet>
+                </form>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_hierarchy" model="ir.ui.view">
+    <field name="name">Demo Hierarchy List</field>
+    <field name="model">demo.hierarchy</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="active"/>
+        <field name="parent_id"/>
+        <field name="parent_name"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

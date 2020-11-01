@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_hierarchy App Menu -->
+    <menuitem id="demo_hierarchy_menu"
+      name="Demo Hierarchy"/>
+
+    <!-- Action to open the demo_hierarchy_menu -->
+    <act_window id="action_hierarchy"
+      name="Demo Hierarchy Action"
+      res_model="demo.hierarchy"
+      view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_hierarchy_menu -->
+    <menuitem id="menu_odoo_tutorial"
+      name="Demo Hierarchy Tutorial"
+      action="action_hierarchy"
+      parent="demo_hierarchy_menu"/>
+</odoo>
+
+
