@@ -31,9 +31,8 @@ class DemoExpenseTutorial(models.Model):
     # Related (Reference) fields (不會存在 db)
     # readonly default 為 True
     # store default 為 False
-    gender = fields.Selection('Gender', related='employee_id.gender')
+    gender = fields.Selection(string='Gender', related='employee_id.gender')
 
-    @api.multi
     def button_sheet_id(self):
         return {
             'view_mode': 'form',
@@ -56,7 +55,6 @@ class DemoExpenseSheetTutorial(models.Model):
         'sheet_id', # field for "this" on related model
         string='Expense Lines')
 
-    @api.multi
     def add_demo_expense_record(self):
         # (0, _ , {'field': value}) creates a new record and links it to this one.
 
@@ -69,13 +67,12 @@ class DemoExpenseSheetTutorial(models.Model):
             # creates a new record
             val = {
                 'name': 'test_data',
-                'employee_id': data_1.employee_id,
+                'employee_id': data_1.employee_id.id,
                 'tag_ids': [(6, 0, [tag_data_1.id, tag_data_2.id])]
             }
 
             self.expense_line_ids = [(0, 0, val)]
 
-    @api.multi
     def link_demo_expense_record(self):
         # (4, id, _) links an already existing record.
 
@@ -85,7 +82,6 @@ class DemoExpenseSheetTutorial(models.Model):
             # link already existing record
             self.expense_line_ids = [(4, data_1.id, 0)]
 
-    @api.multi
     def replace_demo_expense_record(self):
         # (6, _, [ids]) replaces the list of linked records with the provided list.
 
@@ -96,7 +92,6 @@ class DemoExpenseSheetTutorial(models.Model):
             # replace multi record
             self.expense_line_ids = [(6, 0, [data_1.id, data_2.id])]
 
-    @api.multi
     def button_line_ids(self):
         return {
             'name': 'Demo Expense Line IDs',
@@ -108,7 +103,6 @@ class DemoExpenseSheetTutorial(models.Model):
             'domain': [('sheet_id', '=', self.id)],
         }
 
-    @api.multi
     def name_get(self):
         names = []
         for record in self:
@@ -116,7 +110,7 @@ class DemoExpenseSheetTutorial(models.Model):
             names.append((record.id, name))
         return names
 
-    # odoo12/odoo/odoo/addons/base/models/ir_model.py
+    # odoo14/odoo/odoo/addons/base/models/ir_model.py
     @api.model
     def _name_search(self, name='', args=None, operator='ilike', limit=100):
         if args is None:
@@ -124,4 +118,4 @@ class DemoExpenseSheetTutorial(models.Model):
         domain = args + ['|', ('id', operator, name), ('name', operator, name)]
         # domain = args + [ ('name', operator, name)]
         # domain = args + [ ('id', operator, name)]
-        return super(DemoExpenseSheetTutorial, self).search(domain, limit=limit).name_get()
+        return self._search(domain, limit=limit)

@@ -26,8 +26,8 @@
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
         'data/demo_expense_tutorial_data.xml',
+        'views/view.xml',
         'views/menu.xml',
-        'views/view.xml'
     ],
     # only loaded in demonstration mode
     # 'demo': [
