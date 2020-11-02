@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_demo_abstractmodel_user,Demo Abstractmodel Tutorial User Access,model_report_wizard,demo_abstractmodel_tutorial_group_user,1,1,1,0
+access_demo_abstractmodel_manager,Demo Abstractmodel Tutorial Manager Access,model_report_wizard,demo_abstractmodel_tutorial_group_manager,1,1,1,1
+

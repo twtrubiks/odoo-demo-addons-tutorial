@@ -5,10 +5,11 @@
               name="Demo Actions Singleton" />
 
     <!-- Action to open the demo_actions_singleton -->
-    <act_window id="action_singleton"
-                name="Demo Actions Singleton Action"
-                res_model="demo.actions.singleton"
-                view_mode="tree,form"/>
+    <record id="action_singleton" model="ir.actions.act_window">
+        <field name="name">Demo Actions Singleton Action</field>
+        <field name="res_model">demo.actions.singleton</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the demo_actions_singleton -->
     <menuitem id="menu_action_singleton"

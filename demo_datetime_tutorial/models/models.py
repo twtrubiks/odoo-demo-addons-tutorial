@@ -12,7 +12,6 @@ class DemoDatetime(models.Model):
     my_datetime = fields.Datetime(
         'my_datetime', default=fields.Datetime.now())
 
-    @api.multi
     def demo1(self):
         _logger.warning('db datetime')
         _logger.warning(self.my_datetime )

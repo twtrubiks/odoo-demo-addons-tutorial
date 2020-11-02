@@ -9,7 +9,6 @@ class DemoActionsSingleton(models.Model):
 
     name = fields.Char('Description', required=True)
 
-    @api.multi
     def action_demo(self):
         self.ensure_one()
         _logger.warning('=== CALL action_demo ===')

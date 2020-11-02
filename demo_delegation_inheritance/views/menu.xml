@@ -5,10 +5,11 @@
               name="Demo Delegation Tutorial" />
 
     <!-- Action to open the demo_delegation_tutorial -->
-    <act_window id="action_delegation_tutorial"
-                name="Demo Delegation Tutorial Action"
-                res_model="demo.delegation"
-                view_mode="tree,form"/>
+    <record id="action_delegation_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Delegation Tutorial Action</field>
+        <field name="res_model">demo.delegation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the demo_delegation_tutorial -->
     <menuitem id="menu_delegation_tutorial"

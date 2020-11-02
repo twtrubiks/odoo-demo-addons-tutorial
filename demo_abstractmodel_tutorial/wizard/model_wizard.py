@@ -10,7 +10,6 @@ class ReportWizard(models.TransientModel):
     date_start = fields.Date(string="Start Date", required=True, default=fields.Date.today)
     date_end = fields.Date(string="End Date", required=True, default=fields.Date.today)
 
-    @api.multi
     def download_report(self):
 
         _logger.warning('=== CALL get_report ===')

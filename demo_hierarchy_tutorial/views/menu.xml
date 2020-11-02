@@ -5,10 +5,11 @@
       name="Demo Hierarchy"/>
 
     <!-- Action to open the demo_hierarchy_menu -->
-    <act_window id="action_hierarchy"
-      name="Demo Hierarchy Action"
-      res_model="demo.hierarchy"
-      view_mode="tree,form"/>
+    <record id="action_hierarchy" model="ir.actions.act_window">
+      <field name="name">Demo Hierarchy Action</field>
+      <field name="res_model">demo.hierarchy</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the demo_hierarchy_menu -->
     <menuitem id="menu_odoo_tutorial"

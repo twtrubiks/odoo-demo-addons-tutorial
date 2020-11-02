@@ -5,10 +5,11 @@
               name="Demo Prototype Tutorial" />
 
     <!-- Action to open the demo_prototype_tutorial -->
-    <act_window id="action_demo_prototype_tutorial"
-                name="Demo Prototype Tutorial Action"
-                res_model="demo.prototype"
-                view_mode="tree,form"/>
+    <record id="action_demo_prototype_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Prototype Tutorial Action</field>
+        <field name="res_model">demo.prototype</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the demo_prototype_tutorial -->
     <menuitem id="menu_demo_prototype_tutorial"

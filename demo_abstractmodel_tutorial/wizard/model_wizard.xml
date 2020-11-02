@@ -22,11 +22,12 @@
     </field>
     </record>
 
-    <act_window id="action_custom_report_wizard"
-                name="Action Custom Report"
-                res_model="report.wizard"
-                view_mode="form"
-                target="new"/>
+    <record id="action_custom_report_wizard" model="ir.actions.act_window">
+        <field name="name">Action Custom Report</field>
+        <field name="res_model">report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
     <menuitem action="action_custom_report_wizard"
               id="menu_custom_report_wizard"

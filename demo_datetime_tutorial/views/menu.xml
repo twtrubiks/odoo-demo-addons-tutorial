@@ -5,10 +5,11 @@
               name="Demo Datetime" />
 
     <!-- Action to open the Demo Datetime list -->
-    <act_window id="action_demo_datetime"
-      name="Demo Datetime"
-      res_model="demo.datetime"
-      view_mode="tree,form"/>
+    <record id="action_demo_datetime" model="ir.actions.act_window">
+        <field name="name">Demo Datetime</field>
+        <field name="res_model">demo.datetime</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the Demo Datetime list -->
     <menuitem id="menu_demo_datetime"

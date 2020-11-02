@@ -6,7 +6,6 @@ class SaleOrderBarcodes(models.Model):
 
     _barcode_scanned = fields.Char(string='Barcode', help="Here you can provide the barcode for the product")
 
-    @api.multi
     def on_barcode_scanned(self, barcode):
         product_obj = self.env['product.product'].search([('barcode', '=', barcode)], limit=1)
         val = {

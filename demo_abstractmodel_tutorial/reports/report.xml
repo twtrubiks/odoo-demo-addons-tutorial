@@ -39,13 +39,13 @@
         </t>
     </template>
 
-    <report
-        id="action_report_abstractmodel"
-        string="Demo Report"
-        model="report.wizard"
-        report_type="qweb-pdf"
-        name="demo_abstractmodel_tutorial.report_wizard_template"
-        print_report_name="Demo Report"
-    />
+    <record id="action_report_abstractmodel" model="ir.actions.report">
+        <field name="name">Demo Report</field>
+        <field name="model">report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">demo_abstractmodel_tutorial.report_wizard_template</field>
+        <field name="report_file">demo_abstractmodel_tutorial.report_wizard_template</field>
+        <field name="print_report_name">Demo Report</field>
+    </record>
 
 </odoo>
