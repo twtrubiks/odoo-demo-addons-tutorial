@@ -8,10 +8,9 @@ class DemoOdooTutorial(models.Model):
 
     name = fields.Char('Description', required=True)
 
-    # track_visibility='always' 和 track_visibility='onchange'
     is_done_track_onchange = fields.Boolean(
-        string='Is Done?', default=False, track_visibility='onchange')
-    name_track_always = fields.Char(string="track_name", track_visibility='always')
+        string='Is Done?', default=False, tracking=True)
+    name_track_always = fields.Char(string="track_name", tracking=True)
 
     start_datetime = fields.Datetime('Start DateTime', default=fields.Datetime.now())
     stop_datetime = fields.Datetime('End Datetime', default=fields.Datetime.now())

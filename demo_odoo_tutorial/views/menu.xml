@@ -5,10 +5,11 @@
               name="Demo Odoo Tutorial" />
 
     <!-- Action to open the demo_odoo_tutorial -->
-    <act_window id="action_odoo_tutorial"
-      name="Demo Odoo Tutorial Action"
-      res_model="demo.odoo.tutorial"
-      view_mode="tree,form"/>
+    <record id="action_odoo_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Odoo Tutorial Action</field>
+        <field name="res_model">demo.odoo.tutorial</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Menu item to open the demo_odoo_tutorial -->
     <menuitem id="menu_odoo_tutorial"

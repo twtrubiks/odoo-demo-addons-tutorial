@@ -20,14 +20,15 @@
         </t>
     </template>
 
-    <report
-        id="action_report_demo"
-        string="Demo Report"
-        model="demo.odoo.tutorial"
-        report_type="qweb-pdf"
-        name="demo_odoo_tutorial.report_demo_odoo_tutorial"
-        file="demo_odoo_tutorial.report_demo_odoo_tutorial"
-        print_report_name="'Demo Report - %s' % ((object.name).replace('/', ''))"
-    />
+    <record id="action_report_demo" model="ir.actions.report">
+        <field name="name">Demo Report</field>
+        <field name="model">demo.odoo.tutorial</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">demo_odoo_tutorial.report_demo_odoo_tutorial</field>
+        <field name="report_file">demo_odoo_tutorial.report_demo_odoo_tutorial</field>
+        <field name="print_report_name">'Demo Report - %s' % ((object.name).replace('/', ''))</field>
+        <!-- <field name="binding_model_id" ref="model_hr_expense_sheet"/>
+        <field name="binding_type">report</field> -->
+    </record>
 
 </odoo>
