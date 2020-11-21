@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo datetime 教學]()
+[Youtube Tutorial - odoo datetime 教學](https://youtu.be/Ha0YNFm6KzI)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

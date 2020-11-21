@@ -14,7 +14,7 @@ odoo 搭配 scanner,
 
 ## 說明
 
-首先是 [__manifest__.py](__manifest__.py) 的部份,  記得要加上 `barcodes`
+首先是 `__manifest__.py` 的部份,  記得要加上 `barcodes`
 
 ```python
 ......

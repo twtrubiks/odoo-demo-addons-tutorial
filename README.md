@@ -1,4 +1,6 @@
-# odoo-demo-addons-tutorial
+# odoo-demo-addons-tutorial-odoo-12
+
+此版本為 odoo12, odoo14 版本請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0) 分支.
 
 本文章會持續更新:smile:
 
@@ -39,6 +41,10 @@
 10. [odoo 觀念 - TransientModel-Wizard](demo_odoo_tutorial_wizard)
 
 11. [odoo 觀念 - AbstractModel](demo_abstractmodel_tutorial)
+
+12. [odoo 觀念 - 實作 config settings](demo_config_settings)
+
+13. [odoo 觀念 - odatetime 教學](demo_datetime_tutorial)
 
 ## 其他
 
