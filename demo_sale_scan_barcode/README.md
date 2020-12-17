@@ -2,7 +2,7 @@
 
 建議觀看影片, 因為 scanner 會看的更清楚:smile:
 
-[Youtube Tutorial - odoo - 實作 scan barcode]()
+[Youtube Tutorial - odoo - 實作 scan barcode](https://youtu.be/o2THTpLmUec)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

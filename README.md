@@ -44,7 +44,13 @@
 
 12. [odoo 觀念 - 實作 config settings](demo_config_settings)
 
-13. [odoo 觀念 - odatetime 教學](demo_datetime_tutorial)
+13. [odoo 觀念 - datetime 教學](demo_datetime_tutorial)
+
+14. [odoo 觀念 - 實作 scan barcode](demo_sale_scan_barcode)
+
+15. [odoo 觀念 - 實作 hierarchy](demo_hierarchy_tutorial)
+
+16. [odoo 觀念 - 如何使用 python xmlrpc 連接 odoo](xml-rpc-odoo)
 
 ## 其他
 
@@ -143,7 +149,7 @@ res.partner(24,)
 res.partner(11, 20)
 ```
 
-* [Youtube Tutorial -(等待新增) odoo shell orm 基本教學 - search_read]()
+* [Youtube Tutorial - odoo shell orm 基本教學 - search_read](https://youtu.be/AzGnFX4pHWI)
 
 `search_read`
 
