@@ -42,6 +42,16 @@
 
 11. [odoo 觀念 - AbstractModel](demo_abstractmodel_tutorial)
 
+12. [odoo 觀念 - 實作 config settings](demo_config_settings)
+
+13. [odoo 觀念 - datetime 教學](demo_datetime_tutorial)
+
+14. [odoo 觀念 - 實作 scan barcode](demo_sale_scan_barcode)
+
+15. [odoo 觀念 - 實作 hierarchy](demo_hierarchy_tutorial)
+
+16. [odoo 觀念 - 如何使用 python xmlrpc 連接 odoo](xml-rpc-odoo)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
@@ -139,7 +149,7 @@ res.partner(24,)
 res.partner(11, 20)
 ```
 
-* [Youtube Tutorial -(等待新增) odoo shell orm 基本教學 - search_read]()
+* [Youtube Tutorial - odoo shell orm 基本教學 - search_read](https://youtu.be/AzGnFX4pHWI)
 
 `search_read`
 

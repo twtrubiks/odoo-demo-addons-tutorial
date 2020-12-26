@@ -2,9 +2,9 @@
 
 建議觀看影片, 會更清楚:smile:
 
-* [Youtube Tutorial - odoo 手把手教學 hierarchy - part1]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_hierarchy_tutorial#%E8%AA%AA%E6%98%8E)
+* [Youtube Tutorial - odoo 手把手教學 hierarchy - part1](https://youtu.be/O_ch9553VQ0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_hierarchy_tutorial#%E8%AA%AA%E6%98%8E)
 
-* [Youtube Tutorial - odoo 手把手教學 hierarchy - part2]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_hierarchy_tutorial#%E8%AA%AA%E6%98%8E-child_of-%E5%92%8C-parent_of)
+* [Youtube Tutorial - odoo 手把手教學 hierarchy - part2](https://youtu.be/SER-ZVDnwGw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_hierarchy_tutorial#%E8%AA%AA%E6%98%8E-child_of-%E5%92%8C-parent_of)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -14,7 +14,7 @@
 
 ## 說明
 
-* [Youtube Tutorial - odoo 手把手教學 hierarchy - part1]()
+* [Youtube Tutorial - odoo 手把手教學 hierarchy - part1](https://youtu.be/O_ch9553VQ0)
 
 之前不管是介紹 Many2one 還是 One2many, 都是對別的 model 產生關聯,
 
@@ -120,7 +120,7 @@ db 中的狀態
 
 ## 說明 child_of 和 parent_of
 
-* [Youtube Tutorial - odoo 手把手教學 hierarchy - part2]()
+* [Youtube Tutorial - odoo 手把手教學 hierarchy - part2](https://youtu.be/SER-ZVDnwGw)
 
 在 odoo 中很常看到 child_of 和 parent_of,
 
