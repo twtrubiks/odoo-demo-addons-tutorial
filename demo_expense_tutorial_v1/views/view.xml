@@ -29,13 +29,15 @@
   <record id="view_tree_demo_expense_tutorial" model="ir.ui.view">
     <field name="name">Demo Expense Tutorial List</field>
     <field name="model">demo.expense.tutorial</field>
+    <field name="priority" eval="1"/>
     <field name="arch" type="xml">
       <tree>
+        <field name="sequence" widget="handle"/>
         <field name="name"/>
         <field name="employee_id"/>
         <field name="user_id"/>
         <field name="tag_ids"/>
-        <field name="sheet_id"/>
+        <field name="sheet_id" widget="many2onebutton"/>
       </tree>
     </field>
   </record>
@@ -111,6 +113,77 @@
         <field name="name"/>
         <field name="employee_id"/>
       </tree>
+    </field>
+  </record>
+
+  <record id="tree_expense_view_id_1" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List View id 1</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="employee_id"/>
+        <field name="user_id"/>
+        <field name="sheet_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="form_expense_view_id_1" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form view id 1</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button class="oe_stat_button" name="button_sheet_id"
+                    string="SHEET ID" type="object"
+                    attrs="{'invisible':[('sheet_id','=', False)]}" icon="fa-bars"/>
+          </div>
+          <group>
+            <field name="name"/>
+            <field name="employee_id"/>
+            <field name="user_id"/>
+            <field name="sheet_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="tree_expense_view_id_2" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List View id 2</field>
+    <field name="model">demo.expense.tutorial</field>
+    <!-- <field name="priority" eval="1"/> -->
+    <field name="arch" type="xml">
+      <tree>
+        <field name="sheet_id"/>
+        <field name="user_id"/>
+        <field name="employee_id"/>
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="form_expense_view_id_2" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form view id 2</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button class="oe_stat_button" name="button_sheet_id"
+                    string="SHEET ID" type="object"
+                    attrs="{'invisible':[('sheet_id','=', False)]}" icon="fa-bars"/>
+          </div>
+          <group>
+            <field name="sheet_id"/>
+            <field name="user_id"/>
+            <field name="employee_id"/>
+            <field name="name"/>
+          </group>
+        </sheet>
+      </form>
     </field>
   </record>
 

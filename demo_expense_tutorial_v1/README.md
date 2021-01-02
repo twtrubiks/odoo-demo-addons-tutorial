@@ -22,6 +22,16 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - tree create delete edit False - part9](https://youtu.be/0fpA89QcYZM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
 
+* [Youtube Tutorial - odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://youtu.be/YltcAu9OZhc) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%90%8C%E4%B8%80%E5%80%8B-model-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84-view_ids---part10)
+
+* [Youtube Tutorial - odoo 手把手教學 - widget 介紹 handle 和 many2onebutton - part11](https://youtu.be/zb5fSEtEo_g) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---widget-%E4%BB%8B%E7%B4%B9-handle-%E5%92%8C-many2onebutton---part11)
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 context - part12]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-context---part12)
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 active_test context - part13]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-active_test-context---part13)
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 domain - part14]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-domain---part14)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -786,7 +796,7 @@ def replace_demo_expense_record(self):
 
 通常管理一個使用者可不可以建立 records, 是根據 security 資料夾裡面的檔案,
 
-也就是 `security.xml` `ir_rule.xml` `ir.model.access.csv` 主要是這個.
+也就是 `security.xml` `ir_rule.xml` `ir.model.access.csv`.
 
 記住:exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
 
@@ -837,3 +847,331 @@ def replace_demo_expense_record(self):
 你會發現 create delete 的按鈕都消失了
 
 ![alt tag](https://i.imgur.com/siLhdQ4.png)
+
+### odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10
+
+* [Youtube Tutorial - odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://youtu.be/YltcAu9OZhc)
+
+一般來說, 在定義一個 model 時, 通常會搭配一個 form 的 view 以及 tree 的 view, 或是特別指定一個 view,
+
+像是前面介紹到的 view_id, 但有時候會有這種情況, 也就是一個 model, 在兩個不同的地方, 分別顯示不同的
+
+form 的 view 以及 tree 的 view, 這時候就要使用 view_ids 分別下去定義.
+
+現在 meun 上會多出 Demo Expense Tutorial View ids, 點下去分別有
+
+Demo Expense Tutorial View id 1 以及 Demo Expense Tutorial View id 2
+
+他們都是屬於 `demo.expense.tutorial` model, 只不過使用了不同的 view 和 form,
+
+![alt tag](https://i.imgur.com/fuMniZM.png)
+
+為了方便區分不同的 form 和 view, 簡單用 fields 的排序不同
+
+view 1
+
+![alt tag](https://i.imgur.com/l6En89u.png)
+
+view 2
+
+![alt tag](https://i.imgur.com/lSKNnde.png)
+
+可參考 [views/menu.xml](views/menu.xml)
+
+```xml
+    ......
+    <!-- Action to open the menu_expense_tutorial_view_id_1 -->
+    <record id="action_expense_tutorial_view_id_1" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action View id 1</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('demo_expense_tutorial_v1.tree_expense_view_id_1')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('demo_expense_tutorial_v1.form_expense_view_id_1')})]"/>
+    </record>
+
+    ......
+
+    <!-- Action to open the menu_expense_tutorial_view_id_2 -->
+    <record id="action_expense_tutorial_view_id_2" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action View id 2</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('demo_expense_tutorial_v1.tree_expense_view_id_2')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('demo_expense_tutorial_v1.form_expense_view_id_2')})]"/>
+    </record>
+
+    ......
+```
+
+看起來雖然很複雜, 但其實不難, 設定都和之前的一樣, 只是將 view_id 換成了 view_ids, 然後分別設定不同的 view_id,
+
+這邊只有分別設定 tree 和 form, 如果你想要定義新的 kanban 或其他的 view_mode 也都是可以的.
+
+`eval="[(5, 0, 0)` 的意思是清除所有和它有關的 record (因為我們重新定義了需要的 view),
+
+相關說明可參考
+
+```xml
+(0, 0,  { values })    link to a new record that needs to be created with the given values dictionary
+(1, ID, { values })    update the linked record with id = ID (write *values* on it)
+(2, ID)                remove and delete the linked record with id = ID (calls unlink on ID, that will delete the object completely, and the link to it as well)
+(3, ID)                cut the link to the linked record with id = ID (delete the relationship between the two objects but does not delete the target object itself)
+(4, ID)                link to existing record with id = ID (adds a relationship)
+(5)                    unlink all (like using (3,ID) for all linked records)
+(6, 0, [IDs])          replace the list of linked IDs (like using (5) then (4,ID) for each ID in the list of IDs)
+```
+
+你也可以在 Technical -> Actions -> Window Actions 看到你所設定的 view_ids
+
+![alt tag](https://i.imgur.com/JKSpKwQ.png)
+
+這些就是剛剛的設定
+
+![alt tag](https://i.imgur.com/GmYShsn.png)
+
+這邊補充一個小技巧, 在定義 view 時, 有一個參數是  `<field name="priority" eval="1"/>`, 如果你只有一個 view 不需要特別設定,
+
+但如果你有很多個, 你可以透過這個 priority 去決定顯示 view 的優先權.
+
+### odoo 手把手教學 - widget 介紹 handle 和 many2onebutton - part11
+
+* [Youtube Tutorial - odoo 手把手教學 - widget 介紹 handle 和 many2onebutton - part11](https://youtu.be/zb5fSEtEo_g)
+
+在 odoo 中很非常多的 widget 可以使用, 除了像前面介紹的 `widget="many2many_tags"` 之外, 這邊再介紹另外兩個,
+
+首先是 handle widget,
+
+這個比較常和 sequence 搭配一起使用,
+
+可參考 [models/models.py](models/models.py)
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
+
+    ......
+
+    sequence = fields.Integer(index=True, help="Gives the sequence order", default=1)
+```
+
+定義了一個 sequence fields, 然後排序使用 sequence.
+
+在 tree view 中加入 `widget="handle"`,
+
+可參考 [views/view.xml](views/view.xml)
+
+```xml
+
+  <record id="view_tree_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="sequence" widget="handle"/>
+        ......
+      </tree>
+    </field>
+  </record>
+
+```
+
+這樣就完成了, 你會發現 tree 可以排序了:smile:
+
+![alt tag](https://i.imgur.com/oH7Pf5S.png)
+
+再來是 many2onebutton widget,
+
+通常如果一個 tree view 上有 many2one 的 fields, 如果想看這個 fields 的資料,
+
+必須要點進去 form, 再點進去 many2one 的 fields 才看的到資料,
+
+如果在 tree 的 many2one fields 上加入 `widget="many2onebutton"`,
+
+就可以直接點進去觀看該 fields 的資料.
+
+可參考 [views/view.xml](views/view.xml)
+
+```xml
+<record id="view_tree_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <tree>
+        ......
+        <field name="sheet_id" widget="many2onebutton"/>
+      </tree>
+    </field>
+  </record>
+```
+
+你會發現 many2one fields 變藍色的了, 直接點選即可.
+
+![alt tag](https://i.imgur.com/Ck37blB.png)
+
+### odoo 手把手教學 - view 搭配 context - part12
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 context - part12]()
+
+這部份將介紹 view 搭配 context 的使用,
+
+可參考 [views/menu.xml](views/menu.xml)
+
+```xml
+<!-- Action to open the demo_expense_tutorial_context -->
+    <record id="action_expense_tutorial_context" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action Context</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+
+        <!-- init search default -->
+        <field name="context">{'search_default_name': 'test123'}</field>
+
+        <!-- init create default name 'test123'-->
+        <!-- <field name="context">{'default_name': 'test123'}</field> -->
+    </record>
+```
+
+來說明一下 `<field name="context">{'search_default_name': 'test123'}</field>`
+
+這段程式碼, `name` 是我定義的 fields, 格式是 `search_default + fields`,
+
+也就是進入這個 view 的時候, 預設會幫你搜尋 `name` 吻合 `test123`.
+
+![alt tag](https://i.imgur.com/9Pn9Ya3.png)
+
+接著來看另一個, `<field name="context">{'default_name': 'test123'}</field>`
+
+這段程式碼, 格式是 `default + fields`, 注意哦, 這次沒有 search,
+
+那這個和剛剛的有什麼不同呢:question:
+
+當你建立一個 records 的時候, 他預設會幫你的 `name` fields 自動帶入 `test123`.
+
+![alt tag](https://i.imgur.com/AKjdOqQ.png)
+
+context 也可以在 developer mode 中的 Edit Action 看到,
+
+![alt tag](https://i.imgur.com/evOb5Zz.png)
+
+### odoo 手把手教學 - view 搭配 active_test context - part13
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 active_test context - part13]()
+
+這部份延續上一次的介紹, 來看看 `active_test` 這個東西,
+
+這部份建議大家看影片會比較清楚:smile:
+
+先來看 [models/models.py](models/models.py)
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
+
+    ......
+    active = fields.Boolean(default=True, help="Set active.")
+```
+
+通常如果有定義 active fields,
+
+預設的情況下, 你的 view 就是會顯示只有 `active=True` 的 records,
+
+如果你要顯示 `active=False` 的 records,
+
+則必須另外去 filter 出來, 如下圖
+
+![alt tag](https://i.imgur.com/GTpo0aa.png)
+
+這樣你可能會問我, 為什麼會這樣呢:question:
+
+原因是 odoo 原始碼內的 `odoo/models.py` 這段
+
+```python
+@api.model
+def _where_calc(self, domain, active_test=True):
+  ......
+  if 'active' in self._fields and active_test and self._context.get('active_test', True):
+      # the item[0] trick below works for domain items and '&'/'|'/'!'
+      # operators too
+      if not any(item[0] == 'active' for item in domain):
+          domain = [('active', '=', 1)] + domain
+```
+
+預設如果沒有特別指定, 邏輯就是會跑 `active = 1` 也就是 True.
+
+那如果我今天希望預設顯示 active 為 True 和 False 同時都顯示, 這樣要如何實作:question:
+
+搭配 `<field name="context">{'active_test':False}</field>` 這段程式碼,
+
+可參考 [views/menu.xml](views/menu.xml)
+
+```xml
+<!-- Action to open the demo_expense_tutorial_test_active -->
+  <record id="action_expense_tutorial_test_active" model="ir.actions.act_window">
+      <field name="name">Demo Expense Tutorial Action Test Active</field>
+      <field name="res_model">demo.expense.tutorial</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+
+      <!-- init show all (active True False) record -->
+      <field name="context">{'active_test':False}</field>
+
+      <!-- init show only (active True) record -->
+      <!-- <field name="context">{}</field> -->
+  </record>
+```
+
+這樣子預設就會把全部的 records (不管 active 狀態) 都顯示出來.
+
+context 同樣也可以在 developer mode 中的 Edit Action 看到,
+
+![alt tag](https://i.imgur.com/vtaVxD9.png)
+
+### odoo 手把手教學 - view 搭配 domain - part14
+
+* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 domain - part14]()
+
+這部份將介紹 view 搭配 domain 的使用,
+
+使用方法和 context 差不多:smile:
+
+可參考 [views/menu.xml](views/menu.xml)
+
+```xml
+  <!-- Action to open the demo_expense_tutorial_domain -->
+  <record id="action_expense_tutorial_domain" model="ir.actions.act_window">
+      <field name="name">Demo Expense Tutorial Action Domain</field>
+      <field name="res_model">demo.expense.tutorial</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('name', 'like', 'test')]</field>
+      <field name="context">{}</field>
+  </record>
+```
+
+說明 `<field name="domain">[('name', 'like', 'test')]</field>` 這段程式碼,
+
+只會顯示 name fields like test 的內容,
+
+注意:exclamation: 和 `search_default_name` 不一樣的地方是, 他不會顯示 search 的東西,
+
+使用者也不能自行修改
+
+![alt tag](https://i.imgur.com/GMCdOBK.png)
+
+domain 同樣也可以在 developer mode 中的 Edit Action 看到,
+
+![alt tag](https://i.imgur.com/OGdJ5jt.png)
+

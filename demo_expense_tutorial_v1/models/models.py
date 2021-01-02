@@ -10,6 +10,7 @@ class DemoTag(models.Model):
 class DemoExpenseTutorial(models.Model):
     _name = 'demo.expense.tutorial'
     _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
 
     name = fields.Char('Description', required=True)
     employee_id = fields.Many2one('hr.employee', string="Employee", required=True)
@@ -32,6 +33,9 @@ class DemoExpenseTutorial(models.Model):
     # readonly default 為 True
     # store default 為 False
     gender = fields.Selection('Gender', related='employee_id.gender')
+
+    sequence = fields.Integer(index=True, help="Gives the sequence order", default=1)
+    active = fields.Boolean(default=True, help="Set active.")
 
     @api.multi
     def button_sheet_id(self):

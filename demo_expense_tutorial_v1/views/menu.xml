@@ -42,6 +42,110 @@
               name="Demo Expense Tutorial No Create"
 	          action="action_expense_tutorial_no_craete"
               parent="demo_expense_tutorial_menu" />
+
+    <!-- Menu item to open the demo_expense_view_ids -->
+    <menuitem id="menu_expense_tutorial_view_ids"
+              name="Demo Expense Tutorial View ids"
+              parent="demo_expense_tutorial_menu" />
+
+    <!-- Action to open the menu_expense_tutorial_view_id_1 -->
+    <record id="action_expense_tutorial_view_id_1" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action View id 1</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('demo_expense_tutorial_v1.tree_expense_view_id_1')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('demo_expense_tutorial_v1.form_expense_view_id_1')})]"/>
+    </record>
+
+    <!-- Menu item to open the demo_expense_view_id_1 -->
+    <menuitem id="menu_expense_tutorial_view_id_1"
+              name="Demo Expense Tutorial View id 1"
+              sequence="1"
+	          action="action_expense_tutorial_view_id_1"
+              parent="menu_expense_tutorial_view_ids" />
+
+    <!-- Action to open the menu_expense_tutorial_view_id_2 -->
+    <record id="action_expense_tutorial_view_id_2" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action View id 2</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('demo_expense_tutorial_v1.tree_expense_view_id_2')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('demo_expense_tutorial_v1.form_expense_view_id_2')})]"/>
+    </record>
+
+    <!-- Menu item to open the demo_expense_view_id_2 -->
+    <menuitem id="menu_expense_tutorial_view_id_2"
+              name="Demo Expense Tutorial View id 2"
+              sequence="2"
+	          action="action_expense_tutorial_view_id_2"
+              parent="menu_expense_tutorial_view_ids" />
+
+    <!-- Menu item to open the menu_expense_tutorial_context-->
+    <menuitem id="menu_expense_tutorial_root_context"
+              name="Demo Expense Tutorial View context"
+              parent="demo_expense_tutorial_menu" />
+
+    <!-- Action to open the demo_expense_tutorial_context -->
+    <record id="action_expense_tutorial_context" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action Context</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+
+        <!-- init search default -->
+        <field name="context">{'search_default_name': 'test123'}</field>
+
+        <!-- init create default name 'test123'-->
+        <!-- <field name="context">{'default_name': 'test123'}</field> -->
+    </record>
+
+    <!-- Action to open the demo_expense_tutorial_domain -->
+    <record id="action_expense_tutorial_domain" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action Domain</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('name', 'like', 'test')]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action to open the demo_expense_tutorial_test_active -->
+    <record id="action_expense_tutorial_test_active" model="ir.actions.act_window">
+        <field name="name">Demo Expense Tutorial Action Test Active</field>
+        <field name="res_model">demo.expense.tutorial</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+
+        <!-- init show all (active True False) record -->
+        <field name="context">{'active_test':False}</field>
+
+        <!-- init show only (active True) record -->
+        <!-- <field name="context">{}</field> -->
+    </record>
+
+    <!-- Menu item to open the demo_expense_tutorial_context -->
+    <menuitem id="menu_expense_tutorial_context"
+              name="Demo Expense Tutorial context"
+	          action="action_expense_tutorial_context"
+              parent="menu_expense_tutorial_root_context" />
+
+    <!-- Menu item to open the demo_expense_tutorial_domain -->
+    <menuitem id="menu_expense_tutorial_domain"
+              name="Demo Expense Tutorial domain"
+	          action="action_expense_tutorial_domain"
+              parent="menu_expense_tutorial_root_context" />
+
+    <!-- Menu item to open the demo_expense_tutorial_domain -->
+    <menuitem id="menu_expense_tutorial_active_test"
+              name="Demo Expense Tutorial active_test"
+	          action="action_expense_tutorial_test_active"
+              parent="menu_expense_tutorial_root_context" />
 </odoo>
 
 

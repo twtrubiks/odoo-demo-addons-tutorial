@@ -41,6 +41,18 @@
 
 `code` 執行的程式碼, `records` 代表所選的 record, `action_demo()` 代表呼叫的 function.
 
+這邊的設定也可以在 Technical -> Actions -> Server Actions 看到 (如下)
+
+![alt tag](https://i.imgur.com/RV5ryMj.png)
+
+這邊就是剛剛 code 的設定
+
+![alt tag](https://i.imgur.com/vfeSIxp.png)
+
+這邊的 Action To Do 是使用 Execute Python Code, 還有其他的選擇
+
+![alt tag](https://i.imgur.com/NqxJLzu.png)
+
 記得也要將它加入 `__manifest__.py`.
 
 先來看 [models/models.py](models/models.py)
