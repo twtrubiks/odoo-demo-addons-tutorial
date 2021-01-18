@@ -26,11 +26,11 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - widget 介紹 handle 和 many2onebutton - part11](https://youtu.be/zb5fSEtEo_g) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---widget-%E4%BB%8B%E7%B4%B9-handle-%E5%92%8C-many2onebutton---part11)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 context - part12]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-context---part12)
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 context - part12](https://youtu.be/c-nzbAuaH9I) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-context---part12)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 active_test context - part13]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-active_test-context---part13)
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 active_test context - part13](https://youtu.be/RR9ycgky444) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-active_test-context---part13)
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 domain - part14]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-domain---part14)
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 domain - part14](https://youtu.be/Rh-rmXIHTZo) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-domain---part14)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1018,7 +1018,7 @@ class DemoExpenseTutorial(models.Model):
 
 ### odoo 手把手教學 - view 搭配 context - part12
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 context - part12]()
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 context - part12](https://youtu.be/c-nzbAuaH9I)
 
 這部份將介紹 view 搭配 context 的使用,
 
@@ -1065,7 +1065,7 @@ context 也可以在 developer mode 中的 Edit Action 看到,
 
 ### odoo 手把手教學 - view 搭配 active_test context - part13
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 active_test context - part13]()
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 active_test context - part13](https://youtu.be/RR9ycgky444)
 
 這部份延續上一次的介紹, 來看看 `active_test` 這個東西,
 
@@ -1141,7 +1141,7 @@ context 同樣也可以在 developer mode 中的 Edit Action 看到,
 
 ### odoo 手把手教學 - view 搭配 domain - part14
 
-* [Youtube Tutorial - (等待新增)odoo 手把手教學 - view 搭配 domain - part14]()
+* [Youtube Tutorial - odoo 手把手教學 - view 搭配 domain - part14](https://youtu.be/Rh-rmXIHTZo)
 
 這部份將介紹 view 搭配 domain 的使用,
 

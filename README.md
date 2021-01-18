@@ -52,6 +52,8 @@
 
 16. [odoo 觀念 - 如何使用 python xmlrpc 連接 odoo](xml-rpc-odoo)
 
+17. [odoo 觀念 - Translating 翻譯教學 i18n](demo_i18n_expense_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
