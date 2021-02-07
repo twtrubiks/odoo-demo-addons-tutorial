@@ -46,6 +46,16 @@ class DemoExpenseTutorial(models.Model):
             'type': 'ir.actions.act_window'
         }
 
+    @api.multi
+    def button_rainbow_man(self):
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'hello',
+                'type': 'rainbow_man',
+            }
+        }
+
 
 class DemoExpenseSheetTutorial(models.Model):
     _name = 'demo.expense.sheet.tutorial'

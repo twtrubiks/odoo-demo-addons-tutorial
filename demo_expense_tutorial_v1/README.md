@@ -32,6 +32,10 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - view 搭配 domain - part14](https://youtu.be/Rh-rmXIHTZo) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-%E6%90%AD%E9%85%8D-domain---part14)
 
+* [Youtube Tutorial - odoo 手把手教學 - 如何看到當下 view 繼承頁面 - part15](https://youtu.be/Vs6ScbYuZNs) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%A6%82%E4%BD%95%E7%9C%8B%E5%88%B0%E7%95%B6%E4%B8%8B-view-%E7%B9%BC%E6%89%BF%E9%A0%81%E9%9D%A2---part15)
+
+* [Youtube Tutorial - odoo 手把手教學 - odoo rainbow - part16](https://youtu.be/g4vywRLklE0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---odoo-rainbow---part16)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1175,3 +1179,50 @@ domain 同樣也可以在 developer mode 中的 Edit Action 看到,
 
 ![alt tag](https://i.imgur.com/OGdJ5jt.png)
 
+### odoo 手把手教學 - 如何看到當下 view 繼承頁面 - part15
+
+* [Youtube Tutorial - odoo 手把手教學 - 如何看到當下 view 繼承頁面 - part15](https://youtu.be/Vs6ScbYuZNs)
+
+有時候當我們寫了很多的繼承 ( tree 或 form), 在當下的頁面, 會不知道是否有被繼承過,
+
+這時候推薦大家一個小技巧:smile:
+
+使用 [demo_class_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance) 這個 addons 當作範例.
+
+首先, 先進去你想要查看的頁面, 這邊進入 hr_expnese
+
+![alt tag](https://i.imgur.com/4jotzYG.png)
+
+debug developer mode 請打開, 可參考 [odoo12 如何開啟 odoo developer mode](https://github.com/twtrubiks/odoo-docker-tutorial#odoo12-%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F-odoo-developer-mode)
+
+點選 Edit View: List
+
+![alt tag](https://i.imgur.com/yBwoOTa.png)
+
+點選 Inherited Views 這個 tab
+
+![alt tag](https://i.imgur.com/53oTTuu.png)
+
+你就可以很清楚的看到這個頁面被 `demo_class_inheritance` 繼承:smile:
+
+像是 form 或其他的 view_type 也都是同樣的方法哦:smirk:
+
+### odoo 手把手教學 - odoo rainbow - part16
+
+* [Youtube Tutorial - odoo 手把手教學 - odoo rainbow - part16](https://youtu.be/g4vywRLklE0)
+
+在 odoo 中也有特效這個東西
+
+```python
+@api.multi
+def button_rainbow_man(self):
+    return {
+        'effect': {
+            'fadeout': 'slow',
+            'message': 'hello',
+            'type': 'rainbow_man',
+        }
+    }
+```
+
+![alt tag](https://i.imgur.com/mn2hmox.png)

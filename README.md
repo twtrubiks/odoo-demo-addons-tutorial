@@ -428,6 +428,14 @@ Connection Security 填入 `SSL/TLS`
 
 ![alt tag](https://i.imgur.com/CvMuelM.png)
 
+## 如何全域修改時間日期格式
+
+路徑為 Translations -> Languages, 點選語言, 就會看到以下的畫面,
+
+圖片下方有一些參數的說明(可自行依照需求調整)
+
+![alt tag](https://i.imgur.com/Z66LDIC.png)
+
 ## 其他注意事項
 
 `odoo.conf` 中的 `data_dir` 參數建立好了就不要亂改,
