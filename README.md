@@ -54,6 +54,8 @@
 
 17. [odoo 觀念 - Translating 翻譯教學 i18n](demo_i18n_expense_tutorial)
 
+18. [odoo 觀念 - recruitment_website_form 介紹](demo_recruitment_website_form)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
