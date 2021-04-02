@@ -45,3 +45,11 @@ class DemoOdooTutorial(models.Model):
     def onchange_demo(self):
         if self.field_onchange_demo:
             self.field_onchange_demo_set = 'set {}'.format(self.field_onchange_demo)
+
+        # warning message
+        result = dict()
+        result['warning'] = {
+            'title': 'HELLO',
+            'message': 'I am warning'
+        }
+        return result

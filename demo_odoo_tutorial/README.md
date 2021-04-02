@@ -201,6 +201,7 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
     def onchange_demo(self):
         if self.field_onchange_demo:
             self.field_onchange_demo_set = 'set {}'.format(self.field_onchange_demo)
+        ......
 ......
 
 ```
@@ -218,6 +219,27 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 將值餵給 `field_compute_demo`.
 
 ![alt tag](https://i.imgur.com/FQOPZTH.png)
+
+特別補充說明一下 onchange 也可以 return 一個 dict.
+
+```python
+......
+    @api.onchange('field_onchange_demo')
+    def onchange_demo(self):
+        ......
+
+        # warning message
+        result = dict()
+        result['warning'] = {
+            'title': 'HELLO',
+            'message': 'I am warning'
+        }
+        return result
+```
+
+透過上方的寫法, 使用者會跳出提醒視窗 (但不會中斷使用者)
+
+![alt tag](https://i.imgur.com/hO9rE2y.png)
 
 `_sql_constraints` 這個為設定一些限制(直接寫 postgresql),
 
