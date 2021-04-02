@@ -358,6 +358,8 @@ def with_context(self, *args, **kwargs):
 'Air Flight'
 ```
 
+`with_context` 也常使用在傳值中, 可參考 [odoo 觀念-TransientModel-Wizard](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial_wizard)
+
 ### odoo shell 注意事項
 
 * [Youtube Tutorial - odoo shell 教學 - 注意事項](https://youtu.be/YS6mGE3-y1k)
@@ -372,7 +374,9 @@ odoo-shell 下 command 無法 save 問題,
 self.env.cr.commit()
 ```
 
-在非 Odoo Shell 中會自動執行, 在 Odoo Shell 中不會自動執行 (需要手動執行)
+在非 Odoo Shell 中會自動執行, 在 Odoo Shell 中不會自動執行 (需要手動執行).
+
+除非你不想要把修改資料寫進去資料庫.
 
 ## odoo log 說明
 
@@ -460,7 +464,37 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 重新使用 debug mode 中的 Regenerate Assets Bundles.
 
+(assets 這個的功能是刪除舊的 css 和 js, 然後重新產生新的, 有時遇到 assets 快取的問題, 可以選這個選項)
+
 ![alt tag](https://i.imgur.com/EJTK0KY.png)
+
+## 建議使用繼承 addons 的方式修改 odoo
+
+[Youtube Tutorial - odoo 教學 - 建議使用繼承 addons 的方式修改 odoo(等待新增)]()
+
+這邊提醒大家, 建議在修改 odoo 的時候, 儘量使用 addons 繼承的方式去修改 code,
+
+原因是維護性的問題, 原生的 code 保持乾淨,
+
+雖然用 odoo developer mode 可以很快的修改 view,
+
+但是 :exclamation::exclamation:
+
+只要你一更新你修改的那個 addons, 就會自動還原 :exclamation::exclamation:
+
+這邊使用 `hr_expense` 舉的例子,
+
+我透過 Edit View 修改了 view,
+
+![alt tag](https://i.imgur.com/M6goe84.png)
+
+當你保存是會生效的.
+
+可是當你去更新 `hr_expense` 的時候, 你會發生他被還原了.
+
+所以, 使用 Edit View 選項去修改 view 可以使用在測試時.
+
+正式的修改, 還是推薦使用 addons 繼承的方式:smile:
 
 ## Donation
 

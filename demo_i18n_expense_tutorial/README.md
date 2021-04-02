@@ -26,6 +26,12 @@ Translations -> Languages 選擇要啟用的語言即可
 
 ![alt tag](https://i.imgur.com/H1X8nP2.png)
 
+也可以使用指令的方式啟用語言
+
+```cmd
+python3 odoo-bin -d odoo --load-language=zh_TW -c odoo.conf
+```
+
 在需要翻譯的頁面底下選擇 Technical Translation
 
 這邊強烈建議大家先切換語系到**英文**, 再下去進行翻譯, 不然很容易怪怪的:joy:
@@ -50,6 +56,20 @@ Export Translation
 
 ![alt tag](https://i.imgur.com/pWaJYC1.png)
 
+也可以使用指令的方式匯出 po 檔案
+
+```cmd
+python3 odoo-bin -d odoo --i18n-export=hr_expense.po --modules=hr_expense -c odoo.conf
+```
+
+指定匯出 po 檔案(特定語言), 注意, odoo 必須已經安裝對應的語言
+
+```cmd
+python3 odoo-bin -d odoo --i18n-export=zh_TW.po --modules=hr_expense --language=zh_TW -c odoo.conf
+```
+
+執行完後, 可查看路徑底下是否有對應的檔案.
+
 Import Translation
 
 匯入 po 檔案,
@@ -57,6 +77,16 @@ Import Translation
 注意 :exclamation::exclamation: Overwrite Existing Terms 請記住一定要打勾, 否則不會生效.
 
 ![alt tag](https://i.imgur.com/TGevO7f.png)
+
+也可以使用指令的方式匯入 po 檔案,
+
+請記得將 zh_TW.po (檔名可自訂) 放入任意 addons 的路徑中.
+
+```cmd
+python3 odoo-bin -d odoo --i18n-import=zh_TW.po --language=zh_TW -c odoo.conf
+```
+
+如果沒有生效, 請再加上 `--i18n-overwrite`.
 
 ## 使用程式碼翻譯
 

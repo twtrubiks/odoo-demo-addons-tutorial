@@ -77,6 +77,8 @@ class DemoWizard(models.TransientModel):
 
 注意:exclamation: Transient models 是不需要 access rules
 
+( odoo14 開始 Transient models 需要設定 access rules, 可參考 [odoo14 分支](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_odoo_tutorial_wizard))
+
 (因為它們是 disposable 一次性的資料), 所以不需要加入 `security/ir.model.access.csv`
 
 在路徑中的 [security/ir.model.access.csv](security/ir.model.access.csv) 裡面定義的東西是
