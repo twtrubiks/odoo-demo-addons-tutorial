@@ -18,10 +18,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base_setup'],
+    'depends': ['base_setup', 'sale'],
 
     # always loaded
     'data': [
+        'security/security.xml',
         'views/view.xml',
     ],
     'installable': True,
