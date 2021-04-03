@@ -8,6 +8,8 @@
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
+* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
+
 建議觀看影片, 會更清楚:smile:
 
 以下將介紹這個 addons 的結構
@@ -650,3 +652,87 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 }
 
 ```
+
+### 使用 SQL VIEW 定義 model
+
+這部份是比較進階的, 如果你是新手, 請跳過這部份 :smirk:
+
+* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model(等待新增)]()
+
+使用時機, 如果你有比較特別的報表, 或是特別的 pivot 使用原生的 ORM 可能比較不好實現,
+
+這時候可以考慮使用原生的 SQL 來完成.
+
+請參考 [models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/models/models.py) 資料夾
+
+```python
+......
+
+class DemoOdooTutorialStatistics(models.Model):
+    _name = 'demo.odoo.tutorial.statistics'
+    _description = 'Demo Odoo Tutorial Statistics'
+    _auto = False
+
+    create_uid = fields.Many2one('res.users', 'Created by', readonly=True)
+    average_input_number = fields.Float(string="Average Input Number", readonly=True)
+
+    @api.model_cr
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr, self._table)
+        query = """
+        CREATE OR REPLACE VIEW demo_odoo_tutorial_statistics AS
+        (
+            SELECT
+                min(demo.id) as id,
+                create_uid,
+                avg(input_number) AS average_input_number
+            FROM
+                demo_odoo_tutorial AS demo
+            GROUP
+                BY demo.create_uid
+        );
+        """
+        self.env.cr.execute(query)
+```
+
+`_auto = False` 通常都不會去設定他, 也就是預設都是 True, 代表 table 會由 odoo
+
+幫助我們產生, 所以也不需要額外去實作 `init`.
+
+但這邊設定了 `_auto = False` 代表我們要自己去管, 而不是由 odoo 協助,
+
+當然, 也需要我們自己去維護, 必須實作 `init`.
+
+定義 fields 的部份, 就看你需要 `demo.odoo.tutorial` 中的哪些資料,
+
+把需要的 fields 填上即可, 又或是透過 `compute` 自己實現邏輯.
+
+( 這邊都設定 `readonly=True`, 因為 VIEW 本來就應該是唯讀的,
+
+如果你不了解, 可 google TABLE VS VIEW, 他們是不一樣的 )
+
+而在 `init` 中, 透過 SQL 實作一個 VIEW.
+
+也請記得必須補上, `menu.xml` `view.xml` `ir.model.access.csv`.
+
+這邊使用 pivot 來呈現,
+
+當我們更新或裝上這個 addons 的時候, 可以先透過 pgadmin4 查看 db,
+
+注意 :exclamation: 我們看的是 VIEW, 不是 TABLE
+
+![alt tag](https://i.imgur.com/S8koB3r.png)
+
+這個 VIEW 的 code 就是在 `init` 定義的,
+
+![alt tag](https://i.imgur.com/nGbTNva.png)
+
+這邊補充一下為甚麼要使用 `min(demo.id) as id,`,
+
+原因是 odoo 規定要產生 id, 否則會噴錯, 當然你也可以填 `max(demo.id) as id,`,
+
+反正一定要給他一個 id 即可.
+
+實際畫面
+
+![alt tag](https://i.imgur.com/BFsJsBM.png)

@@ -41,4 +41,16 @@
       </tree>
     </field>
   </record>
+
+  <record id="view_demo_odoo_tutorial_statistics_pivot" model="ir.ui.view">
+    <field name="name">demo.odoo.tutorial.statistics.pivot</field>
+    <field name="model">demo.odoo.tutorial.statistics</field>
+    <field name="arch" type="xml">
+      <pivot string="Statistics" disable_linking="True">
+          <field name="create_uid" type="row"/>
+          <field name="average_input_number" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+
 </odoo>

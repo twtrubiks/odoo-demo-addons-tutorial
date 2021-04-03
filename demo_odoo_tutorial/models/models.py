@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, tools
 from odoo.exceptions import UserError, ValidationError
 
 class DemoOdooTutorial(models.Model):
@@ -53,3 +53,29 @@ class DemoOdooTutorial(models.Model):
             'message': 'I am warning'
         }
         return result
+
+class DemoOdooTutorialStatistics(models.Model):
+    _name = 'demo.odoo.tutorial.statistics'
+    _description = 'Demo Odoo Tutorial Statistics'
+    _auto = False
+
+    create_uid = fields.Many2one('res.users', 'Created by', readonly=True)
+    average_input_number = fields.Float(string="Average Input Number", readonly=True)
+
+    @api.model_cr
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr, self._table)
+        query = """
+        CREATE OR REPLACE VIEW demo_odoo_tutorial_statistics AS
+        (
+            SELECT
+                min(demo.id) as id,
+                create_uid,
+                avg(input_number) AS average_input_number
+            FROM
+                demo_odoo_tutorial AS demo
+            GROUP
+                BY demo.create_uid
+        );
+        """
+        self.env.cr.execute(query)

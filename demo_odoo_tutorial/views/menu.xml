@@ -15,6 +15,16 @@
               name="Demo Odoo Tutorial"
 	            action="action_odoo_tutorial"
               parent="demo_odoo_tutorial_menu" />
+
+    <act_window id="action_odoo_statistics_tutorial"
+      name="Demo Odoo Tutorial Statistics Action"
+      res_model="demo.odoo.tutorial.statistics"
+      view_mode="pivot"/>
+
+    <menuitem id="menu_odoo_statistics_tutorial"
+              name="Demo Odoo Statistics Tutorial"
+	            action="action_odoo_statistics_tutorial"
+              parent="demo_odoo_tutorial_menu" />
 </odoo>
 
 
