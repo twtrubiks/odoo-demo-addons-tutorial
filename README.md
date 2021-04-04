@@ -56,6 +56,8 @@
 
 18. [odoo 觀念 - recruitment_website_form 介紹](demo_recruitment_website_form)
 
+19. [odoo 觀念 - 實作 init hook](demo_hook_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
