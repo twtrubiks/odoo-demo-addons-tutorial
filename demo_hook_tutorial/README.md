@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo 手把手教學 - 實作 init hook(等待新增)]()
+[Youtube Tutorial - odoo 手把手教學 - 實作 init hook](https://youtu.be/2ZmfH3wBHm8)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

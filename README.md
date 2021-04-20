@@ -58,6 +58,8 @@
 
 19. [odoo 觀念 - 實作 init hook](demo_hook_tutorial)
 
+20. [odoo 教學 - fields_view_get 介紹教學](demo_fields_view_get_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
@@ -472,7 +474,7 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 ## 建議使用繼承 addons 的方式修改 odoo
 
-[Youtube Tutorial - odoo 教學 - 建議使用繼承 addons 的方式修改 odoo(等待新增)]()
+[Youtube Tutorial - odoo 教學 - 建議使用繼承 addons 的方式修改 odoo](https://youtu.be/Yncbx95YT1Q)
 
 這邊提醒大家, 建議在修改 odoo 的時候, 儘量使用 addons 繼承的方式去修改 code,
 

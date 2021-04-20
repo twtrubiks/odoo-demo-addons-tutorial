@@ -4,7 +4,7 @@
 
 * [實作 config settings](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_config_settings#%E8%AA%AA%E6%98%8E) - [Youtube Tutorial - odoo - 實作 config settings](https://youtu.be/5k_TYBNs_uc)
 
-* [implied_group 用法說明](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_config_settings#implied_group-%E7%94%A8%E6%B3%95%E8%AA%AA%E6%98%8E) - [Youtube Tutorial - odoo - implied_group 進階用法說明(等待新增)]()
+* [implied_group 用法說明](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_config_settings#implied_group-%E7%94%A8%E6%B3%95%E8%AA%AA%E6%98%8E) - [Youtube Tutorial - odoo - implied_group 進階用法說明](https://youtu.be/FCmRNUSkh10)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -80,7 +80,7 @@ Odoo Setup Demo 就是我們加上去的 (在這裡填入 hello123, 記得 Save)
 
 ## implied_group 用法說明
 
-[Youtube Tutorial - odoo - implied_group 用法說明(等待新增)]()
+[Youtube Tutorial - odoo - implied_group 用法說明](https://youtu.be/FCmRNUSkh10)
 
 這部份稍微比較進階一點,
 

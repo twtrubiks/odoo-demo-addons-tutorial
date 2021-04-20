@@ -8,7 +8,7 @@
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
-* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
+* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model](https://youtu.be/LPigYLtxeoA) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
 
 建議觀看影片, 會更清楚:smile:
 
@@ -657,7 +657,7 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 
 這部份是比較進階的, 如果你是新手, 請跳過這部份 :smirk:
 
-* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model(等待新增)]()
+* [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model](https://youtu.be/LPigYLtxeoA)
 
 使用時機, 如果你有比較特別的報表, 或是特別的 pivot 使用原生的 ORM 可能比較不好實現,
 
@@ -688,8 +688,7 @@ class DemoOdooTutorialStatistics(models.Model):
                 avg(input_number) AS average_input_number
             FROM
                 demo_odoo_tutorial AS demo
-            GROUP
-                BY demo.create_uid
+            GROUP BY demo.create_uid
         );
         """
         self.env.cr.execute(query)

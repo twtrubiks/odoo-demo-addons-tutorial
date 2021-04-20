@@ -74,8 +74,7 @@ class DemoOdooTutorialStatistics(models.Model):
                 avg(input_number) AS average_input_number
             FROM
                 demo_odoo_tutorial AS demo
-            GROUP
-                BY demo.create_uid
+            GROUP BY demo.create_uid
         );
         """
         self.env.cr.execute(query)
