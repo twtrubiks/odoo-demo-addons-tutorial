@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-* [Youtube Tutorial - odoo fields_view_get 介紹教學(等待新增)]()
+* [Youtube Tutorial - odoo fields_view_get 介紹教學](https://youtu.be/TpEw3TQiZ_M)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -16,7 +16,7 @@
 
 今天就來舉個例子, 我希望除了 Billing Manager 這個 gropus 之外, 其他的人對 `account.invoice` 中的
 
-`invoice_line_ids` field 都必須是 readonly (也就是圖下方的地方是).
+`invoice_line_ids` field 都必須是 readonly (如圖下方).
 
 ![alt tag](https://i.imgur.com/VuIMx64.png)
 
@@ -68,7 +68,7 @@ class AccountInvoice(models.Model):
 
 的 groups 才**不是** readonly, 否則都是 readonly. (建議看影片的 demo:smirk:)
 
-剛剛的 type 是 form, 來看看 tree 的狀況,
+剛剛的 type 是 form, 接著來看看 tree 的狀況,
 
 ```python
 class AccountInvoice(models.Model):

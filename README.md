@@ -58,7 +58,9 @@
 
 19. [odoo 觀念 - 實作 init hook](demo_hook_tutorial)
 
-20. [odoo 教學 - fields_view_get 介紹教學](demo_fields_view_get_tutorial)
+20. [odoo 教學 - 如何繼承 inherit controller](demo_inherit_controller)
+
+21. [odoo 教學 - fields_view_get 介紹教學](demo_fields_view_get_tutorial)
 
 ## 其他
 
