@@ -8,6 +8,8 @@
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
+* [Youtube Tutorial - odoo testing 教學(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-testing-%E6%95%99%E5%AD%B8)
+
 * [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model](https://youtu.be/LPigYLtxeoA) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
 
 建議觀看影片, 會更清楚:smile:
@@ -651,6 +653,165 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
     'auto_install': True,
 }
 
+```
+
+### odoo testing 教學
+
+* [Youtube Tutorial - odoo testing 教學]()
+
+在 odoo 的世界中, testing 也扮演一個很重要的角色, 今天就來介紹這個 testing:smile:
+
+詳細說明可參考 [testing](https://www.odoo.com/documentation/14.0/reference/testing.html).
+
+這邊只會介紹 python 端的 testing, js 的部份就請自行看文件:smirk:
+
+`TransactionCase`
+
+每個 function 執行完畢後都會 roll back, 每個 function 都是獨立的不互相影響.
+
+`SingleTransactionCase`
+
+全部 function 執行完畢後才會 roll back, function 會互相影響.
+
+`SavepointCase`
+
+使用在比較大型以及複雜的測試, 通常會搭配 `setUpClass()` 使用, 這邊就不另外介紹,
+
+可自行使用關鍵字查看 source code 如何規劃:smile:
+
+先來看 `TransactionCase`
+
+請參考 [demo_odoo_tutorial/tests/test_demo_odoo_transactioncase.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/tests/test_demo_odoo_transactioncase.py)
+
+```python
+from odoo.exceptions import UserError, AccessError, ValidationError
+from odoo.tests.common import TransactionCase, tagged
+
+# @tagged('-standard', 'nice')
+class TestDemoOdooTransactionCase(TransactionCase):
+
+    def setUp(self, *args, **kwargs):
+        """setUp"""
+        super(TestDemoOdooTransactionCase, self).setUp(*args, **kwargs)
+        print('Run setUp')
+
+    def test_hello_world(self):
+        """test_hello_world"""
+        self.assertEqual(0, 0, 'test hello world')
+
+    def test_datetime_validation(self):
+        """test_datetime_validation"""
+        values = {
+            'name': 'hello',
+            'start_datetime': '2020-02-01',
+            'stop_datetime': '2020-01-01',
+        }
+        with self.assertRaises(ValidationError):
+            self.env['demo.odoo.tutorial'].create(values)
+
+    def test_field_compute_demo(self):
+        """test_field_compute_demo"""
+        values = {
+            'name': 'hello',
+            'input_number': 2
+        }
+        data = self.env['demo.odoo.tutorial'].create(values)
+        self.assertEqual(data.field_compute_demo, data.input_number * 1000)
+```
+
+注意 `__init__.py` 需要 import `test_demo_odoo_transactioncase`,
+
+tests 資料夾底下的 testing 都必須是 `test_` 開頭的,
+
+執行方法為加上 `--test-enable`, 範例如下
+
+```cmd
+python3 odoo-bin -i demo_odoo_tutorial -d odoo -c /home/twtrubiks/work/odoo12/odoo/config/odoo.conf --test-enable
+```
+
+執行時你會看到下方的輸出
+
+![alt tag](https://i.imgur.com/GRBN7LJ.png)
+
+注意, 這裡有3個 testing `test_hello_world` `test_datetime_validation` `test_field_compute_demo`
+
+而 `setUp` 會被執行三次, 因為每執行一個測試 function, setUp 就會被執行一次.
+
+3個 testing function 也都是獨立的, 互相不干擾.
+
+接著來看 `SingleTransactionCase`
+
+請參考 [demo_odoo_tutorial/tests/test_demo_odoo_singletransactioncase](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/tests/test_demo_odoo_singletransactioncase.py)
+
+```python
+......
+class TestDemoOdooSingleTransactionCase(SingleTransactionCase):
+
+    def setUp(self, *args, **kwargs):
+        """setUp"""
+        super(TestDemoOdooSingleTransactionCase, self).setUp(*args, **kwargs)
+        print('Run setUp')
+    ......
+```
+
+執行時你會看到下方的輸出
+
+![alt tag](https://i.imgur.com/M0Kq5a4.png)
+
+這個範例和 `test_demo_odoo_transactioncase.py` 是一模一樣的,
+
+只是將它改成繼承 `SingleTransactionCase`.
+
+但你會發現這個會出現錯誤, 原因是因為 model 中有設定 `name_uniq`
+
+```python
+_sql_constraints = [
+    ('name_uniq', 'unique(name)', 'Description must be unique'),
+]
+```
+
+而我們兩個 testing 的 name 名稱 (create name) 都是一樣的, 也就是
+
+`test_datetime_validation` `test_field_compute_demo`, 所以會發生錯誤.
+
+(在 `TransactionCase` 沒錯誤是因為它和 `SingleTransactionCase` 的特性不一樣)
+
+除了這些功能之外, 還可以透過 tagged 這個 decorator 來幫助我們完成其他的需求.
+
+如果不了解 decorator, 可參考 [What is the python decorator
+](https://github.com/twtrubiks/python-notes/tree/master/what_is_the_python_decorator)
+
+(記得將 tagged 的註解取消)
+
+```python
+from odoo.tests.common import TransactionCase, tagged
+
+@tagged('-standard', 'nice')
+class TestDemoOdooTransactionCase(TransactionCase):
+
+......
+```
+
+如果沒有特別設定, odoo defaults 為 standard,
+
+`+` `-` 則代表啟用或不改用(排除), 像上面這個例子,
+
+代表只有在 `nice` tag 才會生效, 在 `standard` 中不會生效的,
+
+因為前面有加個 `-`, 更多詳細文件可參考 [invocation](https://www.odoo.com/documentation/14.0/reference/testing.html#invocation).
+
+範例指令,
+
+代表只執行有 `nice` tag 的測試,
+
+```cmd
+python3 odoo-bin -i demo_odoo_tutorial -d odoo -c /home/twtrubiks/work/odoo12/odoo/config/odoo.conf --test-enable --test-tags nice
+```
+
+代表執行有 `nice` 以及 `standard` tag 的測試,
+
+```cmd
+python3 odoo-bin -i demo_odoo_tutorial -d odoo -c /home/twtrubiks/work/odoo12/odoo/config/odoo.conf --test-enable --test-tags 'standard,nice'
 ```
 
 ### 使用 SQL VIEW 定義 model
