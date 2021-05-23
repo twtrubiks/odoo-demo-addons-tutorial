@@ -8,7 +8,7 @@
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
-* [Youtube Tutorial - odoo testing 教學(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-testing-%E6%95%99%E5%AD%B8)
+* [Youtube Tutorial - odoo testing 教學](https://youtu.be/nfiBgXgYkYg) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-testing-%E6%95%99%E5%AD%B8)
 
 * [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model](https://youtu.be/LPigYLtxeoA) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
 
@@ -657,7 +657,7 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 
 ### odoo testing 教學
 
-* [Youtube Tutorial - odoo testing 教學]()
+* [Youtube Tutorial - odoo testing 教學](https://youtu.be/nfiBgXgYkYg)
 
 在 odoo 的世界中, testing 也扮演一個很重要的角色, 今天就來介紹這個 testing:smile:
 

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_company" model="ir.ui.view">
+    <field name="name">Demo Company Form</field>
+    <field name="model">demo.company</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button name="action_get_default_account" string="Get Default Account" type="object" class="oe_highlight o_expense_sheet_submit"/>
+        </header>
+        <group>
+          <field name="name"/>
+          <field name="property_account_receivable_id"/>
+          <field name="company_id"/>
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_company" model="ir.ui.view">
+    <field name="name">Demo Company List</field>
+    <field name="model">demo.company</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="company_id"/>
+      </tree>
+    </field>
+  </record>
+
+</odoo>

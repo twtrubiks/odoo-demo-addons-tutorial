@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Demo Company Menu -->
+    <menuitem id="demo_company_menu"
+      name="Demo Company" />
+
+    <!-- Action to open the demo_company list -->
+    <act_window id="action_demo_company"
+      name="Demo Company"
+      res_model="demo.company"
+      view_mode="tree,form"/>
+
+    <!-- Menu item to open the demo_company list -->
+    <menuitem id="menu_demo_company"
+      name="Demo Company"
+	    action="action_demo_company"
+      parent="demo_company_menu" />
+</odoo>
+
+

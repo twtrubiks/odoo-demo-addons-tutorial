@@ -62,6 +62,10 @@
 
 21. [odoo 教學 - fields_view_get 介紹教學](demo_fields_view_get_tutorial)
 
+22. [odoo 教學 - multi company](demo_multi_company)
+
+23. [odoo 教學 - testing 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-testing-%E6%95%99%E5%AD%B8)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
