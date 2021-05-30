@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo 手把手教學 - (等待新增)orm cache 說明]()
+[Youtube Tutorial - odoo 手把手教學 - orm cache 說明](https://youtu.be/AXi7c4EQuYE)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 

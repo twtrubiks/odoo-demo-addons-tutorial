@@ -56,6 +56,16 @@ class DemoExpenseTutorial(models.Model):
             }
         }
 
+    @api.onchange('user_id')
+    def onchange_user_id(self):
+        # domain
+        result = dict()
+        result['domain'] = {
+            'employee_id': [('user_id', '=', self.user_id.id)]
+        }
+        # equal
+        # self.env['hr.employee'].search([('user_id', '=', self.user_id.id)])
+        return result
 
 class DemoExpenseSheetTutorial(models.Model):
     _name = 'demo.expense.sheet.tutorial'

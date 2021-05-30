@@ -6,6 +6,9 @@
     <field name="model">demo.odoo.tutorial</field>
     <field name="arch" type="xml">
       <form string="Demo Odoo Tutorial">
+        <header>
+          <button name="demo_raw_sql" string="demo raw sql" type="object" class="oe_highlight o_expense_sheet_submit"/>
+        </header>
         <sheet>
           <group>
             <field name="name"/>

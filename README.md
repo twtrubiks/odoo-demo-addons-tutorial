@@ -68,6 +68,8 @@
 
 24. [odoo 觀念 - orm cache 說明](demo_orm_cache)
 
+24. [odoo 觀念 - 使用 RAW SQL 說明](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-raw-sql-%E8%AA%AA%E6%98%8E)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)

@@ -12,6 +12,8 @@
 
 * [進階 - Youtube Tutorial - 使用 SQL VIEW 定義 model](https://youtu.be/LPigYLtxeoA) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-sql-view-%E5%AE%9A%E7%BE%A9-model)
 
+* [Youtube Tutorial - odoo 使用 RAW SQL 說明](https://youtu.be/hfOLmoIfO9E) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-raw-sql-%E8%AA%AA%E6%98%8E)
+
 建議觀看影片, 會更清楚:smile:
 
 以下將介紹這個 addons 的結構
@@ -266,6 +268,8 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 主要是根據 `field_onchange_demo` 的改變, 將值餵給 `field_onchange_demo_set`,
 
 注意 view 中要有 `force_save="1"`, 否則儲存時會消失.
+
+(原因是因為 `field_onchange_demo_set` 設定為 `readonly` 的關係)
 
 ![alt tag](https://i.imgur.com/5Iq4Rgb.png)
 
@@ -896,3 +900,69 @@ class DemoOdooTutorialStatistics(models.Model):
 實際畫面
 
 ![alt tag](https://i.imgur.com/BFsJsBM.png)
+
+### 使用 RAW SQL 說明
+
+* [Youtube Tutorial - odoo 使用 RAW SQL 說明](https://youtu.be/hfOLmoIfO9E)
+
+前面和大家說明過了有時候會使用原生的 SQL 來完成.
+
+這部份將更詳細的說明 RAW SQL 的使用方法以及應該注意的事項:smile:
+
+可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/models/models.py)
+
+```python
+......
+def demo_raw_sql(self):
+    query = """
+        SELECT
+            id, name,
+            is_done_track_onchange,
+            name_track_always,
+            start_datetime,
+            stop_datetime,
+            field_onchange_demo,
+            field_onchange_demo_set,
+            input_number
+        FROM
+            demo_odoo_tutorial;
+    """
+    self.env.cr.execute(query)
+
+    print('self.env.cr.fetchall:', self.env.cr.fetchall())
+    # print('self.env.cr.fetchone:', self.env.cr.fetchone())
+    # print('self.env.cr.dictfetchall:', self.env.cr.dictfetchall())
+......
+```
+
+你會發現有三種取值的方法
+
+`self.env.cr.fetchall()`
+
+![alt tag](https://i.imgur.com/sy3kVxW.png)
+
+`self.env.cr.fetchone()`
+
+![alt tag](https://i.imgur.com/ffN1rSE.png)
+
+`self.env.cr.dictfetchall()`
+
+![alt tag](https://i.imgur.com/RcAw0Pr.png)
+
+當你在使用 原生的 SQL 時, 要很小心:exclamation::exclamation::exclamation:
+
+因為這種搜尋方式跳過了 ORM 那層, 所以權限以及安全規則的部份都會全被跳過:exclamation:
+
+所以在使用 `INSERT/UPDATE` 時也不會觸發 `create()` `write()`,
+
+所以請特別注意:exclamation::exclamation:
+
+也要小心 SQL注入(SQL injection):exclamation::exclamation:
+
+```python
+# SQL injection possible
+self.env.cr.execute('SELECT * FROM demo_odoo_tutorial where id >' + '1' + ';')
+
+# good
+self.env.cr.execute('SELECT * FROM demo_odoo_tutorial where id > %s;', (1,))
+```

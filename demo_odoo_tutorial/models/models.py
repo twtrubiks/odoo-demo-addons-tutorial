@@ -54,6 +54,26 @@ class DemoOdooTutorial(models.Model):
         }
         return result
 
+    def demo_raw_sql(self):
+        query = """
+            SELECT
+                id, name,
+                is_done_track_onchange,
+                name_track_always,
+                start_datetime,
+                stop_datetime,
+                field_onchange_demo,
+                field_onchange_demo_set,
+                input_number
+	        FROM
+                demo_odoo_tutorial;
+        """
+        self.env.cr.execute(query)
+
+        print('self.env.cr.fetchall:', self.env.cr.fetchall())
+        # print('self.env.cr.fetchone:', self.env.cr.fetchone())
+        # print('self.env.cr.dictfetchall:', self.env.cr.dictfetchall())
+
 class DemoOdooTutorialStatistics(models.Model):
     _name = 'demo.odoo.tutorial.statistics'
     _description = 'Demo Odoo Tutorial Statistics'

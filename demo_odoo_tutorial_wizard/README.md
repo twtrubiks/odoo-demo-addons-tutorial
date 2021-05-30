@@ -118,6 +118,18 @@ class DemoWizard(models.TransientModel):
 
 寫法是 `name="%(demo_odoo_tutorial_wizard.demo_wizard_action)d"`,
 
+這邊提醒一下大家:exclamation::exclamation: 如果你把 developer mode 打開,
+
+你會發現他沒有 name, 只會有 Action ID
+
+![alt tag](https://i.imgur.com/dxkPuY0.png)
+
+如果你想快速找到這個 ID 是屬於哪一個 name (反查),
+
+你可以進入 Technical -> Actions -> Window Actions 尋找
+
+![alt tag](https://i.imgur.com/zzi1lJh.png)
+
 路徑在 [wizard/model_wizard.xml](wizard/model_wizard.xml)
 
 ```xml
