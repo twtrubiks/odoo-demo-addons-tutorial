@@ -337,7 +337,7 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
 `_` 也可以改成 `0` or `False`,
 
-尾巴不相關的可以被, 像是 `(4, id, _)` 也可以寫成 `(4, id)`.
+尾巴不相關的可以忽略, 像是 `(4, id, _)` 也可以寫成 `(4, id)`.
 
 `ir.model.access.csv` 為管理 user 和 manager CRUD 的權限,
 
@@ -352,6 +352,19 @@ access_demo_odoo_manager,Demo Odoo Tutorial Manager Access,model_demo_odoo_tutor
 但這邊必須填入 `model_demo_odoo_tutorial`, 規則很簡單, 就是要前面要補上 `model`,
 
 然後將全部的 `.` 改成 `_` .
+
+group_id 的部份可以空白, 請看下面這個例子,
+
+代表這個 Access Rights 沒特別指定 group (但通常比較少這樣使用)
+
+```csv
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_demo_test,Test Access,model_demo_odoo_tutorial,,1,1,1,1
+```
+
+如果你去 odoo 後台的 Access Rights 查詢, 他會顯示黃色的.
+
+![alt tag](https://i.imgur.com/bGP9Fhb.png)
 
 到 user 中可以切換 group,
 

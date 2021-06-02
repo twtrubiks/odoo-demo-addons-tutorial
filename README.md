@@ -181,6 +181,122 @@ res.partner(11, 20)
 [{'id': 2, 'name': 'Hotel Expenses', 'employee_id': (1, 'Mitchell Admin')}, {'id': 1, 'name': 'Travel by Air', 'employee_id': (1, 'Mitchell Admin')}]
 ```
 
+* [Youtube Tutorial - odoo orm group 基本教學 - read_group(等待新增)]()
+
+`read_group`
+
+通常使用在 SQL 中的 GROUP BY (很適合拿來處理比較大的資料, 效能應該也會比較好:smile:).
+
+read_group 的定義可參考原始碼中的 `odoo/models.py`
+
+```python
+......
+@api.model
+def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+    """
+    Get the list of records in list view grouped by the given ``groupby`` fields
+
+    :param domain: list specifying search criteria [['field_name', 'operator', 'value'], ...]
+    :param list fields: list of fields present in the list view specified on the object.
+            Each element is either 'field' (field name, using the default aggregation),
+            or 'field:agg' (aggregate field with aggregation function 'agg'),
+            or 'name:agg(field)' (aggregate field with 'agg' and return it as 'name').
+            The possible aggregation functions are the ones provided by PostgreSQL
+            (https://www.postgresql.org/docs/current/static/functions-aggregate.html)
+            and 'count_distinct', with the expected meaning.
+    :param list groupby: list of groupby descriptions by which the records will be grouped.
+            A groupby description is either a field (then it will be grouped by that field)
+            or a string 'field:groupby_function'.  Right now, the only functions supported
+            are 'day', 'week', 'month', 'quarter' or 'year', and they only make sense for
+            date/datetime fields.
+......
+```
+
+比較特別要注意的地方是 fields, groupby, lazy 這幾個欄位 (請參考註解說明:smile:).
+
+如果你想參考寫法, 建議參考 odoo14 的, odoo12 也可以使用, 但是有些寫法比較舊了.
+
+這邊使用 `sale.order` 當作範例,
+
+假設想要得到每個 partner_id 的平均 amount_total,
+
+```python
+self.env['sale.order'].read_group([], ['partner_id', 'amount_total:avg'], ['partner_id'])
+```
+
+![alt tag](https://i.imgur.com/6eyegIE.png)
+
+同等如下 SQL
+
+```sql
+SELECT partner_id, avg(amount_total)
+FROM sale_order
+GROUP BY partner_id;
+```
+
+注意:exclamation::exclamation:這邊 field 的格式為 `field:agg`.
+
+agg 代表 aggregate, odoo 的 orm 是有支援的, 更多詳細可參考 [postgresql functions-aggregate](https://www.postgresql.org/docs/current/functions-aggregate.html).
+
+假設想要得到每個 partner_id 的平均 amount_total 以及 總和 amount_total,
+
+```python
+self.env['sale.order'].read_group([], ['partner_id', 'total:sum(amount_total)', 'avg_total:avg(amount_total)'], ['partner_id'])
+```
+
+![alt tag](https://i.imgur.com/BhNR227.png)
+
+同等如下 SQL
+
+```sql
+SELECT partner_id, avg(amount_total), sum(amount_total)
+FROM sale_order
+GROUP BY partner_id;
+```
+
+注意:exclamation::exclamation:這邊的 fields 的格式為 `name:agg(field)`
+
+(因為是相同的 fields 名稱, 如果使用前一種寫法會錯誤)
+
+如果想要分的更細, 甚至可以再加上 fields, 這邊增加一個狀態
+
+```python
+self.env['sale.order'].read_group([], ['partner_id', 'total:sum(amount_total)', 'avg_total:avg(amount_total)'], ['partner_id', 'state'], lazy=False)
+```
+
+![alt tag](https://i.imgur.com/IaaFXae.png)
+
+同等如下 SQL
+
+```sql
+SELECT partner_id, state, avg(amount_total), sum(amount_total)
+FROM sale_order
+GROUP BY partner_id, state;
+```
+
+`lazy` 這個參數預設為 True, 也就代表只會拿第一個 field 下去分組,
+
+如果設定為 False, 就會把全部你所指定的 fields 都拿進去分組.
+
+根據 date_order 下去分組
+
+```python
+self.env['sale.order'].read_group([], ['total:sum(amount_total)'], ['date_order:month'])
+```
+
+同等如下 SQL
+
+```sql
+SELECT  DATE_TRUNC('month', date_order),
+		sum(amount_total)
+FROM sale_order
+GROUP BY DATE_TRUNC('month', date_order);
+```
+
+`day` `week` `month` `quarter` `year` 這些都是可用的參數.
+
+![alt tag](https://i.imgur.com/cp1zX6P.png)
+
 `search_count`
 
 ```python
