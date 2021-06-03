@@ -68,7 +68,10 @@
 
 24. [odoo 觀念 - orm cache 說明](demo_orm_cache)
 
-24. [odoo 觀念 - 使用 RAW SQL 說明](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-raw-sql-%E8%AA%AA%E6%98%8E)
+25. [odoo 觀念 - 使用 RAW SQL 說明](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-raw-sql-%E8%AA%AA%E6%98%8E)
+
+26. [odoo 14 觀念 - image mixin 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_image_mixin)
+
 
 ## 其他
 
