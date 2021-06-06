@@ -184,7 +184,7 @@ res.partner(11, 20)
 [{'id': 2, 'name': 'Hotel Expenses', 'employee_id': (1, 'Mitchell Admin')}, {'id': 1, 'name': 'Travel by Air', 'employee_id': (1, 'Mitchell Admin')}]
 ```
 
-* [Youtube Tutorial - odoo orm group 基本教學 - read_group(等待新增)]()
+* [Youtube Tutorial - odoo orm group 基本教學 - read_group](https://youtu.be/ALq6CcADygs)
 
 `read_group`
 

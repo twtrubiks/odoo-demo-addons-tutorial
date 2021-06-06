@@ -34,7 +34,8 @@
     <field name="model">demo.expense.tutorial</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree>
+      <tree decoration-info="'info' in name" decoration-muted="'muted' in name" decoration-danger="'danger' in name" decoration-bf="'bf' in name" decoration-warning="'warning' in name" decoration-success="'success' in name">
+      <!-- <tree default_order="sequence, id desc"> -->
         <field name="sequence" widget="handle"/>
         <field name="name"/>
         <field name="employee_id"/>

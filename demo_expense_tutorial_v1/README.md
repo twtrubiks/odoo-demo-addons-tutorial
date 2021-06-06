@@ -36,6 +36,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - odoo rainbow - part16](https://youtu.be/g4vywRLklE0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---odoo-rainbow---part16)
 
+* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-decoration---part17)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -978,6 +980,7 @@ class DemoExpenseTutorial(models.Model):
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
       <tree>
+      <!-- <tree default_order="sequence, id desc"> -->
         <field name="sequence" widget="handle"/>
         ......
       </tree>
@@ -985,6 +988,10 @@ class DemoExpenseTutorial(models.Model):
   </record>
 
 ```
+
+這邊補充一下, 除了在 model 中定義 order 之外, 也可以在 tree, kanban 上定義,
+
+像是 `<tree default_order="sequence, id desc">`.
 
 這樣就完成了, 你會發現 tree 可以排序了:smile:
 
@@ -1226,3 +1233,30 @@ def button_rainbow_man(self):
 ```
 
 ![alt tag](https://i.imgur.com/mn2hmox.png)
+
+### odoo 手把手教學 - tree decoration - part17
+
+* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17(等待新增)]()
+
+在 odoo 中有很多的 decoration 可以使用, 通常是搭配 tree 顯示特殊的資料.
+
+使用方法非常的簡單, 直接加上需要顯示的邏輯即可,
+
+可參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
+
+```xml
+......
+  <record id="view_tree_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial List</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <tree decoration-info="'info' in name" decoration-muted="'muted' in name" decoration-danger="'danger' in name" decoration-bf="'bf' in name" decoration-warning="'warning' in name" decoration-success="'success' in name">
+        ......
+      </tree>
+    </field>
+  </record>
+......
+```
+
+![alt tag](https://i.imgur.com/G6HLRhv.png)
