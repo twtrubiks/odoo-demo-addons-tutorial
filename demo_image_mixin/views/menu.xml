@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Demo Image Menu -->
+    <menuitem id="demo_image_menu"
+      name="Demo Image" />
+
+    <!-- Action to open the demo_Image list -->
+    <record id="action_demo_image" model="ir.actions.act_window">
+        <field name="name">Demo Image</field>
+        <field name="res_model">demo.image</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item to open the demo_Image list -->
+    <menuitem id="menu_demo_image"
+      name="Demo Image"
+	    action="action_demo_image"
+      parent="demo_image_menu" />
+</odoo>
+
+

@@ -52,6 +52,8 @@
 
 16. [odoo 觀念 - 如何使用 python xmlrpc 連接 odoo](xml-rpc-odoo)
 
+17. [odoo 觀念 - image mixin 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_image_mixin)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)

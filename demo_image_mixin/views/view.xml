@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_image" model="ir.ui.view">
+    <field name="name">Demo Image Form</field>
+    <field name="model">demo.image</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="name"/>
+          <field name="image_1920" widget="image" options="{'preview_image': 'image_128'}" />
+          <field name="image_256" widget="image"/>
+          <field name="image_128" widget="image"/>
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_image" model="ir.ui.view">
+    <field name="name">Demo Image List</field>
+    <field name="model">demo.image</field>
+    <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="image_128" widget="image"/>
+        </tree>
+    </field>
+  </record>
+
+</odoo>
