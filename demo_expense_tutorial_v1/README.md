@@ -36,7 +36,9 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - odoo rainbow - part16](https://youtu.be/g4vywRLklE0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---odoo-rainbow---part16)
 
-* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17(等待新增)]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-decoration---part17)
+* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17](https://youtu.be/tJdw6IEb8UQ) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-decoration---part17)
+
+* [Youtube Tutorial - odoo 手把手教學 - model _rec_name 說明 - part18](https://youtu.be/JtcSnbHNjAU) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---model-_rec_name-%E8%AA%AA%E6%98%8E---part18)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1236,7 +1238,7 @@ def button_rainbow_man(self):
 
 ### odoo 手把手教學 - tree decoration - part17
 
-* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17(等待新增)]()
+* [Youtube Tutorial - odoo 手把手教學 - tree decoration - part17](https://youtu.be/tJdw6IEb8UQ)
 
 在 odoo 中有很多的 decoration 可以使用, 通常是搭配 tree 顯示特殊的資料.
 
@@ -1260,3 +1262,49 @@ def button_rainbow_man(self):
 ```
 
 ![alt tag](https://i.imgur.com/G6HLRhv.png)
+
+關於 `decoration-{$name}` 的詳細說明, 可參考官方文件 [Advanced Views](https://www.odoo.com/documentation/12.0/developer/howtos/backend.html#advanced-views)
+
+### odoo 手把手教學 - model _rec_name 說明 - part18
+
+* [Youtube Tutorial - odoo 手把手教學 - model _rec_name 說明 - part18](https://youtu.be/JtcSnbHNjAU)
+
+今天要和大家介紹在 model 中有時會看到的 `_rec_name`,
+
+[models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+......
+class DemoTag(models.Model):
+    _name = 'demo.tag'
+    _description = 'Demo Tags'
+    _rec_name = 'complete_name'
+
+    name = fields.Char(string='Tag Name', index=True, required=True)
+    complete_name = fields.Char('Complete Name', compute='_compute_complete_name')
+    active = fields.Boolean(default=True, help="Set active.")
+
+    @api.depends('name')
+    def _compute_complete_name(self):
+        for record in self:
+            record.complete_name = 'hello world - {}'.format(record.name)
+......
+```
+
+首先, 你需要知道一件事, 如果你建立一個 model, 該 model 沒有特別定義 `name`, 且沒另外指定 `_rec_name`
+
+(如果沒特別指定 `_rec_name`, default 就是使用 `name`)
+
+通常這時候 odoo 的訊息會提醒你建議你設定 `name` field 或是指定 `_rec_name`.
+
+![alt tag](https://i.imgur.com/Pm4ggmV.png)
+
+但這只是 WARNING, 你也可以不要理他.
+
+但我的建議是, 如果你不指定 `name`, 就請特別去指定 `_rec_name`.
+
+當然, 如果你有設定了 `name`, 你也可以特別去指定 `_rec_name` 為其他的 field.
+
+這個 `name` 和 `_rec_name` 只是指定顯示的名稱而已.
+
+詳細的 demo 差異可以看影片的說明.

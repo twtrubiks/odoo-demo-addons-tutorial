@@ -3,9 +3,16 @@ from odoo import models, fields, api
 class DemoTag(models.Model):
     _name = 'demo.tag'
     _description = 'Demo Tags'
+    _rec_name = 'complete_name'
 
     name = fields.Char(string='Tag Name', index=True, required=True)
+    complete_name = fields.Char('Complete Name', compute='_compute_complete_name')
     active = fields.Boolean(default=True, help="Set active.")
+
+    @api.depends('name')
+    def _compute_complete_name(self):
+        for record in self:
+            record.complete_name = 'hello world - {}'.format(record.name)
 
 class DemoExpenseTutorial(models.Model):
     _name = 'demo.expense.tutorial'
