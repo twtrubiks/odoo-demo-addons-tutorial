@@ -33,7 +33,7 @@ class DemoExpenseTutorial(models.Model):
     # joined with an underscore and _rel appended at the end.
     # In the case of our books or authors relationship, it should be named demo_expense_tutorial_demo_tag_rel.
 
-    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id', string='Tges')
+    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id', string='Tges', copy=False)
     sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report")
 
     # Related (Reference) fields (不會存在 db)
@@ -43,6 +43,13 @@ class DemoExpenseTutorial(models.Model):
 
     sequence = fields.Integer(index=True, help="Gives the sequence order", default=1)
     active = fields.Boolean(default=True, help="Set active.")
+
+    @api.multi
+    def copy(self, default=None):
+        default = dict(default or {})
+        if not default.get('name'):
+            default['name'] = '{} copy'.format(self.name)
+        return super(DemoExpenseTutorial, self).copy(default)
 
     @api.multi
     def button_sheet_id(self):

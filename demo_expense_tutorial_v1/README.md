@@ -40,6 +40,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - model _rec_name 說明 - part18](https://youtu.be/JtcSnbHNjAU) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---model-_rec_name-%E8%AA%AA%E6%98%8E---part18)
 
+* [Youtube Tutorial - odoo 手把手教學 - copy override 說明 - part19](https://youtu.be/VDnIFb7e7wM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---copy-override-%E8%AA%AA%E6%98%8E---part19)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1308,3 +1310,64 @@ class DemoTag(models.Model):
 這個 `name` 和 `_rec_name` 只是指定顯示的名稱而已.
 
 詳細的 demo 差異可以看影片的說明.
+
+### odoo 手把手教學 - copy override 說明 - part19
+
+* [Youtube Tutorial - odoo 手把手教學 - copy override 說明 - part19](https://youtu.be/VDnIFb7e7wM)
+
+在 odoo 中有幾個比較特殊的 function, 分別是 `create` `write` `copy` `unlink`,
+
+`create` 建立一比 record 時.
+
+`write`  更新一比 record 時.
+
+`copy`   複製一比 record 時.
+
+`unlink` 刪除一比 record 時.
+
+今天來介紹 `copy` 當作範例, 其他的大家可以以此類推:smile:
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
+
+    name = fields.Char('Description', required=True)
+    ......
+
+    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id', string='Tges', copy=False)
+
+......
+
+    @api.multi
+    def copy(self, default=None):
+        default = dict(default or {})
+        if not default.get('name'):
+            default['name'] = '{} copy'.format(self.name)
+        return super(DemoExpenseTutorial, self).copy(default)
+```
+
+當點選 Duplicate 時, 會觸發這個 `copy`
+
+(在這邊做的事情是 override, 和之前介紹的繼承觀念其實是差不多的)
+
+![alt tag](https://i.imgur.com/44USuhK.png)
+
+你會發現 name 被加上 copy 了.
+
+![alt tag](https://i.imgur.com/mGenCa7.png)
+
+然後預設的 field 是 `copy=True`, 如果不想要他被 copy, 可以直接在 fields
+
+上設定 `copy=False`.
+
+最後要提醒大家, 在 odoo 中少用/小心使用 duplicate, 不然就是你要非常清楚裡面寫了甚麼,
+
+因為我很常用到複製出來的 record 有問題, 可能是翻譯, 又可能是複製出來的這比很奇怪,
+
+唯一的可能就是他的 copy 沒有寫好, 特殊的邏輯沒有補上去, 導致你複製出來的 record 行為很怪.
+
+基本上在要修改 `create` `write` `copy` `unlink` 時, 可以先想想有沒有比較簡單的方式能
+
+改動你的需求, 如果真的沒有, 才選擇改他:smirk:
