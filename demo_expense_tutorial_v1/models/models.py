@@ -70,6 +70,16 @@ class DemoExpenseTutorial(models.Model):
             }
         }
 
+    @api.multi
+    def button_act_url(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            # 'target': 'self',
+            'url': 'https://github.com/twtrubiks/odoo-demo-addons-tutorial',
+        }
+
     @api.onchange('user_id')
     def onchange_user_id(self):
         # domain

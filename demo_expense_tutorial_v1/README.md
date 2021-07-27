@@ -44,6 +44,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---move-position-%E8%AA%AA%E6%98%8E---part20)
 
+* [Youtube Tutorial - odoo 手把手教學 - ir.actions.act_url 說明 - part21]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---iractionsact_url-%E8%AA%AA%E6%98%8E---part21)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1411,3 +1413,21 @@ class DemoExpenseTutorial(models.Model):
 ![alt tag](https://i.imgur.com/Gek9iqM.png)
 
 有了這個東西, 以後單純想要交換兩個 fields, 只需要使用 move 即可, 不需要再整個 replace 了:smile:
+
+## odoo 手把手教學 - ir.actions.act_url 說明 - part21
+
+這部份很簡單, 只是要和大家說可以透過 `ir.actions.act_url` 來開始 url
+
+可參考 [models/models.py](models/models.py)
+
+```python
+@api.multi
+def button_act_url(self):
+    self.ensure_one()
+    return {
+        'type': 'ir.actions.act_url',
+        'target': 'new',
+        # 'target': 'self',
+        'url': 'https://github.com/twtrubiks/odoo-demo-addons-tutorial',
+    }
+```

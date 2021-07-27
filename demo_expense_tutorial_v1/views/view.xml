@@ -8,6 +8,7 @@
       <form string="Demo Expense Tutorial">
         <header>
           <button name="button_rainbow_man" string="Test Rainbow" type="object" class="oe_highlight o_expense_sheet_submit"/>
+          <button name="button_act_url" string="Test Act Url" type="object" class="oe_highlight o_expense_sheet_submit"/>
         </header>
         <sheet>
           <div class="oe_button_box" name="button_box">
