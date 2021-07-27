@@ -46,6 +46,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - ir.actions.act_url 說明 - part21]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---iractionsact_url-%E8%AA%AA%E6%98%8E---part21)
 
+* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---smart-button-%E8%AA%AA%E6%98%8E---part22)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1431,3 +1433,58 @@ def button_act_url(self):
         'url': 'https://github.com/twtrubiks/odoo-demo-addons-tutorial',
     }
 ```
+
+## odoo 手把手教學 - Smart Button 說明 - part22
+
+* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22]()
+
+甚麼是 Smart Button :question: 如果你常用 odoo, 你一定常看到這個東西,
+
+如下, 這就是所謂的 Smart Button
+
+![alt tag](https://i.imgur.com/Wu1l4Mg.png)
+
+其實之前就有介紹過 Smart Button 了, 今天就再順便說明要如何設計底下的那個數字
+
+首先, 你需要透過 compute 這個參數建立一個 fields (用來計算出這個數字)
+
+[models/models.py](models/models.py)
+
+```python
+......
+demo_expenses_count = fields.Integer(
+      compute='_compute_demo_expenses_count',
+      string='Demo Expenses Count')
+
+......
+
+def _compute_demo_expenses_count(self):
+    # usually used read_group
+    for record in self:
+        record.demo_expenses_count = len(self.expense_line_ids)
+......
+```
+
+在這邊只是簡單的算出數量而已(為了demo), 註解在這邊的意思是說, 通常都會使用 read_group
+
+來做計算 (可自行參考 odoo source code)
+
+最後, 自行將這個 fields 放到 view 中即可, 可參考 [views/view.xml](views/view.xml)
+
+```xml
+......
+<div class="oe_button_box" name="button_box">
+  <button class="oe_stat_button"
+          name="button_line_ids"
+          type="object"
+          attrs="{'invisible':[('expense_line_ids','=', False)]}"
+          icon="fa-bars">
+          <field name="demo_expenses_count" widget="statinfo" string="Counts"/>
+  </button>
+</div>
+......
+```
+
+效果如下
+
+![alt tag](https://i.imgur.com/62zKchb.png)

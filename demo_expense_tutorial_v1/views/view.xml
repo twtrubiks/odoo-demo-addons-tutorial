@@ -71,9 +71,13 @@
         </header>
         <sheet>
           <div class="oe_button_box" name="button_box">
-            <button class="oe_stat_button" name="button_line_ids"
-                    string="SHEET IDs" type="object"
-                    attrs="{'invisible':[('expense_line_ids','=', False)]}" icon="fa-bars"/>
+            <button class="oe_stat_button"
+                    name="button_line_ids"
+                    type="object"
+                    attrs="{'invisible':[('expense_line_ids','=', False)]}"
+                    icon="fa-bars">
+                    <field name="demo_expenses_count" widget="statinfo" string="Counts"/>
+            </button>
           </div>
           <group>
             <field name="name"/>

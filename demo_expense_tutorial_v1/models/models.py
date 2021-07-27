@@ -104,6 +104,10 @@ class DemoExpenseSheetTutorial(models.Model):
         'sheet_id', # field for "this" on related model
         string='Expense Lines')
 
+    demo_expenses_count = fields.Integer(
+        compute='_compute_demo_expenses_count',
+        string='Demo Expenses Count')
+
     @api.multi
     def add_demo_expense_record(self):
         # (0, _ , {'field': value}) creates a new record and links it to this one.
@@ -155,6 +159,11 @@ class DemoExpenseSheetTutorial(models.Model):
             'type': 'ir.actions.act_window',
             'domain': [('sheet_id', '=', self.id)],
         }
+
+    def _compute_demo_expenses_count(self):
+        # usually used read_group
+        for record in self:
+            record.demo_expenses_count = len(self.expense_line_ids)
 
     @api.multi
     def name_get(self):
