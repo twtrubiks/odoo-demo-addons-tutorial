@@ -42,6 +42,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - copy override 說明 - part19](https://youtu.be/VDnIFb7e7wM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---copy-override-%E8%AA%AA%E6%98%8E---part19)
 
+* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---move-position-%E8%AA%AA%E6%98%8E---part20)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1371,3 +1373,41 @@ class DemoExpenseTutorial(models.Model):
 基本上在要修改 `create` `write` `copy` `unlink` 時, 可以先想想有沒有比較簡單的方式能
 
 改動你的需求, 如果真的沒有, 才選擇改他:smirk:
+
+## odoo 手把手教學 - move position 說明 - part20
+
+* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20]()
+
+在 odoo 中常常容易使用到繼承的方式改寫 view, 最常見的 position 就是 after, before, replace,
+
+但有時候會有一種狀況, 就是單純想要交換兩個既有的 fields 位置 (不使用直接在 odoo 上面改, 不推薦),
+
+例如, 下面這個已經存在的 view, 希望交換 Employee 和 Description 的位置,
+
+![alt tag](https://i.imgur.com/EsmRtpu.png)
+
+假設這個 view 只能使用繼承的方式修改, 這時候通常很麻煩, 因為有可能你的作法是把整個 tree 去 replace 掉,
+
+再自己去排版, 但為了幾個 fields 就去 replace 掉整個 view, 真得有點麻煩:expressionless:
+
+所以, 今天來認識 move position 這個東西, 寫法可參考 [view.xml](views/view.xml)
+
+```xml
+<!-- change name, employee_id fields-->
+<record id="view_tree_demo_expense_tutorial_move" model="ir.ui.view">
+  <field name="name">view_tree_demo_expense_tutorial_move</field>
+  <field name="model">demo.expense.tutorial</field>
+  <field name="inherit_id" ref="demo_expense_tutorial_v1.view_tree_demo_expense_tutorial"/>
+  <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="before">
+        <field name="employee_id" position="move"/>
+      </xpath>
+  </field>
+</record>
+```
+
+基本上就是在要移動的 fields 上的後面加上 `position="move"` 即可, 效果如下
+
+![alt tag](https://i.imgur.com/Gek9iqM.png)
+
+有了這個東西, 以後單純想要交換兩個 fields, 只需要使用 move 即可, 不需要再整個 replace 了:smile:

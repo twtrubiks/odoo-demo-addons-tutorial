@@ -46,6 +46,17 @@
     </field>
   </record>
 
+  <!-- change name, employee_id fields-->
+  <record id="view_tree_demo_expense_tutorial_move" model="ir.ui.view">
+    <field name="name">view_tree_demo_expense_tutorial_move</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="inherit_id" ref="demo_expense_tutorial_v1.view_tree_demo_expense_tutorial"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='name']" position="before">
+          <field name="employee_id" position="move"/>
+        </xpath>
+    </field>
+  </record>
 
   <record id="view_form_demo_expense_sheet_tutorial" model="ir.ui.view">
     <field name="name">Demo Expense Sheet Tutorial Form</field>
