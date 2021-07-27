@@ -7,6 +7,7 @@
     <field name="arch" type="xml">
       <form string="Demo Expense Tutorial">
         <sheet>
+          <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
           <div class="oe_button_box" name="button_box">
             <button class="oe_stat_button" name="button_sheet_id"
                     string="SHEET ID" type="object"
@@ -20,6 +21,7 @@
             <field name="tag_ids" widget="many2many_tags"/> <!-- widget -->
             <field name="sheet_id"/>
             <field name="gender"/>
+            <field name="active" invisible="1"/>
           </group>
         </sheet>
       </form>

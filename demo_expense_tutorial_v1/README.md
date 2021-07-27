@@ -22,6 +22,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - tree create delete edit False - part9](https://youtu.be/0fpA89QcYZM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
 
+* [Youtube Tutorial - odoo 手把手教學 - Active Archive Ribbon 教學 - part10]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---active-archive-ribbon-%E6%95%99%E5%AD%B8---part10)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -837,3 +839,45 @@ def replace_demo_expense_record(self):
 你會發現 create delete 的按鈕都消失了
 
 ![alt tag](https://i.imgur.com/siLhdQ4.png)
+
+
+### odoo 手把手教學 - Active Archive Ribbon 教學 - part10
+
+* [Youtube Tutorial - odoo 手把手教學 - Active Archive Ribbon 教學 - part10]()
+
+在 odoo 中, `active` 這個字段是有特殊意義的,
+
+一般來說, 當你進入 form 的 view 底下, 你會看到這個 action
+
+![alt tag](https://i.imgur.com/bjFJDPJ.png)
+
+如果你在 model 中有了 `active` fields, 而且有將他放在該 form 底下(儘管你是隱藏)
+
+在 odoo14 中, 會自動出現 Archive 的選項
+
+![alt tag](https://i.imgur.com/GIsrvd2.png)
+
+然後, 你也可以再加一個 odoo14 中的 Ribbon
+
+![alt tag](https://i.imgur.com/ovupHAk.png)
+
+寫法如下, 可參考 [views/view.xml](views/view.xml)
+
+```xml
+<record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+  <field name="name">Demo Expense Tutorial Form</field>
+  <field name="model">demo.expense.tutorial</field>
+  <field name="arch" type="xml">
+    <form string="Demo Expense Tutorial">
+      <sheet>
+        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+        ......
+        <group>
+          ......
+          <field name="active" invisible="1"/>
+        </group>
+      </sheet>
+    </form>
+  </field>
+</record>
+```
