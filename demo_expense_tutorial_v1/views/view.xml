@@ -101,6 +101,13 @@
               <filter string="Sheet" name="sheet" domain="[]" context="{'group_by': 'sheet_id'}"/>
               <filter string="Employee" name="employee" domain="[]" context="{'group_by': 'employee_id'}"/>
             </group>
+            <searchpanel>
+              <field name="employee_id" select="multi" icon="fa-building" enable_counters="1"/>
+              <field name="sheet_id" icon="fa-users" enable_counters="1"/>
+              <field name="gender" icon="fa-cutlery" enable_counters="1" color="#d10202"/>
+              <!-- error example -->
+              <!-- <field name="tag_ids" icon="fa-users"/> -->
+            </searchpanel>
         </search>
     </field>
   </record>

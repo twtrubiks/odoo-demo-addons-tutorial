@@ -31,7 +31,7 @@ class DemoExpenseTutorial(models.Model):
     # Related (Reference) fields (不會存在 db)
     # readonly default 為 True
     # store default 為 False
-    gender = fields.Selection(string='Gender', related='employee_id.gender')
+    gender = fields.Selection(string='Gender', related='employee_id.gender', store=True)
     active = fields.Boolean(default=True, help="Set active.")
 
     def button_sheet_id(self):

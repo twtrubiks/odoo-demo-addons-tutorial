@@ -22,7 +22,9 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - tree create delete edit False - part9](https://youtu.be/0fpA89QcYZM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---tree-create-delete-edit-false---part9)
 
-* [Youtube Tutorial - odoo 手把手教學 - Active Archive Ribbon 教學 - part10]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---active-archive-ribbon-%E6%95%99%E5%AD%B8---part10)
+* [Youtube Tutorial - odoo14 手把手教學 - Active Archive Ribbon 教學 - part10](https://youtu.be/thhdGK9oebg) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---active-archive-ribbon-%E6%95%99%E5%AD%B8---part10)
+
+* [Youtube Tutorial - odoo14 手把手教學 - Search Panel 教學 - part11](https://youtu.be/tZ6_2Q3r3Ok) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---search-panel-%E6%95%99%E5%AD%B8---part11)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -841,9 +843,9 @@ def replace_demo_expense_record(self):
 ![alt tag](https://i.imgur.com/siLhdQ4.png)
 
 
-### odoo 手把手教學 - Active Archive Ribbon 教學 - part10
+### odoo14 手把手教學 - Active Archive Ribbon 教學 - part10
 
-* [Youtube Tutorial - odoo 手把手教學 - Active Archive Ribbon 教學 - part10]()
+* [Youtube Tutorial - odoo14 手把手教學 - Active Archive Ribbon 教學 - part10](https://youtu.be/thhdGK9oebg)
 
 在 odoo 中, `active` 這個字段是有特殊意義的,
 
@@ -880,4 +882,59 @@ def replace_demo_expense_record(self):
     </form>
   </field>
 </record>
+```
+
+### odoo14 手把手教學 - Search Panel 教學 - part11
+
+* [Youtube Tutorial - odoo14 手把手教學 - Search Panel 教學 - part11](https://youtu.be/tZ6_2Q3r3Ok)
+
+在 odoo14 中, 原生就多了 Search Panel 可以使用, 今天就來看看這個東西:smile:
+
+下圖就是所謂的 Search Panel
+
+![alt tag](https://i.imgur.com/V5YA2wJ.png)
+
+寫法也不難, 就是在 search 底下再加上 searchpanel, 可參考 [views/view.xml](views/view.xml)
+
+```xml
+......
+<record id="view_filter_demo_expense_tutorial" model="ir.ui.view">
+  <field name="name">Demo Expense Tutorial Filter</field>
+  <field name="model">demo.expense.tutorial</field>
+  <field name="arch" type="xml">
+      <search string="Demo Expense Tutorial Filter">
+          ......
+          <searchpanel>
+            <field name="employee_id" select="multi" icon="fa-building" enable_counters="1"/>
+            <field name="sheet_id" icon="fa-users" enable_counters="1"/>
+            <field name="gender" icon="fa-cutlery" enable_counters="1" color="#d10202"/>
+            <!-- error example -->
+            <!-- <field name="tag_ids" icon="fa-users"/> -->
+          </searchpanel>
+      </search>
+  </field>
+</record>
+......
+```
+
+`select="multi"` 是否可以多選.
+
+`icon="fa-building"` icon 圖示顯示.
+
+`enable_counters="1"` 是否顯示數量.
+
+`color="#d10202"` color 顯示.
+
+另外, 註解的部份只是和大家說明, many2many 是不支援的, 在 odoo14 中, 錯誤訊息愈來愈清楚了,
+
+如果你把註解打開, 更新後你會看到這個錯誤訊息
+
+![alt tag](https://i.imgur.com/QWQ8Z76.png)
+
+另外, 放在 searchpanel 裡的東西必須是 `store=True`, 否則也會錯誤.(但 odoo 也會提醒你)
+
+可參考 [models/models.py](models/models.py)
+
+```python
+gender = fields.Selection(string='Gender', related='employee_id.gender', store=True)
 ```
