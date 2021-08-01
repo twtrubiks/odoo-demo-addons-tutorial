@@ -42,11 +42,11 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - copy override 說明 - part19](https://youtu.be/VDnIFb7e7wM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---copy-override-%E8%AA%AA%E6%98%8E---part19)
 
-* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---move-position-%E8%AA%AA%E6%98%8E---part20)
+* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20](https://youtu.be/l-bFOqTYgTA) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---move-position-%E8%AA%AA%E6%98%8E---part20)
 
-* [Youtube Tutorial - odoo 手把手教學 - ir.actions.act_url 說明 - part21]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---iractionsact_url-%E8%AA%AA%E6%98%8E---part21)
+* odoo 手把手教學 - ir.actions.act_url 說明 - part21 - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---iractionsact_url-%E8%AA%AA%E6%98%8E---part21)
 
-* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---smart-button-%E8%AA%AA%E6%98%8E---part22)
+* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22](https://youtu.be/fsZK1KRgnF0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---smart-button-%E8%AA%AA%E6%98%8E---part22)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1380,7 +1380,7 @@ class DemoExpenseTutorial(models.Model):
 
 ## odoo 手把手教學 - move position 說明 - part20
 
-* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20]()
+* [Youtube Tutorial - odoo 手把手教學 - move position 說明 - part20](https://youtu.be/l-bFOqTYgTA)
 
 在 odoo 中常常容易使用到繼承的方式改寫 view, 最常見的 position 就是 after, before, replace,
 
@@ -1436,7 +1436,7 @@ def button_act_url(self):
 
 ## odoo 手把手教學 - Smart Button 說明 - part22
 
-* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22]()
+* [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22](https://youtu.be/fsZK1KRgnF0)
 
 甚麼是 Smart Button :question: 如果你常用 odoo, 你一定常看到這個東西,
 
