@@ -19,6 +19,10 @@
           <group>
             <field name="name"/>
             <field name="employee_id"/>
+            <!-- <field name="employee_id" options="{'no_quick_create': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_create_edit': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_create': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_open': True}"/> -->
             <field name="user_id"/>
             <!-- <field name="tag_ids"/> -->
             <field name="tag_ids" widget="many2many_tags"/> <!-- widget -->

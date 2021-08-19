@@ -48,6 +48,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22](https://youtu.be/fsZK1KRgnF0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---smart-button-%E8%AA%AA%E6%98%8E---part22)
 
+* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23]()- [文章快速連結]()
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1488,3 +1490,56 @@ def _compute_demo_expenses_count(self):
 效果如下
 
 ![alt tag](https://i.imgur.com/62zKchb.png)
+
+## odoo 手把手教學 - options create_edit 說明 - part23
+
+* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23]()
+
+今天要來介紹 `options` 這個參數,
+
+請參考 [view.xml](odoo-backup/demo_expense_tutorial_v1/views/view.xml)
+
+```xml
+  <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        ......
+            <field name="name"/>
+            <field name="employee_id"/>
+            <!-- <field name="employee_id" options="{'no_quick_create': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_create_edit': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_create': True}"/> -->
+            <!-- <field name="employee_id" options="{'no_open': True}"/> -->
+        ......
+      </form>
+    </field>
+  </record>
+```
+
+在一般的情況下 (不設定任何的 `option`), 顯示如下,
+
+![alt tag](https://i.imgur.com/pfQFJOp.png)
+
+![alt tag](https://i.imgur.com/OGES89X.png)
+
+以下是每一種 option 呈現的效果, 大家可以自行玩玩看:smile:
+
+no_quick_create
+
+![alt tag](https://i.imgur.com/Sa2ClYv.png)
+
+no_create_edit
+
+![alt tag](https://i.imgur.com/B3OoDub.png)
+
+no_create
+
+![alt tag](https://i.imgur.com/Sa2ClYv.png)
+
+no_open
+
+![alt tag](https://i.imgur.com/I1tcv9o.png)
+
+當然, 如果你的需求是多個組合, 也可以多個一起使用.
