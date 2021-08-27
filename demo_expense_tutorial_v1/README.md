@@ -48,7 +48,9 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - Smart Button 說明 - part22](https://youtu.be/fsZK1KRgnF0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---smart-button-%E8%AA%AA%E6%98%8E---part22)
 
-* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23]()- [文章快速連結]()
+* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23](https://youtu.be/GdPKllI7quI) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---options-create_edit-%E8%AA%AA%E6%98%8E---part23)
+
+* [Youtube Tutorial - odoo 手把手教學 - PostgreSQL ondelete cascade 說明 - part24](https://youtu.be/OTh5R2LrwJE) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---postgresql-ondelete-cascade-%E8%AA%AA%E6%98%8E---part24)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1493,11 +1495,11 @@ def _compute_demo_expenses_count(self):
 
 ## odoo 手把手教學 - options create_edit 說明 - part23
 
-* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23]()
+* [Youtube Tutorial - odoo 手把手教學 - options create_edit 說明 - part23](https://youtu.be/GdPKllI7quI)
 
 今天要來介紹 `options` 這個參數,
 
-請參考 [view.xml](odoo-backup/demo_expense_tutorial_v1/views/view.xml)
+請參考 [view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
 
 ```xml
   <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
@@ -1526,20 +1528,109 @@ def _compute_demo_expenses_count(self):
 
 以下是每一種 option 呈現的效果, 大家可以自行玩玩看:smile:
 
-no_quick_create
+`no_quick_create`
 
 ![alt tag](https://i.imgur.com/Sa2ClYv.png)
 
-no_create_edit
+`no_create_edit`
 
 ![alt tag](https://i.imgur.com/B3OoDub.png)
 
-no_create
+`no_create`
 
 ![alt tag](https://i.imgur.com/Sa2ClYv.png)
 
-no_open
+`no_open`
 
 ![alt tag](https://i.imgur.com/I1tcv9o.png)
 
 當然, 如果你的需求是多個組合, 也可以多個一起使用.
+
+## odoo 手把手教學 - PostgreSQL ondelete cascade 說明 - part24
+
+* [Youtube Tutorial - odoo 手把手教學 - PostgreSQL ondelete cascade 說明 - part24](https://youtu.be/OTh5R2LrwJE)
+
+今天要介紹 Many2one fields 中的 `ondelete="cascade"` 參數代表的意思,
+
+這邊要先說明一下, `ondelete='cascade'` 這個東西並不是 odoo 的, 它是 PostgreSQL 的特性:exclamation:
+
+使用方法很簡單, 如下, 可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+......
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    ......
+    sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete='cascade')
+    ......
+
+class DemoExpenseSheetTutorial(models.Model):
+    _name = 'demo.expense.sheet.tutorial'
+
+    ......
+    expense_line_ids = fields.One2many(
+        'demo.expense.tutorial', # related model
+        'sheet_id', # field for "this" on related model
+        string='Expense Lines')
+    ......
+```
+
+在開始介紹之前, 大致上除了 `'cascade'` 之外, 還有其他幾個選項, 如下分別是
+
+說明 `ondelete='set null'`
+
+這個是 default, 可參考 odoo `fields.py` 中的 Many2one 說明(如下).
+
+```python
+......
+class Many2one(_Relational):
+    """ The value of such a field is a recordset of size 0 (no
+    ......
+
+    :param ondelete: what to do when the referred record is deleted;
+        possible values are: ``'set null'``, ``'restrict'``, ``'cascade'``
+
+    ......
+    """
+    ......
+    _slots = {
+        'ondelete': 'set null',         # what to do when value is deleted
+        'auto_join': False,             # whether joins are generated upon search
+        'delegate': False,              # whether self implements delegation
+    }
+......
+```
+
+( 如果文章看的不是很清楚, 請參考影片中的說明, 我會一個一個說明 :sunglasses: )
+
+說明 `ondelete='set null'` (預設行為)
+
+如果直接刪除 `sheet_id` ( 底下有很多`expense_line_ids`), 可以成功刪除 `sheet_id`, 但你會發現
+
+`expense_line_ids` 並沒有被刪除 ( `sheet_id` 變為 `null`).
+
+說明 `ondelete='cascade'`
+
+如果直接刪除 `sheet_id` ( 底下有很多`expense_line_ids`), 可以成功刪除 `sheet_id`, 且你會發現
+
+`expense_line_ids` 也自動都被移除了.
+
+說明 `ondelete='restrict'`
+
+如果直接刪除 `sheet_id` ( 底下有很多`expense_line_ids`), 無法刪除 `sheet_id`,
+
+![alt tag](https://i.imgur.com/F42UMyz.png)
+
+你必需先移除 `sheet_id` 底下的 `expense_line_ids`, 才可以刪除 `sheet_id`.
+
+其實, 你可以把他們想成是 child 和 parent 的關係即可:smile:
+
+要如何知道 fields 有 `ondelete='....'` 之類的特性呢:question:
+
+除了可以透過 code 或 odoo 的 model fields 中查看之外,
+
+![alt tag](https://i.imgur.com/yaLqCTw.png)
+
+也可以利用查看 db table 的工具 (pgadmin4)
+
+![alt tag](https://i.imgur.com/YnRY3pX.png)
