@@ -52,6 +52,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - PostgreSQL ondelete cascade 說明 - part24](https://youtu.be/OTh5R2LrwJE) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---postgresql-ondelete-cascade-%E8%AA%AA%E6%98%8E---part24)
 
+* [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明 - part25](https://youtu.be/OOlPZETkYKw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---auto_join-%E8%AA%AA%E6%98%8E)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
