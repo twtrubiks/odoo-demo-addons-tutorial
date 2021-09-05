@@ -26,6 +26,8 @@
 
 * [Youtube Tutorial - odoo14 手把手教學 - Search Panel 教學 - part11](https://youtu.be/tZ6_2Q3r3Ok) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---search-panel-%E6%95%99%E5%AD%B8---part11)
 
+* [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明 - part12](https://youtu.be/OOlPZETkYKw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---auto_join-%E8%AA%AA%E6%98%8E)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -938,3 +940,118 @@ def replace_demo_expense_record(self):
 ```python
 gender = fields.Selection(string='Gender', related='employee_id.gender', store=True)
 ```
+
+### odoo14 手把手教學 - auto_join 說明
+
+* [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明](https://youtu.be/OOlPZETkYKw)
+
+今天要來介紹在 `Many2one` `One2many` `Many2many` 中有個參數是 `auto_join`,
+
+預設都是 False, 可參考 soucecode 中的 `odoo/fields.py`
+
+```python
+
+class Many2one(_Relational):
+    ......
+    type = 'many2one'
+    column_type = ('int4', 'int4')
+
+    ondelete = None                     # what to do when value is deleted
+    auto_join = False                   # whether joins are generated upon search
+    delegate = False                    # whether self implements delegation
+......
+```
+
+`auto_join` 的主要功能就是允許 ORM 使用 join 的方式撈資料(用的好的話效能會更好:smile:)
+
+使用方法也很簡單, 直接加上 `auto_join=True` 即可
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
+
+    name = fields.Char('Description', required=True)
+    sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete="cascade", auto_join=True)
+......
+
+class DemoExpenseSheetTutorial(models.Model):
+    _name = 'demo.expense.sheet.tutorial'
+    _description = 'Demo Expense Sheet Tutorial'
+
+    name = fields.Char('Expense Demo Report Summary', required=True)
+
+    # One2many is a virtual relationship, there must be a Many2one field in the other_model,
+    # and its name must be related_field
+    expense_line_ids = fields.One2many(
+        'demo.expense.tutorial', # related model
+        'sheet_id', # field for "this" on related model
+        string='Expense Lines')
+.....
+```
+
+至於要怎麼樣看到 `auto_join` 的變化, 就需要從 RAW SQL下去觀察:exclamation:
+
+可參考之前的教學 [odoo 手把手教學 - 如何透過 log_level 了解 ORM RAW SQL](https://github.com/twtrubiks/odoo-docker-tutorial#odoo---%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-log_level-%E4%BA%86%E8%A7%A3-orm-raw-sql)
+
+現在我們先來看 `auto_join=False` 的情況
+
+```python
+sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete="cascade", auto_join=False)
+```
+
+使用 shell 執行
+
+```pythom
+self.env['demo.expense.tutorial'].search([('sheet_id.name', '=', '111')])
+```
+
+你可以發現他是使用 Subquery 的方式下去撈資料
+
+```sql
+SELECT "demo_expense_tutorial".id
+FROM "demo_expense_tutorial"
+WHERE (("demo_expense_tutorial"."active" = TRUE)
+       AND ("demo_expense_tutorial"."sheet_id" in
+              (SELECT "demo_expense_sheet_tutorial".id
+               FROM "demo_expense_sheet_tutorial"
+               WHERE ("demo_expense_sheet_tutorial"."name" = '111')
+               ORDER BY "demo_expense_sheet_tutorial"."id")))
+ORDER BY "demo_expense_tutorial"."id"
+```
+
+接著來看 `auto_join=True` 的情況
+
+```python
+sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete="cascade", auto_join=True)
+```
+
+使用 shell 執行
+
+```pythom
+self.env['demo.expense.tutorial'].search([('sheet_id.name', '=', '111')])
+```
+
+你可以發現他是使用 Left join 的方式下去撈資料
+
+```sql
+SELECT "demo_expense_tutorial".id
+FROM "demo_expense_tutorial"
+LEFT JOIN "demo_expense_sheet_tutorial" AS "sheet" ON ("demo_expense_tutorial"."sheet_id" = "sheet"."id")
+WHERE (("demo_expense_tutorial"."active" = TRUE)
+       AND ("sheet"."name" = '111'))
+ORDER BY "demo_expense_tutorial"."id"
+```
+
+另外, 在 odoo12 的時候有相關的 issues 可參考 [auto_join incorrect results...](https://github.com/odoo/odoo/issues/25175)
+
+簡單說就是在 odoo12 中的 `auto_join` 是使用 inner join 的方法, 而現在已經改成了 left join:smile:
+
+在 odoo12 中如果你是用 `auto_join=True` 並且執行以下的 ORM 會有 bug
+
+```python
+self.env['demo.expense.tutorial'].search(['|', ('sheet_id.name', '=', '111'), ('sheet_id', '=', False)])
+```
+
+在 odoo12 中你會撈不出 `('sheet_id', '=', False)`, 原因是因為他是使用 inner join 的概念.
