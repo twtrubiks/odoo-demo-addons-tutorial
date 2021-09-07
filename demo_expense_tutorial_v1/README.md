@@ -54,6 +54,8 @@
 
 * [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明 - part25](https://youtu.be/OOlPZETkYKw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---auto_join-%E8%AA%AA%E6%98%8E)
 
+* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-parent-%E8%AA%AA%E6%98%8E---part26)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1636,3 +1638,92 @@ class Many2one(_Relational):
 也可以利用查看 db table 的工具 (pgadmin4)
 
 ![alt tag](https://i.imgur.com/YnRY3pX.png)
+
+## odoo 手把手教學 - view parent 說明 - part26
+
+* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26]()
+
+在 view 中可以透過 `parent` 這個值, 拿到 `parent` 的 `fields` 內容 (可能有點繞口:smile:)
+
+不懂沒關係, 請看以下的說明:smile:
+
+通常會使用在 view 中的 domain 或是 attrs,
+
+首先, 先看一下 [models/models.py](models/models.py)
+
+```python
+......
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    _description = 'Demo Expense Tutorial'
+    _order = "sequence, id desc"
+
+    name = fields.Char('Description', required=True)
+    ......
+    sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete='restrict')
+
+......
+
+class DemoExpenseSheetTutorial(models.Model):
+    _name = 'demo.expense.sheet.tutorial'
+    _description = 'Demo Expense Sheet Tutorial'
+
+    name = fields.Char('Expense Demo Report Summary', required=True)
+
+    # One2many is a virtual relationship, there must be a Many2one field in the other_model,
+    # and its name must be related_field
+    expense_line_ids = fields.One2many(
+        'demo.expense.tutorial', # related model
+        'sheet_id', # field for "this" on related model
+        string='Expense Lines')
+......
+```
+
+接著看 [views/view.xml](views/view.xml)
+
+```xml
+......
+  <record id="view_form_demo_expense_sheet_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Sheet Tutorial Form</field>
+    <field name="model">demo.expense.sheet.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Sheet Tutorial">
+      ......
+          <group>
+            <field name="name"/>
+          </group>
+          <notebook>
+              <page string="Expense">
+                <field name="expense_line_ids" >
+                  <!-- <tree> -->
+                  <tree editable="top">   <!-- <<<<<<<<<<<< -->
+                  <!-- <tree editable="bottom"> --> <!-- <<<<<<<<<<<< -->
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('parent.name', '=', 'test-readonly')]}"/>
+                  </tree>
+                </field>
+              </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+......
+```
+
+主要請看 `<field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('parent.name', '=', 'test-readonly')]}"/>`
+
+當 sheet 的 `name` 為 `test-readonly` 的時候, `tag_ids` 這個 fields 會變成 `readonly`.
+
+![alt tag](https://i.imgur.com/u0CMNR5.png)
+
+請注意:exclamation: 我們並沒有 `parent` 這個欄位, 但是在 view 中可以透過這種方式使用 parent (也就是 sheet ) 的東西.
+
+當 sheet 的 `name` 不是 `test-readonly` 時, `tag_ids` 這個 fields 會變成可以 edit(不是`readonly`).
+
+![alt tag](https://i.imgur.com/PfFlKZN.png)
+
+另外一點要注意的是, 請使用 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效:exclamation:
+
+`editable` 的效果可參考之前的介紹 [odoo 手把手教學 - One2many Editable Bottom and Top](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many-editable-bottom-and-top---part3-1)
