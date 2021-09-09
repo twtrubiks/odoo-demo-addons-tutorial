@@ -1,5 +1,6 @@
 from odoo import models, fields, api, tools
-from odoo.exceptions import UserError, ValidationError
+from odoo.exceptions import ValidationError
+from datetime import datetime
 
 class DemoOdooTutorial(models.Model):
     _name = 'demo.odoo.tutorial'
@@ -73,6 +74,10 @@ class DemoOdooTutorial(models.Model):
         print('self.env.cr.fetchall:', self.env.cr.fetchall())
         # print('self.env.cr.fetchone:', self.env.cr.fetchone())
         # print('self.env.cr.dictfetchall:', self.env.cr.dictfetchall())
+
+    def get_custom_portal_date(self):
+        str_time = datetime.strftime(self.start_datetime, '%Y/%m/%d')
+        return '>{}<'.format(str_time)
 
 class DemoOdooTutorialStatistics(models.Model):
     _name = 'demo.odoo.tutorial.statistics'

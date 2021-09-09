@@ -625,6 +625,60 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 
 ![alt tag](https://i.imgur.com/kHYQhGR.png)
 
+除了這些, 在 QWeb 中還可以實作出不少變化:smile:
+
+report 和 controller 中的 view 都是 QWeb, 以下使用 report 中的 view 示範,
+
+繼續來看 [views/demo_odoo_template.xml](views/demo_odoo_template.xml)
+
+```xml
+<template id="report_demo_odoo_tutorial">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    ......
+                    <div>
+                        <strong>start datetime:</strong>
+                        <p t-field="o.start_datetime"/>
+                    </div>
+                    <div>
+                        <strong>stop datetime:</strong>
+                        <p t-field="o.stop_datetime" t-options='{"format": "Y/MM/dd"}'/>
+                    </div>
+                    <div>
+                        <strong>custom start datetime:</strong>
+                        <p t-esc="o.get_custom_portal_date()"/>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+```
+
+可以透過 `t-options='{"format": "Y/MM/dd"}'` 來改變日期格式.
+
+也可以透過 model 的方式設定新的邏輯 `t-esc="o.get_custom_portal_date()"`
+
+model 實作的部份請參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/models/models.py)
+
+```python
+class DemoOdooTutorial(models.Model):
+    ......
+
+    start_datetime = fields.Datetime('Start DateTime', default=fields.Datetime.now())
+    ......
+
+    def get_custom_portal_date(self):
+        str_time = datetime.strftime(self.start_datetime, '%Y/%m/%d')
+        return '>{}<'.format(str_time)
+```
+
+效果如下圖
+
+![alt tag](https://i.imgur.com/9lxOsRK.png)
+
 ### 說明 odoo manifest 中的 auto_install
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q)

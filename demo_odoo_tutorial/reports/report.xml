@@ -14,6 +14,18 @@
                             <strong>Name_track_always:</strong>
                             <p t-field="o.name_track_always"/>
                         </div>
+                        <div>
+                            <strong>start datetime:</strong>
+                            <p t-field="o.start_datetime"/>
+                        </div>
+                        <div>
+                            <strong>stop datetime:</strong>
+                            <p t-field="o.stop_datetime" t-options='{"format": "Y/MM/dd"}'/>
+                        </div>
+                        <div>
+                            <strong>custom start datetime:</strong>
+                            <p t-esc="o.get_custom_portal_date()"/>
+                        </div>
                     </div>
                 </t>
             </t>
