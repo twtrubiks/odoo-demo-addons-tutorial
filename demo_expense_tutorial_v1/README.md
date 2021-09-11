@@ -391,6 +391,11 @@ class DemoExpenseTutorial(models.Model):
   <field name="arch" type="xml">
       <search string="Demo Expense Tutorial Filter">
           <field name="name" string="Name"/>
+          <field name="employee_id" filter_domain="['|', ('employee_id', 'ilike', self), ('user_id', 'ilike', self)]" string="User"/>
+          <filter name="filter_inactive" domain="[('active','=',False)]" string="Inactive"/>
+          <filter name="gender" domain="[('gender','=','male')]" string="Male"/>
+          <separator/>
+          <filter name="name" domain="[('name', 'ilike', 'a')]" string="Name_2"/>
           <group expand="0" string="Group By">
             <filter string="Sheet" name="sheet" domain="[]" context="{'group_by': 'sheet_id'}"/>
             <filter string="Employee" name="employee" domain="[]" context="{'group_by': 'employee_id'}"/>
@@ -401,9 +406,25 @@ class DemoExpenseTutorial(models.Model):
 ......
 ```
 
-`<field name="name" string="Name"/>` 主要是在 tree 中搜尋
+主要都是在 tree 中搜尋, 可參考上面的 code 去看對應的邏輯
 
-![alt tag](https://i.imgur.com/eBmc2Je.png)
+![alt tag](https://i.imgur.com/NIrhMBG.png)
+
+![alt tag](https://i.imgur.com/C4TyIaF.png)
+
+`<field name="employee_id" filter_domain="['|', ('employee_id', 'ilike', self), ('user_id', 'ilike', self)]" string="User"/>`
+
+特別說明一下這個, `self` 代表使用者輸入的內容.
+
+`<separator>` 代表 `and`, 如果沒寫則代表 `or`.
+
+`and`
+
+![alt tag](https://i.imgur.com/vZ74GyY.png)
+
+`or`
+
+![alt tag](https://i.imgur.com/mhHdRrW.png)
 
 `<filter string="Sheet" name="sheet" domain="[]" context="{'group_by': 'sheet_id'}"/>`
 

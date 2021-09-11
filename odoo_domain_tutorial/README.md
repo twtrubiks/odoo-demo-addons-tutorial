@@ -36,7 +36,13 @@ domain = [A, B, C]
 
 上述代表 (A AND B) AND C
 
-如果都是 AND 的情況下, 上述兩個可以看程是相等的.
+如果都是 AND 的情況下, 上述兩個可以看成是相等的.
+
+```python
+domain = ['|', A, B, C]
+```
+
+上述代表 (A OR B) AND C
 
 ```python
 domain = [A, B, '|', C, D]
@@ -49,12 +55,6 @@ domain = ['|', A, B, C, D]
 ```
 上述代表 ((A OR B) AND C ) AND D
 
-```python
-domain = ['|', A, B, C]
-```
-
-上述代表 (A OR B) AND C
-
 接下來看一個比較複雜的
 
 ```python
@@ -65,7 +65,7 @@ domain = ['|', A, '!', '&', B, C]
 
 也等於 A OR ( NOT (B AND C))
 
-推薦這個網站, 他可以幫助你檢查你的邏輯是不是相同的 [wolframalpha](https://www.wolframalpha.com)
+推薦這個網站, 他可以幫助你檢查邏輯是不是相同的 [wolframalpha](https://www.wolframalpha.com)
 
 如果你和我一樣實在還是搞不懂 波蘭表示法
 

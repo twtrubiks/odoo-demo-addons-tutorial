@@ -121,6 +121,11 @@
     <field name="arch" type="xml">
         <search string="Demo Expense Tutorial Filter">
             <field name="name" string="Name"/>
+            <field name="employee_id" filter_domain="['|', ('employee_id', 'ilike', self), ('user_id', 'ilike', self)]" string="User"/>
+            <filter name="filter_inactive" domain="[('active','=',False)]" string="Inactive"/>
+            <filter name="gender" domain="[('gender','=','male')]" string="Male"/>
+            <separator/>
+            <filter name="name" domain="[('name', 'ilike', 'a')]" string="Name_2"/>
             <group expand="0" string="Group By">
               <filter string="Sheet" name="sheet" domain="[]" context="{'group_by': 'sheet_id'}"/>
               <filter string="Employee" name="employee" domain="[]" context="{'group_by': 'employee_id'}"/>
