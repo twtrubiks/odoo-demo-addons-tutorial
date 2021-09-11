@@ -54,7 +54,9 @@
 
 * [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明 - part25](https://youtu.be/OOlPZETkYKw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---auto_join-%E8%AA%AA%E6%98%8E)
 
-* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-parent-%E8%AA%AA%E6%98%8E---part26)
+* [Youtube Tutorial - odoo 手把手教學 - view parent 說明(等待新增) - part26]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-parent-%E8%AA%AA%E6%98%8E---part26)
+
+* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法(等待新增) - part27]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---doamin-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1748,3 +1750,79 @@ class DemoExpenseSheetTutorial(models.Model):
 另外一點要注意的是, 請使用 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效:exclamation:
 
 `editable` 的效果可參考之前的介紹 [odoo 手把手教學 - One2many Editable Bottom and Top](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many-editable-bottom-and-top---part3-1)
+
+## odoo 手把手教學 - doamin 搭配 fields 的三種用法 - part27
+
+* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法(等待新增) - part27]()
+
+在 odoo 中 domain 幾乎無所不在:smile: 今天和大家介紹三種 doamin 搭配 fields 的用法,
+
+第一種 - 直接在 model 中的 fileds 定義
+
+[model/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    ......
+    employee_id = fields.Many2one('hr.employee', string="Employee", required=True,
+                domain=[('active', '=', True)] )
+    ......
+```
+
+開啟 [odoo12 如何開啟 odoo developer mode](https://github.com/twtrubiks/odoo-docker-tutorial#odoo12-%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F-odoo-developer-mode), 並且到 fields 上觀看, 會看到我們定義的 domain
+
+![alt tag](https://i.imgur.com/KV9dRJE.png)
+
+第二種 - 直接在 view 中的 fileds 定義
+
+[views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
+
+```xml
+  <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        ......
+            <field name="employee_id" domain="[('user_id', '=', user_id)]"/>
+        ......
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+```
+
+開啟 [odoo12 如何開啟 odoo developer mode](https://github.com/twtrubiks/odoo-docker-tutorial#odoo12-%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F-odoo-developer-mode), 並且到 fields 上觀看, 會看到我們定義的 domain
+
+![alt tag](https://i.imgur.com/uh2QV3R.png)
+
+:exclamation:這邊要注意的是, 如果第一種和第二種同時寫, 以第二種在 view 上定義的為主:exclamation:
+
+第三種 - 透過 `onchange` 的方法增加 domain
+
+這種方法蠻酷的, 所以我留到最後來講:smile:
+
+首先, 如果不了解 `onchange` 可參考 [介紹 model](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-model).
+
+請看下面的範例 [model/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+......
+@api.onchange('user_id')
+def onchange_user_id(self):
+    # domain
+    result = dict()
+    result['domain'] = {
+        'employee_id': [('user_id', '=', self.user_id.id)]
+    }
+    # equal
+    # self.env['hr.employee'].search([('user_id', '=', self.user_id.id)])
+    return result
+......
+```
+
+當改變 `user_id` 時, 會增加對應的 domain, 會回傳一個 dict,
+
+這個 dict 包含 fields, 也就是 `employee_id`, 後面則是我們所需要的 domain.

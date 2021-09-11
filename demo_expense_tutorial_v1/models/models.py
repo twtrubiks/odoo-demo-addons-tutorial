@@ -20,7 +20,11 @@ class DemoExpenseTutorial(models.Model):
     _order = "sequence, id desc"
 
     name = fields.Char('Description', required=True)
+
+    # employee_id = fields.Many2one('hr.employee', string="Employee", required=True,
+    #             domain=[('active', '=', True)] )
     employee_id = fields.Many2one('hr.employee', string="Employee", required=True)
+
     user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
 
     # https://www.odoo.com/documentation/12.0/reference/orm.html#odoo.fields.Many2many
