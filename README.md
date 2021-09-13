@@ -78,6 +78,8 @@
 
 29. [Odoo Domain 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_domain_tutorial)
 
+30. [Odoo Domain Operator 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/domain_operator_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
