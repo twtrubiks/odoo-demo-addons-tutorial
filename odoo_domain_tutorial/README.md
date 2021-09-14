@@ -116,3 +116,5 @@ ORDER BY "res_partner"."display_name"
 再把不相關的移除就變成了我們想要看到的邏輯了
 
 (A AND B) AND (C OR D)
+
+延伸閱讀 [Odoo Domain Operator 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/domain_operator_tutorial)

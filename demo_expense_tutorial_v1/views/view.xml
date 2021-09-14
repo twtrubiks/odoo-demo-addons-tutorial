@@ -29,7 +29,10 @@
             <field name="user_id"/>
             <!-- <field name="tag_ids"/> -->
             <field name="tag_ids" widget="many2many_tags"/> <!-- widget -->
-            <field name="sheet_id"/>
+
+            <!-- <field name="sheet_id"/> -->
+            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/>
+
             <field name="gender"/>
           </group>
         </sheet>
@@ -95,6 +98,31 @@
                   <!-- <tree> -->
                   <tree editable="top">   <!-- <<<<<<<<<<<< -->
                   <!-- <tree editable="bottom"> --> <!-- <<<<<<<<<<<< -->
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('parent.name', '=', 'test-readonly')]}"/>
+                  </tree>
+                </field>
+              </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="custom_view_form_demo_sheet" model="ir.ui.view">
+    <field name="name">Custim Demo Sheet Form</field>
+    <field name="model">demo.expense.sheet.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="custom_view_form_demo_sheet">
+        <sheet>
+          <group>
+            <field name="name"/>
+          </group>
+          <notebook>
+              <page string="Expense">
+                <field name="expense_line_ids" >
+                  <tree editable="top">
                     <field name="name"/>
                     <field name="employee_id"/>
                     <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('parent.name', '=', 'test-readonly')]}"/>

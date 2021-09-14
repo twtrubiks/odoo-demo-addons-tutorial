@@ -1,9 +1,13 @@
 # Odoo Domain Operator 教學
 
-建議在閱讀這邊文章前, 可以先閱讀這裡篇文章
+[Youtube Tutorial - odoo 手把手教學 - Odoo Domain Operator 教學(等待新增)]()
+
+建議在閱讀這篇文章前, 先了解這些概念
 [Odoo Domain 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_domain_tutorial), [odoo - 如何透過 log_level 了解 ORM RAW SQL](https://github.com/twtrubiks/odoo-docker-tutorial#odoo---%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-log_level-%E4%BA%86%E8%A7%A3-orm-raw-sql)
 
-隨便找一個 model 測試
+主要是要介紹 sql `like` 的一些變化,
+
+請隨便找一個 model , 進入 `shell` 測試, 例如這邊使用 `res.partner`,
 
 ```python
 self.env['res.partner'].search(domain)
@@ -39,23 +43,23 @@ expression::type
 範例二
 
 ```python
-domain = [('name', '=like', 'twtrubiks')]
-```
-
-`=like` 其實幾乎和 `=` 是一樣的.
-
-```sql
-WHERE "name"::text like 'twtrubiks'
-```
-
-範例三
-
-```python
 domain = [('name', 'ilike', 'twtrubiks')]
 ```
 
 ```sql
 WHERE "name"::text ilike '%twtrubiks%'
+```
+
+範例三
+
+```python
+domain = [('name', '=like', 'twtrubiks')]
+```
+
+在這種情況下, `=like` 和 `=` 是一樣的.
+
+```sql
+WHERE "name"::text like 'twtrubiks'
 ```
 
 範例四
@@ -68,17 +72,9 @@ domain = [('name', '=ilike', 'twtrubiks')]
 WHERE "name"::text ilike 'twtrubiks'
 ```
 
+在這種情況下, `=ilike` 和 `=` 是一樣的.
+
 範例五
-
-```python
-domain = [('name', '=ilike', 'twtrubiks%')]
-```
-
-```sql
-WHERE "name"::text ilike 'twtrubiks%')
-```
-
-範例六
 
 ```python
 domain = [('name', '=like', 'twtrubiks%')]
@@ -86,4 +82,14 @@ domain = [('name', '=like', 'twtrubiks%')]
 
 ```sql
 WHERE "name"::text like 'twtrubiks%'
+```
+
+範例六
+
+```python
+domain = [('name', '=ilike', 'twtrubiks%')]
+```
+
+```sql
+WHERE "name"::text ilike 'twtrubiks%')
 ```

@@ -58,6 +58,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法(等待新增) - part27]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---doamin-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27)
 
+* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明(等待新增) - part28]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---form_view_ref-%E4%BB%A5%E5%8F%8A-tree_view_ref-%E8%AA%AA%E6%98%8E---part28)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1826,3 +1828,49 @@ def onchange_user_id(self):
 當改變 `user_id` 時, 會增加對應的 domain, 會回傳一個 dict,
 
 這個 dict 包含 fields, 也就是 `employee_id`, 後面則是我們所需要的 domain.
+
+## odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28
+
+* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明(等待新增) - part28]()
+
+還記得 [odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%90%8C%E4%B8%80%E5%80%8B-model-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84-view_ids---part10) 這篇教學嗎:question:
+
+那時候是使用 `ir.actions.act_window` 也就是 action 的方式定義不同的 view_ids,
+
+今天如果想單獨針對 fields 定義 view 時, 就需要使用 `form_view_ref` `tree_view_ref`:exclamation:
+
+使用方法也很簡單, 請參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
+
+```xml
+  <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form</field>
+    <field name="model">demo.expense.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        ......
+            <!-- <field name="sheet_id"/> -->
+            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/>
+
+        ......
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  ......
+   <record id="custom_view_form_demo_sheet" model="ir.ui.view">
+    <field name="name">Custim Demo Sheet Form</field>
+    <field name="model">demo.expense.sheet.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="custom_view_form_demo_sheet">
+        <sheet>
+          ......
+        </sheet>
+      </form>
+    </field>
+  </record>
+```
+
+在需要的 fields 上, 加上 `context="{'form_view_ref':......}"`, 然後再定義你的 view 即可,
+
+`tree_view_ref` 也是一樣的概念:smile:
