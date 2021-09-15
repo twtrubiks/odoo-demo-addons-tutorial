@@ -76,9 +76,11 @@
 
 28. [odoo 14 觀念 - Search Panel 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---search-panel-%E6%95%99%E5%AD%B8---part11)
 
-29. [Odoo Domain 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_domain_tutorial)
+29. [odoo domain 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_domain_tutorial)
 
-30. [Odoo Domain Operator 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/domain_operator_tutorial)
+30. [odoo domain operator 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/domain_operator_tutorial)
+
+31. [odoo index 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_index_tutorial)
 
 ## 其他
 
@@ -439,6 +441,12 @@ def sudo(self, user=SUPERUSER_ID):
 `sudo([user=SUPERUSER])` 如果裡面沒有填入 user id, 預設就是使用 SUPERUSER, 如果
 
 有帶入 user id, 就是使用指定的 user 的權限.
+
+注意 :exclamation: 這是 odoo12 的作法,
+
+從 odoo13 開始切換 user 已經改成 `with_user(user)` :exclamation: 可參考 [odoo13-souece code](https://github.com/odoo/odoo/blob/13.0/odoo/models.py#L5160)
+
+`deprecated use of sudo(user), use with_user(user) instead`
 
 來看下面這個例子,
 
