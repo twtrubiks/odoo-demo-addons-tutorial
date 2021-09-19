@@ -30,8 +30,8 @@
             <!-- <field name="tag_ids"/> -->
             <field name="tag_ids" widget="many2many_tags"/> <!-- widget -->
 
-            <!-- <field name="sheet_id"/> -->
-            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/>
+            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.view_form_demo_expense_sheet_tutorial'}"/>
+            <!-- <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/> -->
 
             <field name="gender"/>
           </group>

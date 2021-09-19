@@ -6,6 +6,8 @@
 
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part3](https://youtu.be/25MSbidCf1U) - 介紹 report, controller - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-report-controller)
 
+* [Youtube Tutorial - Odoo Qweb 教學](https://youtu.be/FE9lvN62aTo)
+
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
 * [Youtube Tutorial - odoo testing 教學](https://youtu.be/nfiBgXgYkYg) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-testing-%E6%95%99%E5%AD%B8)
@@ -626,6 +628,8 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 ![alt tag](https://i.imgur.com/kHYQhGR.png)
 
 除了這些, 在 QWeb 中還可以實作出不少變化:smile:
+
+* [Youtube Tutorial - Odoo Qweb 教學](https://youtu.be/FE9lvN62aTo)
 
 report 和 controller 中的 view 都是 QWeb, 以下使用 report 中的 view 示範,
 

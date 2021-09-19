@@ -1,6 +1,6 @@
 # Odoo Domain Operator 教學
 
-[Youtube Tutorial - odoo 手把手教學 - Odoo Domain Operator 教學(等待新增)]()
+[Youtube Tutorial - odoo 手把手教學 - Odoo Domain Operator 教學](https://youtu.be/E0LrhmozZQI)
 
 建議在閱讀這篇文章前, 先了解這些概念
 [Odoo Domain 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_domain_tutorial), [odoo - 如何透過 log_level 了解 ORM RAW SQL](https://github.com/twtrubiks/odoo-docker-tutorial#odoo---%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-log_level-%E4%BA%86%E8%A7%A3-orm-raw-sql)
@@ -72,7 +72,7 @@ domain = [('name', '=ilike', 'twtrubiks')]
 WHERE "name"::text ilike 'twtrubiks'
 ```
 
-在這種情況下, `=ilike` 和 `=` 是一樣的.
+~~在這種情況下, `=ilike` 和 `=` 是一樣的.~~
 
 範例五
 

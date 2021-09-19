@@ -54,11 +54,11 @@
 
 * [Youtube Tutorial - odoo14 手把手教學 - auto_join 說明 - part25](https://youtu.be/OOlPZETkYKw) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---auto_join-%E8%AA%AA%E6%98%8E)
 
-* [Youtube Tutorial - odoo 手把手教學 - view parent 說明(等待新增) - part26]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-parent-%E8%AA%AA%E6%98%8E---part26)
+* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26](https://youtu.be/i_hG4s_YJN0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---view-parent-%E8%AA%AA%E6%98%8E---part26)
 
-* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法(等待新增) - part27]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---doamin-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27)
+* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法 - part27](https://youtu.be/ZUNRoWxVWAE) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---doamin-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27)
 
-* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明(等待新增) - part28]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---form_view_ref-%E4%BB%A5%E5%8F%8A-tree_view_ref-%E8%AA%AA%E6%98%8E---part28)
+* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28](https://youtu.be/_YkrOp3ytlQ) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---form_view_ref-%E4%BB%A5%E5%8F%8A-tree_view_ref-%E8%AA%AA%E6%98%8E---part28)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1666,7 +1666,7 @@ class Many2one(_Relational):
 
 ## odoo 手把手教學 - view parent 說明 - part26
 
-* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26]()
+* [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26](https://youtu.be/i_hG4s_YJN0)
 
 在 view 中可以透過 `parent` 這個值, 拿到 `parent` 的 `fields` 內容 (可能有點繞口:smile:)
 
@@ -1745,17 +1745,17 @@ class DemoExpenseSheetTutorial(models.Model):
 
 請注意:exclamation: 我們並沒有 `parent` 這個欄位, 但是在 view 中可以透過這種方式使用 parent (也就是 sheet ) 的東西.
 
-當 sheet 的 `name` 不是 `test-readonly` 時, `tag_ids` 這個 fields 會變成可以 edit(不是`readonly`).
+當 sheet 的 `name` 不是 `test-readonly` 時, `tag_ids` 這個 fields 會變成可以 edit ( 不是`readonly` ).
 
 ![alt tag](https://i.imgur.com/PfFlKZN.png)
 
-另外一點要注意的是, 請使用 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效:exclamation:
+另外一點要注意的是, 請搭配 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效:exclamation:
 
 `editable` 的效果可參考之前的介紹 [odoo 手把手教學 - One2many Editable Bottom and Top](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many-editable-bottom-and-top---part3-1)
 
 ## odoo 手把手教學 - doamin 搭配 fields 的三種用法 - part27
 
-* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法(等待新增) - part27]()
+* [Youtube Tutorial - odoo 手把手教學 - doamin 搭配 fields 的三種用法 - part27](https://youtu.be/ZUNRoWxVWAE)
 
 在 odoo 中 domain 幾乎無所不在:smile: 今天和大家介紹三種 doamin 搭配 fields 的用法,
 
@@ -1825,13 +1825,13 @@ def onchange_user_id(self):
 ......
 ```
 
-當改變 `user_id` 時, 會增加對應的 domain, 會回傳一個 dict,
+當改變 `user_id` 時, 會增加對應的 domain, 需要回傳一個 dict,
 
 這個 dict 包含 fields, 也就是 `employee_id`, 後面則是我們所需要的 domain.
 
 ## odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28
 
-* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明(等待新增) - part28]()
+* [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28](https://youtu.be/_YkrOp3ytlQ)
 
 還記得 [odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%90%8C%E4%B8%80%E5%80%8B-model-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84-view_ids---part10) 這篇教學嗎:question:
 
@@ -1848,8 +1848,8 @@ def onchange_user_id(self):
     <field name="arch" type="xml">
       <form string="Demo Expense Tutorial">
         ......
-            <!-- <field name="sheet_id"/> -->
-            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/>
+            <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.view_form_demo_expense_sheet_tutorial'}"/>
+            <!-- <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/> -->
 
         ......
           </group>
@@ -1874,3 +1874,7 @@ def onchange_user_id(self):
 在需要的 fields 上, 加上 `context="{'form_view_ref':......}"`, 然後再定義你的 view 即可,
 
 `tree_view_ref` 也是一樣的概念:smile:
+
+注意:exclamation:, 在這裡只要你有定義一個以上的 `demo.expense.sheet.tutorial` form view 時,
+
+記得一定要使用 `form_view_ref` ( 否則它會自動選最後一個 ).

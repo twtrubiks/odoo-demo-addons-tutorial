@@ -1,5 +1,7 @@
 # odoo index 教學
 
+* [Youtube Tutorial - odoo index 教學](https://youtu.be/S9jahU9aG-s)
+
 odoo 的 index 主要就是 postgresql 的 index,
 
 所以讓我們來看看 postgresql 的官方文件吧:smile:

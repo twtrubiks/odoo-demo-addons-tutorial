@@ -1,6 +1,6 @@
 # Odoo Domain 教學
 
-[Youtube Tutorial - odoo 手把手教學 - Odoo Domain 教學(等待新增)]()
+[Youtube Tutorial - odoo 手把手教學 - Odoo Domain 教學](https://youtu.be/Gr8eXYRSrtM)
 
 先附上 odoo [domains](https://www.odoo.com/documentation/12.0/howtos/backend.html#domains) 的文件
 
@@ -81,7 +81,7 @@ domain = [('parent_id', '=', 9), ('company_id', '=', 1),
 self.env['res.partner'].search(domain)
 ```
 
-會輸出以下的 sql (經過 格式化 處理)
+會輸出以下的 sql ( 經過 格式化 處理 )
 
 ```sql
 SELECT "res_partner".id
