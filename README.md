@@ -58,6 +58,8 @@
 
 19. [odoo 14 觀念 - Search Panel 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_expense_tutorial_v1#odoo14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---search-panel-%E6%95%99%E5%AD%B8---part11)
 
+20. [odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異](odoo_write_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
