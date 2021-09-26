@@ -1,6 +1,6 @@
 # odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異
 
-[Youtube Tutorial - odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異]()
+* [Youtube Tutorial - odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異](https://youtu.be/DtHOq9UWe0w)
 
 這隻影片主要是要和大家說明
 

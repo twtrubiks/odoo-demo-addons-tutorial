@@ -60,6 +60,8 @@
 
 20. [odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異](odoo_write_tutorial)
 
+21. [odoo 14 教學 - 透過 controller 建立簡單 api](demo_controller_json)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
