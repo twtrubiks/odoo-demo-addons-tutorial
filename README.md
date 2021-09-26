@@ -82,6 +82,10 @@
 
 31. [odoo index 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/odoo_index_tutorial)
 
+32. [odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/odoo_write_tutorial)
+
+33. [odoo 14 教學 - 透過 controller 建立簡單 api](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_controller_json)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
