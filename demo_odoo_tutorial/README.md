@@ -6,7 +6,9 @@
 
 * [Youtube Tutorial - odoo 手把手建立第一個 addons - part3](https://youtu.be/25MSbidCf1U) - 介紹 report, controller - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-report-controller)
 
-* [Youtube Tutorial - Odoo Qweb 教學](https://youtu.be/FE9lvN62aTo)
+* [Youtube Tutorial - Odoo Controller Website 教學](https://youtu.be/nfq0Uo455Vc) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-controller-website-%E6%95%99%E5%AD%B8)
+
+* [Youtube Tutorial - Odoo Qweb 教學](https://youtu.be/FE9lvN62aTo) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#odoo-qweb-%E6%95%99%E5%AD%B8)
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
@@ -626,6 +628,45 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 就會看到下圖,
 
 ![alt tag](https://i.imgur.com/kHYQhGR.png)
+
+### Odoo Controller Website 教學
+
+接著介紹在 Controller 中設定 `website=True`,
+
+* [Youtube Tutorial - Odoo Controller Website 教學](https://youtu.be/nfq0Uo455Vc)
+
+首先, 將你的 [controllers/controllers.py](controllers/controllers.py) 加上 `website=True`
+
+```python
+class DemoOdoo(http.Controller):
+
+    @http.route('/demo/odoo', auth='user', website=True)
+    def list(self, **kwargs):
+        print(http.request.website.id)
+        ......
+```
+
+`print(http.request.website.id)` 這邊稍微注意一下,
+
+一定要設定 `website=True`, 才會有 website_id.
+
+然後在 [views/demo_odoo_template.xml](views/demo_odoo_template.xml) 中呼叫 `t-call="website.layout"`
+
+```xml
+<template id="demo_odoo_template" name="Demo odoo List">
+  <t t-call="website.layout">
+    ......
+  </t>
+</template>
+```
+
+`__manifest__.py` 中也請記得加入 `website` depend,
+
+這樣就會加上 odoo website 的模版了:smile:
+
+![alt tag](https://i.imgur.com/xC8SqxZ.png)
+
+### Odoo Qweb 教學
 
 除了這些, 在 QWeb 中還可以實作出不少變化:smile:
 
