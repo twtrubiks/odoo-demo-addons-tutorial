@@ -505,6 +505,35 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/CFMsgie.png)
 
+接著補充說明一下, 在 [security/ir_rule.xml](security/ir_rule.xml) 中可以設定更細的權限管理
+
+```xml
+<record id="ir_rule_demo_expense_user" model="ir.rule">
+    <field name="name">Demo Expense User</field>
+    <field name="model_id" ref="model_demo_expense_tutorial"/>
+    <field name="domain_force">[('employee_id.user_id.id', '=', user.id)]</field>
+    <field name="groups" eval="[(4, ref('demo_expense_tutorial_group_user'))]"/>
+    <!-- Groups (no group = global) -->
+    <!-- <field name="global" eval="True"/> -->
+    <field eval="0" name="perm_unlink"/>
+    <field eval="1" name="perm_write"/>
+    <field eval="1" name="perm_read"/>
+    <field eval="1" name="perm_create"/>
+</record>
+```
+
+預設的 rule 如果沒有特別設定權限, CRUD 都會是 true,
+
+但也可以去分別設定 (如上教學),
+
+像這邊給了 read, write, create 的權限 (沒給 delete 權限)
+
+![alt tag](https://i.imgur.com/M3SFyFS.png)
+
+`<field name="global" eval="True"/>` 則代表 global,
+
+基本上, no group = global.
+
 ### odoo 手把手教學 - 如何透過 button 呼叫 view, form - part6
 
 接下來介紹前面跳過的部份, 也就是透過 button 的方式呼叫 view, form,
