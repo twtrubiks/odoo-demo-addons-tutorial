@@ -24,7 +24,13 @@
 
 3. 全新的 HTML Editor 以及新的 commands `/` - [Youtube Tutorial - odoo15 全新的 HTML Editor 以及新的 commands `/`](https://youtu.be/UHMvLnPZSVM)
 
-4. 能夠 Group By Many2many Field - [Youtube Tutorial - odoo15 能夠 Group By Many2many Field](https://youtu.be/pUKO2DaecCs)
+4. 新功能 Group By Many2many Fields 以及更快速的編輯 Edit - [Youtube Tutorial - odoo15 新功能 Group By Many2many Fields 以及更快速的編輯 Edit](xx)
+
+現在 Many2many Fields 可以被 Group By 了,
+
+實作內容可參考以下兩個 PR [odoo/pull/74985](https://github.com/odoo/odoo/pull/74985) [odoo/pull/75692](https://github.com/odoo/odoo/pull/75692).
+
+更快速的編輯 Edit, 在任意 Fields 底下, 點一下滑鼠左鍵大約0.5秒放開, 會自動進入編輯模式.
 
 5. 新功能 Project Sharing - backend view - [Youtube Tutorial - odoo15 新功能 Project Sharing - backend view](https://youtu.be/_DQSuCx-no4)
 
@@ -83,3 +89,44 @@ Project Sharing,
 * odoo15 import 改版
 
 * discuss 按方向鍵 上 可以編輯, 可以刪除, 可以針對特定訊息回復.
+
+7. 新功能 Website Bulider, Configuration Wizards, new Jinja mail templates - [Youtube Tutorial - odoo15 新功能 Website Bulider, Configuration Wizards, new Jinja mail templates]()
+
+* 新功能 Website Bulider, 把 website addons 裝上即可體驗
+
+* 新功能 Configuration Wizards
+
+位置在 Technical -> Configuration Wizards
+
+![alt tag](https://i.imgur.com/ZcmOgk6.png)
+
+這個功用應該是要拿來初始化第一次進入特定頁面
+
+![alt tag](https://i.imgur.com/H9QyhiR.png)
+
+像是你如果安裝 `website` 或 `blog` 以及....,
+
+安裝完都會被導到特定的 Configuration Wizards,
+
+不管你有沒有設定, 第一次進入 Wizard 之後, 狀態就會被改成 done,
+
+但如果你需要重新設定, 可以點 Set as Todo, 然後重新 Lanch 即可,
+
+會導到設定的 `ir.actions.act_url`.
+
+![alt tag](https://i.imgur.com/OZ5c6vp.png)
+
+相關 source code 關鍵字可查詢 `ir.actions.todo`.
+
+* New Jinja mail templates
+
+相關 pr 可參考 [pull/67868](https://github.com/odoo/odoo/pull/67868#issuecomment-820467701)
+
+現在可以直接在上面看 UI 的 html 的 (點選了 `</>`), 這樣要找 html 也比較方便
+
+![alt tag](https://i.imgur.com/YgP6sWk.png)
+
+也可以強制 template 為特定的語言
+
+![alt tag](https://i.imgur.com/AYflPvN.png)
+
