@@ -470,6 +470,17 @@ hr.expense(4, 3)
 
 也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整):smile:
 
+另外提醒一下, 這個 sudo 除了在 ORM 底下生效外, 在 QWeb 中也會生效, 如下方這段 code 是可行的,
+
+```xml
+......
+<tr>
+    <td><strong>Email</strong></td>
+    <td><span t-field="o.sudo().employee_id.identification_id"/></td>
+</tr>
+......
+```
+
 `with_context`
 
 可參考 odoo 原始碼的 `odoo/models.py`
