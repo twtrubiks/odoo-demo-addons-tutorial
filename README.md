@@ -144,3 +144,89 @@ Project Sharing,
 
 ![alt tag](https://i.imgur.com/AYflPvN.png)
 
+## 8. 新功能 Scheduled Actions Triggers
+
+[Youtube Tutorial - odoo15 新功能 Scheduled Actions Triggers]()
+
+這個新功能主要是讓 schedule 變得更活用:smile:
+
+現在可以透過 code 指定 schedule 是否被 triggers,
+
+甚至可以動態定義時間去 triggers, 例如,
+
+triggers 後, 我想過 10 分鐘後再執行.
+
+官方其實是用 Reservations (預定) 這個詞來說明這個功能
+
+```text
+Reservations can now be automated, manual, or triggered X days before the scheduled date. Mass reservation moves based on filters.
+```
+
+功能關鍵字提供給各位
+
+`_trigger` `_name = 'ir.cron.trigger'`
+
+路徑在 Technical -> Scheduled Actions Triggers
+
+![alt tag](https://i.imgur.com/4WtLZx9.png)
+
+既有 code 的範例可看
+
+`self.env.ref('account_edi.ir_cron_edi_network')`
+
+使用方法很簡單, 就是加上 `_trigger()` 即可, 如下所示
+
+`self.env.ref('account_edi.ir_cron_edi_network')._trigger()`
+
+呼叫後, 就會出現在 Scheduled Actions Triggers 底下等待被 Triggers,
+
+當 task 執行完畢後, task 就會從這邊被刪除,
+
+![alt tag](https://i.imgur.com/hEIoMSZ.png)
+
+`_trigger` 還可以指定 `at` 指定時間 trigger
+
+```python
+......
+@api.model
+def _trigger(self, at=None):
+    """
+    Schedule a cron job to be executed soon independently of its
+    ``nextcall`` field value.
+
+    By default the cron is scheduled to be executed in the next batch but
+    the optional `at` argument may be given to delay the execution later
+    with a precision down to 1 minute.
+
+    The method may be called with a datetime or an iterable of datetime.
+    The actual implementation is in :meth:`~._trigger_list`, which is the
+    recommended method for overrides.
+
+    :param Optional[Union[datetime.datetime, list[datetime.datetime]]] at:
+        When to execute the cron, at one or several moments in time instead
+        of as soon as possible.
+    """
+......
+```
+
+另外要注意的是:exclamation: 這個 Schedule 的 active 狀態必須是 `True`,
+
+預設 demo data 是 `False`, 所以永遠不會執行.
+
+(會出現在 Scheduled Actions Triggers 中, 但永遠不會被執行, 當然也就不會被刪除)
+
+![alt tag](https://i.imgur.com/2XiALVD.png)
+
+當你把他改成 `True`,
+
+然後 `odoo.conf` 中擁有 `max_cron_threads > 0` 時 :exclamation::exclamation:
+
+(等待一陣子, 排到你的 task 就會被自動執行了)
+
+就會自動被執行了, 因為這個 cron 是由 `max_cron_threads` 觸發的,
+
+如果沒有 `max_cron_threads` 永遠不會被執行 :exclamation:
+
+這邊我也稍微被雷到:sweat:
+
+在 testing 中, 也多了一個 `capture_trigger` 這個方法用來測試 trigger 是否被正確執行.
