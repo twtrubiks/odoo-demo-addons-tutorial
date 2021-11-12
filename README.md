@@ -30,15 +30,21 @@
 
 [Youtube Tutorial - odoo15 全新的 HTML Editor 以及新的 commands `/`](https://youtu.be/UHMvLnPZSVM)
 
-## 4. 新功能 Group By Many2many Fields 以及更快速的編輯 Edit
+## 4. 新功能 Group By Many2many Fields 以及更快速的編輯 Edit, Mass Editing
 
-[Youtube Tutorial - odoo15 新功能 Group By Many2many Fields 以及更快速的編輯 Edit](xx)
+[Youtube Tutorial - odoo15 新功能 Group By Many2many Fields 以及更快速的編輯 Edit, Mass Editing](xx)
+
+* Group By Many2many Fields
 
 現在 Many2many Fields 可以被 Group By 了,
 
 實作內容可參考以下兩個 PR [odoo/pull/74985](https://github.com/odoo/odoo/pull/74985) [odoo/pull/75692](https://github.com/odoo/odoo/pull/75692).
 
-更快速的編輯 Edit, 在任意 Fields 底下, 點一下滑鼠左鍵大約0.5秒放開, 會自動進入編輯模式.
+* 更快速的編輯 Edit
+
+在任意 Fields 底下, 點一下滑鼠左鍵大約0.5秒放開, 會自動進入編輯模式.
+
+* Mass Editing - 這功能 odoo14 就有了, 這邊順便提一下.
 
 ## 5. 新功能 Project Sharing - backend view
 
@@ -230,3 +236,37 @@ def _trigger(self, at=None):
 這邊我也稍微被雷到:sweat:
 
 在 testing 中, 也多了一個 `capture_trigger` 這個方法用來測試 trigger 是否被正確執行.
+
+## 9. 新功能 Profiling and Product Images
+
+[Youtube Tutorial - odoo15 新功能 Profiling 和 Product Images](xx)
+
+* Profiling
+
+官方文件可參考 [profilecode](https://www.odoo.com/documentation/15.0/developer/howtos/profilecode.html)
+
+這個功能在 odoo14 就有了, 在 odoo15 中加入了 UI 的呈現這樣,
+
+主要是讓你追蹤你個 code 的品質, 效能......
+
+請記得把你的 developer mode 打開
+
+![alt tag](https://i.imgur.com/EJTNaxw.png)
+
+當你成功啟動時, 會有紅色的點
+
+![alt tag](https://i.imgur.com/IviU28y.png)
+
+位置在 Technical -> Profiling
+
+![alt tag](https://i.imgur.com/rhZ7v0K.png)
+
+* Product Images
+
+這功能主要是自動透過 barcode 抓取產品的圖片, addons 為 `product_images`,
+
+主要是透過 google 的 Custom Search JSON API 抓圖片,
+
+也是利用了 Scheduled Actions Triggers 的概念.
+
+相關 PR 可參考 [pull/70198](https://github.com/odoo/odoo/pull/70198)
