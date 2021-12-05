@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_model_tutorial" model="ir.ui.view">
+    <field name="name">Demo Model Tutorial Form</field>
+    <field name="model">demo.model.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Expense Tutorial">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="test_1"/>
+            <field name="test_2"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_model_tutorial" model="ir.ui.view">
+    <field name="name">Demo Model Tutorial List</field>
+    <field name="model">demo.model.tutorial</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="name"/>
+          <field name="test_1"/>
+          <field name="test_2"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

@@ -86,6 +86,8 @@
 
 33. [odoo 14 教學 - 透過 controller 建立簡單 api](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_controller_json)
 
+34. [odoo 教學 - 透過 AbstractModel 擴充 Model](demo_abstractmodel_v2_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
