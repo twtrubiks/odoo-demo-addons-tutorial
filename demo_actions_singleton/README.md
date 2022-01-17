@@ -22,7 +22,7 @@
 ......
 <odoo>
     <data>
-        <record id="action_action_demo" model="ir.actions.server">
+        <record id="action_server_demo" model="ir.actions.server">
             <field name="name">Action Demo</field>
             <field name="model_id" ref="model_demo_actions_singleton"/>
             <field name="binding_model_id" ref="demo_actions_singleton.model_demo_actions_singleton"/>
@@ -31,11 +31,21 @@
                 records.action_demo()
             </field>
         </record>
+
+        <record id="action_other_model_demo" model="ir.actions.server">
+            <field name="name">Action Other Demo</field>
+            <field name="model_id" ref="model_demo_actions_singleton"/>
+            <field name="binding_model_id" ref="hr_expense.model_hr_expense"/>
+            <field name="state">code</field>
+            <field name="code">
+                raise Warning('Hello')
+            </field>
+        </record>
     </data>
 </odoo>
 ```
 
-`model_id` `binding_model_id` 綁定 model.
+`binding_model_id` 綁定 model (可以綁定和 `model_id` 不同的 model).
 
 `state` 選擇使用的方式, 這邊使用 python code.
 
@@ -118,3 +128,13 @@ False
 ```
 
 並不會發生錯誤, 只會回傳 `False`.
+
+關於 `id="action_other_model_demo"` 可以看到他綁定的 model 是 `hr_expense`
+
+`<field name="binding_model_id" ref="hr_expense.model_hr_expense"/>`
+
+所以, 要到 `hr_expense` 才可以看到這個 action
+
+![alt tag](https://i.imgur.com/zQMwqca.png)
+
+![alt tag](https://i.imgur.com/r5u0Voy.png)
