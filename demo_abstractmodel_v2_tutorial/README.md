@@ -2,7 +2,7 @@
 
 建議觀看影片, 會更清楚:smile:
 
-[Youtube Tutorial - odoo 手把手教學 - 透過 AbstractModel 擴充 Model](https://youtu.be/auhXgqk5ANU)
+[Youtube Tutorial - odoo 手把手教學 - 透過 AbstractModel 擴充 Model](https://youtu.be/uW1PsDPcJF4)
 
 之前有介紹過 AbstractModel 的文章
 

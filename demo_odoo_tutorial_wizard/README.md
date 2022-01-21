@@ -54,13 +54,15 @@ class DemoWizard(models.TransientModel):
     def default_get(self, fields):
         res = super(DemoWizard, self).default_get(fields)
         default_partner_id = self.env.context.get('default_partner_id', [])
-        res.update({
-            'wizard_partner_id': default_partner_id,
-        })
-        # or
-        # res['wizard_partner_id'] = default_partner_id
+        if default_partner_id:
+            res.update({
+                'wizard_partner_id': default_partner_id,
+            })
+            # or
+            # res['wizard_partner_id'] = default_partner_id
         return res
 
+    @api.multi
     def btn_validate(self):
         self.ensure_one()
         context = dict(self._context or {})
@@ -69,6 +71,9 @@ class DemoWizard(models.TransientModel):
         _logger.warning('============= btn_validate ==================')
         _logger.warning('default_test_pass_data: %s', default_test_pass_data)
         _logger.warning('wizard_test_context: %s', self.wizard_test_context)
+
+        _logger.warning('active_id: %s', context['active_id'])
+        _logger.warning('active_ids: %s', context['active_ids'])
 
         return {'type': 'ir.actions.act_window_close'}
 ```
@@ -149,7 +154,7 @@ class DemoWizard(models.TransientModel):
                     </group>
                 </sheet>
                 <footer>
-                    <button string='Validate' name="btn_validate" type="object" class="btn-primary"/>
+                    <button string="Validate" name="btn_validate" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
@@ -165,6 +170,7 @@ class DemoWizard(models.TransientModel):
         <field name="view_id" ref="demo_wizard_view_form"/>
         <field name="target">new</field>
         <field name="context">{'default_test_pass_data': 'hello 123'}</field>
+        <field name="binding_model_id" ref="demo_odoo_tutorial_wizard.model_demo_odoo_wizard_tutorial" />
     </record>
 ......
 
@@ -203,6 +209,24 @@ log 1, `default_test_pass_data: hello 123`
 log 2, `wizard_test_context: twtrubiks`
 
 這條訊息則是顯示剛剛輸入的內容.
+
+再來看 [model_wizard.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial_wizard/wizard/model_wizard.xml)
+
+```xml
+<record id="demo_wizard_action" model="ir.actions.act_window">
+    <field name="name">Demo Wizard Action</field>
+    ......
+    <field name="binding_model_id" ref="demo_odoo_tutorial_wizard.model_demo_odoo_wizard_tutorial" />
+</record>
+```
+
+`binding_model_id` 代表要綁定的 model,
+
+綁定後在 `demo_odoo_tutorial_wizard.model_demo_odoo_wizard_tutorial` tree 中
+
+不管單選還是多選, 都會出現在 Action 中,
+
+![alt tag](https://i.imgur.com/LVdJuPl.png)
 
 另一種傳值的方式, 也可以全部透過 python 來完成,
 
