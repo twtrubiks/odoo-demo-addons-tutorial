@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class DemoTag(models.Model):
     _name = 'demo.tag'
@@ -83,6 +84,14 @@ class DemoExpenseTutorial(models.Model):
             # 'target': 'self',
             'url': 'https://github.com/twtrubiks/odoo-demo-addons-tutorial',
         }
+
+    @api.multi
+    def btn_message_post(self):
+        for rec in self:
+            if rec.user_id:
+                rec.user_id.partner_id.message_post(body="test body", subject="test subject")
+            else:
+                raise UserError('請選擇使用者(user_id)')
 
     @api.onchange('user_id')
     def onchange_user_id(self):

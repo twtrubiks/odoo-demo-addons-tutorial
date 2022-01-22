@@ -60,6 +60,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28](https://youtu.be/_YkrOp3ytlQ) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---form_view_ref-%E4%BB%A5%E5%8F%8A-tree_view_ref-%E8%AA%AA%E6%98%8E---part28)
 
+* odoo 手把手教學 - Message Post 教學 - part29 - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---message-post-%E6%95%99%E5%AD%B8---part29)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1907,3 +1909,24 @@ def onchange_user_id(self):
 注意:exclamation:, 在這裡只要你有定義一個以上的 `demo.expense.sheet.tutorial` form view 時,
 
 記得一定要使用 `form_view_ref` ( 否則它會自動選最後一個 ).
+
+## odoo 手把手教學 - Message Post 教學 - part29
+
+可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+......
+@api.multi
+def btn_message_post(self):
+    for rec in self:
+        if rec.user_id:
+            rec.user_id.partner_id.message_post(body="test body", subject="test subject")
+        else:
+            raise UserError('請選擇使用者(user_id)')
+......
+```
+透過 `partner_id.message_post(....")`
+
+可以完成 Message Post, 資訊要到 Contacts (`res.partner`) 底下看,
+
+![alt tag](https://i.imgur.com/UEfWFHt.png)

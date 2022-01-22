@@ -450,6 +450,7 @@ tree 如下
             <field name="stop_datetime"/>
             <field name="field_onchange_demo"/>
             <field name="field_onchange_demo_set" force_save="1"/>
+            <!-- <field name="input_number" widget="percentage"/> -->
             <field name="input_number"/>
             <field name="field_compute_demo"/>
           </group>
