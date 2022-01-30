@@ -62,6 +62,8 @@
 
 * odoo 手把手教學 - Message Post 教學 - part29 - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---message-post-%E6%95%99%E5%AD%B8---part29)
 
+* [Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---groups-%E6%90%AD%E9%85%8D-fields-%E7%94%A8%E6%B3%95---part30)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1930,3 +1932,50 @@ def btn_message_post(self):
 可以完成 Message Post, 資訊要到 Contacts (`res.partner`) 底下看,
 
 ![alt tag](https://i.imgur.com/UEfWFHt.png)
+
+## odoo 手把手教學 - groups 搭配 fields 用法 - part30
+
+* [(等待新增)Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30]()
+
+這邊的用法和 [odoo 手把手教學 - domain 搭配 fields 的三種用法 - part27](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---domain-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27) 是類似的,
+
+只不過對象換成了 groups,
+
+寫法如下, 請參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py) 中,
+
+```python
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+    ......
+    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id',
+        string='Tges', copy=False,
+        groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'
+    )
+......
+```
+
+`tag_ids` field 增加了 `groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'`,
+
+代表的意思是只有 Manager 可以看到這個 field,
+
+假如今天一個 User 權限的人, 不管在 tree 或是 form 都看不到 `tag_ids`.
+
+但這單純只是**隱藏**起來, 也就是說如果你強制去取值, 還是有權限可以拿到資料的,
+
+建議可以用 shell 模式下去嘗試取值.
+
+然後這種寫法其實等於下方,
+
+請參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml),
+
+```xml
+  <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+......
+    <field name="tag_ids" widget="many2many_tags" groups="demo_expense_tutorial_v1.demo_expense_tutorial_group_manager"/>
+......
+  </record>
+```
+
+兩個唯一的差別就是, 如果你是寫在 model, 會自動幫你產生到全部的 view 上,
+
+然後如果你單獨寫在 view 上, 是針對個別的 view (像這邊就是只在 form 上) 生效.

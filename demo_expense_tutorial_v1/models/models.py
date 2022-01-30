@@ -38,7 +38,11 @@ class DemoExpenseTutorial(models.Model):
     # joined with an underscore and _rel appended at the end.
     # In the case of our books or authors relationship, it should be named demo_expense_tutorial_demo_tag_rel.
 
-    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id', string='Tges', copy=False)
+
+    tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id',
+        string='Tges', copy=False,
+        groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'
+    )
     sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete='restrict')
 
     # Related (Reference) fields (不會存在 db)
