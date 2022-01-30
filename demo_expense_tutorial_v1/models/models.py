@@ -80,6 +80,16 @@ class DemoExpenseTutorial(models.Model):
         }
 
     @api.multi
+    def btn_test_acid_atomicity(self):
+        for index in range(3):
+            self.create({
+                'name': index,
+                'employee_id': 1
+            })
+            if index == 1:
+                raise UserError('error - auto rollback')
+
+    @api.multi
     def button_act_url(self):
         self.ensure_one()
         return {

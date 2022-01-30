@@ -64,6 +64,8 @@
 
 * [Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---groups-%E6%90%AD%E9%85%8D-fields-%E7%94%A8%E6%B3%95---part30)
 
+* [(等待新增)Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---acid-transactions-%E8%AA%AA%E6%98%8E---part31)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -1979,3 +1981,55 @@ class DemoExpenseTutorial(models.Model):
 兩個唯一的差別就是, 如果你是寫在 model, 會自動幫你產生到全部的 view 上,
 
 然後如果你單獨寫在 view 上, 是針對個別的 view (像這邊就是只在 form 上) 生效.
+
+## odoo 手把手教學 - ACID transactions 說明 - part31
+
+* [(等待新增)Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31]()
+
+這邊先說結論, 下面會再說明, 如果你遵守 odoo 的 ORM,
+
+你是不需要另外去處理 ACID transactions 的問題.
+
+相關的 odoo source code 可參考 `odoo/odoo/sql_db.py`
+
+```python
+class Cursor(object):
+    """Represents an open transaction to the PostgreSQL DB backend,
+       acting as a lightweight wrapper around psycopg2's
+       ``cursor`` objects.
+
+        ``Cursor`` is the object behind the ``cr`` variable used all
+        over the OpenERP code.
+
+        .. rubric:: Transaction Isolation
+      ......
+
+```
+
+如果你不知道甚麼是 ACID, 可參考 [Transaction 概念簡介](https://github.com/twtrubiks/django-transactions-tutorial#transaction).
+
+這邊就用一個例子來說明 Atomicity (原子性),
+
+可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
+
+```python
+......
+@api.multi
+def btn_test_acid_atomicity(self):
+    for index in range(3):
+        self.create({
+            'name': index,
+            'employee_id': 1
+        })
+        if index == 1:
+            raise UserError('error - auto rollback')
+......
+```
+
+嘗試上面的 code.
+
+假設今天有3筆資料,
+
+只有兩種結果, 3筆全都寫入成功, 或是3筆全都失敗未寫入,
+
+不會有1筆成功寫入, 2筆失敗的狀況.
