@@ -66,6 +66,8 @@
 
 * [(等待新增)Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---acid-transactions-%E8%AA%AA%E6%98%8E---part31)
 
+* [(等待新增)Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E7%89%B9%E6%AE%8A-groups-%E6%87%89%E7%94%A8%E8%AA%AA%E6%98%8E---part32)
+
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
@@ -2033,3 +2035,108 @@ def btn_test_acid_atomicity(self):
 只有兩種結果, 3筆全都寫入成功, 或是3筆全都失敗未寫入,
 
 不會有1筆成功寫入, 2筆失敗的狀況.
+
+## odoo 手把手教學 - 特殊 groups 應用說明 - part32
+
+* [(等待新增)Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32]()
+
+這邊介紹幾個比較特殊的 groups 給大家,
+
+首先是 `base.group_no_one`,
+
+它的 groups 定義在原始碼中的 `/odoo/addons/base/security/base_groups.xml`
+
+```xml
+......
+<record model="res.groups" id="group_no_one">
+    <field name="name">Technical Features</field>
+</record>
+......
+```
+
+這個 groups 只有在你打開 [odoo developer mode](https://github.com/twtrubiks/odoo-docker-tutorial#odoo12-%E5%A6%82%E4%BD%95%E9%96%8B%E5%95%9F-odoo-developer-mode) 的時候才看的到.
+
+接著是 `base.group_erp_manager` 和 `base.group_system`,
+
+這些 groups 則是當你擁有 `Access Rights` 和 `Settings` 權限的時候你才看的到.
+
+它的 groups 定義在原始碼中的 `/odoo/addons/base/security/base_groups.xml`
+
+```xml
+......
+<record model="res.groups" id="group_erp_manager">
+    <field name="name">Access Rights</field>
+</record>
+
+<record model="res.groups" id="group_system">
+    <field name="name">Settings</field>
+    <field name="implied_ids" eval="[(4, ref('group_erp_manager'))]"/>
+    <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+</record>
+......
+```
+
+當然除了使用 groups 定義之外, 也可以直接指定 user,
+
+像是 `base.user_admin` 就是只有 admin user 才看的到.
+
+它的定義在原始碼中的 `/odoo/addons/base/data/res_users_data.xml`
+
+```xml
+......
+
+<!-- user 2 is the human admin user -->
+<record id="user_admin" model="res.users">
+    <field name="login">admin</field>
+    <field name="password">admin</field>
+    <field name="partner_id" ref="base.partner_admin"/>
+    <field name="company_id" ref="main_company"/>
+    <field name="company_ids" eval="[(4, ref('main_company'))]"/>
+    <field name="groups_id" eval="[(6,0,[])]"/>
+    <field name="signature"><![CDATA[<span>-- <br/>
+Administrator</span>]]></field>
+</record>
+......
+```
+
+使用方法其實之前都說明過了, 可參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
+
+```xml
+  <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
+    <field name="name">Demo Expense Tutorial Form</field>
+    <field name="model">demo.expense.tutorial</field>
+    ......
+            <field name="debug_field" groups="base.group_no_one"/>
+            <field name="admin_field" groups="base.user_admin"/>
+    ......
+```
+
+基本上原生的都是定義在原始碼中的 `odoo/addons/base/security/base_groups.xml`
+
+像是基本的 user gropus 種類,
+
+```xml
+......
+<record model="res.groups" id="group_user">
+    <field name="name">Internal User</field>
+</record>
+
+......
+
+<record id="group_portal" model="res.groups">
+    <field name="name">Portal</field>
+    ......
+</record>
+
+......
+
+<record id="group_public" model="res.groups">
+    <field name="name">Public</field>
+    ......
+</record>
+
+......
+
+```
+
+透過定義 user 以及 groups, 可以組合出更靈活的架構.

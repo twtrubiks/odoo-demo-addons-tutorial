@@ -52,6 +52,8 @@ class DemoExpenseTutorial(models.Model):
 
     sequence = fields.Integer(index=True, help="Gives the sequence order", default=1)
     active = fields.Boolean(default=True, help="Set active.")
+    debug_field = fields.Char('debug_field')
+    admin_field = fields.Char('admin_field')
 
     @api.multi
     def copy(self, default=None):
