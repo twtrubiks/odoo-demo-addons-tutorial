@@ -88,6 +88,8 @@
 
 34. [odoo 教學 - 透過 AbstractModel 擴充 Model](demo_abstractmodel_v2_tutorial)
 
+35. [odoo 教學 - odoo session_redis 教學](session_redis_tutorial)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)

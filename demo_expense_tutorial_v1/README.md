@@ -62,11 +62,11 @@
 
 * odoo 手把手教學 - Message Post 教學 - part29 - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---message-post-%E6%95%99%E5%AD%B8---part29)
 
-* [Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---groups-%E6%90%AD%E9%85%8D-fields-%E7%94%A8%E6%B3%95---part30)
+* [Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30](https://youtu.be/JyNyg7iHar0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---groups-%E6%90%AD%E9%85%8D-fields-%E7%94%A8%E6%B3%95---part30)
 
-* [(等待新增)Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---acid-transactions-%E8%AA%AA%E6%98%8E---part31)
+* [Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31](https://youtu.be/M36CNiK9xrM) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---acid-transactions-%E8%AA%AA%E6%98%8E---part31)
 
-* [(等待新增)Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32]() - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E7%89%B9%E6%AE%8A-groups-%E6%87%89%E7%94%A8%E8%AA%AA%E6%98%8E---part32)
+* [Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32](https://youtu.be/PSiDfM840NI) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E7%89%B9%E6%AE%8A-groups-%E6%87%89%E7%94%A8%E8%AA%AA%E6%98%8E---part32)
 
 建議在閱讀這篇文章之前, 請先確保了解看過以下的文章 (因為都有連貫的關係)
 
@@ -1939,7 +1939,7 @@ def btn_message_post(self):
 
 ## odoo 手把手教學 - groups 搭配 fields 用法 - part30
 
-* [(等待新增)Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30]()
+* [Youtube Tutorial - odoo 手把手教學 - groups 搭配 fields 用法 - part30](https://youtu.be/JyNyg7iHar0)
 
 這邊的用法和 [odoo 手把手教學 - domain 搭配 fields 的三種用法 - part27](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---domain-%E6%90%AD%E9%85%8D-fields-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%94%A8%E6%B3%95---part27) 是類似的,
 
@@ -1960,15 +1960,15 @@ class DemoExpenseTutorial(models.Model):
 
 `tag_ids` field 增加了 `groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'`,
 
-代表的意思是只有 Manager 可以看到這個 field,
+代表的意思是只有 Manager 可以看到這個 field(擁有權限),
 
 假如今天一個 User 權限的人, 不管在 tree 或是 form 都看不到 `tag_ids`.
 
-但這單純只是**隱藏**起來, 也就是說如果你強制去取值, 還是有權限可以拿到資料的,
+但這不只是隱藏起來, 也就是說如果你強制去取值, 還是無法拿到資料的(因為權限不夠),
 
 建議可以用 shell 模式下去嘗試取值.
 
-然後這種寫法其實等於下方,
+然後另一種寫法如下,
 
 請參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml),
 
@@ -1980,13 +1980,19 @@ class DemoExpenseTutorial(models.Model):
   </record>
 ```
 
-兩個唯一的差別就是, 如果你是寫在 model, 會自動幫你產生到全部的 view 上,
+但這只是**隱藏**起來, 也就是說如果你強制去取值, 還是可以拿到資料的(沒有權限限制),
 
-然後如果你單獨寫在 view 上, 是針對個別的 view (像這邊就是只在 form 上) 生效.
+差別在於,
+
+如果你是寫在 model, 會自動幫你產生到全部的 view 上(並且需要對應的權限).
+
+如果你單獨寫在 view 上, 是針對個別的 view (像這邊就是只在 form 上) 生效,
+
+(但不需要對應的權限).
 
 ## odoo 手把手教學 - ACID transactions 說明 - part31
 
-* [(等待新增)Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31]()
+* [Youtube Tutorial - odoo 手把手教學 - ACID transactions 說明 - part31](https://youtu.be/M36CNiK9xrM)
 
 這邊先說結論, 下面會再說明, 如果你遵守 odoo 的 ORM,
 
@@ -2038,7 +2044,7 @@ def btn_test_acid_atomicity(self):
 
 ## odoo 手把手教學 - 特殊 groups 應用說明 - part32
 
-* [(等待新增)Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32]()
+* [Youtube Tutorial - odoo 手把手教學 - 特殊 groups 應用說明 - part32](https://youtu.be/PSiDfM840NI)
 
 這邊介紹幾個比較特殊的 groups 給大家,
 

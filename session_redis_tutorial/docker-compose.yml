@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  cache:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+#     command: redis-server --save 60 1 --loglevel warning --requirepass change_me --appendonly yes
+#     command: redis-server --save 60 1 --loglevel warning  --appendonly yes
+#     volumes:
+#       - cache:/data
+
+# volumes:
+#   cache:
