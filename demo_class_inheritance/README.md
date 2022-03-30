@@ -131,6 +131,16 @@ class ClassInheritance(models.Model):
 ......
 ```
 
+這邊補充一下 xpath slash 的不同 `/` `//`:exclamation::exclamation:
+
+`/` 代表直接去找目前節點的 child, 如果找不到就會發生錯誤. (類似絕對路徑的概念).
+
+`//` 代表去找目前節點的後面全部的節點 (類似相對路徑的概念).
+
+通常用 `/` 找不到的節點, 改用 `//` 都會找的到:smile:
+
+如果你想要看更詳細的說明, google 關鍵字是 `xpath slash vs double slash`:smirk:
+
 所以可以依照自己的需求下去選擇.
 
 [views/views.xml](views/views.xml)

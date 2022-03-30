@@ -14,7 +14,7 @@
 
 先說結論, 透過 `fields_view_get` 這個方法, 我們可以動態的做很多常規方法無法做到的事情,
 
-今天就來舉個例子, 我希望除了 Billing Manager 這個 gropus 之外, 其他的人對 `account.invoice` 中的
+今天就來舉個例子, 我希望除了 Billing Manager 這個 groups 之外, 其他的人對 `account.invoice` 中的
 
 `invoice_line_ids` field 都必須是 readonly (如圖下方).
 

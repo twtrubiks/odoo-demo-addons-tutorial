@@ -2119,7 +2119,7 @@ Administrator</span>]]></field>
 
 基本上原生的都是定義在原始碼中的 `odoo/addons/base/security/base_groups.xml`
 
-像是基本的 user gropus 種類,
+像是基本的 user groups 種類,
 
 ```xml
 ......

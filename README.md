@@ -90,6 +90,8 @@
 
 35. [odoo 教學 - odoo session_redis 教學](session_redis_tutorial)
 
+36. [Odoo 15 中的 LISTEN/NOTIFY 運作原理](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0/odoo-pg-listen-notify)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
