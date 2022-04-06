@@ -2,7 +2,7 @@
 
 這個分支主要是紀錄 odoo15 一些新的特性,
 
-以下紀錄就按照我的摸索慢慢補充
+以下紀錄就按照我的摸索慢慢補充:smile:
 
 ## 1. Discuss 新增視訊功能
 
@@ -32,7 +32,7 @@
 
 ## 4. 新功能 Group By Many2many Fields 以及更快速的編輯 Edit, Mass Editing
 
-[Youtube Tutorial - odoo15 新功能 Group By Many2many Fields 以及更快速的編輯 Edit, Mass Editing](xx)
+[Youtube Tutorial - odoo15 新功能 Group By Many2many Fields 以及更快速的編輯 Edit, Mass Editing](https://youtu.be/K1Tf6Ek0t7I)
 
 * Group By Many2many Fields
 
@@ -108,11 +108,11 @@ Project Sharing,
 
 * discuss 按方向鍵 上 可以編輯, 可以刪除, 可以針對特定訊息回復.
 
-## 7. 新功能 Website Bulider, Configuration Wizards, new Jinja mail templates
+## 7. 新功能 Website Builder, Configuration Wizards, New Jinja mail templates
 
-[Youtube Tutorial - odoo15 新功能 Website Bulider, Configuration Wizards, new Jinja mail templates]()
+[Youtube Tutorial - odoo15 新功能 Website Builder, Configuration Wizards, New Jinja mail templates](https://youtu.be/OfsAXDnz9C4)
 
-* 新功能 Website Bulider, 把 website addons 裝上即可體驗
+* 新功能 Website Builder, 把 website addons 裝上即可體驗
 
 * 新功能 Configuration Wizards
 
@@ -152,7 +152,7 @@ Project Sharing,
 
 ## 8. 新功能 Scheduled Actions Triggers
 
-[Youtube Tutorial - odoo15 新功能 Scheduled Actions Triggers]()
+[Youtube Tutorial - odoo15 新功能 Scheduled Actions Triggers](https://youtu.be/buwzrc9NidY)
 
 這個新功能主要是讓 schedule 變得更活用:smile:
 
@@ -239,7 +239,7 @@ def _trigger(self, at=None):
 
 ## 9. 新功能 Profiling and Product Images
 
-[Youtube Tutorial - odoo15 新功能 Profiling 和 Product Images](xx)
+[Youtube Tutorial - odoo15 新功能 Profiling 和 Product Images](https://youtu.be/mpTVF18qryE)
 
 * Profiling
 
@@ -270,3 +270,7 @@ def _trigger(self, at=None):
 也是利用了 Scheduled Actions Triggers 的概念.
 
 相關 PR 可參考 [pull/70198](https://github.com/odoo/odoo/pull/70198)
+
+## 其他
+
+* [Odoo 15 中的 LISTEN/NOTIFY 運作原理](odoo-pg-listen-notify)
