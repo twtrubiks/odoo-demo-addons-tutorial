@@ -92,6 +92,8 @@
 
 36. [Odoo 15 中的 LISTEN/NOTIFY 運作原理](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0/odoo-pg-listen-notify)
 
+37. [Odoo 15 建立簡易 REST API](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0/demo_controller_api)
+
 ## 其他
 
 * [Youtube Tutorial - 使用 CLI 安裝,更新 addons](https://youtu.be/k19N2x8f4gw)
