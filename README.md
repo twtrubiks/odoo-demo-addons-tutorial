@@ -276,3 +276,5 @@ def _trigger(self, at=None):
 * [Odoo 15 中的 LISTEN/NOTIFY 運作原理](odoo-pg-listen-notify)
 
 * [Odoo 15 架構流程](odoo_architecture_flow) - 載入 addons 流程, 頁面生成流程
+
+* [Odoo 15 建立簡易 REST API](demo_controller_api)
