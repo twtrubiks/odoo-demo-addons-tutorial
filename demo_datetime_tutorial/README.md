@@ -28,10 +28,12 @@ odoo 會透過 session (或是你的設定) 去做 time zone 的轉換.
 
 ```python
 >>> from datetime import datetime
+>>> datetime(2020, 1, 10, 0, 0)
 datetime.datetime(2020, 1, 10, 0, 0)
 
 # strptime, python 的 str -> datetime
 >>> my_datetime = datetime.strptime('2020/11/23', '%Y/%m/%d')
+>>> my_datetime
 datetime.datetime(2020, 11, 23, 0, 0)
 
 # strftime, python 的 datetime -> str
@@ -49,6 +51,39 @@ datetime.date(2020, 10, 14)
 
 >>> date.today() + timedelta(days=7)
 datetime.date(2020, 10, 21)
+```
+
+python 的時區轉換
+
+```python
+>>> ## Asia/Taipei -> UTC
+>>> from pytz import timezone
+>>> from datetime import datetime
+>>> today = datetime(2022, 7, 7, 10, 0)
+>>> user_tz = timezone('Asia/Taipei')
+
+>>> today = user_tz.localize(today)
+>>> today
+datetime.datetime(2022, 7, 7, 10, 0, tzinfo=<DstTzInfo 'Asia/Taipei' CST+8:00:00 STD>)
+
+>>> today = today.astimezone(timezone('UTC'))
+>>> today
+datetime.datetime(2022, 7, 7, 2, 0, tzinfo=<UTC>)
+
+
+>>> ## UTC -> Asia/Taipei
+>>> from pytz import timezone
+>>> from datetime import datetime
+>>> today = datetime(2022, 7, 7, 10, 0)
+>>> user_tz = timezone('UTC')
+
+>>> today = user_tz.localize(today)
+>>> today
+datetime.datetime(2022, 7, 7, 10, 0, tzinfo=<UTC>)
+
+>>> today = today.astimezone(timezone('Asia/Taipei'))
+>>> today
+datetime.datetime(2022, 7, 7, 18, 0, tzinfo=<DstTzInfo 'Asia/Taipei' CST+8:00:00 STD>)
 ```
 
 odoo 中的 odoo.tools.date_utils

@@ -591,12 +591,6 @@ Connection Security 填入 `SSL/TLS`
 
 ![alt tag](https://i.imgur.com/yMVWVF5.png)
 
-以及把權限安全性調整為低一點, 可參考以下的兩個連結
-
-[https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps)
-
-[https://www.google.com/accounts/DisplayUnlockCaptcha](https://www.google.com/accounts/DisplayUnlockCaptcha)
-
 接著可以使用 odoo 內的 email 測試看是否可以成功發信
 
 ![alt tag](https://i.imgur.com/sy1A69K.png)

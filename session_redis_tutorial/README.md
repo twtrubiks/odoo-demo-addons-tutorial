@@ -141,7 +141,7 @@ docker exec -it <container id> redis-cli
 
 ```cmd
 keys *
-``
+```
 
 查看某個 key 的資料
 
