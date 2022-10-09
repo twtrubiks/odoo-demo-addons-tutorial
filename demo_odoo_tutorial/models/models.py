@@ -25,6 +25,10 @@ class DemoOdooTutorial(models.Model):
     input_number = fields.Float(string='input number', digits=(10,3))
     field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
+    # field_compute_demo = fields.Integer(compute="_get_field_compute",
+    #                                     inverse="_set_input_number",
+    #                                     search="_search_upper")
+
     _sql_constraints = [
         ('name_uniq', 'unique(name)', 'Description must be unique'),
     ]
@@ -41,6 +45,13 @@ class DemoOdooTutorial(models.Model):
     def _get_field_compute(self):
         for data in self:
             data.field_compute_demo = data.input_number * 1000
+
+    def _set_input_number(self):
+        for data in self:
+            data.input_number = data.field_compute_demo / 1000
+
+    def _search_upper(self, operator, value):
+        return [('input_number', operator, value)]
 
     @api.onchange('field_onchange_demo')
     def onchange_demo(self):

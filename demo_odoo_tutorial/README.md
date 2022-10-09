@@ -190,6 +190,10 @@ class Model(AbstractModel):
 ......
 field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
+# field_compute_demo = fields.Integer(compute="_get_field_compute",
+#                                     inverse="_set_input_number",
+#                                     search="_search_upper")
+
     _sql_constraints = [
         ('name_uniq', 'unique(name)', 'Description must be unique'),
     ]
@@ -207,11 +211,17 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
         for data in self:
             data.field_compute_demo = data.input_number * 1000
 
+    def _set_input_number(self):
+        for data in self:
+            data.input_number = data.field_compute_demo / 1000
+
+    def _search_upper(self, operator, value):
+        return [('input_number', operator, value)]
+
     @api.onchange('field_onchange_demo')
     def onchange_demo(self):
         if self.field_onchange_demo:
             self.field_onchange_demo_set = 'set {}'.format(self.field_onchange_demo)
-        ......
 ......
 
 ```
@@ -220,7 +230,73 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
 而且這個 field 預設是不會存在 db 中的 (`store=False`, 也就是每次都是計算出來的),
 
-如果想要將值保存在 db 中 , 需再加上 `store=True` ,
+如果想要將值保存在 db 中, 需再加上 `store=True`.
+
+如果你設定 `store=False` (或是沒指定),
+
+當你去搜尋 `field_compute_demo` 時, 會發現錯誤,
+
+```cmd
+>>> self.env['demo.odoo.tutorial'].search([('field_compute_demo', '>', 1)])
+2022-10-08 14:50:42,851 15224 ERROR odoo odoo.osv.expression: Non-stored field demo.odoo.tutorial.field_compute_demo cannot be searched.
+demo.odoo.tutorial(1,2)
+```
+
+雖然有撈出資料, 但是是撈出全部的資料(剛好裡面全部的資料有兩筆).
+
+原因很簡單, 因為這個 field 是 compute 出來的, 在 table 中也沒有這個欄位,
+
+所以不能搜尋.
+
+如果你想要搜尋, 一種簡單方法是設定 `store=True`, 但這種方法不一定是好的:confused:
+
+(因為如果亂設很可能造成效能上的影響).
+
+另一種方法比較麻煩, 透過定義 `search` 完成,
+
+官方文件可參考 [Computed fields](https://www.odoo.com/documentation/12.0/developer/reference/orm.html#computed-fields)
+
+透過 `search` 去定義邏輯, 根據其他的 filed 欄位(或邏輯)搜尋出想要的結果,
+
+```python
+......
+field_compute_demo = fields.Integer(compute="_get_field_compute",
+                                    inverse="_set_input_number",
+                                    search="_search_upper")
+......
+
+def _search_upper(self, operator, value):
+    return [('input_number', operator, value)]
+```
+
+定義完 `search` 之後, 就可以正常對 `field_compute_demo` 搜尋了:smile:
+
+```cmd
+>>> self.env['demo.odoo.tutorial'].search([('field_compute_demo', '=', 2)])
+demo.odoo.tutorial(2,)
+```
+
+前面有說到 compute field 預設為 readonly,
+
+如果今天想要讓他可以編輯, 該怎麼做呢:question:
+
+需要定義 `inverse`,
+
+```python
+......
+field_compute_demo = fields.Integer(compute="_get_field_compute",
+                                    inverse="_set_input_number",
+                                    search="_search_upper")
+......
+
+def _set_input_number(self):
+    for data in self:
+        data.input_number = data.field_compute_demo / 1000
+```
+
+定義完之後, 就可以對 `field_compute_demo` 進行編輯,
+
+任意改 `input_number` 或 `field_compute_demo` 都可以互相 trigger.
 
 `compute` 為 `_get_field_compute`, 透過 `@api.depends` 裝飾器的幫忙,
 
