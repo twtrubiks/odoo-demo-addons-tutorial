@@ -86,6 +86,27 @@ class DemoOdooTutorial(models.Model):
         # print('self.env.cr.fetchone:', self.env.cr.fetchone())
         # print('self.env.cr.dictfetchall:', self.env.cr.dictfetchall())
 
+
+        # query = """
+        #     SELECT
+        #         id, name,
+        #         is_done_track_onchange,
+        #         name_track_always,
+        #         start_datetime,
+        #         stop_datetime,
+        #         field_onchange_demo,
+        #         field_onchange_demo_set,
+        #         input_number
+        # FROM
+        #         demo_odoo_tutorial
+        # WHERE
+        #         name like %s and 1 = %s;
+        # """
+
+        # query_sql_params = ('%%odoo%%', 1,)
+        # # query_sql_params = ('%odoo%', 1,)
+        # self.env.cr.execute(query)
+
     def get_custom_portal_date(self):
         str_time = datetime.strftime(self.start_datetime, '%Y/%m/%d')
         return '>{}<'.format(str_time)

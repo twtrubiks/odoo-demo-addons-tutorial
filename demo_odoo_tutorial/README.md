@@ -1155,3 +1155,54 @@ self.env.cr.execute('SELECT * FROM demo_odoo_tutorial where id >' + '1' + ';')
 # good
 self.env.cr.execute('SELECT * FROM demo_odoo_tutorial where id > %s;', (1,))
 ```
+
+如果今天有使用 like 要注意一下(要加上跳脫字元),
+
+```python
+query = """
+    SELECT
+        id, name,
+        is_done_track_onchange,
+        name_track_always,
+        start_datetime,
+        stop_datetime,
+        field_onchange_demo,
+        field_onchange_demo_set,
+        input_number
+  FROM
+        demo_odoo_tutorial
+  WHERE
+        name like '%%odoo%%' and 1 = %s;
+"""
+
+query_sql_params = (1,)
+self.env.cr.execute(query, query_sql_params)
+
+```
+
+或是使用
+
+```python
+query = """
+    SELECT
+        id, name,
+        is_done_track_onchange,
+        name_track_always,
+        start_datetime,
+        stop_datetime,
+        field_onchange_demo,
+        field_onchange_demo_set,
+        input_number
+  FROM
+        demo_odoo_tutorial
+  WHERE
+        name like %s and 1 = %s;
+"""
+
+query_sql_params = ('%%odoo%%', 1,)
+# query_sql_params = ('%odoo%', 1,)
+
+self.env.cr.execute(query, query_sql_params)
+```
+
+更好的方法是使用 [更好的處理方式 - SQL string composition](https://github.com/twtrubiks/postgresql-note/tree/main/avoid-sql-injection-tutorial#%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%99%95%E7%90%86%E6%96%B9%E5%BC%8F---sql-string-composition)
