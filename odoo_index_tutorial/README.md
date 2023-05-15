@@ -71,3 +71,25 @@ SELECT * FROM demo_expense_tutorial where name='123';
 它可能會根據你的資料量決定要不要使用 index, 所以你會發現儘管你設定了 index,
 
 但它卻還是使用 `Seq Scan`, 因為 postgresql 的演算法可能覺得在這個情況下 `Seq Scan` 更快:smile:
+
+
+可以吃到 index
+
+```sql
+explain
+SELECT * FROM demo_expense_tutorial where name='123%';
+```
+
+無法吃到 index, 建議改用 full-text search.
+
+```sql
+explain
+SELECT * FROM demo_expense_tutorial where name='%123%';
+```
+
+無法吃到 index
+
+```sql
+explain
+SELECT * FROM demo_expense_tutorial where name='%123';
+```
