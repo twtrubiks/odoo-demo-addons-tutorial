@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_demo_scheduler_user,Demo Scheduler Tutorial User Access,model_demo_scheduler,demo_scheduler_group_user,1,0,0,0
-access_demo_scheduler_manager,Demo Scheduler Tutorial Manager Access,model_demo_scheduler,demo_scheduler_group_manager,1,1,1,1
