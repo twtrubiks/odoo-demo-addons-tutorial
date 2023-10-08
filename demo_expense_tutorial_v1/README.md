@@ -479,19 +479,21 @@ class DemoExpenseTutorial(models.Model):
 ......
 ```
 
-`noupdate="1"`的意思為當更新 addons 時, 是不是允許重新 import data,
+`noupdate="1"` (代表更新 addons 時, 不再更新, 除非你刪掉 record)
 
-`noupdate="1"`
+假如我們在安裝完 addons 之後, 已經存在 record 了, 這時候我們手動更新這些 record 的資料,
 
-假如我們在安裝完 addons 之後, 去刪除 record data, 然後再重新去更新 addons,
+再去更新 addons, 這些 record 是不會有任何改變的.
 
-你會發現你刪除的 data 並沒有被安裝回來 (只能先移除 addons 再重新安裝).
+(但是, 假如你刪掉 record, 再去更新 addons, record 會重新被安裝回來.)
 
-`noupdate="0"`
+`noupdate="0"` (代表更新 addons 時, 會保持更新, 也就是會被還原)
 
-假如我們在安裝完 addons 之後, 去刪除 record data, 然後再重新去更新 addons,
+假如我們在安裝完 addons 之後, 已經存在 record 了, 這時候我們手動更新這些 record 的資料,
 
-你會發現你刪除的 data 會被安裝回來.
+再去更新 addons, 這些 record 是會被改回原本的.
+
+(但是, 假如你刪掉 record, 再去更新 addons, record 會重新被安裝回來.)
 
 `id="ir_rule_demo_expense_user"` 第一段為針對 `demo_expense_tutorial_group_user`
 
