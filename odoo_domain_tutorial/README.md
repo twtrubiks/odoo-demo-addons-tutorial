@@ -118,3 +118,21 @@ ORDER BY "res_partner"."display_name"
 (A AND B) AND (C OR D)
 
 延伸閱讀 [Odoo Domain Operator 教學](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/domain_operator_tutorial)
+
+## 更進階複雜的查詢
+
+有時候我們會需要更複雜的查詢, 這時候可以這樣使用
+
+`from odoo.osv.expression import AND, OR`
+
+```python
+from odoo.osv.expression import AND, OR
+condition1 = [('login', '=', 'admin')]
+condition2 = [('partner_id', '=', 7)]
+
+combined_condition_or = OR([condition1, condition2])
+combined_condition_and = AND([condition1, condition2])
+
+self.env['res.users'].search(combined_condition_or)
+self.env['res.users'].search(combined_condition_and)
+```

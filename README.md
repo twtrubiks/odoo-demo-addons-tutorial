@@ -1,6 +1,12 @@
 # odoo-demo-addons-tutorial-odoo-12
 
-此版本為 odoo12, odoo14 版本請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0) 分支.
+此版本為 odoo12,
+
+odoo14 版本請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0) 分支.
+
+odoo15 版本請參考 [odoo15](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0) 分支.
+
+odoo16 版本請參考 [odoo16](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/16.0) 分支.
 
 本文章會持續更新:smile:
 
