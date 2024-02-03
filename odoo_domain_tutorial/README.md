@@ -6,6 +6,10 @@
 
 首先, odoo 是使用 波蘭表示法. (小技巧, 從後面看回來)
 
+這邊先說一下規則, 等等會帶大家看,
+
+從 右 向 左 開始看, 當遇到運算符號的時候, 找它的右側的兩個值去做運算.
+
 符號說明如下,
 
 `&` -> `AND` (這是預設邏輯，可以不寫, 不寫就代表 `&`)
@@ -42,6 +46,16 @@ domain = [A, B, C]
 domain = ['|', A, B, C]
 ```
 
+分解如下
+
+```text
+從右邊開始看
+
+-> (A OR B), C
+
+-> (A OR B) AND C
+```
+
 上述代表 (A OR B) AND C
 
 ```python
@@ -50,10 +64,35 @@ domain = [A, B, '|', C, D]
 
 上述代表 (A AND B) AND (C OR D)
 
+分解如下
+
+```text
+從右邊開始看
+
+-> A, B, (C OR D)
+
+-> A, B AND (C OR D)
+
+-> A AND B AND (C OR D)
+```
+
 ```python
 domain = ['|', A, B, C, D]
 ```
+
 上述代表 ((A OR B) AND C ) AND D
+
+分解如下
+
+```text
+從右邊開始看
+
+-> (A OR B), C, D
+
+-> (A OR B) AND C, D
+
+-> (A OR B) AND C AND D
+```
 
 接下來看一個比較複雜的
 
@@ -64,6 +103,49 @@ domain = ['|', A, '!', '&', B, C]
 上述代表 A OR ( NOT B OR NOT C)
 
 也等於 A OR ( NOT (B AND C))
+
+分解如下
+
+```text
+從右邊開始看
+
+-> '|', A, '!', (B AND C)
+
+-> '|', A, NOT (B AND C)
+
+-> A OR ( NOT (B AND C) )
+```
+
+接下來看一個更複雜的
+
+```python
+domain = [
+     '&', '&', '&',
+     A,
+     B,
+     C,
+     '|', '&',
+     D,
+     E,
+     F,
+]
+```
+
+上述代表 A AND B AND C AND ((D AND E) OR F)
+
+分解如下
+
+```text
+從右邊開始看
+
+-> '&', '&', '&', A, B, C, '|', (D AND E), F
+
+-> '&', '&', '&', A, B, C, (D AND E) OR F
+
+-> '&', '&', '&', A, B, C AND ((D AND E) OR F)
+
+-> A AND B AND C AND ((D AND E) OR F)
+```
 
 推薦這個網站, 他可以幫助你檢查邏輯是不是相同的 [wolframalpha](https://www.wolframalpha.com)
 
