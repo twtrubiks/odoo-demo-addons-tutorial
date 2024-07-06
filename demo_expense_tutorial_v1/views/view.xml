@@ -5,7 +5,7 @@
     <field name="model">demo.expense.tutorial</field>
     <field name="arch" type="xml">
       <form string="Demo Expense Tutorial">
-        <div class="alert alert-warning oe_edit_only" role="alert" attrs="{'invisible': [('tag_ids', '!=', [])]}">
+        <div class="alert alert-warning oe_edit_only" role="alert" invisible="tag_ids">
             tag_ids 沒建立
         </div>
         <header>
@@ -24,7 +24,7 @@
           <div class="oe_button_box" name="button_box">
             <button class="oe_stat_button" name="button_sheet_id"
                     string="SHEET ID" type="object"
-                    attrs="{'invisible':[('sheet_id','=', False)]}" icon="fa-bars"/>
+                    invisible="not sheet_id" icon="fa-bars"/>
           </div>
           <group>
             <field name="name"/>
@@ -65,12 +65,19 @@
     <field name="model">demo.expense.tutorial</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree decoration-info="'info' in name" decoration-muted="'muted' in name" decoration-danger="'danger' in name" decoration-bf="'bf' in name" decoration-warning="'warning' in name" decoration-success="'success' in name">
+      <tree decoration-info="name in ('info')"
+            decoration-muted="name in ('muted')"
+            decoration-danger="name in ('danger')"
+            decoration-bf="name in ('bf')"
+            decoration-warning="name in ('warning')"
+            decoration-success="name in ('success')">
       <!-- <tree default_order="sequence, id desc"> -->
         <field name="sequence" widget="handle"/>
         <field name="name"/>
         <field name="employee_id"/>
-        <field name="user_id"/>
+        <!-- <field name="user_id"/> -->
+        <!-- <field name="user_id" invisible="1"/> -->
+        <field name="user_id" column_invisible="True"/>
         <field name="tag_ids"/>
         <field name="sheet_id" widget="many2onebutton"/>
       </tree>
@@ -93,7 +100,7 @@
             <button class="oe_stat_button"
                     name="button_line_ids"
                     type="object"
-                    attrs="{'invisible':[('expense_line_ids','=', False)]}"
+                    invisible="not expense_line_ids"
                     icon="fa-bars">
                     <field name="demo_expenses_count" widget="statinfo" string="Counts"/>
             </button>
@@ -110,7 +117,7 @@
                     <field name="name"/>
                     <field name="employee_id"/>
                     <field name="user_id"/>
-                    <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('parent.name', '=', 'test-readonly')]}"/>
+                    <field name="tag_ids" widget="many2many_tags" readonly="parent.name == 'test-readonly'"/>
                   </tree>
                 </field>
               </page>

@@ -422,8 +422,8 @@ class DemoExpenseSheetTutorial(models.Model):
         return names
 
     @api.model
-    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
-        args = args or []
+    def _name_search(self, name, domain=None, operator='ilike', limit=None, order=None):
+        domain = domain or []
         if name:
-            args = args + ['|', ('id', operator, name), ('name', operator, name)]
-        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+            domain = domain + ['|', ('id', operator, name), ('name', operator, name)]
+        return self._search(domain, limit=limit, order=order)

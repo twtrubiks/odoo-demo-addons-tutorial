@@ -9,7 +9,7 @@
     'author': "My Company",
     'website': "http://www.yourcompany.com",
     'category': 'Uncategorized',
-    'version': "16.0.1.0.0",
+    'version': "17.0.0.0.0",
     'depends': ['hr', 'analytic'],
     'data': [
         'security/security.xml',
