@@ -46,6 +46,10 @@
             <!-- <field name="sheet_id" context="{'form_view_ref':'demo_expense_tutorial_v1.custom_view_form_demo_sheet'}"/> -->
 
             <field name="debug_field" groups="base.group_no_one"/>
+
+            <!-- not -->
+            <!-- <field name="debug_field" groups="!base.group_no_one"/> -->
+
             <field name="admin_field" groups="base.user_admin"/>
             <field name="selet_fields"/>
             <field name="analytic_distribution" widget="analytic_distribution"/>

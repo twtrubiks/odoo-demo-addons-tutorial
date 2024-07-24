@@ -328,6 +328,11 @@ class DemoExpenseSheetTutorial(models.Model):
         compute='_compute_demo_expenses_count',
         string='Demo Expenses Count')
 
+    @api.depends('name')
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = f'{record.create_date.date()}-{record.name}'
+
     def add_demo_expense_record_old(self):
         # (0, _ , {'field': value}) creates a new record and links it to this one.
 
