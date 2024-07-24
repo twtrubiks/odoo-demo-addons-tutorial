@@ -383,18 +383,3 @@ def get_neutralization_queries(modules):
 如果有 Neutralize 的, 上方也會和你說有 Neutralize.
 
 ![alt tag](https://i.imgur.com/R9yeigg.png)
-
-## 其他
-
-odoo16 移除 `fields_view_get`
-
-```python
-'Method `fields_view_get` is deprecated, use `get_view` instead',
-```
-
-新的 `get_view`
-
-```python
-def get_view(self, view_id=None, view_type='form', **options):
-    pass
-```
