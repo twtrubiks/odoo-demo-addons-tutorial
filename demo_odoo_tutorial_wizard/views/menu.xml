@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_odoo_tutorial App Menu -->
+    <menuitem id="demo_odoo_tutorial_menu"
+              name="Demo Odoo Wizard" />
+
+    <record id="action_odoo_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Odoo Wizard Action</field>
+        <field name="res_model">demo.odoo.wizard.tutorial</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item to open the demo_odoo_tutorial -->
+    <menuitem id="menu_odoo_tutorial"
+              name="Demo Odoo Wizard"
+	          action="action_odoo_tutorial"
+              parent="demo_odoo_tutorial_menu" />
+</odoo>
+
+

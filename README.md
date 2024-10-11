@@ -5,3 +5,5 @@
 以下紀錄就按照我的摸索慢慢補充 :smile:
 
 - [odoo 17 教學](demo_expense_tutorial_v1)
+
+- [odoo 17 wizard 教學](demo_odoo_tutorial_wizard)

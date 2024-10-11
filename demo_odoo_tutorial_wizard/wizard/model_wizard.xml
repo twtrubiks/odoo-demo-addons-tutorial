@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_wizard_view_form" model="ir.ui.view">
+        <field name="name">demo.wizard.form</field>
+        <field name="model">demo.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Wizard Title</h1>
+                    </div>
+                    <group>
+                        <field name="wizard_partner_id"/>
+                        <field name="wizard_test_context"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Validate" name="btn_validate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- demo_wizard_action -->
+    <record id="demo_wizard_action" model="ir.actions.act_window">
+        <field name="name">Demo Wizard Action</field>
+        <field name="res_model">demo.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="demo_wizard_view_form"/>
+        <field name="target">new</field>
+        <field name="context">{'test_pass_data': 'hello 123'}</field>
+        <field name="binding_model_id" ref="demo_odoo_tutorial_wizard.model_demo_odoo_wizard_tutorial" />
+    </record>
+</odoo>
