@@ -10,6 +10,8 @@ odoo16 版本請參考 [odoo16](https://github.com/twtrubiks/odoo-demo-addons-tu
 
 odoo17 版本請參考 [odoo17](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/17.0) 分支.
 
+odoo18 版本請參考 [odoo18](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/18.0) 分支.
+
 本文章會持續更新 :smile:
 
 這邊文章主要是會手把手教大家撰寫 odoo 的 addons, 建議再閱讀這篇文章之前, 你已經看過以下的文章
@@ -22,11 +24,11 @@ odoo17 版本請參考 [odoo17](https://github.com/twtrubiks/odoo-demo-addons-tu
 
 為甚麼我要寫一堆 addons, 因為其實 odoo 和 django 一樣的點是都很麻煩, 要寫個範例超級麻煩的,
 
-因為一個小地方錯可能就會造成錯誤之類的:sweat:
+因為一個小地方錯可能就會造成錯誤之類的 :sweat:
 
 ## addons 目錄
 
-非常建議按照順序看, 因為會一步一步帶大家:smile:
+非常建議按照順序看, 因為會一步一步帶大家 :smile:
 
 1. [odoo 手把手建立第一個 addons](demo_odoo_tutorial)
 
@@ -170,9 +172,9 @@ python3 odoo-bin -u addons_1 -d odoo --dev=all
 
 `--dev=reload` 代表當 python code 改變時, 自動更新(不用手動更新).
 
-但有時候如果你覺得怪怪的, 我還是建議手動重新直接更新 addons 的指令比較好:smile:
+但有時候如果你覺得怪怪的, 我還是建議手動重新直接更新 addons 的指令比較好 :smile:
 
-注意:exclamation:沒有刪除 addons 的指令, 只能從 web 上移除.
+注意 :exclamation: 沒有刪除 addons 的指令, 只能從 web 上移除.
 
 ### shell
 
@@ -217,7 +219,7 @@ res.partner(11, 20)
 
 `read_group`
 
-通常使用在 SQL 中的 GROUP BY (很適合拿來處理比較大的資料, 效能應該也會比較好:smile:).
+通常使用在 SQL 中的 GROUP BY (很適合拿來處理比較大的資料, 效能應該也會比較好 :smile: ).
 
 read_group 的定義可參考原始碼中的 `odoo/models.py`
 
@@ -244,7 +246,7 @@ def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=Fals
 ......
 ```
 
-比較特別要注意的地方是 fields, groupby, lazy 這幾個欄位 (請參考註解說明:smile:).
+比較特別要注意的地方是 fields, groupby, lazy 這幾個欄位 (請參考註解說明 :smile: ).
 
 如果你想參考寫法, 建議參考 odoo14 的, odoo12 也可以使用, 但是有些寫法比較舊了.
 
@@ -266,7 +268,7 @@ FROM sale_order
 GROUP BY partner_id;
 ```
 
-注意:exclamation::exclamation:這邊 field 的格式為 `field:agg`.
+注意 :exclamation: :exclamation: 這邊 field 的格式為 `field:agg`.
 
 agg 代表 aggregate, odoo 的 orm 是有支援的, 更多詳細可參考 [postgresql functions-aggregate](https://www.postgresql.org/docs/current/functions-aggregate.html).
 
@@ -484,7 +486,7 @@ hr.expense(4, 3, 2, 1)
 hr.expense(4, 3)
 ```
 
-也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整):smile:
+也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整) :smile:
 
 另外提醒一下, 這個 sudo 除了在 ORM 底下生效外, 在 QWeb 中也會生效, 如下方這段 code 是可行的,
 
@@ -667,7 +669,7 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 所以, 使用 Edit View 選項去修改 view 可以使用在測試時.
 
-正式的修改, 還是推薦使用 addons 繼承的方式:smile:
+正式的修改, 還是推薦使用 addons 繼承的方式 :smile:
 
 ## Donation
 

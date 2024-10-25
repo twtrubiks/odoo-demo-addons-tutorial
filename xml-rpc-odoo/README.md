@@ -2,7 +2,7 @@
 
 此版本為 odoo12, odoo14 版本請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/xml-rpc-odoo) 分支.
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - 如何使用 python xmlrpc 連接 odoo - part1](https://youtu.be/MuMBF8a9ko8)
 
@@ -42,6 +42,24 @@ is used to call methods of odoo models via the execute_kw RPC function.
 (4, ID)                link to existing record with id = ID (adds a relationship)
 (5)                    unlink all (like using (3,ID) for all linked records)
 (6, 0, [IDs])          replace the list of linked IDs (like using (5) then (4,ID) for each ID in the list of IDs)
+```
+
+## 遇到 None 值
+
+在使用 xmlrpc 的時候, 如果你會傳 null 值, 可能會出現以下的錯誤
+
+```text
+cannot marshal None unless allow_none is enabled
+```
+
+要修正這個錯誤也很簡單, 加上 `allow_none=True`
+
+```python
+common = xmlrpc.client.ServerProxy(f'{odoo_url}/xmlrpc/2/common')
+uid = common.authenticate(db, username, password, {})
+
+# 如果值傳 None 會出現以上錯誤, 要記得加上 allow_none=True
+models = xmlrpc.client.ServerProxy(f'{odoo_url}/xmlrpc/2/object', allow_none=True)
 ```
 
 ## 其他第三方工具
