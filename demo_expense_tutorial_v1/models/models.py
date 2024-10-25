@@ -50,8 +50,8 @@ class DemoExpenseTutorial(models.Model):
     active = fields.Boolean(default=True, help="Set active.")
     debug_field = fields.Char('debug_field')
     admin_field = fields.Char('admin_field')
-    selet_fields = fields.Selection(
-        selection='_selection_selet_fields'
+    select_fields = fields.Selection(
+        selection='_selection_select_fields'
     )
     analytic_distribution = fields.Json()
     # properties_definition_field = fields.PropertiesDefinition('properties_definition_field')
@@ -59,9 +59,11 @@ class DemoExpenseTutorial(models.Model):
     resource_ref = fields.Reference(
         string='Record', selection='_selection_target_model')
 
+    # allows compute to replace default
     company_id_precompute = fields.Many2one(
         comodel_name='res.company',
         string="company",
+        readonly=False, # 注意這邊
         compute='_compute_company_id',
         store=True, precompute=True
     )
@@ -97,7 +99,7 @@ class DemoExpenseTutorial(models.Model):
     @api.depends('employee_id')
     def _compute_company_id(self):
         for rec in self:
-            rec.company_id_precompute = None
+            rec.company_id_precompute = rec.employee_id.company_id
 
     @api.depends('name')
     def _compute_data_vals(self):
@@ -125,7 +127,7 @@ class DemoExpenseTutorial(models.Model):
     def _selection_target_model(self):
         return [(model.model, model.name) for model in self.env['ir.model'].sudo().search([])]
 
-    def _selection_selet_fields(self):
+    def _selection_select_fields(self):
         return [('a', '1'), ('b', '2')]
 
     def button_sheet_id(self):

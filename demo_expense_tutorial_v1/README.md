@@ -16,9 +16,19 @@
 
 除了原本的 btree, 多了 btree_not_null 和 trigram,
 
-btree_not_null 適合大多數是 null 的資料.
+`btree_not_null` 適合大多數是 null 的資料, 但你想針對非 NULL 值進行優化.
 
-trigram 適合 full-text search, 像是 like `%search%` 這類的.
+說明一下, 像是 `btree_not_null` 為 [部份索引（partial index）](https://docs.postgresql.tw/the-sql-language/index/partial-indexes)的概念,
+
+他是 PostgreSQL 的一項功能, 它可以排除掉 NULL 的部份, 將有值的部份做 index.
+
+這樣做有什麼好處呢 :question:
+
+減少 index 大小, 因為只有符合條件的會建立索引，減少了索引的大小。
+
+提升查詢效率, 對於查詢條件中包含 my_column IS NOT NULL 的情況，可以提升查詢性能。
+
+`trigram` 適合 full-text search, 像是 like `%search%` 這類的.
 
 (建議可以直接看一下原始碼, 看看 odoo 怎麼使用這個 index )
 
@@ -110,6 +120,25 @@ is_done = fields.Boolean(compute='_compute_balance', store=False)
 當你去搜尋 情境二, 你會發現搜尋結果是撈出全部的資料.
 
 詳細說明可參考 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial) 中的 inverse
+
+再來注意一下下面這種情境, 假設今天有一個欄位, 你希望他有預設(根據你的邏輯), 然後使用者如果不喜歡, 也可以自行修改,
+
+`readonly=False` 使用者可以自己修改值.
+
+`compute='_compute_company_id'` 用 compute 取代 default.
+
+`store=True, precompute=True` 保存到 db, 確保可以搜尋.
+
+```python
+# allows compute to replace default
+company_id_precompute = fields.Many2one(
+    comodel_name='res.company',
+    string="company",
+    readonly=False, # 注意這邊
+    compute='_compute_company_id',
+    store=True, precompute=True,
+)
+```
 
 ## fake Binary fields
 
