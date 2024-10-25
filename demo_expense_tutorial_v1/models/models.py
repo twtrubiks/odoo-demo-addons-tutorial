@@ -42,7 +42,7 @@ class DemoExpenseTutorial(models.Model):
     # In the case of our books or authors relationship, it should be named demo_expense_tutorial_demo_tag_rel.
 
     tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id',
-        string='Tges', copy=False,
+        string='Tags', copy=False,
         groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'
     )
     sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete='restrict')
@@ -50,8 +50,8 @@ class DemoExpenseTutorial(models.Model):
     active = fields.Boolean(default=True, help="Set active.")
     debug_field = fields.Char('debug_field')
     admin_field = fields.Char('admin_field')
-    selet_fields = fields.Selection(
-        selection='_selection_selet_fields'
+    select_fields = fields.Selection(
+        selection='_selection_select_fields'
     )
     analytic_distribution = fields.Json()
     # properties_definition_field = fields.PropertiesDefinition('properties_definition_field')
@@ -59,10 +59,12 @@ class DemoExpenseTutorial(models.Model):
     resource_ref = fields.Reference(
         string='Record', selection='_selection_target_model')
 
+    # allows compute to replace default
     company_id_precompute = fields.Many2one(
         comodel_name='res.company',
         string="company",
         compute='_compute_company_id',
+        readonly=False, # 注意這邊
         store=True, precompute=True
     )
     """
@@ -97,7 +99,7 @@ class DemoExpenseTutorial(models.Model):
     @api.depends('employee_id')
     def _compute_company_id(self):
         for rec in self:
-            rec.company_id_precompute = None
+            rec.company_id_precompute = rec.employee_id.company_id
 
     @api.depends('name')
     def _compute_data_vals(self):
@@ -125,7 +127,7 @@ class DemoExpenseTutorial(models.Model):
     def _selection_target_model(self):
         return [(model.model, model.name) for model in self.env['ir.model'].sudo().search([])]
 
-    def _selection_selet_fields(self):
+    def _selection_select_fields(self):
         return [('a', '1'), ('b', '2')]
 
     def button_sheet_id(self):

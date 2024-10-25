@@ -292,6 +292,26 @@ def _onchange_debug_field(self):
 
 如果真的要使用, 請用 `constrains` (搭配 ValidationError) 代替.
 
+順便說明一下 `compute_sudo` (這個不是 odoo17 的主要特色),
+
+範例如下,
+
+```python
+authorized_transaction_ids = fields.Many2many(
+        string="Authorized Transactions", comodel_name='payment.transaction',
+        compute='_compute_authorized_transaction_ids', readonly=True, copy=False,
+        compute_sudo=True)
+
+used_in_bom_count = fields.Integer('# BoM Where Used',
+        compute='_compute_used_in_bom_count', compute_sudo=False)
+
+:param bool compute_sudo: whether the field should be recomputed as superuser
+to bypass access rights (by default ``True`` for stored fields, ``False``
+for non stored fields)
+```
+
+通常不用特別設定, 因為多數情況, 都是用 `True` 的情境, 也就是會 pass 掉 odoo 內的 access rights.
+
 ## odoo17 constrains
 
 這並不是 odoo17 的主要特色, 只是我的一些經驗整理,
