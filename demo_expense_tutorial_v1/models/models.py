@@ -1,5 +1,6 @@
 from odoo import models, fields, api, Command
 from odoo.exceptions import UserError
+from odoo.osv import expression
 
 class DemoTag(models.Model):
     _name = 'demo.tag'
@@ -19,7 +20,7 @@ class DemoExpenseTutorial(models.Model):
     _name = 'demo.expense.tutorial'
     _description = 'Demo Expense Tutorial'
     _order = "sequence, id desc"
-    _inherit = "analytic.mixin"
+    _inherit = ['mail.thread.main.attachment', 'mail.activity.mixin', 'analytic.mixin']
 
     name = fields.Char('Description', required=True)
     employee_id = fields.Many2one(
@@ -42,16 +43,16 @@ class DemoExpenseTutorial(models.Model):
     # In the case of our books or authors relationship, it should be named demo_expense_tutorial_demo_tag_rel.
 
     tag_ids = fields.Many2many('demo.tag', 'demo_expense_tag', 'demo_expense_id', 'tag_id',
-        string='Tges', copy=False,
-        groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'
+        string='Tags', copy=False,
+        # groups='demo_expense_tutorial_v1.demo_expense_tutorial_group_manager'
     )
     sheet_id = fields.Many2one('demo.expense.sheet.tutorial', string="Expense Report", ondelete='restrict')
     sequence = fields.Integer(index=True, help="Gives the sequence order", default=1)
     active = fields.Boolean(default=True, help="Set active.")
     debug_field = fields.Char('debug_field')
     admin_field = fields.Char('admin_field')
-    selet_fields = fields.Selection(
-        selection='_selection_selet_fields'
+    select_fields = fields.Selection(
+        selection='_selection_select_fields'
     )
     analytic_distribution = fields.Json()
     # properties_definition_field = fields.PropertiesDefinition('properties_definition_field')
@@ -59,10 +60,12 @@ class DemoExpenseTutorial(models.Model):
     resource_ref = fields.Reference(
         string='Record', selection='_selection_target_model')
 
+    # allows compute to replace default
     company_id_precompute = fields.Many2one(
         comodel_name='res.company',
         string="company",
         compute='_compute_company_id',
+        readonly=False, # 注意這邊
         store=True, precompute=True
     )
     """
@@ -97,7 +100,7 @@ class DemoExpenseTutorial(models.Model):
     @api.depends('employee_id')
     def _compute_company_id(self):
         for rec in self:
-            rec.company_id_precompute = None
+            rec.company_id_precompute = rec.employee_id.company_id
 
     @api.depends('name')
     def _compute_data_vals(self):
@@ -125,7 +128,7 @@ class DemoExpenseTutorial(models.Model):
     def _selection_target_model(self):
         return [(model.model, model.name) for model in self.env['ir.model'].sudo().search([])]
 
-    def _selection_selet_fields(self):
+    def _selection_select_fields(self):
         return [('a', '1'), ('b', '2')]
 
     def button_sheet_id(self):
@@ -328,10 +331,13 @@ class DemoExpenseSheetTutorial(models.Model):
         compute='_compute_demo_expenses_count',
         string='Demo Expenses Count')
 
-    @api.depends('name')
+    @api.depends('name', 'create_date')
     def _compute_display_name(self):
         for record in self:
-            record.display_name = f'{record.create_date.date()}-{record.name}'
+            if record.create_date:
+                record.display_name = f'{record.create_date.date()}-{record.name}'
+            else:
+                record.display_name = 'Draft'
 
     def add_demo_expense_record_old(self):
         # (0, _ , {'field': value}) creates a new record and links it to this one.
@@ -407,7 +413,7 @@ class DemoExpenseSheetTutorial(models.Model):
         return {
             'name': 'Demo Expense Line IDs',
             'view_type': 'form',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'res_model': 'demo.expense.tutorial',
             'view_id': False,
             'type': 'ir.actions.act_window',
@@ -419,16 +425,9 @@ class DemoExpenseSheetTutorial(models.Model):
         for record in self:
             record.demo_expenses_count = len(self.expense_line_ids)
 
-    def name_get(self):
-        names = []
-        for record in self:
-            name = f'{record.create_date.date()}-{record.name}'
-            names.append((record.id, name))
-        return names
-
     @api.model
-    def _name_search(self, name, domain=None, operator='ilike', limit=None, order=None):
-        domain = domain or []
-        if name:
-            domain = domain + ['|', ('id', operator, name), ('name', operator, name)]
-        return self._search(domain, limit=limit, order=order)
+    def _search_display_name(self, operator, value):
+        name = value or ''
+        if name and operator == 'ilike':
+            return ['|', ('id', operator, name), ('name', operator, name)]
+        return super()._search_display_name(operator, value)

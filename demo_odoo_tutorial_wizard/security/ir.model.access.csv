@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_demo_odoo_wizard_user,Demo Odoo Wizard Tutorial User Access,model_demo_odoo_wizard_tutorial,demo_odoo_wizard_tutorial_group_user,1,0,0,0
-access_demo_odoo_wizard_manager,Demo Odoo Wizard Tutorial Manager Access,model_demo_odoo_wizard_tutorial,demo_odoo_wizard_tutorial_group_manager,1,1,1,1
-
-access_demo_wizard,Demo Odoo Wizard Access,model_demo_wizard,base.group_user,1,1,1,1

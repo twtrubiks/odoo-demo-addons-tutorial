@@ -9,8 +9,8 @@
     'author': "My Company",
     'website': "http://www.yourcompany.com",
     'category': 'Uncategorized',
-    'version': "17.0.0.0.0",
-    'depends': ['hr', 'analytic'],
+    'version': "18.0.0.1",
+    'depends': ['base', 'hr', 'analytic'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

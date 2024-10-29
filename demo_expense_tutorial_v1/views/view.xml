@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <record id="view_form_demo_expense_tutorial" model="ir.ui.view">
     <field name="name">Demo Expense Tutorial Form</field>
@@ -50,8 +50,9 @@
             <!-- not -->
             <!-- <field name="debug_field" groups="!base.group_no_one"/> -->
 
-            <field name="admin_field" groups="base.user_admin"/>
-            <field name="selet_fields"/>
+            <field name="admin_field" groups="base.group_system"/>
+
+            <field name="select_fields"/>
             <field name="analytic_distribution" widget="analytic_distribution"/>
 
 
@@ -60,6 +61,8 @@
             <field name="data_vals" invisible="1"/>
           </group>
         </sheet>
+        <div class="o_attachment_preview o_center_attachment"/>
+        <chatter/>
       </form>
     </field>
   </record>
@@ -69,13 +72,13 @@
     <field name="model">demo.expense.tutorial</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree decoration-info="name in ('info')"
+      <list decoration-info="name in ('info')"
             decoration-muted="name in ('muted')"
             decoration-danger="name in ('danger')"
             decoration-bf="name in ('bf')"
             decoration-warning="name in ('warning')"
             decoration-success="name in ('success')">
-      <!-- <tree default_order="sequence, id desc"> -->
+      <!-- <list default_order="sequence, id desc"> -->
         <field name="sequence" widget="handle"/>
         <field name="name"/>
         <field name="employee_id"/>
@@ -84,7 +87,7 @@
         <field name="user_id" column_invisible="True"/>
         <field name="tag_ids"/>
         <field name="sheet_id" widget="many2onebutton"/>
-      </tree>
+      </list>
     </field>
   </record>
 
@@ -115,14 +118,14 @@
           <notebook>
               <page string="Expense">
                 <field name="expense_line_ids" >
-                  <!-- <tree> -->
-                  <tree editable="top">   <!-- <<<<<<<<<<<< -->
-                  <!-- <tree editable="bottom"> --> <!-- <<<<<<<<<<<< -->
+                  <!-- <list> -->
+                  <list editable="top">   <!-- <<<<<<<<<<<< -->
+                  <!-- <list editable="bottom"> --> <!-- <<<<<<<<<<<< -->
                     <field name="name"/>
                     <field name="employee_id"/>
                     <field name="user_id"/>
                     <field name="tag_ids" widget="many2many_tags" readonly="parent.name == 'test-readonly'"/>
-                  </tree>
+                  </list>
                 </field>
               </page>
           </notebook>
@@ -135,10 +138,10 @@
     <field name="name">Demo Expense Sheet Tutorial List</field>
     <field name="model">demo.expense.sheet.tutorial</field>
     <field name="arch" type="xml">
-      <tree>
+      <list>
         <field name="name"/>
         <field name="expense_line_ids"/>
-      </tree>
+      </list>
     </field>
   </record>
 </odoo>
