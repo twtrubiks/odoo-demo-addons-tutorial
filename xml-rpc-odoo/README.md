@@ -44,6 +44,44 @@ is used to call methods of odoo models via the execute_kw RPC function.
 (6, 0, [IDs])          replace the list of linked IDs (like using (5) then (4,ID) for each ID in the list of IDs)
 ```
 
+## 自定義 function
+
+有時候使用標準的 xml rpc 的 `read_search` 不是那麼方便, 像是我要拿 Many2one 的東西,
+
+就必須透過 id 再 access 一次, 蠻麻煩的, 所以還可以自己定義 function 以及 回傳格式.
+
+在 odoo 端要這樣寫, 記得要加上 `@api.model`,
+
+```python
+class HrExpenseCustom(models.Model):
+    _inherit = "hr.expense"
+
+    @api.model
+    def custom_func(self, expense_sheet_id):
+        sheet = self.env['hr.expense.sheet'].browse(expense_sheet_id)
+        return {
+            'name': sheet.name,
+            'line_ids': [{
+                'id': rec.id,
+                'name': rec.name,
+            } for rec in sheet.expense_line_ids]
+        }
+```
+
+透過 xml rpc 呼叫的方式如下,
+
+```python
+......
+
+data = models.execute_kw(db, uid, password,
+    'hr.expense', 'custom_func', [], {'expense_sheet_id': 5})
+
+# print(data)
+# {'name': 'Screen', 'line_ids': [{'id': 3, 'name': 'Travel by car'}, {'id': 1, 'name': 'Screen'}]}
+```
+
+這樣整體方便不少, 開發也比較快速.
+
 ## 遇到 None 值
 
 在使用 xmlrpc 的時候, 如果你會傳 null 值, 可能會出現以下的錯誤
