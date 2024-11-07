@@ -7,3 +7,5 @@
 - [odoo 16 教學](demo_expense_tutorial_v1)
 
 - [odoo 16 wizard 教學](demo_odoo_tutorial_wizard)
+
+- [odoo 16 OWL 範例 addons](demo_owl_tutorial)

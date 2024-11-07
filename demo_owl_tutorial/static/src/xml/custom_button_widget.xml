@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+
+    <t t-name="demo_owl_tutorial.ButtonWithNotification" owl="1">
+        <button t-on-click="onClick" t-att-name="props.method" type="button" class="btn btn-secondary" t-att-title="props.title">
+            OWL 按鈕
+        </button>
+    </t>
+
+</template>
