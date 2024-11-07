@@ -34,6 +34,16 @@ odoo17 必須這樣寫, 寫法變成如下
 <field name="email" readonly="parent.partner_readonly"/>
 ```
 
+如果你不想自己轉換, 可以考慮使用 OCA 的 [views_migration_17](https://github.com/OCA/server-tools/tree/17.0/views_migration_17)
+
+使用方法如下, 不須要安裝 addons, 直接使用以下的指令
+
+```cmd
+python odoo-bin -d odoo17 -i demo_expense_tutorial_v1 --load=base,web,views_migration_17 --stop-after-init -c /config/odoo.conf
+```
+
+如果順利執行, 你會發現你指定的 demo_expense_tutorial_v1 addons 已經被成功轉換了.
+
 ## odoo17 any domain
 
 建議可以打開 `log_level = debug_sql` 觀看 SQL 變化.
