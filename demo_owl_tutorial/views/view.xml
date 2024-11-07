@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_owl_tutorial" model="ir.ui.view">
+    <field name="name">Demo OWL Tutorial Form</field>
+    <field name="model">demo.owl.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo OWL Tutorial">
+        <header>
+          <widget name="custom_owl_button" button_name="call_odoo_method" title="OWL 按鈕"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="user_id"/>
+          </group>
+        </sheet>
+        <div class="oe_chatter">
+            <field name="message_follower_ids"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_owl_tutorial" model="ir.ui.view">
+    <field name="name">Demo OWL Tutorial List</field>
+    <field name="model">demo.owl.tutorial</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="user_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_demo_owl_tutorial" model="ir.actions.act_window">
+    <field name="name">Demo OWL Tutorial</field>
+    <field name="res_model">demo.owl.tutorial</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+</odoo>
