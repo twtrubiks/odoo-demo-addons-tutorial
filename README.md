@@ -10,6 +10,8 @@ odoo18 推薦官方影片 [What's New in the Python Framework?](https://www.yout
 
 - [odoo 18 範例 addons](demo_expense_tutorial_v1)
 
+- [odoo 18 OWL 範例 addons](demo_owl_tutorial)
+
 ## 網址終於改了
 
 以前是這樣
