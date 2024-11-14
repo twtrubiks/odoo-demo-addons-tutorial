@@ -9,3 +9,5 @@
 - [odoo 16 wizard 教學](demo_odoo_tutorial_wizard)
 
 - [odoo 16 OWL 範例 addons](demo_owl_tutorial)
+
+- [odoo 16 透過 controller 以及 js 列印 excel](demo_expense_excel_report)
