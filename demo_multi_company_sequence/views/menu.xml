@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Demo Sequence Menu -->
+    <menuitem id="demo_sequence_menu"
+      name="Demo Sequence" />
+
+    <!-- Menu item to open the demo_sequence list -->
+    <menuitem id="menu_demo_sequence"
+      name="Demo Sequence"
+	    action="action_demo_sequence"
+      parent="demo_sequence_menu" />
+</odoo>
+
+

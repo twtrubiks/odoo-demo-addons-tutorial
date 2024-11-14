@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 如果想要更新 addons 就觸發修改為 <data noupdate="0"> -->
+
+    <data noupdate="1">
+        <!-- create the demo_sequence_sequence for each company existing -->
+        <function model="res.company" name="create_missing_demo_sequence_sequence"/>
+    </data>
+</odoo>

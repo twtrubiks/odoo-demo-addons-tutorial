@@ -8,4 +8,6 @@
 
 - [odoo 17 wizard 教學](demo_odoo_tutorial_wizard)
 
+- [odoo17 多公司的 sequence](demo_multi_company_sequence)
+
 - [odoo 17 OWL 範例 addons](demo_owl_tutorial)
