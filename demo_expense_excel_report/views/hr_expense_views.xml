@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_expense_view_form_custom_report" model="ir.ui.view">
+        <field name="name">hr.expense.view.form.custom.report</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <button name="action_view_sheet" position="after">
+                <button name="button_excel_report" type="object" string="Custom Excel Report" class="oe_highlight"/>
+            </button>
+        </field>
+    </record>
+</odoo>
