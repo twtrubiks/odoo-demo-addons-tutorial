@@ -8,6 +8,34 @@
 
 我這邊是自己再整理, 然後寫一些範例.
 
+# 目錄
+
+- [odoo17 "attrs" and "states"](#odoo17-attrs-and-states)
+
+- [odoo17 any domain](#odoo17-any-domain)
+
+- [odoo17 _name_search api](#odoo17-_name_search-api)
+
+- [odoo17 tree invisible](#odoo17-tree-invisible)
+
+- [odoo17 hook change](#odoo17-hook-change)
+
+- [odoo17 deprecate active_*](#odoo17-deprecate-active_)
+
+- [odoo17 deprecate name_get](#odoo17-deprecate-name_get)
+
+- [odoo17 Access Rights](#odoo17-access-rights)
+
+- [odoo17 onchange](#odoo17-onchange)
+
+- [odoo17 compute](#odoo17-compute)
+
+- [odoo17 constrains](#odoo17-constrains)
+
+- [odoo17 batch create](#odoo17-batch-create)
+
+- [odoo17 obfuscate](#odoo17-obfuscate)
+
 ## odoo17 "attrs" and "states"
 
 在升級 odoo17 的時候, 你可能會場看到這個錯誤訊息
@@ -349,3 +377,79 @@ WARNING odoo odoo.models: method demo.expense.tutorial._constrains_test_constrai
 ```
 
 如果要修正, 設定為 `store=True` 即可.
+
+## odoo17 batch create
+
+這特性不是 odoo17 才有的, 只是特別提一下, 在 odoo 中, 並沒有明確的 batch create,
+
+但是, 我們可以透過一些寫法改善它, 像之前介紹的 [odoo 觀念 - odoo12 和 odoo14 的 ORM Write 差異](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/odoo_write_tutorial)
+
+假如我們有一個 model 是 `demo.expense.tutorial`,
+
+這種寫法會產生 N 個 insert SQL
+
+```python
+model = self.env['demo.expense.tutorial']
+
+# 會有 n 次 sql
+for rec in range(1,5):
+  model.create({'name': rec})
+```
+
+使用以下的只會有 **一次** insert SQL
+
+```python
+# 一次 insert sql 效能比較好
+model.create([ {'name': rec} for rec in range(1,5)])
+```
+
+## odoo17 obfuscate
+
+obfuscate 混淆 這功能目前 odoo16, odoo17, odoo18 都有,
+
+目的是讓因為一些原因不讓別人看到真實資料.
+
+相關原始碼可參考 [odoo/cli/obfuscate.py](https://github.com/odoo/odoo/blob/17.0/odoo/cli/obfuscate.py)
+
+使用方法,
+
+```python
+# 密碼一定要填入
+python odoo-bin obfuscate -d odoo17 --pwd odoo -c odoo.conf
+```
+
+之後它會問你是否要執行, 選 y, 接著它會要你再次輸入 db name, 並且要輸入大寫(都成功後還會執行)
+
+如下圖
+
+![alt tag](https://i.imgur.com/ItnUzzg.png)
+
+紅色框起來的地方是你要輸入的, 綠色的部份是只會對這些 table 以及 fields 去做 obfuscate 而已.
+
+打開 odoo, 去找 res.partner, 你會發現成功被 混淆 了 :blush:
+
+![alt tag](https://i.imgur.com/0FTYz5w.png)
+
+如果你要還原也很簡單
+
+```cmd
+python odoo-bin obfuscate -d odoo17 --pwd odoo -c odoo.conf --unobfuscate
+```
+
+那你現在一定問我, 如果我要 obfuscate 其他的 table 以及 fields 該怎麼辦 :question:
+
+很簡單, 指定 model 和 fields 即可,
+
+例如有一個 model 名稱為 `demo.expense.tutorial`, 然後有一個 fields 為 name,
+
+obfuscate
+
+```cmd
+python odoo-bin obfuscate --fields demo_expense_tutorial.name -d odoo17 --pwd odoo -c odoo.conf
+```
+
+unobfuscate
+
+```cmd
+python odoo-bin obfuscate --fields demo_expense_tutorial.name -d odoo17 --pwd odoo -c odoo.conf --unobfuscate
+```
