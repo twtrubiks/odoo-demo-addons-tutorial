@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates xml:space="preserve">
+   <t t-inherit="web.FormView" t-inherit-mode="extension">
+       <xpath expr="//button[contains(@class, 'o_form_button_create')]" position="before">
+           <button class="btn btn-primary history_btn" type="button" t-on-click="CustomButtonClicked">
+                <span>Open Expense</span>
+           </button>
+            <button class="btn opacity-trigger-hover" type="button" t-on-click="ReloadCurrentForm" title="Reload">
+                Reload Form
+            </button>
+            <button class="btn opacity-trigger-hover" type="button" t-on-click="ClickDialog" title="Dialog">
+                Dialog
+            </button>
+       </xpath>
+   </t>
+</templates>
