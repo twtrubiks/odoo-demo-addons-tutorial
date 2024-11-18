@@ -13,3 +13,5 @@
 - [odoo 17 OWL 範例 addons](demo_owl_tutorial)
 
 - [odoo 17 透過 controller 以及 js 列印 excel](demo_expense_excel_report)
+
+- [odoo 17 OWL 在 form 上 custom button](demo_owl_custom_button_tutorial)

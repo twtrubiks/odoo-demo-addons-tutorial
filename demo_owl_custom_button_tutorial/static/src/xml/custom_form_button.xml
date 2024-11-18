@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates xml:space="preserve">
+    <t t-name="demo_owl_custom_button_tutorial_ControlPanel" t-inherit="web.ControlPanel" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_control_panel_collapsed_create')]" position="before">
+            <t t-slot="control-panel-reload-button"/>
+            <t t-slot="control-panel-open-expense"/>
+            <t t-slot="control-panel-dialog"/>
+        </xpath>
+    </t>
+    <t t-name="demo_owl_custom_button_tutorial.FormView" t-inherit="web.FormView" t-inherit-mode="extension">
+        <xpath expr="//Layout" position="inside">
+            <t t-set-slot="control-panel-reload-button">
+                <button class="btn opacity-trigger-hover" type="button" t-on-click="ReloadCurrentForm" title="Reload">
+                    Reload
+                </button>
+            </t>
+            <t t-set-slot="control-panel-open-expense">
+                <button class="btn btn-primary history_btn" type="button" t-on-click="CustomButtonClicked">
+                    <span>Open Expense</span>
+                </button>
+            </t>
+            <t t-set-slot="control-panel-dialog">
+                <button class="btn opacity-trigger-hover" type="button" t-on-click="ClickDialog" title="Dialog">
+                    Dialog
+                </button>
+            </t>
+        </xpath>
+    </t>
+</templates>
