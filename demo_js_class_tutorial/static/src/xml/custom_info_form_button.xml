@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates>
+   <t t-name="demo_js_class_tutorial.modelInfoBtn" t-inherit="web.FormView">
+       <xpath expr="//t[@t-set-slot='layout-actions']" position="inside">
+           <button class="btn btn-primary" t-on-click="actionInfoForm">Info
+           </button>
+       </xpath>
+   </t>
+
+   <t t-name="demo_js_class_tutorial.ListView.Buttons" t-inherit="web.ListView.Buttons">
+       <xpath expr="//div[hasclass('o_list_buttons')]" position="after">
+           <button type="button" class="btn btn-primary" style="margin-left: 10px;"  t-on-click="TestClick">
+               Click me
+           </button>
+       </xpath>
+   </t>
+
+</templates>
