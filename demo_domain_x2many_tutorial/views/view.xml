@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+  <record id="view_form_demo_domain_tutorial" model="ir.ui.view">
+    <field name="name">Demo Domain Tutorial Form</field>
+    <field name="model">demo.domain.tutorial</field>
+    <field name="arch" type="xml">
+      <form string="Demo Domain Tutorial">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="product_id" options="{'no_create': True}"/>
+            <field name="taxes_ids" widget="many2many_tags"/>
+          </group>
+          <notebook>
+            <page string="Line">
+              <field name="line_ids" >
+                <tree editable="top">
+
+                  <!-- example 1 -->
+                  <!-- <field name="product_id" domain="[('seller_ids.partner_id', '=', parent.partner_id)]" options="{'no_create': True}"/> -->
+
+                  <!-- example 2 -->
+                  <field name="product_id" domain="[('taxes_id', 'in', parent.taxes_ids)]" options="{'no_create': True}"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tree_demo_domain_tutorial" model="ir.ui.view">
+    <field name="name">Demo Domain Tutorial List</field>
+    <field name="model">demo.domain.tutorial</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="partner_id"/>
+        <field name="product_id"/>
+        <field name="taxes_ids" widget="many2many_tags"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

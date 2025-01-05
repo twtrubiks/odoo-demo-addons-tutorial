@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- demo_domain_tutorial App Menu -->
+    <menuitem id="demo_domain_tutorial_menu"
+              name="Demo Domain Tutorial" />
+
+    <!-- Action to open the demo_domain_tutorial -->
+    <record id="action_demo_domain_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Domain Tutorial Action</field>
+        <field name="res_model">demo.domain.tutorial</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu item to open the demo_domain_tutorial -->
+    <menuitem id="menu_demo_domain_tutorial"
+              name="Demo Domain Tutorial"
+	          action="action_demo_domain_tutorial"
+              parent="demo_domain_tutorial_menu" />
+</odoo>
+
+
