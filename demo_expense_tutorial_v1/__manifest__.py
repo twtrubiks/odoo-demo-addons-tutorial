@@ -17,6 +17,7 @@
         'security/ir_rule.xml',
         'data/analytic_account_data.xml',
         'data/demo_expense_tutorial_data.xml',
+        'report/report_views.xml',
         'views/view.xml',
         'views/menu.xml',
     ],

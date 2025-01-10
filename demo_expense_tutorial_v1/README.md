@@ -36,6 +36,8 @@
 
 - [odoo17 obfuscate](#odoo17-obfuscate)
 
+- [odoo17 report render data](#odoo17-report-render-data)
+
 ## odoo17 "attrs" and "states"
 
 在升級 odoo17 的時候, 你可能會場看到這個錯誤訊息
@@ -453,3 +455,37 @@ unobfuscate
 ```cmd
 python odoo-bin obfuscate --fields demo_expense_tutorial.name -d odoo17 --pwd odoo -c odoo.conf --unobfuscate
 ```
+
+## odoo17 report render data
+
+這並不是 odoo17 特有的, 只是紀錄一下用法,
+
+可以從 xml report 中去呼叫 python 的 function,
+
+以下介紹如何 render dict 和 list
+
+```python
+
+class DemoExpenseTutorial(models.Model):
+    _name = 'demo.expense.tutorial'
+
+    ......
+
+    def demo_render_dict_data(self):
+        result = dict()
+        for rec in self.tag_ids:
+            result[rec.name] = rec
+        return result
+
+    def demo_render_list_data(self):
+        result = []
+        for rec in self.tag_ids:
+            result.append({
+                'name': rec.name,
+                'id': rec.id,
+                'data': rec,
+            })
+        return result
+```
+
+report render 使用方法可參考 [report_views.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/17.0/demo_expense_tutorial_v1/report/report_views.xml)

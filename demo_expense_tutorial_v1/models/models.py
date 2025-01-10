@@ -312,6 +312,22 @@ class DemoExpenseTutorial(models.Model):
             }
             return result
 
+    def demo_render_dict_data(self):
+        result = dict()
+        for rec in self.tag_ids:
+            result[rec.name] = rec
+        return result
+
+    def demo_render_list_data(self):
+        result = []
+        for rec in self.tag_ids:
+            result.append({
+                'name': rec.name,
+                'id': rec.id,
+                'data': rec,
+            })
+        return result
+
 
 class DemoExpenseSheetTutorial(models.Model):
     _name = 'demo.expense.sheet.tutorial'
