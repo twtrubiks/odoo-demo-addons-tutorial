@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_demo_iframe" model="ir.actions.client">
+        <field name="name">iframe測試</field>
+        <field name="tag">custom_menu_iframe_js</field>
+        <field name="target">main</field>
+    </record>
+
+    <menuitem name="iframe測試"
+        id="menu_iframe_root"
+        action="action_demo_iframe"
+        groups="base.group_user"/>
+</odoo>

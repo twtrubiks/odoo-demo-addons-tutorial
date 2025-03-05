@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="DemoMenu">
+        <iframe class="mt8 mb8" width="100%" height="100%" frameborder="0"
+            scrolling="no" allowfullscreen="allowfullscreen"
+            src="https://www.odoo.com/zh_TW"/>
+    </t>
+</template>
