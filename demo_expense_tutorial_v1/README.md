@@ -34,7 +34,7 @@
 
 - [odoo17 batch create](#odoo17-batch-create)
 
-- [odoo17 obfuscate](#odoo17-obfuscate)
+- [Youtube Tutorial - odoo 17 手把手教學 - obfuscate 混淆](https://youtu.be/AJksUa9GLP4) - [文章快速連結 - odoo17 obfuscate](#odoo17-obfuscate)
 
 - [odoo17 report render data](#odoo17-report-render-data)
 
@@ -67,6 +67,8 @@ odoo17 必須這樣寫, 寫法變成如下
 ```
 
 如果你不想自己轉換, 可以考慮使用 OCA 的 [views_migration_17](https://github.com/OCA/server-tools/tree/17.0/views_migration_17)
+
+* [Youtube Tutorial - odoo 17 手把手教學 - Views migration](https://youtu.be/G_r0g_Rj9Xk)
 
 使用方法如下, 不須要安裝 addons, 直接使用以下的指令
 
