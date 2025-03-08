@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_demo_expense_page_break_tutorial_v1">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page o_content_pdf">
+                            <div class="oe_structure"></div>
+                            <h2>Test 分頁 Report</h2>
+
+                            <h3 class="text-secondary mb-3">Test 分頁 Report</h3>
+
+                            <t t-foreach="o.demo_render_list_data()" t-as="rec">
+                                <!-- <p style="page-break-before:always;background-color:blue"/> -->
+                                <div style="page-break-before:always;background-color:blue">
+                                    <table class="o_table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-start">Name</th>
+                                                <th class="text-start">ID</th>
+                                                <th class="text-start">Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span t-esc="rec['name']"/></td>
+                                                <td><span t-esc="rec['id']"/></td>
+                                                <td><span t-esc="rec['data']"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </t>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_demo_expense_page_break_action_v1" model="ir.actions.report">
+            <field name="name">分頁報表測試</field>
+            <field name="model">demo.expense.tutorial</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">demo_expense_tutorial_v1.report_demo_expense_page_break_tutorial_v1</field>
+            <field name="report_file">demo_expense_tutorial_v1.report_demo_expense_page_break_tutorial_v1</field>
+            <field name="binding_model_id" ref="demo_expense_tutorial_v1.model_demo_expense_tutorial"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

@@ -18,6 +18,8 @@
         'data/analytic_account_data.xml',
         'data/demo_expense_tutorial_data.xml',
         'report/report_views.xml',
+        'report/report_page_break_views.xml',
+        'report/report_sheet_page_break_views.xml',
         'views/view.xml',
         'views/menu.xml',
     ],

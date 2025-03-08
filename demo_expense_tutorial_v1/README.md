@@ -38,6 +38,8 @@
 
 - [odoo17 report render data](#odoo17-report-render-data)
 
+- [odoo17 report page break](#odoo17-report-page-break)
+
 ## odoo17 "attrs" and "states"
 
 在升級 odoo17 的時候, 你可能會場看到這個錯誤訊息
@@ -489,3 +491,43 @@ class DemoExpenseTutorial(models.Model):
 ```
 
 report render 使用方法可參考 [report_views.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/17.0/demo_expense_tutorial_v1/report/report_views.xml)
+
+## odoo17 report page break
+
+這並不是 odoo17 特有的, 只是紀錄一下用法,
+
+報表設定分頁
+
+[report/report_page_break_views.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/17.0/demo_expense_tutorial_v1/report/report_page_break_views.xml)
+
+關鍵是下面這行
+
+```xml
+<div style="page-break-before:always;background-color:blue">
+  ......
+</div>
+```
+
+效果如下
+
+![alt tag](https://i.imgur.com/4YPoa1h.png)
+
+[report/report_sheet_page_break_views.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/17.0/demo_expense_tutorial_v1/report/report_sheet_page_break_views.xml)
+
+關鍵是下面這行
+
+```xml
+<p style="page-break-before:always;background-color:green"/>
+```
+
+效果如下
+
+![alt tag](https://i.imgur.com/Ckxupc4.png)
+
+以下效果大家可以自行嘗試
+
+```xml
+<p style="page-break-before:always;"> </p>
+<p style="page-break-after:always;"> </p>
+<p style="page-break-inside:avoid;"> </p>
+```
