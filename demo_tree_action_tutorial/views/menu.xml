@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- demo_tutorial App Menu -->
+    <menuitem id="demo_tutorial_menu"
+              name="Demo Tutorial" />
+
+    <!-- Action to open the demo_tutorial -->
+    <record id="action_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Tutorial Action</field>
+        <field name="res_model">demo.tutorial</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu item to open the demo_tutorial -->
+    <menuitem id="menu_tutorial"
+              name="Demo Tutorial"
+	          action="action_tutorial"
+              parent="demo_tutorial_menu" />
+
+    <!-- Action to open the demo_sheet_tutorial -->
+    <record id="action_sheet_tutorial" model="ir.actions.act_window">
+        <field name="name">Demo Sheet Tutorial Action</field>
+        <field name="res_model">demo.sheet.tutorial</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu item to open the demo_sheet_tutorial -->
+    <menuitem id="menu_sheet_tutorial"
+              name="Demo Sheet Tutorial"
+	          action="action_sheet_tutorial"
+              parent="demo_tutorial_menu" />
+</odoo>
+
+

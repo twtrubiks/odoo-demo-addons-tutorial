@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_demo_user,Demo Tutorial User Access,model_demo_tutorial,base.group_user,1,1,1,1
+access_demo_sheet_user,Demo Sheet User Tutorial Access,model_demo_sheet_tutorial,base.group_user,1,1,1,1
+

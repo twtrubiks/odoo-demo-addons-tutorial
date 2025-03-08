@@ -21,3 +21,5 @@
 - [odoo 17 js iframe 教學](demo_js_iframe_tutorial)
 
 - [odoo 17 domain x2many 教學](demo_domain_x2many_tutorial)
+
+- [odoo 17 tree action 教學](demo_tree_action_tutorial)
