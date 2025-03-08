@@ -109,6 +109,21 @@ class XLSXReportController(http.Controller):
 
 ![alt tag](https://i.imgur.com/BhvlBwS.png)
 
+
+補充一下換頁的概念, 可以用以下效果去完成換頁
+
+[models/hr_expense.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/17.0/demo_expense_excel_report/models/hr_expense.py)
+
+```python
+# 可以用這個 指定換頁
+# 在第二行換頁  以及  第四行換頁
+sheet.set_h_pagebreaks([2, 4])
+```
+
+效果如下, 虛線代表換頁的意思
+
+![alt tag](https://i.imgur.com/IMZWWWz.png)
+
 ## Donation
 
 文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡 :laughing:
