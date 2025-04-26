@@ -1,6 +1,6 @@
 # 實作 config settings
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [實作 config settings](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_config_settings#%E8%AA%AA%E6%98%8E) - [Youtube Tutorial - odoo - 實作 config settings](https://youtu.be/5k_TYBNs_uc)
 
@@ -76,7 +76,7 @@ Odoo Setup Demo 就是我們加上去的 (在這裡填入 hello123, 記得 Save)
 
 ![alt tag](https://i.imgur.com/QbJYLGo.png)
 
-這樣子就可以在程式需要取設定值時, 直接到 `ir.config_parameter` model 裡找:smile:
+這樣子就可以在程式需要取設定值時, 直接到 `ir.config_parameter` model 裡找 :smile:
 
 ## implied_group 用法說明
 
@@ -110,7 +110,7 @@ class ResConfigSettings(models.TransientModel, ResConfigModuleInstallationMixin)
 
 `implied_group` 這個的功能主要是用來管理 user 擁有哪些 groups 的權限.
 
-( 其實他的概念和 `implied_ids` 是一樣的, 但這個用法更進階一點:smirk: )
+( 其實他的概念和 `implied_ids` 是一樣的, 但這個用法更進階一點 :smirk: )
 
 詳細說明請看下方的 demo,
 
@@ -149,7 +149,7 @@ class ResConfigSettings(models.TransientModel):
 
 `sale.group_delivery_invoice_address` groups 的權限.
 
-(注意:exclamation::exclamation: field 命名一定要是 `group_xxx` )
+(注意 :exclamation: :exclamation: field 命名一定要是 `group_xxx` )
 
 當設定為 True 時
 
@@ -163,7 +163,7 @@ class ResConfigSettings(models.TransientModel):
 
 只針對 admin user, 也就是設定為 True 時, 只會對擁有 admin 的 user 生效.
 
-(請自行修改測試, 這邊就不打字了, 影片內說明, 因為大同小異:smile:)
+(請自行修改測試, 這邊就不打字了, 影片內說明, 因為大同小異 :smile:)
 
 記得加入 [security/security.xml](security/security.xml)
 

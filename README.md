@@ -290,7 +290,7 @@ FROM sale_order
 GROUP BY partner_id;
 ```
 
-注意:exclamation::exclamation:這邊的 fields 的格式為 `name:agg(field)`
+注意 :exclamation: :exclamation:這邊的 fields 的格式為 `name:agg(field)`
 
 (因為是相同的 fields 名稱, 如果使用前一種寫法會錯誤)
 
@@ -655,9 +655,9 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 雖然用 odoo developer mode 可以很快的修改 view,
 
-但是 :exclamation::exclamation:
+但是 :exclamation: :exclamation:
 
-只要你一更新你修改的那個 addons, 就會自動還原 :exclamation::exclamation:
+只要你一更新你修改的那個 addons, 就會自動還原 :exclamation: :exclamation:
 
 這邊使用 `hr_expense` 舉的例子,
 
@@ -675,7 +675,7 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 ## Donation
 
-文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡:laughing:
+文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡 :laughing:
 
 綠界科技ECPAY ( 不需註冊會員 )
 

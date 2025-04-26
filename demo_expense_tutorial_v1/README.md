@@ -1,6 +1,6 @@
 # odoo 入門篇
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---many2one---part1)
 
@@ -114,7 +114,7 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/QiDj6iM.png)
 
-因為 One2many 比較特別, 所以我們先介紹 Many2many:laughing:
+因為 One2many 比較特別, 所以我們先介紹 Many2many :laughing:
 
 ### odoo 手把手教學 - Many2many - part2
 
@@ -375,7 +375,7 @@ class DemoExpenseTutorial(models.Model):
 
 如果你加上 `editable` 這個參數, 當你新增 record 的時候, 就不會整個跳出視窗, 可以直接在裡面輸入
 
-(或許比較好看:smile:)
+(或許比較好看 :smile:)
 
 ![alt tag](https://i.imgur.com/tdues3g.png)
 
@@ -706,8 +706,8 @@ class DemoExpenseSheetTutorial(models.Model):
 
 Many2one 時也會看到自己定義的 `name_get`
 
-注意:exclamation: 這些增加的值是不會儲存進 db 中的, db 中還是儲存的是 name 的內容而已
-(概念和 compute field 一樣:smile:)
+注意 :exclamation: 這些增加的值是不會儲存進 db 中的, db 中還是儲存的是 name 的內容而已
+(概念和 compute field 一樣 :smile:)
 
 ![alt tag](https://i.imgur.com/sC9hNA8.png)
 
@@ -715,15 +715,15 @@ Many2one 時也會看到自己定義的 `name_get`
 
 如果沒有它, 假設我知道某個資料的 id 是 4, 在搜尋的地方打上 id,
 
-你會發現找不到資料:joy:
+你會發現找不到資料 :joy:
 
 ![alt tag](https://i.imgur.com/YokDfBf.png)
 
 但今天如果有了 `_name_search` 並實作它,
 
-你會發現這次你打 id 會才成功找到需要的資料:satisfied:
+你會發現這次你打 id 會才成功找到需要的資料 :satisfied:
 
-我在 code 中有放幾個範例註解, 大家可以自行玩玩看:smile:
+我在 code 中有放幾個範例註解, 大家可以自行玩玩看 :smile:
 
 ![alt tag](https://i.imgur.com/ztUL9Xd.png)
 
@@ -886,9 +886,9 @@ def replace_demo_expense_record(self):
 
 也就是 `security.xml` `ir_rule.xml` `ir.model.access.csv`.
 
-記住:exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
+記住 :exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
 
-當然, 如果是從安全性的角度來看 從 model 層(db層) 或權限下手 是比較高全的:smile:
+當然, 如果是從安全性的角度來看 從 model 層(db層) 或權限下手 是比較高全的 :smile:
 
 今天就是要來介紹 從 view 那層下手,
 
@@ -1075,7 +1075,7 @@ class DemoExpenseTutorial(models.Model):
 
 像是 `<tree default_order="sequence, id desc">`.
 
-這樣就完成了, 你會發現 tree 可以排序了:smile:
+這樣就完成了, 你會發現 tree 可以排序了 :smile:
 
 ![alt tag](https://i.imgur.com/oH7Pf5S.png)
 
@@ -1146,7 +1146,7 @@ class DemoExpenseTutorial(models.Model):
 
 這段程式碼, 格式是 `default + fields`, 注意哦, 這次沒有 search,
 
-那這個和剛剛的有什麼不同呢:question:
+那這個和剛剛的有什麼不同呢 :question:
 
 當你建立一個 records 的時候, 他預設會幫你的 `name` fields 自動帶入 `test123`.
 
@@ -1162,7 +1162,7 @@ context 也可以在 developer mode 中的 Edit Action 看到,
 
 這部份延續上一次的介紹, 來看看 `active_test` 這個東西,
 
-這部份建議大家看影片會比較清楚:smile:
+這部份建議大家看影片會比較清楚 :smile:
 
 先來看 [models/models.py](models/models.py)
 
@@ -1186,7 +1186,7 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/GTpo0aa.png)
 
-這樣你可能會問我, 為什麼會這樣呢:question:
+這樣你可能會問我, 為什麼會這樣呢 :question:
 
 原因是 odoo 原始碼內的 `odoo/models.py` 這段
 
@@ -1203,7 +1203,7 @@ def _where_calc(self, domain, active_test=True):
 
 預設如果沒有特別指定, 邏輯就是會跑 `active = 1` 也就是 True.
 
-那如果我今天希望預設顯示 active 為 True 和 False 同時都顯示, 這樣要如何實作:question:
+那如果我今天希望預設顯示 active 為 True 和 False 同時都顯示, 這樣要如何實作 :question:
 
 搭配 `<field name="context">{'active_test':False}</field>` 這段程式碼,
 
@@ -1238,7 +1238,7 @@ context 同樣也可以在 developer mode 中的 Edit Action 看到,
 
 這部份將介紹 view 搭配 domain 的使用,
 
-使用方法和 context 差不多:smile:
+使用方法和 context 差不多 :smile:
 
 可參考 [views/menu.xml](views/menu.xml)
 
@@ -1258,7 +1258,7 @@ context 同樣也可以在 developer mode 中的 Edit Action 看到,
 
 只會顯示 name fields like test 的內容,
 
-注意:exclamation: 和 `search_default_name` 不一樣的地方是, 他不會顯示 search 的東西,
+注意 :exclamation: 和 `search_default_name` 不一樣的地方是, 他不會顯示 search 的東西,
 
 使用者也不能自行修改
 
@@ -1274,7 +1274,7 @@ domain 同樣也可以在 developer mode 中的 Edit Action 看到,
 
 有時候當我們寫了很多的繼承 ( tree 或 form), 在當下的頁面, 會不知道是否有被繼承過,
 
-這時候推薦大家一個小技巧:smile:
+這時候推薦大家一個小技巧 :smile:
 
 使用 [demo_class_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance) 這個 addons 當作範例.
 
@@ -1292,9 +1292,9 @@ debug developer mode 請打開, 可參考 [odoo12 如何開啟 odoo developer mo
 
 ![alt tag](https://i.imgur.com/53oTTuu.png)
 
-你就可以很清楚的看到這個頁面被 `demo_class_inheritance` 繼承:smile:
+你就可以很清楚的看到這個頁面被 `demo_class_inheritance` 繼承 :smile:
 
-像是 form 或其他的 view_type 也都是同樣的方法哦:smirk:
+像是 form 或其他的 view_type 也都是同樣的方法哦 :smirk:
 
 ### odoo 手把手教學 - odoo rainbow - part16
 
@@ -1403,7 +1403,7 @@ class DemoTag(models.Model):
 
 `unlink` 刪除一比 record 時.
 
-今天來介紹 `copy` 當作範例, 其他的大家可以以此類推:smile:
+今天來介紹 `copy` 當作範例, 其他的大家可以以此類推 :smile:
 
 ```python
 class DemoExpenseTutorial(models.Model):
@@ -1448,7 +1448,7 @@ class DemoExpenseTutorial(models.Model):
 
 基本上在要修改 `create` `write` `copy` `unlink` 時, 可以先想想有沒有比較簡單的方式能
 
-改動你的需求, 如果真的沒有, 才選擇改他:smirk:
+改動你的需求, 如果真的沒有, 才選擇改他 :smirk:
 
 ## odoo 手把手教學 - move position 說明 - part20
 
@@ -1464,7 +1464,7 @@ class DemoExpenseTutorial(models.Model):
 
 假設這個 view 只能使用繼承的方式修改, 這時候通常很麻煩, 因為有可能你的作法是把整個 tree 去 replace 掉,
 
-再自己去排版, 但為了幾個 fields 就去 replace 掉整個 view, 真得有點麻煩:expressionless:
+再自己去排版, 但為了幾個 fields 就去 replace 掉整個 view, 真得有點麻煩 :expressionless:
 
 所以, 今天來認識 move position 這個東西, 寫法可參考 [view.xml](views/view.xml)
 
@@ -1486,7 +1486,7 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/Gek9iqM.png)
 
-有了這個東西, 以後單純想要交換兩個 fields, 只需要使用 move 即可, 不需要再整個 replace 了:smile:
+有了這個東西, 以後單純想要交換兩個 fields, 只需要使用 move 即可, 不需要再整個 replace 了 :smile:
 
 ## odoo 手把手教學 - ir.actions.act_url 說明 - part21
 
@@ -1594,7 +1594,7 @@ def _compute_demo_expenses_count(self):
 
 ![alt tag](https://i.imgur.com/OGES89X.png)
 
-以下是每一種 option 呈現的效果, 大家可以自行玩玩看:smile:
+以下是每一種 option 呈現的效果, 大家可以自行玩玩看 :smile:
 
 `no_quick_create`
 
@@ -1620,7 +1620,7 @@ def _compute_demo_expenses_count(self):
 
 今天要介紹 Many2one fields 中的 `ondelete="cascade"` 參數代表的意思,
 
-這邊要先說明一下, `ondelete='cascade'` 這個東西並不是 odoo 的, 它是 PostgreSQL 的特性:exclamation:
+這邊要先說明一下, `ondelete='cascade'` 這個東西並不是 odoo 的, 它是 PostgreSQL 的特性 :exclamation:
 
 使用方法很簡單, 如下, 可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/models/models.py)
 
@@ -1691,9 +1691,9 @@ class Many2one(_Relational):
 
 你必需先移除 `sheet_id` 底下的 `expense_line_ids`, 才可以刪除 `sheet_id`.
 
-其實, 你可以把他們想成是 child 和 parent 的關係即可:smile:
+其實, 你可以把他們想成是 child 和 parent 的關係即可 :smile:
 
-要如何知道 fields 有 `ondelete='....'` 之類的特性呢:question:
+要如何知道 fields 有 `ondelete='....'` 之類的特性呢 :question:
 
 除了可以透過 code 或 odoo 的 model fields 中查看之外,
 
@@ -1707,9 +1707,9 @@ class Many2one(_Relational):
 
 * [Youtube Tutorial - odoo 手把手教學 - view parent 說明 - part26](https://youtu.be/i_hG4s_YJN0)
 
-在 view 中可以透過 `parent` 這個值, 拿到 `parent` 的 `fields` 內容 (可能有點繞口:smile:)
+在 view 中可以透過 `parent` 這個值, 拿到 `parent` 的 `fields` 內容 (可能有點繞口 :smile:)
 
-不懂沒關係, 請看以下的說明:smile:
+不懂沒關係, 請看以下的說明 :smile:
 
 通常會使用在 view 中的 domain 或是 attrs,
 
@@ -1782,13 +1782,13 @@ class DemoExpenseSheetTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/u0CMNR5.png)
 
-請注意:exclamation: 我們並沒有 `parent` 這個欄位, 但是在 view 中可以透過這種方式使用 parent (也就是 sheet ) 的東西.
+請注意 :exclamation: 我們並沒有 `parent` 這個欄位, 但是在 view 中可以透過這種方式使用 parent (也就是 sheet ) 的東西.
 
 當 sheet 的 `name` 不是 `test-readonly` 時, `tag_ids` 這個 fields 會變成可以 edit ( 不是`readonly` ).
 
 ![alt tag](https://i.imgur.com/PfFlKZN.png)
 
-另外一點要注意的是, 請搭配 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效:exclamation:
+另外一點要注意的是, 請搭配 `<tree editable="top">` 或 `<tree editable="bottom">`, 單純使用 `<tree>` 不會生效 :exclamation:
 
 `editable` 的效果可參考之前的介紹 [odoo 手把手教學 - One2many Editable Bottom and Top](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many-editable-bottom-and-top---part3-1)
 
@@ -1796,7 +1796,7 @@ class DemoExpenseSheetTutorial(models.Model):
 
 * [Youtube Tutorial - odoo 手把手教學 - domain 搭配 fields 的三種用法 - part27](https://youtu.be/ZUNRoWxVWAE)
 
-在 odoo 中 domain 幾乎無所不在:smile: 今天和大家介紹三種 domain 搭配 fields 的用法,
+在 odoo 中 domain 幾乎無所不在 :smile: 今天和大家介紹三種 domain 搭配 fields 的用法,
 
 第一種 - 直接在 model 中的 fileds 定義
 
@@ -1839,11 +1839,11 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/uh2QV3R.png)
 
-:exclamation:這邊要注意的是, 如果第一種和第二種同時寫, 以第二種在 view 上定義的為主:exclamation:
+:exclamation:這邊要注意的是, 如果第一種和第二種同時寫, 以第二種在 view 上定義的為主 :exclamation:
 
 第三種 - 透過 `onchange` 的方法增加 domain
 
-這種方法蠻酷的, 所以我留到最後來講:smile:
+這種方法蠻酷的, 所以我留到最後來講 :smile:
 
 首先, 如果不了解 `onchange` 可參考 [介紹 model](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BB%8B%E7%B4%B9-model).
 
@@ -1872,11 +1872,11 @@ def onchange_user_id(self):
 
 * [Youtube Tutorial - odoo 手把手教學 - form_view_ref 以及 tree_view_ref 說明 - part28](https://youtu.be/_YkrOp3ytlQ)
 
-還記得 [odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%90%8C%E4%B8%80%E5%80%8B-model-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84-view_ids---part10) 這篇教學嗎:question:
+還記得 [odoo 手把手教學 - 同一個 model 使用不同的 view_ids - part10](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---%E5%90%8C%E4%B8%80%E5%80%8B-model-%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84-view_ids---part10) 這篇教學嗎 :question:
 
 那時候是使用 `ir.actions.act_window` 也就是 action 的方式定義不同的 view_ids,
 
-今天如果想單獨針對 fields 定義 view 時, 就需要使用 `form_view_ref` `tree_view_ref`:exclamation:
+今天如果想單獨針對 fields 定義 view 時, 就需要使用 `form_view_ref` `tree_view_ref` :exclamation:
 
 使用方法也很簡單, 請參考 [views/view.xml](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_expense_tutorial_v1/views/view.xml)
 
@@ -1912,9 +1912,9 @@ def onchange_user_id(self):
 
 在需要的 fields 上, 加上 `context="{'form_view_ref':......}"`, 然後再定義你的 view 即可,
 
-`tree_view_ref` 也是一樣的概念:smile:
+`tree_view_ref` 也是一樣的概念 :smile:
 
-注意:exclamation:, 在這裡只要你有定義一個以上的 `demo.expense.sheet.tutorial` form view 時,
+注意 :exclamation:, 在這裡只要你有定義一個以上的 `demo.expense.sheet.tutorial` form view 時,
 
 記得一定要使用 `form_view_ref` ( 否則它會自動選最後一個 ).
 

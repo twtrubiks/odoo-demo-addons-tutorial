@@ -18,7 +18,7 @@
 
 * [Youtube Tutorial - odoo 使用 RAW SQL 說明](https://youtu.be/hfOLmoIfO9E) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E4%BD%BF%E7%94%A8-raw-sql-%E8%AA%AA%E6%98%8E)
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 以下將介紹這個 addons 的結構
 
@@ -137,7 +137,7 @@ class Model(AbstractModel):
 
 ![alt tag](https://i.imgur.com/s6ngYGo.png)
 
-`_inherit` 在 odoo 中不管是 model 還是 view, 甚至是權限, 都會使用繼承 (這邊先知道這樣即可:smile:).
+`_inherit` 在 odoo 中不管是 model 還是 view, 甚至是權限, 都會使用繼承 (這邊先知道這樣即可 :smile:).
 
 再來說明 field
 
@@ -248,7 +248,7 @@ demo.odoo.tutorial(1,2)
 
 所以不能搜尋.
 
-如果你想要搜尋, 一種簡單方法是設定 `store=True`, 但這種方法不一定是好的:confused:
+如果你想要搜尋, 一種簡單方法是設定 `store=True`, 但這種方法不一定是好的 :confused:
 
 (因為如果亂設很可能造成效能上的影響).
 
@@ -269,7 +269,7 @@ def _search_upper(self, operator, value):
     return [('input_number', operator, value)]
 ```
 
-定義完 `search` 之後, 就可以正常對 `field_compute_demo` 搜尋了:smile:
+定義完 `search` 之後, 就可以正常對 `field_compute_demo` 搜尋了 :smile:
 
 ```cmd
 >>> self.env['demo.odoo.tutorial'].search([('field_compute_demo', '=', 2)])
@@ -278,7 +278,7 @@ demo.odoo.tutorial(2,)
 
 前面有說到 compute field 預設為 readonly,
 
-如果今天想要讓他可以編輯, 該怎麼做呢:question:
+如果今天想要讓他可以編輯, 該怎麼做呢 :question:
 
 需要定義 `inverse`,
 
@@ -367,9 +367,9 @@ def _set_input_number(self):
 
 接下來來看 [security](security) 這個很重要的資料夾, 既然有了 model,
 
-這樣要如何控制誰有權限讀寫修改刪除呢:question:
+這樣要如何控制誰有權限讀寫修改刪除呢 :question:
 
-就是依靠 `ir.model.access.csv` 和 `security.xml` 這個檔案:exclamation:
+就是依靠 `ir.model.access.csv` 和 `security.xml` 這個檔案 :exclamation:
 
 `security.xml`
 
@@ -508,7 +508,7 @@ tree 如下
 
 接著是 form, 記得將對應的 model 填進去,
 
-(如果都沒寫, 系統會自己產生對應的 form view, 但很醜:sob:)
+(如果都沒寫, 系統會自己產生對應的 form view, 但很醜 :sob:)
 
 ```xml
 ......
@@ -587,7 +587,7 @@ form 如下
 
 這邊做的事情就是當你安裝了 addons, 它會預設幫你建立一些相關的資料.
 
-注意:exclamation: 它和 [demo/demo.xml](demo/demo.xml) 資料夾不太一樣, demo 資料夾是當你有勾選
+注意 :exclamation: 它和 [demo/demo.xml](demo/demo.xml) 資料夾不太一樣, demo 資料夾是當你有勾選
 
 產生 demo 資料時, 你安裝 addons 會自動產生 demo data (如下圖).
 
@@ -662,7 +662,7 @@ form 如下
 
 再來是 [controllers](controllers) 這個資料夾,
 
-如果你學過 Django,Flask 你會發現蠻像的:smile:
+如果你學過 Django,Flask 你會發現蠻像的 :smile:
 
 因為就是定義 route , 然後撈資料, 最後回傳到對應的 view,
 
@@ -739,13 +739,13 @@ class DemoOdoo(http.Controller):
 
 `__manifest__.py` 中也請記得加入 `website` depend,
 
-這樣就會加上 odoo website 的模版了:smile:
+這樣就會加上 odoo website 的模版了 :smile:
 
 ![alt tag](https://i.imgur.com/xC8SqxZ.png)
 
 ### Odoo Qweb 教學
 
-除了這些, 在 QWeb 中還可以實作出不少變化:smile:
+除了這些, 在 QWeb 中還可以實作出不少變化 :smile:
 
 * [Youtube Tutorial - Odoo Qweb 教學](https://youtu.be/FE9lvN62aTo)
 
@@ -819,9 +819,9 @@ class DemoOdooTutorial(models.Model):
 
 它會找到你路徑的全部 addons 中的 `__manifest__.py` 裡找 depends,
 
-你其實可以把他想成是一種反向的依賴, 很容易不小心被它雷到:scream:
+你其實可以把他想成是一種反向的依賴, 很容易不小心被它雷到 :scream:
 
-舉個例子來看這個問題, 當你安裝 `hr_expense` addons 時, `sale_expense` addons 會自動被安裝起來 :exclamation::exclamation:
+舉個例子來看這個問題, 當你安裝 `hr_expense` addons 時, `sale_expense` addons 會自動被安裝起來 :exclamation: :exclamation:
 
 `hr_expense` addons 看不到相關 depends,
 
@@ -852,11 +852,11 @@ class DemoOdooTutorial(models.Model):
 
 * [Youtube Tutorial - odoo testing 教學](https://youtu.be/nfiBgXgYkYg)
 
-在 odoo 的世界中, testing 也扮演一個很重要的角色, 今天就來介紹這個 testing:smile:
+在 odoo 的世界中, testing 也扮演一個很重要的角色, 今天就來介紹這個 testing :smile:
 
 詳細說明可參考 [testing](https://www.odoo.com/documentation/14.0/reference/testing.html).
 
-這邊只會介紹 python 端的 testing, js 的部份就請自行看文件:smirk:
+這邊只會介紹 python 端的 testing, js 的部份就請自行看文件 :smirk:
 
 `TransactionCase`
 
@@ -870,7 +870,7 @@ class DemoOdooTutorial(models.Model):
 
 使用在比較大型以及複雜的測試, 通常會搭配 `setUpClass()` 使用, 這邊就不另外介紹,
 
-可自行使用關鍵字查看 source code 如何規劃:smile:
+可自行使用關鍵字查看 source code 如何規劃 :smile:
 
 先來看 `TransactionCase`
 
@@ -1096,7 +1096,7 @@ class DemoOdooTutorialStatistics(models.Model):
 
 前面和大家說明過了有時候會使用原生的 SQL 來完成.
 
-這部份將更詳細的說明 RAW SQL 的使用方法以及應該注意的事項:smile:
+這部份將更詳細的說明 RAW SQL 的使用方法以及應該注意的事項 :smile:
 
 可參考 [models/models.py](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/master/demo_odoo_tutorial/models/models.py)
 
@@ -1138,15 +1138,15 @@ def demo_raw_sql(self):
 
 ![alt tag](https://i.imgur.com/RcAw0Pr.png)
 
-當你在使用 原生的 SQL 時, 要很小心:exclamation::exclamation::exclamation:
+當你在使用 原生的 SQL 時, 要很小心 :exclamation: :exclamation: :exclamation:
 
-因為這種搜尋方式跳過了 ORM 那層, 所以權限以及安全規則的部份都會全被跳過:exclamation:
+因為這種搜尋方式跳過了 ORM 那層, 所以權限以及安全規則的部份都會全被跳過 :exclamation:
 
 所以在使用 `INSERT/UPDATE` 時也不會觸發 `create()` `write()`,
 
-所以請特別注意:exclamation::exclamation:
+所以請特別注意 :exclamation::exclamation:
 
-也要小心 SQL注入(SQL injection):exclamation::exclamation:
+也要小心 SQL注入(SQL injection) :exclamation: :exclamation:
 
 ```python
 # SQL injection possible

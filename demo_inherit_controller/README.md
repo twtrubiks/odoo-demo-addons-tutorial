@@ -1,6 +1,6 @@
 # odoo 觀念 - 如何繼承 inherit controller
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - 如何繼承 inherit controller](https://youtu.be/kZG-CKQ2M7A)
 
@@ -8,7 +8,7 @@
 
 [odoo 繼承 - class inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_class_inheritance)
 
-本篇文章主要介紹 odoo 中的繼承 controller 這部份:smile:
+本篇文章主要介紹 odoo 中的繼承 controller 這部份 :smile:
 
 ## 說明
 

@@ -1,6 +1,6 @@
 # odoo 繼承 - delegation inheritance
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 繼承 - delegation inheritance](https://youtu.be/J1-Hg9vrXBs)
 
@@ -90,9 +90,9 @@ class DelegationInheritance(models.Model):
 
 當建立 `demo.delegation` 時, 也會自動幫你建立 `partner_id`.
 
-你可能會問我為甚麼沒有 `name` field, 但是卻可以使用 `name`:question:
+你可能會問我為甚麼沒有 `name` field, 但是卻可以使用 `name` :question:
 
-因為這個 `name` 其實是屬於 `res.partner` 的:smile:
+因為這個 `name` 其實是屬於 `res.partner` 的 :smile:
 
 以下操作一遍流程,
 
@@ -124,9 +124,9 @@ class DelegationInheritance(models.Model):
 
 當使用父類別`res.partner`時, **只能看到**父類別`res.partner`的資料.
 
-委派最重要的目的就是避免在很多的 table 中建立重複的資料. (達到共用的效果:smile:)
+委派最重要的目的就是避免在很多的 table 中建立重複的資料. (達到共用的效果 :smile:)
 
-在原始碼中, 也有幾個範例可以參考:smile:
+在原始碼中, 也有幾個範例可以參考 :smile:
 
 第一個範例為 `res.users` 以及 `res.partner`
 

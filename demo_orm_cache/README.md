@@ -1,6 +1,6 @@
 # odoo 觀念 - orm cache 說明
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - orm cache 說明](https://youtu.be/AXi7c4EQuYE)
 
@@ -14,7 +14,7 @@
 
 cache 的觀念在 python 中其實主要就是使用 dict 來完成的,
 
-如果有興趣也可以參考底下的兩篇文章:smile:
+如果有興趣也可以參考底下的兩篇文章 :smile:
 
 [什麼是 functools.lru_cache in python](https://github.com/twtrubiks/python-notes/tree/master/what_is_the_functools.lru_cache)
 
@@ -82,7 +82,7 @@ from odoo import models, fields, tools
     raise ValidationError('clear cache')
 ```
 
-這邊要注意一下, 當你重新啟動 odoo 時, cache 也會自動被清除哦:exclamation::exclamation:
+這邊要注意一下, 當你重新啟動 odoo 時, cache 也會自動被清除哦 :exclamation: :exclamation:
 
 然後我們也可以去查看 cache 的狀況,
 

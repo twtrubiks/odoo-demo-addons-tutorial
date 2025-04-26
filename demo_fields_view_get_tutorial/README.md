@@ -1,6 +1,6 @@
 # odoo fields_view_get 介紹教學
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - odoo fields_view_get 介紹教學](https://youtu.be/TpEw3TQiZ_M)
 
@@ -20,7 +20,7 @@
 
 ![alt tag](https://i.imgur.com/VuIMx64.png)
 
-讓我們使用 `fields_view_get` 他來解決這個問題吧:smile: (常規的方法不好解決:sob:)
+讓我們使用 `fields_view_get` 他來解決這個問題吧 :smile: (常規的方法不好解決 :sob:)
 
 請參考 [models/account_invoice.py](models/account_invoice.py)
 
@@ -66,7 +66,7 @@ class AccountInvoice(models.Model):
 
 所以透過這段 code, 邏輯就是, 只有擁用 Billing Manager(`account.group_account_manager`)
 
-的 groups 才**不是** readonly, 否則都是 readonly. (建議看影片的 demo:smirk:)
+的 groups 才**不是** readonly, 否則都是 readonly. (建議看影片的 demo :smirk:)
 
 剛剛的 type 是 form, 接著來看看 tree 的狀況,
 

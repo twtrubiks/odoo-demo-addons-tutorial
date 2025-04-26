@@ -22,7 +22,7 @@
 
 這個 addon 只要是將保存在 file 中的 session 全部改成存在 redis 中,
 
-你可能會問我有甚麼好處:question:
+你可能會問我有甚麼好處 :question:
 
 速度絕對變快, 然後如果你有多 odoo 的機器, 也比較好方便統一管理 session.
 
@@ -163,7 +163,7 @@ ttl <key>
 flushall
 ```
 
-如果 redis 中也有資料, 這樣就對表成功了:smile:
+如果 redis 中也有資料, 這樣就對表成功了 :smile:
 
 成功將 session 從檔案中移動至 redis,
 

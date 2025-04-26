@@ -1,6 +1,6 @@
 # odoo 觀念 - sequence
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - sequence](https://youtu.be/u8v0hzEXwpc)
 
@@ -99,7 +99,7 @@ class DemoSequence(models.Model):
 
 假設今天的 sequence 是 001, 我們再建立一比, 這時候是 002,
 
-當我們把 002 這筆刪除, 然後再建立一筆新的, 這時候差異就多來了:smile:
+當我們把 002 這筆刪除, 然後再建立一筆新的, 這時候差異就多來了 :smile:
 
 `Standard`(預設)
 
@@ -111,4 +111,4 @@ class DemoSequence(models.Model):
 
 如果你把此範例改成 `No gap`, 是不會產生效果的, 應該是要搭配其他的 code.
 
-(以後我再補充給大家, 或自行去閱讀 source code 參考寫法:smile:)
+(以後我再補充給大家, 或自行去閱讀 source code 參考寫法 :smile:)

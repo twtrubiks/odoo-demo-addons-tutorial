@@ -1,6 +1,6 @@
 # odoo 觀念 - TransientModel - Wizard
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 觀念 - TransientModel - Wizard](https://youtu.be/Gc-wRnAhbKs)
 
@@ -78,9 +78,9 @@ class DemoWizard(models.TransientModel):
         return {'type': 'ir.actions.act_window_close'}
 ```
 
-注意:exclamation: 這邊是使用 `models.TransientModel`.
+注意 :exclamation: 這邊是使用 `models.TransientModel`.
 
-注意:exclamation: Transient models 是不需要 access rules
+注意 :exclamation: Transient models 是不需要 access rules
 
 ( odoo14 開始 Transient models 需要設定 access rules, 可參考 [odoo14 分支](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0/demo_odoo_tutorial_wizard))
 
@@ -88,7 +88,7 @@ class DemoWizard(models.TransientModel):
 
 在路徑中的 [security/ir.model.access.csv](security/ir.model.access.csv) 裡面定義的東西是
 
-屬於 [models/models.py](models/models.py) 中的哦, 請不要搞錯:smile:
+屬於 [models/models.py](models/models.py) 中的哦, 請不要搞錯 :smile:
 
 [views/view.xml](views/view.xml)
 
@@ -123,7 +123,7 @@ class DemoWizard(models.TransientModel):
 
 寫法是 `name="%(demo_odoo_tutorial_wizard.demo_wizard_action)d"`,
 
-這邊提醒一下大家:exclamation::exclamation: 如果你把 developer mode 打開,
+這邊提醒一下大家 :exclamation: :exclamation: 如果你把 developer mode 打開,
 
 你會發現他沒有 name, 只會有 Action ID
 

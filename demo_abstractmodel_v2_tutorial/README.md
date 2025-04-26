@@ -1,6 +1,6 @@
 # 透過 AbstractModel 擴充 Model
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - 透過 AbstractModel 擴充 Model](https://youtu.be/uW1PsDPcJF4)
 
@@ -10,7 +10,7 @@
 
 * [odoo 繼承 - prototype inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance) 有提到 MailThread 這個 AbstractModel
 
-今天要來進一步介紹, 如何透過 AbstractModel 擴充 Model:smile:
+今天要來進一步介紹, 如何透過 AbstractModel 擴充 Model :smile:
 
 ## 說明
 
@@ -18,7 +18,7 @@
 
 `AbstractModel` AbstractModel = BaseModel,
 
-注意:exclamation::exclamation: AbstractModel **不會** 在資料庫中產生對應的 table.
+注意 :exclamation: :exclamation: AbstractModel **不會** 在資料庫中產生對應的 table.
 
 先來看這個範例 [models/models.py](models/models.py)
 
@@ -137,4 +137,4 @@ class DemoModelTutorial(models.Model):
 
 也可以去了解一下 [什麼是 Mixin in python](https://github.com/twtrubiks/python-notes/tree/master/what_is_the_mixin),
 
-相信這樣大家會更了解他們的概念:smile:
+相信這樣大家會更了解他們的概念 :smile:

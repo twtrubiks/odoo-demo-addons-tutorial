@@ -1,6 +1,6 @@
 # odoo 觀念 - Translating 翻譯教學 i18n
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - odoo 觀念 - Translating 翻譯教學 i18n - part1](https://youtu.be/_gGmwgk8250) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_i18n_expense_tutorial#%E5%9F%BA%E6%9C%AC%E8%A7%80%E5%BF%B5)
 
@@ -34,7 +34,7 @@ python3 odoo-bin -d odoo --load-language=zh_TW -c odoo.conf
 
 在需要翻譯的頁面底下選擇 Technical Translation
 
-這邊強烈建議大家先切換語系到**英文**, 再下去進行翻譯, 不然很容易怪怪的:joy:
+這邊強烈建議大家先切換語系到**英文**, 再下去進行翻譯, 不然很容易怪怪的 :joy:
 
 ![alt tag](https://i.imgur.com/tYUDr68.png)
 
@@ -74,7 +74,7 @@ Import Translation
 
 匯入 po 檔案,
 
-注意 :exclamation::exclamation: Overwrite Existing Terms 請記住一定要打勾, 否則不會生效.
+注意 :exclamation: :exclamation: Overwrite Existing Terms 請記住一定要打勾, 否則不會生效.
 
 ![alt tag](https://i.imgur.com/TGevO7f.png)
 
@@ -129,7 +129,7 @@ python3 odoo-bin --i18n-overwrite -u demo_i18n_expense_tutorial -d odoo -c odoo.
 
 選擇對應的語言,
 
-注意 :exclamation::exclamation: Overwrite Existing Terms 請記住一定要打勾, 否則不會生效.
+注意 :exclamation: :exclamation: Overwrite Existing Terms 請記住一定要打勾, 否則不會生效.
 
 ![alt tag](https://i.imgur.com/2FbZie6.png)
 

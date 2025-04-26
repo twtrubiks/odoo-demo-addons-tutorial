@@ -1,6 +1,6 @@
 # odoo 觀念 - 實作 init hook
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - 實作 init hook](https://youtu.be/2ZmfH3wBHm8)
 
@@ -93,4 +93,4 @@ def post_load_hook():
 
 像是有時候繼承既有的 rule, 當你移除 addons 時, 該 rule 並不會被還原,
 
-這時候, 就可以用 hook 的方式來處理:satisfied:
+這時候, 就可以用 hook 的方式來處理 :satisfied:

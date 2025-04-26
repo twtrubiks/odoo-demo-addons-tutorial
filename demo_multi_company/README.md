@@ -1,6 +1,6 @@
 # odoo 觀念 - multi company
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - multi company - part1](https://youtu.be/u8u0eRzY8kg)
 
@@ -8,7 +8,7 @@
 
 [odoo 手把手建立第一個 addons](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial)
 
-本篇文章主要介紹 odoo 中的 multi company 的一小部份:smile:
+本篇文章主要介紹 odoo 中的 multi company 的一小部份 :smile:
 
 因為 multi company 的方法有很多種.
 
@@ -18,7 +18,7 @@
 
 可參考官方文件 [Multi-company Guidelines](https://www.odoo.com/documentation/14.0/developer/howtos/company.html) 觀看.
 
-(補充一下, 從 odoo13 開始, Multi-company 的概念有改動, 但不影響本篇的教學:relaxed:)
+(補充一下, 從 odoo13 開始, Multi-company 的概念有改動, 但不影響本篇的教學 :relaxed:)
 
 今天主要是要介紹 fields 中的一個參數 `company_dependent=True`,
 
@@ -63,9 +63,9 @@ class DemoCompany(models.Model):
 
 ![alt tag](https://i.imgur.com/fz0aK8h.png)
 
-這邊你可能會覺得很奇怪, 但這就是他特別的地方:smile:
+這邊你可能會覺得很奇怪, 但這就是他特別的地方 :smile:
 
-那他會存在哪裡呢:question:
+那他會存在哪裡呢 :question:
 
 他會存在 `ir_property` 中
 

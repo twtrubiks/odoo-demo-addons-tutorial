@@ -4,7 +4,7 @@
 
 今天來介紹 odoo 中的 website_form, 順便來看一下 code 是怎麼跑的,
 
-就使用 `website_hr_recruitment` 這個 addons 來介紹:smile:
+就使用 `website_hr_recruitment` 這個 addons 來介紹 :smile:
 
 請先把 `website_hr_recruitment` 裝起來 (記得安裝 demo data),
 
@@ -209,7 +209,7 @@ class website_form_model_fields(models.Model):
 
 並需要設定成 False 才可以搭配 website_form 使用.
 
-這樣我們該怎麼設定 `website_form_blacklisted` 為 False 呢:question:
+這樣我們該怎麼設定 `website_form_blacklisted` 為 False 呢 :question:
 
 odoo source code 路徑為 `addons/website_hr_recruitment/data/config_data.xml`
 

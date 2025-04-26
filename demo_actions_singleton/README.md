@@ -1,6 +1,6 @@
 # odoo 觀念 - actions 和 singleton
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - actions and singleton](https://youtu.be/rRD9j4IAHWY)
 
@@ -108,7 +108,7 @@ class DemoActionsSingleton(models.Model):
 
 原因就是在這邊我們使用了 `self.ensure_one()` 確認 (確保只使用一條 record),
 
-所以選兩條 reocrd 就會錯誤:exclamation::exclamation:
+所以選兩條 reocrd 就會錯誤 :exclamation: :exclamation:
 
 所以結論就是 `self.ensure_one()` 是要讓你檢查是否為 `singleton`.
 
@@ -116,7 +116,7 @@ class DemoActionsSingleton(models.Model):
 
 它不會回傳 error ( 而是會回傳 `False`),
 
-也因為這個特性, 所以我們才可以使用 `.` 歷遍 (traverse) records 而不用擔心錯誤:smile:
+也因為這個特性, 所以我們才可以使用 `.` 歷遍 (traverse) records 而不用擔心錯誤 :smile:
 
 (舉例, 下面的例子)
 

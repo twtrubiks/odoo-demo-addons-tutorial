@@ -1,6 +1,6 @@
 # odoo 觀念 - activity
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - activity](https://youtu.be/_i4yLHrXRdg)
 
@@ -80,7 +80,7 @@ class DemoActivity(models.Model):
 
 注意 `_inherit = ['mail.thread', 'mail.activity.mixin']`
 
-這繼承是必須的哦, 不然你的 activity 是會失效的:smile:
+這繼承是必須的哦, 不然你的 activity 是會失效的 :smile:
 
 這是所謂的 prototype inheritance,
 
@@ -206,9 +206,9 @@ self.activity_schedule(
 
 ![alt tag](https://i.imgur.com/7L9wkDx.png)
 
-最後記得也要設定 `__manifest__.py` 哦:smile:
+最後記得也要設定 `__manifest__.py` 哦 :smile:
 
-注意需要 depend `mail`:exclamation::exclamation:
+注意需要 depend `mail` :exclamation: :exclamation:
 
 ```python
 ......
