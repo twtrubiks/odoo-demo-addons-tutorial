@@ -1,6 +1,6 @@
 # 實作 config settings
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo - 實作 config settings](https://youtu.be/5k_TYBNs_uc)
 
@@ -67,4 +67,4 @@ Odoo Setup Demo 就是我們加上去的 (在這裡填入 hello123, 記得 Save)
 
 ![alt tag](https://i.imgur.com/QbJYLGo.png)
 
-這樣子就可以在程式需要取設定值時, 直接到 `ir.config_parameter` model 裡找:smile:
+這樣子就可以在程式需要取設定值時, 直接到 `ir.config_parameter` model 裡找 :smile:

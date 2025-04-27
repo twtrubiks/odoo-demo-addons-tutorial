@@ -2,7 +2,7 @@
 
 此版本為 odoo14, odoo12 版本請參考 [master](https://github.com/twtrubiks/odoo-demo-addons-tutorial) 分支.
 
-本文章會持續更新:smile:
+本文章會持續更新 :smile:
 
 這邊文章主要是會手把手教大家撰寫 odoo 的 addons, 建議再閱讀這篇文章之前, 你已經看過以下的文章
 
@@ -14,11 +14,11 @@
 
 為甚麼我要寫一堆 addons, 因為其實 odoo 和 django 一樣的點是都很麻煩, 要寫個範例超級麻煩的,
 
-因為一個小地方錯可能就會造成錯誤之類的:sweat:
+因為一個小地方錯可能就會造成錯誤之類的 :sweat:
 
 ## addons 目錄
 
-非常建議按照順序看, 因為會一步一步帶大家:smile:
+非常建議按照順序看, 因為會一步一步帶大家 :smile:
 
 1. [odoo 手把手建立第一個 addons](demo_odoo_tutorial)
 
@@ -130,9 +130,9 @@ python3 odoo-bin -u addons_1 -d odoo --dev=all
 
 `--dev=reload` 代表當 python code 改變時, 自動更新(不用手動更新).
 
-但有時候如果你覺得怪怪的, 我還是建議手動重新直接更新 addons 的指令比較好:smile:
+但有時候如果你覺得怪怪的, 我還是建議手動重新直接更新 addons 的指令比較好 :smile:
 
-注意:exclamation:沒有刪除 addons 的指令, 只能從 web 上移除.
+注意 :exclamation:沒有刪除 addons 的指令, 只能從 web 上移除.
 
 ### shell
 
@@ -322,7 +322,7 @@ hr.expense(4, 3, 2, 1)
 hr.expense(4, 3)
 ```
 
-也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整):smile:
+也就是說, 知道這個特性, 我們甚至可以讓沒有權限的人看到 records (請依照自己的需求去調整) :smile:
 
 `with_context`
 
@@ -462,7 +462,7 @@ data_dir = /home/twtrubiks/work/odoo12/odoo-data
 
 ## Donation
 
-文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡:laughing:
+文章都是我自己研究內化後原創，如果有幫助到您，也想鼓勵我的話，歡迎請我喝一杯咖啡 :laughing:
 
 綠界科技ECPAY ( 不需註冊會員 )
 

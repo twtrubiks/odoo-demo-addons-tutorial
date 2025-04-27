@@ -1,6 +1,6 @@
 # odoo14 觀念 - image mixin
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo14 手把手教學 - image mixin](https://youtu.be/2EJNTLldHOA)
 
@@ -18,7 +18,7 @@
 
 (odoo12 是沒有這個 `image.mixin` model)
 
-如果你對 Mixin 有興趣, 也可參考 [什麼是 Mixin in python](https://github.com/twtrubiks/python-notes/tree/master/what_is_the_mixin):smile:
+如果你對 Mixin 有興趣, 也可參考 [什麼是 Mixin in python](https://github.com/twtrubiks/python-notes/tree/master/what_is_the_mixin) :smile:
 
 可參考 odoo14 原始碼中的 `odoo/addons/base/models/image_mixin.py`
 
@@ -111,4 +111,4 @@ class DemoImage(models.Model):
 
 最後提醒大家, 超大容量的圖片, 對網站絕對是一個負擔, 不只網路變慢, SEO的排名
 
-可能也會往後掉, 所以, 建議使用適合的圖片大小:smile:
+可能也會往後掉, 所以, 建議使用適合的圖片大小 :smile:

@@ -1,6 +1,6 @@
 # odoo 實作 scan barcode
 
-建議觀看影片, 因為 scanner 會看的更清楚:smile:
+建議觀看影片, 因為 scanner 會看的更清楚 :smile:
 
 [Youtube Tutorial - odoo - 實作 scan barcode](https://youtu.be/o2THTpLmUec)
 
@@ -124,15 +124,15 @@ views 的部份可參考 [views/view.xml](https://github.com/twtrubiks/demo_conf
 
 ![alt tag](https://i.imgur.com/0S5Bsu9.png)
 
-記住一定要進入編輯 (Edit) 狀態, 否則會出現錯誤:exclamation::exclamation:
+記住一定要進入編輯 (Edit) 狀態, 否則會出現錯誤 :exclamation: :exclamation:
 
 ![alt tag](https://i.imgur.com/cNzb2VJ.png)
 
-也請記得要 focus 在當下的 odoo 畫面 (否則系統會抓不到):exclamation::exclamation:
+也請記得要 focus 在當下的 odoo 畫面 (否則系統會抓不到) :exclamation: :exclamation:
 
 scanner 掃到條碼後, 就會將對應的產品帶入 sale order line 中.
 
-這邊建議觀看影片, 會比較清楚:smile:
+這邊建議觀看影片, 會比較清楚 :smile:
 
 scanner 其實也是將 barcode 或是 qrcode 內的資料讀取出來而已
 

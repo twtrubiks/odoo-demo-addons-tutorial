@@ -1,6 +1,6 @@
 # odoo hierarchy 實作
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - odoo 手把手教學 hierarchy - part1](https://youtu.be/O_ch9553VQ0) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_hierarchy_tutorial#%E8%AA%AA%E6%98%8E)
 
@@ -18,13 +18,13 @@
 
 之前不管是介紹 Many2one 還是 One2many, 都是對別的 model 產生關聯,
 
-那有沒有和自己產生關聯的呢:smile:
+那有沒有和自己產生關聯的呢 :smile:
 
 * [odoo 手把手教學 - Many2one - part1](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---many2one---part1)
 
 * [odoo 手把手教學 - One2many - part3](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---one2many---part3)
 
-答案是有的哦, 就是 odoo 中的 階層(hierarchy) 的關係:satisfied:
+答案是有的哦, 就是 odoo 中的 階層(hierarchy) 的關係 :satisfied:
 
 階層(hierarchy) 的關係範例圖如下,
 

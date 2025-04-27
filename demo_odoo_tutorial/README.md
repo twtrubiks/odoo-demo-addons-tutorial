@@ -8,7 +8,7 @@
 
 * [Youtube Tutorial - 說明 odoo manifest 中的 auto_install](https://youtu.be/xTezPfJAJ_Q) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial#%E8%AA%AA%E6%98%8E-odoo-manifest-%E4%B8%AD%E7%9A%84-auto_install)
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 以下將介紹這個 addons 的結構
 
@@ -127,7 +127,7 @@ class Model(AbstractModel):
 
 ![alt tag](https://i.imgur.com/s6ngYGo.png)
 
-`_inherit` 在 odoo 中不管是 model 還是 view, 甚至是權限, 都會使用繼承 (這邊先知道這樣即可:smile:).
+`_inherit` 在 odoo 中不管是 model 還是 view, 甚至是權限, 都會使用繼承 (這邊先知道這樣即可 :smile:).
 
 再來說明 field
 
@@ -257,9 +257,9 @@ field_compute_demo = fields.Integer(compute="_get_field_compute") # readonly
 
 接下來來看 [security](security) 這個很重要的資料夾, 既然有了 model,
 
-這樣要如何控制誰有權限讀寫修改刪除呢:question:
+這樣要如何控制誰有權限讀寫修改刪除呢 :question:
 
-就是依靠 `ir.model.access.csv` 和 `security.xml` 這個檔案:exclamation:
+就是依靠 `ir.model.access.csv` 和 `security.xml` 這個檔案 :exclamation:
 
 `security.xml`
 
@@ -385,7 +385,7 @@ tree 如下
 
 接著是 form, 記得將對應的 model 填進去,
 
-(如果都沒寫, 系統會自己產生對應的 form view, 但很醜:sob:)
+(如果都沒寫, 系統會自己產生對應的 form view, 但很醜 :sob:)
 
 ```xml
 ......
@@ -463,7 +463,7 @@ form 如下
 
 這邊做的事情就是當你安裝了 addons, 它會預設幫你建立一些相關的資料.
 
-注意:exclamation: 它和 [demo/demo.xml](demo/demo.xml) 資料夾不太一樣, demo 資料夾是當你有勾選
+注意 :exclamation: 它和 [demo/demo.xml](demo/demo.xml) 資料夾不太一樣, demo 資料夾是當你有勾選
 
 產生 demo 資料時, 你安裝 addons 會自動產生 demo data (如下圖).
 
@@ -538,7 +538,7 @@ form 如下
 
 再來是 [controllers](controllers) 這個資料夾,
 
-如果你學過 Django,Flask 你會發現蠻像的:smile:
+如果你學過 Django,Flask 你會發現蠻像的 :smile:
 
 因為就是定義 route , 然後撈資料, 最後回傳到對應的 view,
 
@@ -600,9 +600,9 @@ route 我們定義是 `@http.route('/demo/odoo', auth='user')`,
 
 它會找到你路徑的全部 addons 中的 `__manifest__.py` 裡找 depends,
 
-你其實可以把他想成是一種反向的依賴, 很容易不小心被它雷到:scream:
+你其實可以把他想成是一種反向的依賴, 很容易不小心被它雷到 :scream:
 
-舉個例子來看這個問題, 當你安裝 `hr_expense` addons 時, `sale_expense` addons 會自動被安裝起來 :exclamation::exclamation:
+舉個例子來看這個問題, 當你安裝 `hr_expense` addons 時, `sale_expense` addons 會自動被安裝起來 :exclamation: :exclamation:
 
 `hr_expense` addons 看不到相關 depends,
 

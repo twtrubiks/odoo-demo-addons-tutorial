@@ -2,7 +2,7 @@
 
 此版本為 odoo14, odoo12 版本請參考 [master](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/xml-rpc-odoo) 分支.
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo14 Developer API Keys 教學 - python xmlrpc](https://youtu.be/__RcLpcRF2g)
 

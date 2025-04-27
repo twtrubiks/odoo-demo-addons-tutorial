@@ -1,6 +1,6 @@
 # odoo 繼承 - prototype inheritance
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 繼承 - prototype inheritance](https://youtu.be/sJrik0jjuas)
 
@@ -14,19 +14,19 @@
 
 `_inherit` prototype inheritance
 
-注意:exclamation: 還有一個是 `_inherits`, 不要搞錯了哦.
+注意 :exclamation: 還有一個是 `_inherits`, 不要搞錯了哦.
 
 ![alt tag](https://i.imgur.com/kjtCar6.png)
 
-注意:exclamation: Stored in different tables.
+注意 :exclamation: Stored in different tables.
 
-注意:exclamation: 此類別會擁有父類別的所有特性, 在此類別中的任何修改, 都不會去影響到父類別.
+注意 :exclamation: 此類別會擁有父類別的所有特性, 在此類別中的任何修改, 都不會去影響到父類別.
 
 class inheritance 和 prototype inheritance 其實很好分辨,
 
 prototype inheritance 會自己額外定義新的 `_name`,
 
-(注意:exclamation: 如果 `_name` 和被繼承/父類別的名稱一樣, 就等同是 **class inheritance** 哦)
+(注意 :exclamation: 如果 `_name` 和被繼承/父類別的名稱一樣, 就等同是 **class inheritance** 哦)
 
 使用的時機通常是繼承 `mail.thread` 這類的 `models.AbstractModel`,
 

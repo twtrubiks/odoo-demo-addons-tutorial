@@ -1,6 +1,6 @@
 # 介紹 AbstractModel
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - AbstractModel](https://youtu.be/jsMTVe12vRY)
 
@@ -14,7 +14,7 @@
 
 `AbstractModel` AbstractModel = BaseModel,
 
-注意:exclamation::exclamation: AbstractModel **不會** 在資料庫中產生對應的 table.
+注意 :exclamation: :exclamation: AbstractModel **不會** 在資料庫中產生對應的 table.
 
 AbstractModel 除了常常使用在之前介紹的 [demo_prototype_inheritance](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_prototype_inheritance) 中,
 
@@ -42,7 +42,7 @@ class SaleOrderReportProforma(models.AbstractModel):
 
 請一定要先了解 Transient Model, 如果不了解可參考 [demo_odoo_tutorial_wizard](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_odoo_tutorial_wizard).
 
-開始今天的介紹:smile:
+開始今天的介紹 :smile:
 
 先來看 [wizard/model_wizard.py](wizard/model_wizard.py)
 
@@ -225,7 +225,7 @@ report + addons name + template id
 
 也就是 `report.demo_abstractmodel_tutorial.report_wizard_template`,
 
-report 這個 prefix 很重要, 請不要任意的拿掉:exclamation::exclamation:
+report 這個 prefix 很重要, 請不要任意的拿掉 :exclamation: :exclamation:
 
 `_get_report_values` 則是我們額外的邏輯, 最後將資料回傳給
 

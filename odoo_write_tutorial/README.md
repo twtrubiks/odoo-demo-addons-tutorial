@@ -4,7 +4,7 @@
 
 這隻影片主要是要和大家說明
 
-odoo12 和 odoo13, odoo14 中的 orm write 有一點點稍微不同:smirk:
+odoo12 和 odoo13, odoo14 中的 orm write 有一點點稍微不同 :smirk:
 
 ## 說明
 
@@ -43,9 +43,9 @@ order.write({'name': 'name', 'note':'note'})
 
 所以在 odoo12 中, 如果想要一次寫入多欄位的資料,
 
-請儘量使用第二種方法.(效能會稍微好一點:smile:)
+請儘量使用第二種方法.(效能會稍微好一點 :smile:)
 
-結論說完了, 接下來實際執行一次來驗證:smirk:
+結論說完了, 接下來實際執行一次來驗證 :smirk:
 
 在 odoo14 中,
 

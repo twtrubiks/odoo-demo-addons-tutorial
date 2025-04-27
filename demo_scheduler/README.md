@@ -1,6 +1,6 @@
 # odoo 觀念 - scheduler
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 手把手教學 - scheduler](https://youtu.be/uvQTHsKu3Ic)
 
@@ -62,7 +62,7 @@ class DemoScheduler(models.Model):
 </odoo>
 ```
 
-`interval_type` 分, 小時, 天, 禮拜, 月, 最小單位為 1 分鐘:exclamation::exclamation:
+`interval_type` 分, 小時, 天, 禮拜, 月, 最小單位為 1 分鐘 :exclamation: :exclamation:
 
 `interval_number` 次數, 搭配 `interval_type`, 像範例就是一天執行一次.
 
@@ -92,7 +92,7 @@ Technical -> Automation -> Scheduled Actions
 
 Run Manually
 
-也可以手動觸發 schedule, 確保他是正常的:smile:
+也可以手動觸發 schedule, 確保他是正常的 :smile:
 
 ![alt tag](https://i.imgur.com/OrCh1mr.png)
 

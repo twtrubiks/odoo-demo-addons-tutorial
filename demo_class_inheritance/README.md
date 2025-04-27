@@ -1,6 +1,6 @@
 # odoo 繼承 - class inheritance
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 繼承 - class inheritance](https://youtu.be/zgb_0MJ3q9w)
 
@@ -52,7 +52,7 @@ class ClassInheritance(models.Model):
 
 `hr.expense` 是一個既有的 model, 所以在 `__manifest__.py` 中有 depends 關係
 
-(記得一定要寫 depends, 不然會出現錯誤:exclamation:)
+(記得一定要寫 depends, 不然會出現錯誤 :exclamation:)
 
 ```python
 ......
@@ -68,7 +68,7 @@ class ClassInheritance(models.Model):
 
 `_inherit = ['hr.expense']`
 
-主要去繼承 `hr.expense`, 所以一定要有 depends:exclamation::exclamation:
+主要去繼承 `hr.expense`, 所以一定要有 depends :exclamation: :exclamation:
 
 當你安裝好 addons, 我們到資料庫中可以找到剛剛新增的 test_field
 
@@ -121,7 +121,7 @@ class ClassInheritance(models.Model):
 
 裡面有重複的 fields 時, 就比較適合使用 xpath, 因為如果你使用第
 
-一種方法, 會導致找不到 (有重複它會不知道要找哪一個:grimacing:)
+一種方法, 會導致找不到 (有重複它會不知道要找哪一個 :grimacing:)
 
 ```xml
 ......

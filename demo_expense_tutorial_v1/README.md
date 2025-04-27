@@ -1,6 +1,6 @@
 # odoo 入門篇
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 * [Youtube Tutorial - odoo 手把手教學 - Many2one - part1](https://youtu.be/vb_Z8KCI-wk) - [文章快速連結](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/master/demo_expense_tutorial_v1#odoo-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8---many2one---part1)
 
@@ -74,7 +74,7 @@ class DemoExpenseTutorial(models.Model):
 
 ![alt tag](https://i.imgur.com/QiDj6iM.png)
 
-因為 One2many 比較特別, 所以我們先介紹 Many2many:laughing:
+因為 One2many 比較特別, 所以我們先介紹 Many2many :laughing:
 
 ### odoo 手把手教學 - Many2many - part2
 
@@ -335,7 +335,7 @@ class DemoExpenseTutorial(models.Model):
 
 如果你加上 `editable` 這個參數, 當你新增 record 的時候, 就不會整個跳出視窗, 可以直接在裡面輸入
 
-(或許比較好看:smile:)
+(或許比較好看 :smile:)
 
 ![alt tag](https://i.imgur.com/tdues3g.png)
 
@@ -614,8 +614,8 @@ class DemoExpenseSheetTutorial(models.Model):
 
 Many2one 時也會看到自己定義的 `name_get`
 
-注意:exclamation: 這些增加的值是不會儲存進 db 中的, db 中還是儲存的是 name 的內容而已
-(概念和 compute field 一樣:smile:)
+注意 :exclamation: 這些增加的值是不會儲存進 db 中的, db 中還是儲存的是 name 的內容而已
+(概念和 compute field 一樣 :smile:)
 
 ![alt tag](https://i.imgur.com/sC9hNA8.png)
 
@@ -623,15 +623,15 @@ Many2one 時也會看到自己定義的 `name_get`
 
 如果沒有它, 假設我知道某個資料的 id 是 4, 在搜尋的地方打上 id,
 
-你會發現找不到資料:joy:
+你會發現找不到資料 :joy:
 
 ![alt tag](https://i.imgur.com/YokDfBf.png)
 
 但今天如果有了 `_name_search` 並實作它,
 
-你會發現這次你打 id 會才成功找到需要的資料:satisfied:
+你會發現這次你打 id 會才成功找到需要的資料 :satisfied:
 
-我在 code 中有放幾個範例註解, 大家可以自行玩玩看:smile:
+我在 code 中有放幾個範例註解, 大家可以自行玩玩看 :smile:
 
 ![alt tag](https://i.imgur.com/ztUL9Xd.png)
 
@@ -794,9 +794,9 @@ def replace_demo_expense_record(self):
 
 也就是 `security.xml` `ir_rule.xml` `ir.model.access.csv` 主要是這個.
 
-記住:exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
+記住 :exclamation: odoo 可以從 model 層(db層) 或權限下手, 也可以從 view 那層下手,
 
-當然, 如果是從安全性的角度來看 從 model 層(db層) 或權限下手 是比較高全的:smile:
+當然, 如果是從安全性的角度來看 從 model 層(db層) 或權限下手 是比較高全的 :smile:
 
 今天就是要來介紹 從 view 那層下手,
 
@@ -890,7 +890,7 @@ def replace_demo_expense_record(self):
 
 * [Youtube Tutorial - odoo14 手把手教學 - Search Panel 教學 - part11](https://youtu.be/tZ6_2Q3r3Ok)
 
-在 odoo14 中, 原生就多了 Search Panel 可以使用, 今天就來看看這個東西:smile:
+在 odoo14 中, 原生就多了 Search Panel 可以使用, 今天就來看看這個東西 :smile:
 
 下圖就是所謂的 Search Panel
 
@@ -962,7 +962,7 @@ class Many2one(_Relational):
 ......
 ```
 
-`auto_join` 的主要功能就是允許 ORM 使用 join 的方式撈資料(用的好的話效能會更好:smile:)
+`auto_join` 的主要功能就是允許 ORM 使用 join 的方式撈資料(用的好的話效能會更好 :smile:)
 
 使用方法也很簡單, 直接加上 `auto_join=True` 即可
 
@@ -991,7 +991,7 @@ class DemoExpenseSheetTutorial(models.Model):
 .....
 ```
 
-至於要怎麼樣看到 `auto_join` 的變化, 就需要從 RAW SQL下去觀察:exclamation:
+至於要怎麼樣看到 `auto_join` 的變化, 就需要從 RAW SQL下去觀察 :exclamation:
 
 可參考之前的教學 [odoo 手把手教學 - 如何透過 log_level 了解 ORM RAW SQL](https://github.com/twtrubiks/odoo-docker-tutorial#odoo---%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-log_level-%E4%BA%86%E8%A7%A3-orm-raw-sql)
 
@@ -1046,7 +1046,7 @@ ORDER BY "demo_expense_tutorial"."id"
 
 另外, 在 odoo12 的時候有相關的 issues 可參考 [auto_join incorrect results...](https://github.com/odoo/odoo/issues/25175)
 
-簡單說就是在 odoo12 中的 `auto_join` 是使用 inner join 的方法, 而現在已經改成了 left join:smile:
+簡單說就是在 odoo12 中的 `auto_join` 是使用 inner join 的方法, 而現在已經改成了 left join :smile:
 
 在 odoo12 中如果你是用 `auto_join=True` 並且執行以下的 ORM 會有 bug
 

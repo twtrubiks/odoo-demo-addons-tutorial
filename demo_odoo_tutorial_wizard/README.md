@@ -1,6 +1,6 @@
 # odoo 觀念 - TransientModel - Wizard
 
-建議觀看影片, 會更清楚:smile:
+建議觀看影片, 會更清楚 :smile:
 
 [Youtube Tutorial - odoo 觀念 - TransientModel - Wizard](https://youtu.be/Gc-wRnAhbKs)
 
@@ -73,9 +73,9 @@ class DemoWizard(models.TransientModel):
         return {'type': 'ir.actions.act_window_close'}
 ```
 
-注意:exclamation: 這邊是使用 `models.TransientModel`.
+注意 :exclamation: 這邊是使用 `models.TransientModel`.
 
-注意:exclamation: 從 odoo14 開始, Transient models **需要** access rules.
+注意 :exclamation: 從 odoo14 開始, Transient models **需要** access rules.
 
 可參考 [security/ir.model.access.csv](https://github.com/twtrubiks/odoo-demo-addons-tutorial/blob/14.0/demo_odoo_tutorial_wizard/security/ir.model.access.csv) 中的設定.
 
