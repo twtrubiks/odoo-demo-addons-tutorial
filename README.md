@@ -2,7 +2,7 @@
 
 這個分支主要是紀錄 odoo15 一些新的特性,
 
-以下紀錄就按照我的摸索慢慢補充:smile:
+以下紀錄就按照我的摸索慢慢補充 :smile:
 
 ## 1. Discuss 新增視訊功能
 
@@ -154,7 +154,7 @@ Project Sharing,
 
 [Youtube Tutorial - odoo15 新功能 Scheduled Actions Triggers](https://youtu.be/buwzrc9NidY)
 
-這個新功能主要是讓 schedule 變得更活用:smile:
+這個新功能主要是讓 schedule 變得更活用 :smile:
 
 現在可以透過 code 指定 schedule 是否被 triggers,
 
@@ -215,7 +215,7 @@ def _trigger(self, at=None):
 ......
 ```
 
-另外要注意的是:exclamation: 這個 Schedule 的 active 狀態必須是 `True`,
+另外要注意的是 :exclamation: 這個 Schedule 的 active 狀態必須是 `True`,
 
 預設 demo data 是 `False`, 所以永遠不會執行.
 
@@ -225,7 +225,7 @@ def _trigger(self, at=None):
 
 當你把他改成 `True`,
 
-然後 `odoo.conf` 中擁有 `max_cron_threads > 0` 時 :exclamation::exclamation:
+然後 `odoo.conf` 中擁有 `max_cron_threads > 0` 時  :exclamation: :exclamation:
 
 (等待一陣子, 排到你的 task 就會被自動執行了)
 
@@ -233,7 +233,7 @@ def _trigger(self, at=None):
 
 如果沒有 `max_cron_threads` 永遠不會被執行 :exclamation:
 
-這邊我也稍微被雷到:sweat:
+這邊我也稍微被雷到 :sweat:
 
 在 testing 中, 也多了一個 `capture_trigger` 這個方法用來測試 trigger 是否被正確執行.
 

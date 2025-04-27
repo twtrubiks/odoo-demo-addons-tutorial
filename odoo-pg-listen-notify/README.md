@@ -114,7 +114,7 @@ TIMEOUT = 50
 ......
 ```
 
-這也就可以解釋為甚麼你有時候會看到很多請求 timeout 的原因:smile:
+這也就可以解釋為甚麼你有時候會看到很多請求 timeout 的原因 :smile:
 
 ![alt tag](https://i.imgur.com/bw9K7zP.png)
 
