@@ -8,9 +8,13 @@
 
 odoo18 推薦官方影片 [What's New in the Python Framework?](https://www.youtube.com/watch?v=4XVkNRp8Fc4)
 
+* [Youtube Tutorial - odoo 18 - 快速簡介](https://youtu.be/JgUZMSeVgIs)
+
 - [odoo 18 範例 addons](demo_expense_tutorial_v1)
 
 - [odoo 18 OWL 範例 addons](demo_owl_tutorial)
+
+- [Odoo 18 RESTful API 多種建立方法比較與實踐](demo_rest_api)
 
 ## 網址終於改了
 
