@@ -61,7 +61,13 @@ odoo18
 odoo18 有多一個指令 `upgrade_code` 可以用來初步轉換 (將 tree 轉換為 list).
 
 ```cmd
-python odoo-bin upgrade_code --addons-path addons
+python odoo-bin upgrade_code --from=17.0 --to=18.0 --addons-path custom_addons/
+```
+
+如果你想看更多的說明,
+
+```cmd
+python odoo-bin upgrade_code --help
 ```
 
 ## 新的 _search_display_name
