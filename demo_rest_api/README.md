@@ -1,6 +1,6 @@
 # Odoo 18 RESTful API 多種建立方法比較與實踐
 
-* [Youtube Tutorial - Odoo 18 RESTful API 多種建立方法比較與實踐(等待新增)](xxx)
+* [Youtube Tutorial - Odoo 18 RESTful API 多種建立方法比較與實踐](https://youtu.be/tQYbuCZjojY)
 
 這個其實很久以前就介紹過了, 這邊再整理一下給各位, 目前有三個方法
 
