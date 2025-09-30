@@ -12,6 +12,8 @@ odoo17 版本請參考 [odoo17](https://github.com/twtrubiks/odoo-demo-addons-tu
 
 odoo18 版本請參考 [odoo18](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/18.0) 分支.
 
+odoo19 版本請參考 [odoo19](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/19.0) 分支.
+
 本文章會持續更新 :smile:
 
 這邊文章主要是會手把手教大家撰寫 odoo 的 addons, 建議再閱讀這篇文章之前, 你已經看過以下的文章
