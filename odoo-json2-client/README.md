@@ -4,7 +4,7 @@
 
 也推薦看官方的相關影片
 
-* [Odoo API 101: discover the new blazing fast api](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-api-101-how-does-it-work-and-whats-new-in-odoo-19-8823)
+* [Odoo API 101: How does it work and what's new in Odoo 19?](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-api-101-how-does-it-work-and-whats-new-in-odoo-19-8823)
 
 這邊主要講了 JSON-2 API
 
