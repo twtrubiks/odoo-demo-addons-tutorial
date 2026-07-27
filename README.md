@@ -1,323 +1,355 @@
-# odoo19 教學
+# odoo19.4 教學
 
-這個分支主要是紀錄 odoo19 一些新的特性,
+這個分支主要是紀錄 saas-19.4 一些新的特性,
+
+詳細的介紹可參考 [odoo-19-4-release-notes](https://www.odoo.com/odoo-19-4-release-notes)
+
+分支可參考 [saas-19.4](https://github.com/odoo/odoo/tree/saas-19.4)
+
+我這邊會介紹一些, 理論上, 這些應該都會進入 odoo20
 
 以下紀錄就按照我的摸索慢慢補充 :smile:
 
-* [Youtube Tutorial - Odoo 19 JSON-2 API 完整教學！告別 XML-RPC 迎接新世代](https://youtu.be/edWMCN6z6nw)
+* [Youtube Tutorial - Odoo 19.4 兩大改動 ！PDF 引擎換 Paper-Muncher、權限系統整個重寫](https://youtu.be/ZHba80GN04A)
 
-* [Youtube Tutorial - Odoo 19 IndexedDB 快取策略, Odoo Runtime Doc api 文檔](https://youtu.be/ckEHImNHxL4)
+* [Youtube Tutorial - Odoo 19.4 AI 架構全換血！順便讓 Odoo 自己變成 MCP Server](https://youtu.be/j9wuy120J9c)
 
-* [Youtube Tutorial - 告別手動測試！ 全新 CLI 指令 & Odoo 19 Tour Recorder 實戰教學](https://youtu.be/2W3YPz47oLs)
+## 目錄
 
-官方也有整理改動的內容 [Migration-to-version-19.0](https://github.com/OCA/maintainer-tools/wiki/Migration-to-version-19.0)
+* [Paper-Muncher](#paper-muncher)
+* [權限系統重寫 ir.access - ir.model.access 與 ir.rule 合併](#權限系統重寫-iraccess---irmodelaccess-與-irrule-合併)
+* [讓 odoo 自己變成 MCP Server - ai_mcp (企業版限定)](#讓-odoo-自己變成-mcp-server---ai_mcp-企業版限定)
 
-- [Odoo 19 JSON-2 API 完整使用指南](odoo-json2-client)
+## Paper-Muncher
 
-- [Odoo 19 CLI](odoo-cli)
+目前在 saas-19.4 上, 已經可以選用 Paper-Muncher (對應 addons [base_report_paper_muncher](https://github.com/odoo/odoo/tree/saas-19.4/addons/base_report_paper_muncher)),
 
-## odoo 2025 影片
+但預設還是 wkhtmltopdf (對應 addons [base_report_wkhtmltox](https://github.com/odoo/odoo/tree/saas-19.4/addons/base_report_wkhtmltox))
 
-[odoo-experience-2025 track](https://www.odoo.com/event/odoo-experience-2025-6601/track)
+他的架構是變成可插拔(engine plugin)的介面, 所以你可以自由切換.
 
-整理一下自己稍微有看的官方影片
+現在是兩引擎並存的過渡期, 因為 wkhtmltopdf 實在太舊了, 總有一天會被移除.
 
-## What's new in the Python framework
+之前也有介紹過, Paper Muncher 速度快很多, 先來介紹怎麼啟用它,
 
-- [What's new in the Python framework? - Raphael Collet](https://www.odoo.com/event/odoo-experience-2025-6601/track/whats-new-in-the-python-framework-8412)
+首先, 要先到 [Paper Muncher](https://github.com/odoo/paper-muncher) 中的 releases 頁面下載然後安裝,
 
-基本上我每年都看他的, 因為主要是 python 的改動都是他說的, 很多是效能的改進.
+基本上安裝完會在你的 `/opt/paper-muncher/bin/paper-muncher` 這個路徑下.
 
-然後多了新的 `widget` `res_user_group_ids_privilege`, 目的是把整個 user 和 group 整個調整了,
+接著你就安裝 addons [base_report_paper_muncher](https://github.com/odoo/odoo/tree/saas-19.4/addons/base_report_paper_muncher),
 
-講者說這個之前都是透過很 hack 的方式去完成的, 現在是真正的 clean code.
+然後你有兩個方法可以切換到 Paper Muncher
 
-## 如何貢獻 odoo
+方法一, 全域修改, 你直接到 系統參數 找到 report.pdf_engine_default 改成 paper-muncher (預設是 wkhtmltopdf).
 
-- [A guide to contributing to Odoo's code base](https://www.odoo.com/event/odoo-experience-2025-6601/track/a-guide-to-contributing-to-odoos-code-base-8776)
+![alt text](https://cdn.imgpile.com/f/ZgbpOBL_md.png)
 
-如何貢獻 odoo code, odoo 的 policy 是 不會使用 `-u` 去重新啟動 odoo, 所以不能增加欄位,
+方法二, 去單獨修改 report 的 report_type 設成 qweb-pdf-paper-muncher.
 
-不能修改 view template, 以及如何寫出好的 code 送 PR.
+![alt text](https://cdn.imgpile.com/f/WLnN46y_xl.png)
 
-### 安全性議題
+接著去下載 pdf, 你會發現改呼叫 paper-muncher 了, 類似底下的 log
 
-- [Odoo Security 101](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-security-101-8752)
-
-主要講了 odoo 安全性以及 CVEs 的概念. (更新只需要 git pull & odoo restart)
-
-- [Unveiling the most common security issues Developer](https://www.odoo.com/event/odoo-experience-2025-6601/track/unveiling-the-most-common-security-issues-8753)
-
-更深入的介紹 odoo 的安全性, 以及攻擊者通常會怎麼攻擊, 如何避免, 像是
-
-使用 SQL Wrapper (避免 SQL injection), 不要過度使用 sudo (錯誤的用法以及如何正確的使用),
-
-注意 `compute_sudo` 使用 (會 pass 權限), 了解 odoo 中的 ACLs 以及 record rules.
-
-### AI 相關議題
-
-- [Developing Odoo modules using AI: a practical guide](https://www.youtube.com/watch?v=2JViJFJhF-g)
-
-介紹了 odoo AI 模組的互動架構, 以及 RAG (使用了 pgvector),
-
-demo 如何寫 AI 相關功能 addons, addons 中如何定義 **Tool Calling** 給 AI 呼叫.
-
-雖然沒有 MCP, 但架構符合 MCP 的規範.
-
-- [NLP search and AI tools: How does it work and what are the benefits?](https://www.youtube.com/watch?v=t1jLPpmRGMo)
-
-介紹了 odoo AI 中實際的應用, 用自然語言和它溝通, 它會幫你自動切換到對應的畫面以及合適的 domain,
-
-也說明了架構以及 System Prompt (目前是使用 人工撰寫 + AI生成 混合的 Prompt).
-
-為什麼不直接把內容放到 Prompt 中就好, 而要使用 **Tool Calling** 增加複雜度,
-
-首先是 context window 不是無限制的, 就算無限制, 這作法會產生高昂的費用(龐大資料), 速度也會很慢.
-
-結論是 **Tool Calling** 是必要的.
-
-安全性考量的話, 目前是給 AI 供應商決定他們會不會訓練你的資料.
-
-目前只支援 Gemini 以及 ChatGPT, 暫時不支援本地的 Ollama.
-
-目標是打造很多對應的專業 agent, 而不是建立一個通用 agent (因為這樣 AI 容易幻覺).
-
-也說明了目前的侷限性.
-
-- [Website import tool: How AI can rebuild your website](https://www.odoo.com/event/odoo-experience-2025-6601/track/website-import-tool-how-ai-can-rebuild-your-website-8405)
-
-透過輸入網址, 就可以把整個目標網站的結構抓進來並且符合 odoo 的架構, 是透過 AI 的方式, 目前只有企業板.
-
-- [Beyond Code Generation: Integrating AI into Odoo's Development Lifecycle – Lessons Learned](https://www.odoo.com/event/odoo-experience-2025-6601/track/beyond-code-generation-integrating-ai-into-odoos-development-lifecycle-lessons-learned-7931)
-
-不要讓 AI 外包核心的 code, 說明 AI 主要是輔助你完成工程師不喜歡做的事情, 如果你喜歡用 AI 寫 code 必看.
-
-## Testing 相關
-
-- [Testing your code in Odoo: Why and how should you do it?](https://www.odoo.com/event/odoo-experience-2025-6601/track/testing-your-code-in-odoo-why-and-how-should-you-do-it-8761)
-
-介紹了 Testing (單元測試 以及 整合測試) 的重要性, 以及新增了
-
-Tour Recorder (Testing Odoo - Integration Testing)功能.
-
-Odoo 講者推薦 TDD 這個流程.
-
-也有人問到為什麼不用 pytest, 講者說明可能是歷史的關係(包袱).
-
-## Code Quality 相關
-
-- [Improving Odoo Quality with Automated Code Checks](https://www.odoo.com/event/odoo-experience-2025-6601/track/improving-odoo-quality-with-automated-code-checks-8006)
-
-介紹了很多自動化檢查的工具, 用 pre-commit 完成 black, isort, flake8, pylint-odoo 這些,
-
-以及使用 github action 完成更深度的檢查(odoo test, xenon, bandit, SonarQube).
-
-## Odoo Shell
-
-- [Odoo Shell: The DevOps ally](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-shell-the-devops-ally-8756)
-
-介紹了很多 Odoo Shell 的特殊用法
-
-## Odoo CLI
-
-- [Simplifying the CLI, one command at a time](https://www.odoo.com/event/odoo-experience-2025-6601/track/simplifying-the-cli-one-command-at-a-time-8375)
-
-odoo19 開始, 很多 CLI 功能被切成更小塊, 且預設的新指令不啟動 odoo server,
-
-介紹了自定義 CLI Command,
-
-不用擔心舊的指令無法使用, 多數都有並存保留下來.
-
-## JSON-2 API
-
-- [Odoo API 101: How does it work and what's new in Odoo 19?](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-api-101-how-does-it-work-and-whats-new-in-odoo-19-8823)
-
-主要講了 JSON-2 API, 講者提到最好一次就呼叫完你要的東西(透過 group_by),
-
-避免 n+1 query(也就是用 loop 的方式呼叫).
-
-- [XMLRPC is dead. All Hail JSON-2.](https://www.odoo.com/event/odoo-experience-2025-6601/track/xmlrpc-is-dead-all-hail-json-2-8760)
-
-團隊有嘗試往 REST API 的方向, 但最後沒採用, 因為 REST API 和 XML 架構差太多了, 無法克服,
-
-所以最後採用新的 JSON-2.
-
-如果你想要嘗試類似 GraphQL, 可以看 `web_search_read` 中的 `specification` 這個.
-
-## 資料庫相關
-
-- [Multiple PostgreSQL servers behind Odoo - Nicolas Seinlet](https://www.odoo.com/event/odoo-experience-2025-6601/track/multiple-postgresql-servers-behind-odoo-8755)
-
-介紹了 Odoo 和 PostgreSQL 的整合, 主要是水平垂直拓展的概念, 以及是否你真的需要水平拓展.
-
-## 分析效能相關
-
-- [Database autopsy: A performance post-mortem](https://www.odoo.com/event/odoo-experience-2025-6601/track/database-autopsy-a-performance-post-mortem-8211)
-
-介紹了一些工具讓你去分析 odoo 慢的原因, 像是 lnav 這套工具.
-
-- [Database Whodunit: Root Cause Analysis of Performance Issues](https://www.odoo.com/event/odoo-experience-2025-6601/track/database-whodunit-root-cause-analysis-of-performance-issues-8445)
-
-說明怎麼一步一步找到慢的原因, 排除法.
-
-也推薦大家可以是用 odoo 內建的 Profiler 工具,
-
-以下指令可以看到全部的 Field dependencies
-
-```python
-model = self.env['res.partner']
-field = model._fields.get('name')
-registry = self.env.registry
-registry.get_field_trigger_tree(field)
+```cmd
+INFO odoo19-saas-new odoo.http.server: - SF364hij - [26/Jul/2026 05:39:07] "GET /paper-muncher/3.html HTTP/1.1" 200 22561 43 0.034 0.848 rw
+INFO odoo19-saas-new odoo.http.server: - SF364hij - [26/Jul/2026 05:39:07] "GET /paper-muncher/4.html HTTP/1.1" 200 22594 43 0.034 1.058 rw
 ```
 
-## report 相關 (wkhtmltopdf and Paper-Muncher)
+Paper Muncher 還藏了一個環境變數 `ODOO_PAPER_MUNCHER_FEATURE`, 可以打開實驗性的功能,
 
-- [Turning Web pages into beautiful print: The architecture of Paper-Muncher](https://www.odoo.com/event/odoo-experience-2025-6601/track/turning-web-pages-into-beautiful-print-the-architecture-of-paper-muncher-8399)
+對應的原始碼在 `addons/base_report_paper_muncher/models/ir_actions_report.py`
 
-主要說明了為什麼現在還是使用 wkhtmltopdf
+```python
+if os.getenv('ODOO_PAPER_MUNCHER_FEATURE') == '1':
+    extra_args += ['--feature', '*=on']  # activate all experimental/optional features
+```
 
-簡單說是歷史包袱, 影響範圍太大, 慢的原因其實是 wkhtmltopdf 會用類似無頭瀏覽器的概念在背景執行, 所以速度慢,
+### Paper-Muncher 的好處
 
-未來有機會改成 [Paper Muncher](https://github.com/odoo/paper-muncher) 但短期應該看不到,
+簡單整理一下換過去的好處
 
-影片中有 demo 兩者列印 report 速度的差異, Paper Muncher 真的明顯快很多.
+* **不用再開兩個 worker** - wkhtmltopdf 在單 worker 下會死鎖 (worker 卡著等 wkhtmltopdf, 而 wkhtmltopdf 在等那個 worker 回它圖片), 所以原始碼裡直接把 `workers == 1` 判定成不可用, paper-muncher 沒這個限制.
 
-- [Unveiling Paper-Muncher: The secret of web engines and understanding large document generation](https://www.odoo.com/event/odoo-experience-2025-6601/track/unveiling-paper-muncher-the-secret-of-web-engines-and-understanding-large-document-generation-8816)
+* **不會產生一堆暫存檔** - wkhtmltopdf 每次都要寫 cookie / header / footer / 每個 body / 輸出的 pdf, paper-muncher 全部走 pipe.
 
-介紹了為什麼最後選擇 Paper-Muncher, 以及小團隊(2~4人)怎麼規劃完成這個專案(花了非常多的時間規劃後才實做).
+* **session 不會外流** - 兩者都會開臨時 session, 但 wkhtmltopdf 得把 cookie 寫進暫存檔用 `--cookie-jar` 交給外部程式, paper-muncher 的 cookie 只留在 odoo 行程的記憶體裡.
 
-介紹了升級的部份, 主要推薦兩個參數, 幾乎可以修正遇到的大部分的情況,
+* **不用煩惱 base_url** - wkhtmltopdf 要真的連得回 odoo, 多租戶下 domain / 反向代理 / 內網 DNS 都要對齊, 錯一個就是 pdf 缺圖, paper-muncher 完全不經過網路, 這點對 SaaS 部署特別有感.
 
-## 升級
+* **不需要拆表的 workaround** - wkhtmltopdf 遇到大表格效能會爆掉, 原始碼註解寫 250k 行要跑一小時, 所以 odoo 特地寫了 `_split_table` 每 500 行拆一次, paper-muncher 沒有這段 hack.
 
-- [Odoo upgrades: Core concepts and tools](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-upgrades-core-concepts-and-tools-8771)
+### 為什麼會用到 h11 這個套件
 
-介紹了升級的部份, 主要推薦兩個參數, 幾乎可以修正遇到的大部分的情況,
+看原始碼會發現 `base_report_paper_muncher` 用了 [h11](https://github.com/python-hyper/h11),
 
-`nouptdate="1"` flag to prevent updates to existing records.
+他也已經是 odoo 正式的相依套件了, 可以在 [requirements.txt](https://github.com/odoo/odoo/blob/saas-19.4/requirements.txt) 裡面找到
 
-`forcecreate="0"` inside a nouptdate="1" block, prevents record creation during a module update.
+```txt
+h11==0.16.0  # packaged as 0.14.0~1 on debian/ubuntu, ~1 is a CVE patch, 0.16.0 has the patch.
+```
 
-也介紹了 [upgrade-util](https://github.com/odoo/upgrade-util),
+先講 wkhtmltopdf 是怎麼做的, 他內嵌一個很舊的 Qt WebKit, 遇到 `<img src="/web/image/123">` 的時候, 他是真的發 TCP 請求連回 odoo 的 http server 要圖片,
 
-後來查了一下相關的文章, 才發現有了 [upgrade.odoo.com](upgrade.odoo.com) 這個網站(官方維護).
+上面講的那些毛病 (要兩個 worker / 要傳 cookie / base_url 要連得到) 全都是從這裡來的.
 
-也有社群維護板, 可參考 [OpenUpgrade](https://github.com/OCA/OpenUpgrade)
+paper-muncher 則是走 stdin / stdout 的 pipe, 但管線上流動的東西是 HTTP 訊息, 大概像這樣
 
-## Odoo crons (排程)
+* `GET /paper-muncher/0.html` - 跟 odoo 要第幾份要渲染的文件
+* `PUT /paper-muncher/output.pdf` - 把做好的 pdf 交回來
+* 其他路徑 (圖片 / css / assets) - odoo 直接餵進自己的 WSGI 處理
 
-- [Best practices to design Odoo crons](https://www.odoo.com/event/odoo-experience-2025-6601/track/best-practices-to-design-odoo-crons-8754)
+而 h11 的定位是 sans-IO 的 HTTP/1.1 狀態機, 他只負責 bytes 跟 HTTP 事件之間的轉換, 完全不碰 socket, 所以才有辦法套在 pipe 上面用.
 
-蠻推薦這影片的, 介紹了很多設計一個好的 crons,
+換句話說, odoo 根本沒有開任何 port, 而是在一條 pipe 上假裝自己是 HTTP server.
 
-冪等操作 (Idempotent)
+那為什麼不乾脆自己定一套協定就好? 因為 paper-muncher 本質上就是個瀏覽器引擎, 他抓資源的語意天生就是 HTTP,
 
-意思是「一個操作執行一次和執行 N 次的結果應該是完全一樣的」.
+既然是 HTTP, 收到的請求就可以直接轉成 WSGI 的 environ 丟給 odoo, 原本的 controller / 權限 / assets 機制通通不用改就能用.
 
-例如，一個 cron 如果因為意外而被重複執行了兩次，不應該會重複發送兩封郵件或重複計算兩次庫存。
+## 權限系統重寫 ir.access - ir.model.access 與 ir.rule 合併
 
-故障安全的 (Failure-safe)
+一句話定義他是什麼 - 舊的 `ir.model.access` 跟 `ir.rule` 被合併成同一個模型 `ir.access`.
 
-當 cron 在執行過程中遇到錯誤（例如網路中斷）時，應該要有能力從中恢復，或在下次執行時能接續處理，
+`odoo/addons/base/models/ir_rule.py` 這個檔案直接被刪掉了, 換成 [ir_access.py](https://github.com/odoo/odoo/blob/saas-19.4/odoo/addons/base/models/ir_access.py).
 
-而不是留下一堆處理到一半的髒數據.
+連帶所有模組的 `security/ir.model.access.csv` 也全部改名成 `ir.access.csv`, 欄位長得完全不一樣了
 
-處理大資料時, 使用 分批 (batch) 處理, 避免超時(timeout),
+```txt
+舊: id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+新: id,name,model_id,group_id/id,operation,domain
+```
 
-把大任務切成小塊多次 commit.
+四個 `perm_*` boolean 被縮成一個 `operation` 字串 (`r` / `cru` / `crud` 這樣), domain 則直接寫在同一列,
 
-在 odoo19 中多了新特性, 如果排程多次失敗, 會自動幫你停用.
+這就是 record rule 消失的真相 - 他沒有消失, 只是被併進來了.
 
-影片中也提到 `env.cr.rollback()` 的概念.
+### permission 與 restriction
 
-## Odoo Language Server
+新的權限判斷就是 `ir_access.py` 裡的這一行
 
-- [Introducing Odoo Language Server: Your coding companion](https://www.odoo.com/event/odoo-experience-2025-6601/track/introducing-odoo-language-server-your-coding-companion-8319)
+```python
+return Domain.OR(permissions) & Domain.AND(restrictions)
+```
 
-介紹了 Language Server. LSP 的全名是 Language Server Protocol (語言伺服器協定).
+差別只在有沒有填 `group_id`
 
-功能有 自動完成, 懸停提示, 跳至定義, 程式碼診斷.
+* **有填 group_id** - 叫 permission, 是「授權」, 彼此之間用 OR
+* **沒填 group_id** - 叫 restriction, 是「全域限制」, 彼此之間用 AND
 
-可參考專案 [odoo-ls](https://github.com/odoo/odoo-ls)
+要注意 restriction 只會扣分不會加分, 他永遠不會給予任何權限,
 
-## SEO, Website
+所以 `group_id` 跟 domain 都留空的話, 那筆記錄等於什麼都沒做 (odoo 自己在 website_slides 就有兩筆這種死記錄).
 
-- [Discover Odoo's SEO basics](https://www.odoo.com/event/odoo-experience-2025-6601/track/discover-odoos-seo-basics-8819)
+對應到舊的東西大概是這樣
 
-介紹了很基礎的 SEO 觀念, 一頁盡量一個主題, 圖片盡量有描述之類的.
+| 舊的 | 新的 |
+| --- | --- |
+| `ir.model.access` 一列 | permission + domain 留空 |
+| `ir.rule` 有掛 groups | permission + domain |
+| `ir.rule` 沒掛 groups (global) | restriction |
+| **沒有符合的 record rule → 不過濾** | **沒有符合的 permission → 全鎖** |
 
-但有了 AI 之類, 這類規則肯定會被打破.
+OR + AND 這套算法其實舊的 `ir.rule` 就有了, 所以前面三列只是改名字而已.
 
-- [What's new in SEO?](https://www.odoo.com/event/odoo-experience-2025-6601/track/whats-new-in-seo-8425)
+真正變的是最後一列 - 舊的是兩層閘門, `ir.model.access` 那層沒設定就是全關 (直接丟 AccessError), 但 `ir.rule` 那層沒設定是放行的,
 
-介紹了 odoo 在 SEO 努力的方向, 以及新功能, 也提昇了整體 Website 的速度.
+現在合成一層之後只剩一套預設值, 沒有符合的 permission, `Domain.OR([])` 直接就是 `FALSE`, 也就是全鎖.
 
-## Odoo Studio
+換句話說, ACL 被拉進了這條公式 (變成一條 domain 留空的 permission), 而 rule 那層的「預設放行」就消失了.
 
-- [A developer’s guide to building importable SaaS-ready modules](https://www.odoo.com/event/odoo-experience-2025-6601/track/a-developers-guide-to-building-importable-saas-ready-modules-8751)
+### 多了一個 access domain operator
 
-其實就是在介紹 Odoo Studio, 本質上就是把 python 的部份都轉成了 xml 的格式(有一些限制).
+domain 裡面多了一個 `access` 運算子, 像這樣 (出自 `addons/sale/security/ir.access.csv`)
 
-## IoT Box
+```csv
+base_user_account_move_line_rule,Normal User Account Move Line,account.move.line,sales_team.group_sale_salesman,r,"[('move_id', 'access', 'read')]"
+```
 
-- [How to integrate hardware with Odoo IoT Box?](https://www.odoo.com/event/odoo-experience-2025-6601/track/how-to-integrate-hardware-with-odoo-iot-box-8770)
+意思是「如果我讀得到這筆分錄的 `move_id`, 我就讀得到這筆分錄」.
 
-介紹 IoT Box, IoT Box 本身就是一台 Raspberry Pi, 負責轉接(翻譯官),
+以前子模型想跟隨父模型的權限, 只能把父模型的 domain 整段抄過來自己加 `move_id.` 前綴,
 
-如果你的解決方案, 有其他更好的(像是你的硬體有 api), 請使用 api 的方式, 因為用了 IoT Box,
+這個例子 odoo 自己就有, 19.0 的 `addons/sale/security/ir_rules.xml` 裡面, 父子兩條規則是這樣寫的
 
-等於多一層架構, 更難維護. 也介紹了一些 debug IoT Box 的技巧.
+```xml
+<!-- 父模型 account.move -->
+<record id="account_invoice_rule_see_personal" model="ir.rule">
+    <field name="model_id" ref="model_account_move"/>
+    <field name="domain_force">[('move_type', 'in', ('out_invoice', 'out_refund')), '|', ('invoice_user_id', '=', user.id), ('invoice_user_id', '=', False)]</field>
+    <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+</record>
 
-## Translations
+<!-- 子模型 account.move.line -->
+<record id="account_invoice_line_rule_see_personal" model="ir.rule">
+    <field name="model_id" ref="model_account_move_line"/>
+    <field name="domain_force">[('move_id.move_type', 'in', ('out_invoice', 'out_refund')), '|', ('move_id.invoice_user_id', '=', user.id), ('move_id.invoice_user_id', '=', False)]</field>
+    <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+</record>
+```
 
-- [Translations, Odoo, and you!](https://www.odoo.com/event/odoo-experience-2025-6601/track/translations-odoo-and-you-8763)
+一模一樣的 domain, 只是每個欄位前面都多加了 `move_id.`, 而且這種還不只一條, 旁邊的 `see_all` 也是同樣的複製關係, 一個 model 兩條規則就得維護四條.
 
-介紹了 i18n 以及 l10n, 說明了 i18n 的架構, 翻譯上的一些技巧以及 issue
+問題出在哪天父模型要多支援一種單據 (假設加個 `out_receipt`), 你得記得把每一條抄過的規則都跟著改,
 
-## 整合外部 api 的企業級解決方案
+漏改的結果是使用者看得到收據, 卻看不到收據的明細行 - 不會拋錯, 只會少資料, 而且測試通常只測父模型的可見性, 所以很難查.
 
-- [Master Data Management with Odoo](https://www.odoo.com/event/odoo-experience-2025-6601/track/master-data-management-with-odoo-7453)
+換成 `[('move_id', 'access', 'read')]` 之後, 子模型沒有寫死任何條件, 父模型改什麼他就跟什麼.
 
-影片介紹了他們的解決方案(也做了多方案的比較優缺點), 目標是解決外部同步到 odoo 或 odoo 要去同步別人的東西,
+現在他變成一等公民了, 三個位置都有限制, 寫錯會直接拋錯, 不是安靜失敗
 
-說明了 pull 或 push 的概念, 提供了企業級的解決方案.
+| 位置 | 允許的值 |
+| --- | --- |
+| 欄位 | 只能是 many2one 或 `id` |
+| 運算子 | 固定字串 `'access'` |
+| 值 | 只能是 `'read'` / `'write'` / `'create'` / `'unlink'` 四選一 |
 
-## odoo 搭配 redis
+對應的檢查在 [odoo/orm/domains.py](https://github.com/odoo/odoo/blob/saas-19.4/odoo/orm/domains.py) 的 `_operator_access_rule_domain`
 
-- [Boosting Odoo Performance with Redis Caching](https://www.odoo.com/event/odoo-experience-2025-6601/track/boosting-odoo-performance-with-redis-caching-7707)
+```python
+@operator_optimization(['access'], level=OptimizationLevel.DYNAMIC_VALUES)
+def _operator_access_rule_domain(condition, model):
+    ...
+    else:
+        condition._raise("The 'access' operator works only for many2one and 'id' fields")
 
-使用 redis 快取了 odoo website 的部份(redis 保存了 odoo 的 html),
+    operation = condition.value
+    if operation not in ('read', 'write', 'create', 'unlink'):
+        condition._raise("Invalid value for 'access' operator")
+```
 
-雖然沒有明確說明他們的作法, 但介紹了一些 redis 基本概念以及注意事項,
+### 自訂模組要注意什麼
 
-像是在 redis 中不要放入遺失會造成問題(重大損失)的資料.
+odoo 有附一支轉換腳本 `odoo/upgrade_code/19.4-00-ir-access.py`, 官方的模組就是跑他轉的 (commit `e7cc76b2907d`),
 
-## IndexedDB 快取策略
+用法像這樣, 建議先加 `--dry-run` 看看會動到哪些檔案
 
-- [Discover how we made Odoo blazing fast](https://www.youtube.com/watch?v=enwWRebkyK4)
+```cmd
+python odoo-bin upgrade_code --script 19.4-00-ir-access --addons-path /your/addons --dry-run
+```
 
-odoo19 透過瀏覽器的 IndexedDB 去加速瀏覽畫面的速度(快取, 離線也可以讀取, 只要你有讀取過),
+強烈建議不要手動改, 因為 `perm_*` 的預設值兩邊剛好相反 - 舊的 `ir.rule` 預設是 `True` (套用到全部四種操作), 舊的 `ir.model.access` 預設是 `False`,
 
-使用的策略是儲存 API 回應 (RPC's Responses), 資料加解密使用 AES-GCM.
+兩個預設相反的東西要合併成同一個 `operation` 欄位, 手動改很容易錯.
 
-目前只實做在 view kanban, list, form 上面以及一些 RPC 上面
+另外一個要注意的是 groups 從 many2many 變成了 many2one, 所以一條掛多個 group 的 rule 會被裂成多筆記錄,
 
-`get_views` `web_search_read` `web_read_group` `web_read` `on_change`
+拿 `hr_expense` 來看, 19.0 原本是一條掛兩個 group
 
-打開 debug mode, 在 action 中, 可以看到 Data Caching 這個選項.
+```xml
+<record id="ir_rule_hr_expense_manager" model="ir.rule">
+    <field name="name">Manager Expense</field>
+    <field name="model_id" ref="model_hr_expense"/>
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="groups" eval="[
+        (4, ref('account.group_account_user')),
+        (4, ref('hr_expense.group_hr_expense_user'))]"/>
+</record>
+```
 
-這概念使用了部份的 PWA 這類的技術.
+19.4 變成兩行
 
-## OCA
+```csv
+ir_rule_hr_expense_manager,Manager Expense,hr.expense,account.group_account_user,crud,
+ir_rule_hr_expense_manager_1,Manager Expense,hr.expense,hr_expense.group_hr_expense_user,crud,
+```
 
-- [Why OCA Modules Are Like Magic Beans](https://www.odoo.com/event/odoo-experience-2025-6601/track/why-oca-modules-are-like-magic-beans-7665)
+順便可以看到另外兩件事, `[(1, '=', 1)]` 被正規化成留空 (他跟 `[]` 跟留空都是同一個 `Domain.TRUE`), 而沒寫 `perm_*` 的 rule 因為預設是 `True`, 所以 operation 直接變成 `crud`.
 
-如果你想多了解 OCA, 可以看一下這個影片.
+upgrade_code 自己的 docstring 也講得很白
 
-- [Odoo Community Association (OCA) : From 2013 to now, the history!](https://www.odoo.com/event/odoo-experience-2025-6601/track/odoo-community-association-oca-from-2013-to-now-the-history-7886)
+```txt
+Please note that all the scripts are doing a best-effort a migrating the
+source code, they only help do the heavy-lifting, they are not silver
+bullets.
+```
 
-這也是在介紹 OCA, 包含為什麼成立以及歷史, 他們也有自己的組織架構.
+## 讓 odoo 自己變成 MCP Server - ai_mcp (企業版限定)
+
+一句話定義他是什麼 - odoo 自己就是 MCP server, 不需要中間人.
+
+對應的企業版 addons 是 ai_mcp, 想體驗可到 [odoo runbot](https://runbot.odoo.com/).
+
+一般我們自己寫的 mcp server 是獨立跑一個 process, 再透過 JSON-RPC 從外面連回 odoo 拿資料,
+
+而 ai_mcp 是直接在 odoo 裡面開一條 `/mcp` 的 route, 沒有中間人, 也不用另外部署, 裝了 addons 就有.
+
+### 怎麼啟用
+
+現在 api key 的部份, 多一個 mcp 可以選擇,
+
+![alt text](https://cdn.imgpile.com/f/Bvzyaec_xl.png)
+
+然後他的架構是看 Server Actions 中的 Available in MCP 欄位,
+
+把這些有打勾的變成 tools, 所以你可以到這邊依照自己的需求去設定,
+
+![alt text](https://cdn.imgpile.com/f/ljhEUPi_xl.png)
+
+這邊使用 claude 當範例
+
+```cmd
+claude mcp add --transport http odoo https://your-company.odoo.com/mcp --header "Authorization: Bearer xxxx"
+```
+
+完整的設定大約會像這樣 (使用本機測試也是可行的)
+
+```json
+ "mcpServers": {
+    "odoo": {
+      "type": "http",
+      "url": "http://0.0.0.0:8019/mcp",
+      "headers": {
+        "Authorization": "Bearer xxxxx"
+      }
+    }
+}
+```
+
+然後使用的時候要注意, 一次只能顯示一個 db, 不然會抓不到, 比較簡單的設定方法是, 假設我們的 db 是 odoo19-saas,
+
+把 dbfilter 設定好你的 odoo19-saas, 然後啟動的時候也指定你的 db `python3 odoo-bin .... -d odoo19-saas`
+
+### 本質上他就是把 ir.actions.server 當成 tools
+
+沒有註冊機制, 也沒有 decorator, tool 就是資料庫裡的一筆記錄.
+
+這跟自己用 python 寫 mcp server (`@mcp.tool` 那種) 是相反的思路, 一個是程式碼定義 tool, 一個是資料定義 tool.
+
+好處是增減 tool 不用改程式碼也不用重啟, 壞處是沒有版本控制, 裝了某個 addons 就可能默默多出工具.
+
+### 預設只能讀, 但寫入隨時可以打開
+
+預設只有 5 個唯讀的 tool, 不過這只是出廠設定保守而已.
+
+ai 這個 addons 早就準備好 ai_tool_update_records 跟 ai_tool_create_records 了, 你只要把他們的 Available in MCP 勾起來, mcp client 立刻就有增改能力, 一行程式都不用寫.
+
+要注意 Readonly Tool (`is_readonly`) 這個欄位沒有任何強制力, 他只是貼給 client 看的標籤, 一個實際上在寫資料的 tool, 你勾了 Readonly 他照樣寫.
+
+### 每個使用者看到的 tools 是不一樣的
+
+api key 是綁在 odoo 使用者身上的, 而 tools/list 每次都會逐一跑權限檢查, 過不了的直接跳過,
+
+所以同一個 `/mcp` 網址, 會計跟業務拿到的工具清單不一樣.
+
+而且他是直接在 odoo 行程內走 ORM, 不像外部的 mcp server 得透過 JSON-RPC 從外面打進來,
+
+tool 裡拿到的 record 是 `sudo(False)`, 所以 ACL / record rules / 多公司規則全部照常生效, 不用自己寫任何權限判斷.
+
+自架的 mcp server 通常是一把 api key 放在環境變數裡, 所有人共用同一個 odoo 身分, 要做到這件事得幫每個使用者跑一個 process.
+
+### ai_tool_schema 不只是說明文件
+
+他不只是寫給 AI 看的文件, 驗證過的參數會直接變成 code 裡面的變數,
+
+所以 schema 裡 properties 的每個 key, 就是你在 code 裡可以直接用的變數名, 打錯字就是 NameError.
+
+換句話說, schema 是 function signature, description 才是 docstring.
+
+### MCP Retrieve initial context 是在補瀏覽器少掉的 context
+
+他是 ai_mcp 唯一自己新建的 tool, 用途是補 mcp 缺掉的 session context, 回傳使用者的時區 / 當前公司 / 可用的公司.
+
+在網頁上這些是瀏覽器帶上來的, 走 mcp 就完全沒有, 少了他, LLM 算「這個月的銷售」會用錯時區, 多公司下也不知道現在是哪一間.
 
 ## Donation
 
