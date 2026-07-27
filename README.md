@@ -2,9 +2,9 @@
 
 此版本為 odoo12,
 
-odoo14 版本請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0) 分支.
+odoo14 版本(棄用)請參考 [odoo14](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/14.0) 分支.
 
-odoo15 版本請參考 [odoo15](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0) 分支.
+odoo15 版本(棄用)請參考 [odoo15](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/15.0) 分支.
 
 odoo16 版本請參考 [odoo16](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/16.0) 分支.
 
@@ -13,6 +13,8 @@ odoo17 版本請參考 [odoo17](https://github.com/twtrubiks/odoo-demo-addons-tu
 odoo18 版本請參考 [odoo18](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/18.0) 分支.
 
 odoo19 版本請參考 [odoo19](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/19.0) 分支.
+
+odoo19.4 版本請參考 [saas-19.4](https://github.com/twtrubiks/odoo-demo-addons-tutorial/tree/saas-19.4) 分支.
 
 本文章會持續更新 :smile:
 
